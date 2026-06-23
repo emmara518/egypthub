@@ -1,0 +1,54 @@
+{
+  "relations": {
+    "cairo": ["alexandria", "luxor", "siwa"],
+    "alexandria": ["cairo", "marsa-matrouh"],
+    "luxor": ["aswan", "cairo", "hurghada"],
+    "aswan": ["luxor", "cairo", "abu-simbel"],
+    "sharm-el-sheikh": ["dahab", "hurghada", "st-catherine"],
+    "hurghada": ["luxor", "sharm-el-sheikh", "cairo"],
+    "dahab": ["sharm-el-sheikh", "nuweiba", "st-catherine"],
+    "siwa": ["cairo", "alexandria", "marsa-matrouh"]
+  },
+  "routes": [
+    {
+      "id": "classic-egypt",
+      "name": "مصر الكلاسيكية",
+      "description": "جولة سياحية كلاسيكية تبدأ من القاهرة لمشاهدة الأهرامات والمتحف المصري، ثم تتوجه بالقطار إلى الأقصر لزيارة معابد الكرنك والأقصر ووادي الملوك، وتنتهي في أسوان للاستمتاع بمعبد فيلة وبحيرة ناصر وركوب الفلوكة في غروب النيل الخلاب",
+      "cities": ["cairo", "luxor", "aswan"],
+      "duration": "10 أيام",
+      "bestFor": ["history", "culture", "photography"]
+    },
+    {
+      "id": "red-sea-adventure",
+      "name": "مغامرة البحر الأحمر",
+      "description": "رحلة مغامرات شيقة على ساحل البحر الأحمر، تبدأ من شرم الشيخ للغوص في رأس محمد ومشاهدة الشعاب المرجانية، ثم إلى دهب لممارسة رياضة الكايت سيرف والغوص في البلوهول، وتنتهي في الغردقة للاستمتاع بالأنشطة البحرية والرحلات الصحراوية المثيرة",
+      "cities": ["sharm-el-sheikh", "dahab", "hurghada"],
+      "duration": "8 أيام",
+      "bestFor": ["adventure", "diving", "relaxation"]
+    },
+    {
+      "id": "mediterranean-escape",
+      "name": "الهروب للبحر المتوسط",
+      "description": "رحلة ممتعة تبدأ من القاهرة ثم تتجه إلى إسكندرية عروس البحر المتوسط لزيارة قلعة قايتباي ومكتبة الإسكندرية وتذوق أشهى المأكولات البحرية، ثم إلى سيوة لاستكشاف الواحات الخضراء والمعابد القديمة والاستحمام في عيون الكبريت الطبيعية وسط مناظر خلابة",
+      "cities": ["cairo", "alexandria", "siwa"],
+      "duration": "7 أيام",
+      "bestFor": ["culture", "food", "relaxation"]
+    },
+    {
+      "id": "nile-journey",
+      "name": "رحلة النيل الخالدة",
+      "description": "رحلة استثنائية على ضفاف النيل الخالد، تبدأ من الأقصر عاصمة الفراعنة القديمة لزيارة أعظم المعابد والمقابر الفرعونية، ثم الإبحار إلى أسوان عبر المراكب النيلية الفاخرة لزيارة معبد فيلة وأبو سمبل، وتنتهي في القاهرة لاكتشاف صخب العاصمة وتاريخها العريق",
+      "cities": ["luxor", "aswan", "cairo"],
+      "duration": "12 أيام",
+      "bestFor": ["history", "culture", "photography"]
+    },
+    {
+      "id": "full-egypt",
+      "name": "مصر كاملة",
+      "description": "أشمل رحلة في مصر تغطي كل الوجهات السياحية الرئيسية، تبدأ من القاهرة ومتاحفها وأهراماتها، ثم إسكندرية وسحر البحر المتوسط، وبالقطار إلى الأقصر وأسوان لاستكشاف حضارة النوبة والفراعنة، وأخيراً شرم الشيخ للاسترخاء على شواطئ البحر الأحمر والغوص في أحلى مواقع العالم تحت الماء",
+      "cities": ["cairo", "alexandria", "luxor", "aswan", "sharm-el-sheikh"],
+      "duration": "18 أيام",
+      "bestFor": ["history", "culture", "adventure", "relaxation"]
+    }
+  ]
+}

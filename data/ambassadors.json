@@ -1,0 +1,322 @@
+[
+  {
+    "id": "cairo-guide-1",
+    "name": "Karim Abdel Nour",
+    "citySlug": "cairo",
+    "role": "Local Guide",
+    "bio": "بشغف وحب لكل حارة وحجر في القاهرة، باصطحب الزوار في رحلات لا تنسى بين أروقة خان الخليلي وجوامع القاهرة التاريخية. أحب أن أشارك قصص المصريين وحياتهم اليومية في الشوارع الضيقة والأسواق القديمة.",
+    "languages": ["Arabic", "English", "French"],
+    "specialties": ["القاهرة الإسلامية", "خان الخليلي", "الأزقة المخفية", "الجوامع التاريخية"],
+    "isVerified": false
+  },
+  {
+    "id": "cairo-photographer-1",
+    "name": "Nadia El Shafei",
+    "citySlug": "cairo",
+    "role": "Photographer",
+    "bio": "أرى الجمال في كل زاوية من زوايا القاهرة، من أشعة الشمس الذهبية على أهرامات الجيزة إلى تفاصيل العمارة الإسلامية. أعشق توثيق المدينة بعيون فنانة وأشارك الزوار أسرار التصوير المعماري.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["التصوير المعماري", "ضوء الأهرامات", "تفاصيل القاهرة القديمة", "التركيب الضوئي"],
+    "isVerified": false
+  },
+  {
+    "id": "cairo-restaurant-1",
+    "name": "Hassan El Masry",
+    "citySlug": "cairo",
+    "role": "Restaurant Owner",
+    "bio": "من مطعمي الصغير في وسط القاهرة، أقدم أطباق الكشري والفول والطعمية كما يجب أن تكون. الطبخ في دمي وأحب أن أشارك ضيوفي أسرار المطبخ المصري الأصيل وتاريخ كل أكلة.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["المطبخ المصري الأصيل", "الكشري", "الأكلات الشعبية", "أسرار التوابل"],
+    "isVerified": false
+  },
+  {
+    "id": "cairo-artisan-1",
+    "name": "Dina Kamel",
+    "citySlug": "cairo",
+    "role": "Artisan",
+    "bio": "أنسج الخيوط بألوانها الطبيعية لأصنع قطعاً فريدة تحكي تراث مصر العريق. في ورشتي بالفسطاط، أعلم الزوار فن النسيج اليدوي وأشاركهم قصص كل لون ونقشة.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["النسيج اليدوي", "الحرف المصرية التقليدية", "الصباغة الطبيعية", "الخيامية"],
+    "isVerified": false
+  },
+  {
+    "id": "alexandria-storyteller-1",
+    "name": "Youssef El Banna",
+    "citySlug": "alexandria",
+    "role": "Storyteller",
+    "bio": "على شاطئ البحر المتوسط، أروي حكايات الإسكندر الأكبر وكليوباترا وأسرار مكتبة الإسكندرية القديمة. أحمل في جعبتي قصصاً لا تنتهي عن عروس البحر الأبيض المتوسط وأبحر بضيوفي عبر الزمن.",
+    "languages": ["Arabic", "English", "Greek"],
+    "specialties": ["التاريخ اليوناني الروماني", "مكتبة الإسكندرية", "أساطير كليوباترا", "القصص التاريخية"],
+    "isVerified": false
+  },
+  {
+    "id": "alexandria-guide-1",
+    "name": "Mariam Guirguis",
+    "citySlug": "alexandria",
+    "role": "Local Guide",
+    "bio": "أخذ ضيوفي في جولة على الكورنيش وأشاركهم حب الإسكندرية الذي لا ينتهي. أعرف كل زقاق ومقهى قديم في المدينة، وأحب أن أعرف الزوار على الثقافة البحرية والكرم السكندري الأصيل.",
+    "languages": ["Arabic", "English", "Italian"],
+    "specialties": ["الكورنيش", "المقاهي القديمة", "الثقافة البحرية", "تاريخ الإسكندرية الحديث"],
+    "isVerified": false
+  },
+  {
+    "id": "alexandria-photographer-1",
+    "name": "Tarek El Sayed",
+    "citySlug": "alexandria",
+    "role": "Photographer",
+    "bio": "أصطاد الضوء المتوسطي بعدسته كل يوم، من غروب الشمس على قلعة قايتباي إلى أمواج البحر المتلألئة. أعشق تصوير المناظر البحرية وأشارك الزوار أفضل الأماكن لالتقاط الصور الخلابة.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["تصوير المناظر البحرية", "ضوء البحر المتوسط", "غروب القلعة", "تصوير الكورنيش"],
+    "isVerified": false
+  },
+  {
+    "id": "alexandria-restaurant-1",
+    "name": "Layla El Khouly",
+    "citySlug": "alexandria",
+    "role": "Restaurant Owner",
+    "bio": "من مطعمي المطل على البحر، أقدم أشهى أطباق السمك الطازج والجمبري كما عرفتها من صيادي الإسكندرية. شغفي هو تقديم تجربة بحرية كاملة تجمع بين النكهات الأصيلة والمنظر الخلاب.",
+    "languages": ["Arabic", "English", "French"],
+    "specialties": ["المأكولات البحرية", "السمك الطازج", "المطبخ السكندري", "الجمبري المشوي"],
+    "isVerified": false
+  },
+  {
+    "id": "luxor-guide-1",
+    "name": "Mohamed Abdel Meguid",
+    "citySlug": "luxor",
+    "role": "Local Guide",
+    "bio": "عشت طفولتي بين معابد الأقصر وأهراماتها، وأحفظ تفاصيل وادي الملوك كما أحفظ اسمي. بكل فخر، أشارك ضيوفي أسرار الفراعنة وأخذهم في رحلة عبر آلاف السنين من التاريخ والحضارة.",
+    "languages": ["Arabic", "English", "German"],
+    "specialties": ["التاريخ الفرعوني", "وادي الملوك", "معابد الكرنك", "الأقصر القديمة"],
+    "isVerified": false
+  },
+  {
+    "id": "luxor-artisan-1",
+    "name": "Fatima El Naggar",
+    "citySlug": "luxor",
+    "role": "Artisan",
+    "bio": "أنحت في المرمر والرخام قطعاً تحاكي جمال النقوش الفرعونية القديمة. في ورشتي قرب معبد الأقصر، أعلم الزوار هذا الفن العتيق وأشاركهم شغفي بالحجر والتاريخ.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["نحت المرمر", "الحرف التقليدية", "النقوش الفرعونية", "المشغولات اليدوية"],
+    "isVerified": false
+  },
+  {
+    "id": "luxor-photographer-1",
+    "name": "Ahmed El Taher",
+    "citySlug": "luxor",
+    "role": "Photographer",
+    "bio": "من فوق منطاد الهواء الساخن، ألتقط أجمل صور معابد الأقصر من السماء عند شروق الشمس. أحب أن أوثق جمال الآثار في أوقات السحر وأشارك الزوار زوايا التصوير المثالية.",
+    "languages": ["Arabic", "English", "Japanese"],
+    "specialties": ["تصوير المعابد", "تصوير المناطيد", "شروق الشمس من السماء", "التصوير الفرعوني"],
+    "isVerified": false
+  },
+  {
+    "id": "luxor-storyteller-1",
+    "name": "Omar El Hefny",
+    "citySlug": "luxor",
+    "role": "Storyteller",
+    "bio": "أروي قصص الآلهة والملوك والنبيين التي توارثتها الأجيال على ضفاف النيل. أساطير مصر القديمة ليست مجرد حكايات، بل دروس في الحياة أحب أن أشاركها مع كل من يزور طيبة الحبيبة.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["الميثولوجيا المصرية", "أساطير الفراعنة", "قصص وادي الملوك", "التراث الشفوي"],
+    "isVerified": false
+  },
+  {
+    "id": "aswan-artisan-1",
+    "name": "Fatma El Nubi",
+    "citySlug": "aswan",
+    "role": "Artisan",
+    "bio": "بأصابعي الماهرة، أجدل سلال الخوص والخرز بألوان النوبة الزاهية. كل قطعة أصنعها تحمل روح أجدادي النوبيين وفنهم العريق في البساطة والجمال.",
+    "languages": ["Arabic", "English", "Nobiin"],
+    "specialties": ["الحرف النوبية", "سلال الخوص", "المشغولات الخرزية", "الفن النوبي"],
+    "isVerified": false
+  },
+  {
+    "id": "aswan-guide-1",
+    "name": "Ayman El Kurdi",
+    "citySlug": "aswan",
+    "role": "Local Guide",
+    "bio": "من أسوان الجميلة، أأخذ ضيوفي في رحلة لا تنسى إلى معبد فيلة وأبو سمبل وأشاركهم حكايات النوبة العريقة. أعشق تعريف الزوار بثقافة النوبيين وكرم ضيافتهم وأسرار معابدهم.",
+    "languages": ["Arabic", "English", "Nobiin"],
+    "specialties": ["الثقافة النوبية", "معبد فيلة", "أبو سمبل", "السياحة النيلية"],
+    "isVerified": false
+  },
+  {
+    "id": "aswan-artisan-2",
+    "name": "Samira El Qasabgi",
+    "citySlug": "aswan",
+    "role": "Artisan",
+    "bio": "أطرز الثياب التقليدية النوبية بأجمل الألوان والرسومات التي تروي قصص أجدادنا. في بيتي النوبي، أعلم الزوار فن التطريز النوبي الأصيل وأسرار كل نقشة.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["التطريز النوبي", "الملابس التقليدية", "النقش النوبي", "فنون الأزياء"],
+    "isVerified": false
+  },
+  {
+    "id": "aswan-food-1",
+    "name": "Khaled El Duqqi",
+    "citySlug": "aswan",
+    "role": "Local Guide",
+    "bio": "في أسوان، كل أكلة لها حكاية وكل توابلها لها رائحة تروي تاريخ النوبة. أتجول بضيوفي في أسواق البهارات وأقدم لهم تجربة فريدة في المطبخ النوبي الأصيل.",
+    "languages": ["Arabic", "English", "Nobiin"],
+    "specialties": ["المطبخ النوبي", "أسواق البهارات", "الأكلات النوبية التقليدية", "الجبنة النوبية"],
+    "isVerified": false
+  },
+  {
+    "id": "sharm-dive-1",
+    "name": "Amir El Shazly",
+    "citySlug": "sharm-el-sheikh",
+    "role": "Dive Instructor",
+    "bio": "تحت سطح البحر الأحمر، أكتشف عالماً ساحراً من الشعب المرجانية والأسماك الملونة. في رأس محمد وغيره من المواقع، أأخذ الغواصين في رحلات استثنائية لأجمل الشعاب المرجانية في العالم.",
+    "languages": ["Arabic", "English", "Spanish"],
+    "specialties": ["رأس محمد", "الغوص في الشعاب المرجانية", "بيئة البحر الأحمر", "الغوص الآمن"],
+    "isVerified": false
+  },
+  {
+    "id": "sharm-guide-1",
+    "name": "Nour El Hoda",
+    "citySlug": "sharm-el-sheikh",
+    "role": "Local Guide",
+    "bio": "بين جبال سيناء وصحرائها الذهبية، أأخذ ضيوفي في رحلة إلى قلب ثقافة البدو الأصيلة. أعرف كل خيمة وواحة وممر جبلي، وأشارك الزوار قصص البداوة وكرم الضيافة.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["ثقافة البدو", "رحلات سيناء", "التخييم في الصحراء", "الوديان الجبلية"],
+    "isVerified": false
+  },
+  {
+    "id": "sharm-photographer-1",
+    "name": "Sherif El Gabaly",
+    "citySlug": "sharm-el-sheikh",
+    "role": "Photographer",
+    "bio": "أغوص بكاميرتي لأصور أسرار البحر الأحمر الخفية، من الأسماك الملونة إلى الدلافين المرحة. كل صورة تحت الماء تحكي قصة مختلفة من جمال عالم لم يره الكثيرون من قبل.",
+    "languages": ["Arabic", "English", "Italian"],
+    "specialties": ["التصوير تحت الماء", "الحياة البحرية", "الشعب المرجانية", "أسماك البحر الأحمر"],
+    "isVerified": false
+  },
+  {
+    "id": "sharm-artisan-1",
+    "name": "Jihan El Rashidi",
+    "citySlug": "sharm-el-sheikh",
+    "role": "Artisan",
+    "bio": "بين الخيوط الصوفية والألوان الطبيعية الأفريقية، أنسج قطعاً تحمل تراث البدو في سيناء. في خيمتي التقليدية، أعلم الزوار حياكة السجاد البدوي وأشاركهم قصص كل نقشة.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["الحرف البدوية", "النسيج التقليدي", "السجاد البدوي", "الألوان الطبيعية"],
+    "isVerified": false
+  },
+  {
+    "id": "hurghada-dive-1",
+    "name": "Dalia El Sakka",
+    "citySlug": "hurghada",
+    "role": "Dive Instructor",
+    "bio": "شغفي بالحياة البحرية قادني لأن أصبح مدربة غوص وأساهم في الحفاظ على البيئة البحرية. أرافق الغواصين في جزر الجفتون لمشاهدة الدلافين والسلاحف في بيئتها الطبيعية.",
+    "languages": ["Arabic", "English", "German"],
+    "specialties": ["جزر الجفتون", "مشاهدة الدلافين", "الحفاظ على البيئة البحرية", "الشعاب المرجانية"],
+    "isVerified": false
+  },
+  {
+    "id": "hurghada-guide-1",
+    "name": "Mahmoud El Badry",
+    "citySlug": "hurghada",
+    "role": "Local Guide",
+    "bio": "من أسواق الدهار القديمة إلى صحاري الغردقة الذهبية، أعرف كل ركن في هذه المدينة الساحرة. أحب أن أشارك الزوار تاريخ الغردقة القديم وأسرار الصحراء وكنوزها المخفية.",
+    "languages": ["Arabic", "English", "Russian"],
+    "specialties": ["سفاري الصحراء", "تاريخ الدهار القديم", "السياحة الصحراوية", "الوديان الجبلية"],
+    "isVerified": false
+  },
+  {
+    "id": "hurghada-photographer-1",
+    "name": "Heba El Nashar",
+    "citySlug": "hurghada",
+    "role": "Photographer",
+    "bio": "بكاميرتي أصطاد جمال الصحراء والحياة البرية في الغردقة، من الغزلان إلى الطيور المهاجرة. كل غروب فوق كثبان الرمال هو لوحة فنية جديدة أشاركها مع عشاق التصوير.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["تصوير الحياة البرية", "المناظر الصحراوية", "الطيور المهاجرة", "غروب الصحراء"],
+    "isVerified": false
+  },
+  {
+    "id": "hurghada-restaurant-1",
+    "name": "Yasser El Kordy",
+    "citySlug": "hurghada",
+    "role": "Restaurant Owner",
+    "bio": "في سوق السمك بالغردقة، أختار بنفسي أجود أنواع الأسماك الطازجة لضيوفي. أقدم أشهى المأكولات البحرية بطريقة تجمع بين النكهة البدوية الأصيلة واللمسة العصرية.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["المأكولات البحرية", "سوق السمك", "المطبخ البدوي البحري", "الأسماك الطازجة"],
+    "isVerified": false
+  },
+  {
+    "id": "dahab-dive-1",
+    "name": "Ibrahim El Sheikh",
+    "citySlug": "dahab",
+    "role": "Dive Instructor",
+    "bio": "في البلو هول والكنيون، أأخذ المغامرين إلى أعماق ساحرة لا تُنسى. أعشق الغوص الحر وأشارك ضيوفي تجربة استكشاف كهوف البحر الأحمر بأمان وشغف لا حدود له.",
+    "languages": ["Arabic", "English", "Hebrew"],
+    "specialties": ["البلو هول", "الغوص في الكنيون", "الغوص الحر", "كهوف دهب"],
+    "isVerified": false
+  },
+  {
+    "id": "dahab-guide-1",
+    "name": "Nadia El Saadany",
+    "citySlug": "dahab",
+    "role": "Local Guide",
+    "bio": "على شاطئ دهب، أتعلمت ركوب الأمواج والطيران مع الرياح، وأحب أن أشارك الآخرين هذه المتعة. في دهب، الحياة بسيطة وجميلة، وأنا هنا لأري ضيوفي جمالها الحقيقي.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["ركوب الأمواج", "التزلج الشراعي", "ثقافة الشاطئ", "الرياضات البحرية"],
+    "isVerified": false
+  },
+  {
+    "id": "dahab-storyteller-1",
+    "name": "Rabab El Habashy",
+    "citySlug": "dahab",
+    "role": "Storyteller",
+    "bio": "عندما يجتمع الناس حول النار في وادي سيناء، أروي حكايات البدو والأساطير الجبلية التي تتناقلها الأجيال. كل جبل في سيناء له قصته، وأنا هنا لأرويها لكل من يحب الاستماع.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["الحكايات البدوية", "أساطير سيناء", "قصص الجبال", "التراث الشفوي البدوي"],
+    "isVerified": false
+  },
+  {
+    "id": "dahab-photographer-1",
+    "name": "Gamal El Sersawy",
+    "citySlug": "dahab",
+    "role": "Photographer",
+    "bio": "أصور جبال سيناء عند شروق الشمس وأحولها إلى لوحات فنية تخطف الأنفاس. كل قمة ووادٍ في دهب يحمل جمالاً فريداً، وأسعد عندما أشارك الآخرين هذا الجمال من خلال عدستي.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["تصوير المناظر الطبيعية", "جبال سيناء", "المناظر الجبلية", "الضوء الذهبي"],
+    "isVerified": false
+  },
+  {
+    "id": "siwa-guide-1",
+    "name": "Mansour El Senussi",
+    "citySlug": "siwa",
+    "role": "Local Guide",
+    "bio": "في واحة سيوة، أعيش بين جدران شالي القديمة وأسرار معبد الوحي. أحب أن آخذ ضيوفي في جولة بين النخيل والينابيع وأشاركهم حكايات الأمازيغ وثقافة سيوة العريقة.",
+    "languages": ["Arabic", "English", "Siwi"],
+    "specialties": ["ثقافة سيوة الأمازيغية", "قلعة شالي", "معبد الوحي", "واحة سيوة"],
+    "isVerified": false
+  },
+  {
+    "id": "siwa-artisan-1",
+    "name": "Salma El Zanati",
+    "citySlug": "siwa",
+    "role": "Artisan",
+    "bio": "أشكل الطين بيدي لأصنع أواني فخارية تحمل نقوشاً من تراث سيوة الضارب في القدم. كل قطعة أصنعها قصة، من التصميم إلى التلوين، أعلم ضيوفي حرفة الأجداد.",
+    "languages": ["Arabic", "English", "Siwi"],
+    "specialties": ["الفخار السيوي", "التصميم التقليدي", "التطريز السيوي", "الحرف اليدوية"],
+    "isVerified": false
+  },
+  {
+    "id": "siwa-storyteller-1",
+    "name": "Helmy El Warshet",
+    "citySlug": "siwa",
+    "role": "Storyteller",
+    "bio": "تحت ضوء القمر وسط النخيل، أروي قصص الإسكندر الأكبر في سيوة وأساطير الصحراء الغربية القديمة. ليالي سيوة ساحرة وحكاياتها لا تنتهي، وأنا حارس هذا التراث الشفوي.",
+    "languages": ["Arabic", "English", "Siwi"],
+    "specialties": ["التراث السيوي", "أساطير الصحراء", "الإسكندر الأكبر في سيوة", "القصص الشعبية"],
+    "isVerified": false
+  },
+  {
+    "id": "siwa-guide-2",
+    "name": "Amany El Qirsh",
+    "citySlug": "siwa",
+    "role": "Local Guide",
+    "bio": "في البحيرات المالحة ورمال سيوة الذهبية، أأخذ ضيوفي في مغامرات تخييم لا تنسى تحت النجوم. أعشق الطبيعة الصحراوية وأشارك الزوار تجربة العيش على إيقاع سيوة الهادئ والساحر.",
+    "languages": ["Arabic", "English"],
+    "specialties": ["البحيرات المالحة", "التخييم في الصحراء", "السياحة البيئية", "ثقافة سيوة"],
+    "isVerified": false
+  }
+]

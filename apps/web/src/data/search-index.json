@@ -1,0 +1,346 @@
+{
+  "keywords": {
+    "القاهرة": {
+      "destinations": ["cairo"],
+      "experiences": ["cairo-1", "cairo-3", "cairo-4", "cairo-6", "cairo-8", "cairo-9", "cairo-10"],
+      "stories": ["cairo-story-1", "cairo-story-2"],
+      "food": ["koshari", "ful-medames", "taameya", "cairo-street-food"]
+    },
+    "cairo": {
+      "destinations": ["cairo"],
+      "experiences": ["cairo-1", "cairo-3", "cairo-4", "cairo-6", "cairo-8", "cairo-9", "cairo-10"],
+      "stories": ["cairo-story-1", "cairo-story-2"],
+      "food": ["koshari", "ful-medames", "taameya", "cairo-street-food"]
+    },
+    "الاسكندرية": {
+      "destinations": ["alexandria"],
+      "experiences": ["alexandria-1", "alexandria-3", "alexandria-5"],
+      "stories": ["alexandria-story-1"],
+      "food": ["alexandria-fish", "ice-cream-alex"]
+    },
+    "alexandria": {
+      "destinations": ["alexandria"],
+      "experiences": ["alexandria-1", "alexandria-3", "alexandria-5"],
+      "stories": ["alexandria-story-1"],
+      "food": ["alexandria-fish", "ice-cream-alex"]
+    },
+    "الاقصر": {
+      "destinations": ["luxor"],
+      "experiences": ["luxor-3", "luxor-9", "luxor-balloon"],
+      "stories": ["luxor-story-1", "luxor-story-2"],
+      "food": ["luxor-local-food"]
+    },
+    "luxor": {
+      "destinations": ["luxor"],
+      "experiences": ["luxor-3", "luxor-9", "luxor-balloon"],
+      "stories": ["luxor-story-1", "luxor-story-2"],
+      "food": ["luxor-local-food"]
+    },
+    "اسوان": {
+      "destinations": ["aswan"],
+      "experiences": ["aswan-1", "aswan-3", "aswan-4"],
+      "stories": ["aswan-story-1"],
+      "food": ["nubian-food"]
+    },
+    "aswan": {
+      "destinations": ["aswan"],
+      "experiences": ["aswan-1", "aswan-3", "aswan-4"],
+      "stories": ["aswan-story-1"],
+      "food": ["nubian-food"]
+    },
+    "شرم الشيخ": {
+      "destinations": ["sharm-el-sheikh"],
+      "experiences": ["sharm-el-sheikh-1", "sharm-el-sheikh-3", "sharm-el-sheikh-4", "sharm-el-sheikh-9"],
+      "stories": ["sharm-story-1"],
+      "food": ["sharm-seafood"]
+    },
+    "sharm el sheikh": {
+      "destinations": ["sharm-el-sheikh"],
+      "experiences": ["sharm-el-sheikh-1", "sharm-el-sheikh-3", "sharm-el-sheikh-4", "sharm-el-sheikh-9"],
+      "stories": ["sharm-story-1"],
+      "food": ["sharm-seafood"]
+    },
+    "الغردقة": {
+      "destinations": ["hurghada"],
+      "experiences": ["hurghada-1", "hurghada-9"],
+      "stories": ["hurghada-story-1"],
+      "food": ["hurghada-seafood"]
+    },
+    "hurghada": {
+      "destinations": ["hurghada"],
+      "experiences": ["hurghada-1", "hurghada-9"],
+      "stories": ["hurghada-story-1"],
+      "food": ["hurghada-seafood"]
+    },
+    "دهب": {
+      "destinations": ["dahab"],
+      "experiences": ["dahab-1", "dahab-2", "dahab-3", "dahab-6", "dahab-8"],
+      "stories": ["dahab-story-1", "dahab-story-2"],
+      "food": ["dahab-cafe-food"]
+    },
+    "dahab": {
+      "destinations": ["dahab"],
+      "experiences": ["dahab-1", "dahab-2", "dahab-3", "dahab-6", "dahab-8"],
+      "stories": ["dahab-story-1", "dahab-story-2"],
+      "food": ["dahab-cafe-food"]
+    },
+    "سيوة": {
+      "destinations": ["siwa"],
+      "experiences": ["siwa-3"],
+      "stories": ["siwa-story-1"],
+      "food": ["siwa-dates", "siwa-olives"]
+    },
+    "siwa": {
+      "destinations": ["siwa"],
+      "experiences": ["siwa-3"],
+      "stories": ["siwa-story-1"],
+      "food": ["siwa-dates", "siwa-olives"]
+    },
+    "غوص": {
+      "destinations": ["sharm-el-sheikh", "dahab", "hurghada"],
+      "experiences": ["sharm-el-sheikh-4", "dahab-1", "dahab-6", "hurghada-1"],
+      "stories": ["dahab-story-1", "sharm-story-1"],
+      "food": []
+    },
+    "diving": {
+      "destinations": ["sharm-el-sheikh", "dahab", "hurghada"],
+      "experiences": ["sharm-el-sheikh-4", "dahab-1", "dahab-6", "hurghada-1"],
+      "stories": ["dahab-story-1", "sharm-story-1"],
+      "food": []
+    },
+    "سنوركلينج": {
+      "destinations": ["sharm-el-sheikh", "hurghada", "dahab"],
+      "experiences": ["sharm-el-sheikh-4", "hurghada-1", "dahab-1"],
+      "stories": ["sharm-story-1"],
+      "food": []
+    },
+    "snorkeling": {
+      "destinations": ["sharm-el-sheikh", "hurghada", "dahab"],
+      "experiences": ["sharm-el-sheikh-4", "hurghada-1", "dahab-1"],
+      "stories": ["sharm-story-1"],
+      "food": []
+    },
+    "سفاري": {
+      "destinations": ["dahab", "sharm-el-sheikh", "siwa"],
+      "experiences": ["dahab-3", "sharm-el-sheikh-1", "siwa-3"],
+      "stories": ["dahab-story-2"],
+      "food": []
+    },
+    "safari": {
+      "destinations": ["dahab", "sharm-el-sheikh", "siwa"],
+      "experiences": ["dahab-3", "sharm-el-sheikh-1", "siwa-3"],
+      "stories": ["dahab-story-2"],
+      "food": []
+    },
+    "فخامة": {
+      "destinations": ["sharm-el-sheikh", "luxor", "aswan", "cairo"],
+      "experiences": ["experience-id-1", "experience-id-2", "luxor-3", "aswan-4"],
+      "stories": ["luxor-story-1"],
+      "food": ["cairo-fine-dining"]
+    },
+    "luxury": {
+      "destinations": ["sharm-el-sheikh", "luxor", "aswan", "cairo"],
+      "experiences": ["experience-id-1", "experience-id-2", "luxor-3", "aswan-4"],
+      "stories": ["luxor-story-1"],
+      "food": ["cairo-fine-dining"]
+    },
+    "مغامرة": {
+      "destinations": ["dahab", "sharm-el-sheikh", "hurghada"],
+      "experiences": ["dahab-1", "dahab-3", "sharm-el-sheikh-1"],
+      "stories": ["dahab-story-2"],
+      "food": []
+    },
+    "adventure": {
+      "destinations": ["dahab", "sharm-el-sheikh", "hurghada"],
+      "experiences": ["dahab-1", "dahab-3", "sharm-el-sheikh-1"],
+      "stories": ["dahab-story-2"],
+      "food": []
+    },
+    "عائلات": {
+      "destinations": ["cairo", "sharm-el-sheikh", "hurghada"],
+      "experiences": ["cairo-1", "cairo-10", "sharm-el-sheikh-1"],
+      "stories": ["cairo-story-1", "sharm-story-1"],
+      "food": ["koshari", "ful-medames"]
+    },
+    "family": {
+      "destinations": ["cairo", "sharm-el-sheikh", "hurghada"],
+      "experiences": ["cairo-1", "cairo-10", "sharm-el-sheikh-1"],
+      "stories": ["cairo-story-1", "sharm-story-1"],
+      "food": ["koshari", "ful-medames"]
+    },
+    "اكل": {
+      "destinations": ["cairo", "alexandria", "luxor", "aswan"],
+      "experiences": ["cairo-6", "cairo-9", "luxor-9"],
+      "stories": [],
+      "food": ["koshari", "ful-medames", "taameya", "alexandria-fish", "nubian-food", "cairo-street-food"]
+    },
+    "food": {
+      "destinations": ["cairo", "alexandria", "luxor", "aswan"],
+      "experiences": ["cairo-6", "cairo-9", "luxor-9"],
+      "stories": [],
+      "food": ["koshari", "ful-medames", "taameya", "alexandria-fish", "nubian-food", "cairo-street-food"]
+    },
+    "سمك": {
+      "destinations": ["alexandria", "sharm-el-sheikh", "hurghada"],
+      "experiences": ["alexandria-1", "sharm-el-sheikh-4"],
+      "stories": [],
+      "food": ["alexandria-fish", "sharm-seafood", "hurghada-seafood"]
+    },
+    "fish": {
+      "destinations": ["alexandria", "sharm-el-sheikh", "hurghada"],
+      "experiences": ["alexandria-1", "sharm-el-sheikh-4"],
+      "stories": [],
+      "food": ["alexandria-fish", "sharm-seafood", "hurghada-seafood"]
+    },
+    "كشري": {
+      "destinations": ["cairo", "alexandria"],
+      "experiences": ["cairo-6"],
+      "stories": [],
+      "food": ["koshari"]
+    },
+    "koshari": {
+      "destinations": ["cairo", "alexandria"],
+      "experiences": ["cairo-6"],
+      "stories": [],
+      "food": ["koshari"]
+    },
+    "تصوير": {
+      "destinations": ["luxor", "cairo", "siwa", "aswan"],
+      "experiences": ["luxor-3", "cairo-1", "aswan-1", "siwa-3"],
+      "stories": ["luxor-story-1", "cairo-story-1", "siwa-story-1"],
+      "food": []
+    },
+    "photography": {
+      "destinations": ["luxor", "cairo", "siwa", "aswan"],
+      "experiences": ["luxor-3", "cairo-1", "aswan-1", "siwa-3"],
+      "stories": ["luxor-story-1", "cairo-story-1", "siwa-story-1"],
+      "food": []
+    },
+    "استرخاء": {
+      "destinations": ["sharm-el-sheikh", "hurghada", "dahab"],
+      "experiences": ["sharm-el-sheikh-3", "sharm-el-sheikh-9", "hurghada-9", "dahab-2"],
+      "stories": ["dahab-story-1"],
+      "food": ["dahab-cafe-food"]
+    },
+    "relaxation": {
+      "destinations": ["sharm-el-sheikh", "hurghada", "dahab"],
+      "experiences": ["sharm-el-sheikh-3", "sharm-el-sheikh-9", "hurghada-9", "dahab-2"],
+      "stories": ["dahab-story-1"],
+      "food": ["dahab-cafe-food"]
+    },
+    "تاريخ": {
+      "destinations": ["cairo", "luxor", "aswan", "alexandria"],
+      "experiences": ["cairo-3", "cairo-8", "luxor-3", "aswan-3", "alexandria-3"],
+      "stories": ["cairo-story-1", "luxor-story-1", "aswan-story-1"],
+      "food": []
+    },
+    "history": {
+      "destinations": ["cairo", "luxor", "aswan", "alexandria"],
+      "experiences": ["cairo-3", "cairo-8", "luxor-3", "aswan-3", "alexandria-3"],
+      "stories": ["cairo-story-1", "luxor-story-1", "aswan-story-1"],
+      "food": []
+    },
+    "فنادق": {
+      "destinations": ["cairo", "sharm-el-sheikh", "hurghada", "luxor", "alexandria"],
+      "experiences": [],
+      "stories": [],
+      "food": []
+    },
+    "hotels": {
+      "destinations": ["cairo", "sharm-el-sheikh", "hurghada", "luxor", "alexandria"],
+      "experiences": [],
+      "stories": [],
+      "food": []
+    },
+    "رحلات": {
+      "destinations": ["cairo", "luxor", "aswan", "sharm-el-sheikh"],
+      "experiences": ["luxor-3", "aswan-4", "sharm-el-sheikh-1"],
+      "stories": ["luxor-story-1", "aswan-story-1"],
+      "food": []
+    },
+    "trips": {
+      "destinations": ["cairo", "luxor", "aswan", "sharm-el-sheikh"],
+      "experiences": ["luxor-3", "aswan-4", "sharm-el-sheikh-1"],
+      "stories": ["luxor-story-1", "aswan-story-1"],
+      "food": []
+    },
+    "الصيف": {
+      "destinations": ["alexandria", "marsa-matrouh", "sharm-el-sheikh"],
+      "experiences": ["alexandria-1", "sharm-el-sheikh-4", "sharm-el-sheikh-9"],
+      "stories": ["alexandria-story-1"],
+      "food": ["alexandria-fish", "ice-cream-alex"]
+    },
+    "summer": {
+      "destinations": ["alexandria", "marsa-matrouh", "sharm-el-sheikh"],
+      "experiences": ["alexandria-1", "sharm-el-sheikh-4", "sharm-el-sheikh-9"],
+      "stories": ["alexandria-story-1"],
+      "food": ["alexandria-fish", "ice-cream-alex"]
+    },
+    "الشتاء": {
+      "destinations": ["luxor", "aswan", "cairo"],
+      "experiences": ["luxor-3", "aswan-1", "cairo-3", "cairo-8"],
+      "stories": ["luxor-story-1", "cairo-story-1"],
+      "food": ["ful-medames", "cairo-street-food"]
+    },
+    "winter": {
+      "destinations": ["luxor", "aswan", "cairo"],
+      "experiences": ["luxor-3", "aswan-1", "cairo-3", "cairo-8"],
+      "stories": ["luxor-story-1", "cairo-story-1"],
+      "food": ["ful-medames", "cairo-street-food"]
+    },
+    "الربيع": {
+      "destinations": ["cairo", "alexandria", "siwa"],
+      "experiences": ["cairo-10", "alexandria-5", "siwa-3"],
+      "stories": ["siwa-story-1"],
+      "food": ["siwa-dates", "siwa-olives"]
+    },
+    "spring": {
+      "destinations": ["cairo", "alexandria", "siwa"],
+      "experiences": ["cairo-10", "alexandria-5", "siwa-3"],
+      "stories": ["siwa-story-1"],
+      "food": ["siwa-dates", "siwa-olives"]
+    },
+    "غردقة": {
+      "destinations": ["hurghada"],
+      "experiences": ["hurghada-1", "hurghada-9"],
+      "stories": ["hurghada-story-1"],
+      "food": ["hurghada-seafood"]
+    },
+    "شرم": {
+      "destinations": ["sharm-el-sheikh"],
+      "experiences": ["sharm-el-sheikh-1", "sharm-el-sheikh-3", "sharm-el-sheikh-4", "sharm-el-sheikh-9"],
+      "stories": ["sharm-story-1"],
+      "food": ["sharm-seafood"]
+    },
+    "اقصر": {
+      "destinations": ["luxor"],
+      "experiences": ["luxor-3", "luxor-9", "luxor-balloon"],
+      "stories": ["luxor-story-1", "luxor-story-2"],
+      "food": ["luxor-local-food"]
+    },
+    "شهر عسل": {
+      "destinations": ["luxor", "aswan", "dahab", "sharm-el-sheikh"],
+      "experiences": ["luxor-3", "aswan-4", "dahab-2", "sharm-el-sheikh-3"],
+      "stories": ["dahab-story-1", "luxor-story-1"],
+      "food": ["dahab-cafe-food", "nubian-food"]
+    },
+    "honeymoon": {
+      "destinations": ["luxor", "aswan", "dahab", "sharm-el-sheikh"],
+      "experiences": ["luxor-3", "aswan-4", "dahab-2", "sharm-el-sheikh-3"],
+      "stories": ["dahab-story-1", "luxor-story-1"],
+      "food": ["dahab-cafe-food", "nubian-food"]
+    },
+    "ثقافة": {
+      "destinations": ["cairo", "aswan", "siwa", "luxor"],
+      "experiences": ["cairo-3", "cairo-8", "aswan-3", "siwa-3", "luxor-3"],
+      "stories": ["cairo-story-1", "aswan-story-1", "siwa-story-1"],
+      "food": ["nubian-food", "siwa-dates"]
+    },
+    "culture": {
+      "destinations": ["cairo", "aswan", "siwa", "luxor"],
+      "experiences": ["cairo-3", "cairo-8", "aswan-3", "siwa-3", "luxor-3"],
+      "stories": ["cairo-story-1", "aswan-story-1", "siwa-story-1"],
+      "food": ["nubian-food", "siwa-dates"]
+    }
+  }
+}

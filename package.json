@@ -1,0 +1,28 @@
+{
+  "name": "egypthub",
+  "version": "1.0.0",
+  "private": true,
+  "description": "مصر هب - شبكة السفراء الرقمية للسياحة المصرية",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "format": "prettier --write \"**/*.{ts,tsx,js,json,css}\"",
+    "db:init": "psql -U egypthub -d egypthub_dev -f infra/scripts/init-db.sql",
+    "db:seed": "psql -U egypthub -d egypthub_dev -f infra/scripts/seed.sql",
+    "docker:dev": "docker compose -f infra/docker/docker-compose.dev.yml up -d",
+    "docker:stop": "docker compose -f infra/docker/docker-compose.dev.yml down",
+    "clean": "turbo clean && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.0",
+    "turbo": "^2.0.0",
+    "typescript": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@9.0.0"
+}

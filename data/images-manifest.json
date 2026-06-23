@@ -1,0 +1,92 @@
+[
+  {
+    "citySlug": "cairo",
+    "heroImage": "/images/destinations/cairo/hero.jpg",
+    "gallery": [
+      "/images/destinations/cairo/1.jpg",
+      "/images/destinations/cairo/2.jpg",
+      "/images/destinations/cairo/3.jpg",
+      "/images/destinations/cairo/4.jpg",
+      "/images/destinations/cairo/5.jpg",
+      "/images/destinations/cairo/6.jpg"
+    ]
+  },
+  {
+    "citySlug": "alexandria",
+    "heroImage": "/images/destinations/alexandria/hero.jpg",
+    "gallery": [
+      "/images/destinations/alexandria/1.jpg",
+      "/images/destinations/alexandria/2.jpg",
+      "/images/destinations/alexandria/3.jpg",
+      "/images/destinations/alexandria/4.jpg",
+      "/images/destinations/alexandria/5.jpg"
+    ]
+  },
+  {
+    "citySlug": "luxor",
+    "heroImage": "/images/destinations/luxor/hero.jpg",
+    "gallery": [
+      "/images/destinations/luxor/1.jpg",
+      "/images/destinations/luxor/2.jpg",
+      "/images/destinations/luxor/3.jpg",
+      "/images/destinations/luxor/4.jpg",
+      "/images/destinations/luxor/5.jpg",
+      "/images/destinations/luxor/6.jpg"
+    ]
+  },
+  {
+    "citySlug": "aswan",
+    "heroImage": "/images/destinations/aswan/hero.jpg",
+    "gallery": [
+      "/images/destinations/aswan/1.jpg",
+      "/images/destinations/aswan/2.jpg",
+      "/images/destinations/aswan/3.jpg",
+      "/images/destinations/aswan/4.jpg",
+      "/images/destinations/aswan/5.jpg"
+    ]
+  },
+  {
+    "citySlug": "sharm-el-sheikh",
+    "heroImage": "/images/destinations/sharm-el-sheikh/hero.jpg",
+    "gallery": [
+      "/images/destinations/sharm-el-sheikh/1.jpg",
+      "/images/destinations/sharm-el-sheikh/2.jpg",
+      "/images/destinations/sharm-el-sheikh/3.jpg",
+      "/images/destinations/sharm-el-sheikh/4.jpg",
+      "/images/destinations/sharm-el-sheikh/5.jpg"
+    ]
+  },
+  {
+    "citySlug": "hurghada",
+    "heroImage": "/images/destinations/hurghada/hero.jpg",
+    "gallery": [
+      "/images/destinations/hurghada/1.jpg",
+      "/images/destinations/hurghada/2.jpg",
+      "/images/destinations/hurghada/3.jpg",
+      "/images/destinations/hurghada/4.jpg",
+      "/images/destinations/hurghada/5.jpg"
+    ]
+  },
+  {
+    "citySlug": "dahab",
+    "heroImage": "/images/destinations/dahab/hero.jpg",
+    "gallery": [
+      "/images/destinations/dahab/1.jpg",
+      "/images/destinations/dahab/2.jpg",
+      "/images/destinations/dahab/3.jpg",
+      "/images/destinations/dahab/4.jpg",
+      "/images/destinations/dahab/5.jpg"
+    ]
+  },
+  {
+    "citySlug": "siwa",
+    "heroImage": "/images/destinations/siwa/hero.jpg",
+    "gallery": [
+      "/images/destinations/siwa/1.jpg",
+      "/images/destinations/siwa/2.jpg",
+      "/images/destinations/siwa/3.jpg",
+      "/images/destinations/siwa/4.jpg",
+      "/images/destinations/siwa/5.jpg"
+    ]
+  }
+]

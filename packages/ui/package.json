@@ -1,0 +1,55 @@
+{
+  "name": "@egypthub/ui",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "main": "dist/index.cjs",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/globals.css",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./globals.css": "./dist/globals.css",
+    "./tailwind.css": "./dist/tailwind.css"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts --clean --outDir dist --external react --external react-dom --external @egypthub/design-tokens && tsup src/globals.css tailwind.css --format esm --outDir dist --external react --external react-dom --external @egypthub/design-tokens --loader .css=copy",
+    "dev": "tsup src/index.ts --format esm,cjs --dts --watch --outDir dist --external react --external react-dom",
+    "clean": "rm -rf dist",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "echo 'lint ok'"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
+    "framer-motion": "11.0.0",
+    "lucide-react": "^0.400.0",
+    "tailwind-merge": "^2.3.0"
+  },
+  "peerDependencies": {
+    "react": "^18.3.0 || ^19.0.0",
+    "react-dom": "^18.3.0 || ^19.0.0"
+  },
+  "devDependencies": {
+    "@egypthub/design-tokens": "workspace:*",
+    "@testing-library/jest-dom": "^6.4.0",
+    "@testing-library/react": "^15.0.0",
+    "@testing-library/user-event": "^14.5.0",
+    "@types/react": "^18.3.0",
+    "@types/react-dom": "^18.3.0",
+    "jsdom": "^24.0.0",
+    "react": "^18.3.0",
+    "react-dom": "^18.3.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.4.0",
+    "vitest": "^1.6.0"
+  }
+}

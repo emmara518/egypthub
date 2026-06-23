@@ -1,0 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #0D3B66;
+  --color-secondary: #E9C46A;
+  --color-accent: #F4A261;
+  --color-beige: #FAEDCD;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  background-color: #F8F9FA;
+  direction: rtl;
+  text-align: right;
+}
+
+.golden-divider {
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--color-secondary), transparent);
+  width: 80px;
+  margin: 0.5rem auto;
+}

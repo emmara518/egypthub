@@ -1,0 +1,127 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(cuid())
+  email         String   @unique
+  passwordHash  String
+  name          String
+  phone         String?
+  role          Role     @default(TRAVELER)
+  avatarUrl     String?
+  emailVerified Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  ambassador Ambassador?
+  partner    Partner?
+  leads      Lead[]       @relation("LeadOwner")
+  referrals  Referral[]   @relation("Referrer")
+}
+
+enum Role {
+  TRAVELER
+  AMBASSADOR
+  PARTNER
+  ADMIN
+}
+
+model Ambassador {
+  id              String   @id @default(cuid())
+  userId          String   @unique
+  user            User     @relation(fields: [userId], references: [id])
+  name            String
+  nameEn          String?
+  bio             String?
+  city            String?
+  specialties     String[]
+  rating          Float    @default(0)
+  totalReferrals  Int      @default(0)
+  totalCommissions Float   @default(0)
+  joinedAt        DateTime @default(now())
+
+  referrals  Referral[]
+  leads      Lead[]
+  commissions Commission[]
+}
+
+model Partner {
+  id           String   @id @default(cuid())
+  userId       String   @unique
+  user         User     @relation(fields: [userId], references: [id])
+  name         String
+  nameEn       String?
+  category     String?
+  city         String?
+  description  String?
+  services     String[]
+  contactEmail String?
+  contactPhone String?
+  website      String?
+  address      String?
+  rating       Float    @default(0)
+  featured     Boolean  @default(false)
+  status       String   @default("draft")
+  joinedAt     DateTime @default(now())
+
+  leads Lead[]
+}
+
+model Lead {
+  id             String   @id @default(cuid())
+  source         String   @default("direct")
+  status         String   @default("new")
+  clientName     String
+  clientEmail    String?
+  clientPhone    String?
+  clientNotes    String?
+  destination    String?
+  budget         String?
+  timeline       String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  ambassadorId  String?
+  ambassador    Ambassador? @relation(fields: [ambassadorId], references: [id])
+  partnerId     String?
+  partner       Partner?   @relation(fields: [partnerId], references: [id])
+  ownerId       String?
+  owner         User?      @relation("LeadOwner", fields: [ownerId], references: [id])
+
+  commissions Commission[]
+}
+
+model Referral {
+  id             String   @id @default(cuid())
+  type           String   @default("click")
+  source         String   @default("link")
+  status         String   @default("active")
+  createdAt      DateTime @default(now())
+
+  ambassadorId   String
+  ambassador     Ambassador @relation(fields: [ambassadorId], references: [id])
+  referrerId     String?
+  referrer       User?      @relation("Referrer", fields: [referrerId], references: [id])
+}
+
+model Commission {
+  id             String   @id @default(cuid())
+  type           String   @default("percentage")
+  amount         Float    @default(0)
+  rate           Float    @default(0)
+  status         String   @default("pending")
+  description    String?
+  createdAt      DateTime @default(now())
+  paidAt         DateTime?
+
+  ambassadorId   String
+  ambassador     Ambassador @relation(fields: [ambassadorId], references: [id])
+  leadId         String?
+  lead           Lead?      @relation(fields: [leadId], references: [id])
+}

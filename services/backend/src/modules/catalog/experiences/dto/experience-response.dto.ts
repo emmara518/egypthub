@@ -1,0 +1,32 @@
+export class ExperienceResponseDto {
+  experienceId: string;
+  destinationId: string;
+  partnerId?: string;
+  nameAr: string;
+  nameEn: string;
+  slug: string;
+  summaryAr?: string;
+  summaryEn?: string;
+  descriptionAr?: string;
+  descriptionEn?: string;
+  latitude?: number;
+  longitude?: number;
+  duration?: number;
+  durationUnit?: string;
+  maxGuests?: number;
+  minGuests?: number;
+  originalPrice?: number;
+  salePrice?: number;
+  currency: string;
+  imageUrl?: string;
+  images?: string[];
+  includes?: string[];
+  excludes?: string[];
+  requirements?: string[];
+  status: string;
+  publishedAt?: Date;
+  version: number;
+  createdAt: Date;
+  updatedAt: Date;
+  categories?: { categoryId: string }[];
+}

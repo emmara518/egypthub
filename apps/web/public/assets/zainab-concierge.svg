@@ -1,0 +1,22 @@
+<svg width="480" height="640" viewBox="0 0 480 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="holoGlow" cx="50%" cy="100%" r="60%">
+      <stop offset="0%" stop-color="#415A77" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="transparent" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <!-- Background glow -->
+  <rect width="480" height="640" fill="url(#holoGlow)"/>
+  <!-- Holographic rings -->
+  <ellipse cx="240" cy="580" rx="180" ry="30" fill="none" stroke="#415A77" stroke-opacity="0.3" stroke-width="2"/>
+  <ellipse cx="240" cy="570" rx="140" ry="25" fill="none" stroke="#415A77" stroke-opacity="0.4" stroke-width="2"/>
+  <ellipse cx="240" cy="560" rx="100" ry="20" fill="none" stroke="#415A77" stroke-opacity="0.5" stroke-width="2"/>
+  <!-- Center glow -->
+  <ellipse cx="240" cy="560" rx="80" ry="40" fill="#415A77" fill-opacity="0.2"/>
+  <!-- Placeholder text -->
+  <text x="240" y="320" text-anchor="middle" fill="#415A77" font-family="Arial" font-size="16" opacity="0.5">PLACE YOUR</text>
+  <text x="240" y="340" text-anchor="middle" fill="#415A77" font-family="Arial" font-size="16" opacity="0.5">ZAINAB-CONCIERGE.PNG</text>
+  <text x="240" y="370" text-anchor="middle" fill="#415A77" font-family="Arial" font-size="12" opacity="0.3">here (1200px+ width recommended)</text>
+  <!-- EgyptHub A logo -->
+  <path d="M240 200L210 280H220L240 230L260 280H270L240 200Z" fill="#D4AF37" opacity="0.3"/>
+</svg>

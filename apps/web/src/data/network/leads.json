@@ -1,0 +1,972 @@
+[
+  {
+    "id": "lead-001",
+    "source": "explorer",
+    "ambassadorId": "ambassador-001",
+    "partnerId": null,
+    "status": "converted",
+    "clientName": "Sophie Müller",
+    "clientEmail": "sophie.muller@gmail.com",
+    "clientPhone": "+491765432100",
+    "clientNotes": "Interested in a 7-day Cairo and Luxor tour. Prefers luxury hotels and private guides.",
+    "destination": "cairo",
+    "budget": "high",
+    "createdAt": "2026-04-10T09:30:00Z",
+    "updatedAt": "2026-05-22T14:15:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-04-10T09:30:00Z",
+        "details": "Lead created via explorer"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-04-12T11:00:00Z",
+        "details": "Called client, interested in package"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-04-15T10:30:00Z",
+        "details": "Client confirmed budget and dates"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-04-20T16:00:00Z",
+        "details": "Sent 7-day luxury tour proposal"
+      },
+      {
+        "action": "lead_converted",
+        "timestamp": "2026-05-01T12:00:00Z",
+        "details": "Client booked the full package"
+      }
+    ]
+  },
+  {
+    "id": "lead-002",
+    "source": "zainab",
+    "ambassadorId": "ambassador-032",
+    "partnerId": "partner-029",
+    "status": "qualified",
+    "clientName": "James Anderson",
+    "clientEmail": "james.anderson@outlook.com",
+    "clientPhone": "+447856341209",
+    "clientNotes": "Looking for a diving trip in Sharm El Sheikh. Wants PADI certification course.",
+    "destination": "sharm-el-sheikh",
+    "budget": "medium",
+    "createdAt": "2026-05-05T10:00:00Z",
+    "updatedAt": "2026-05-28T16:45:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-05T10:00:00Z",
+        "details": "Lead created via Zainab"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-05-07T15:30:00Z",
+        "details": "Emailed client with diving options"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-05-20T11:20:00Z",
+        "details": "Client confirmed interest in PADI Open Water course"
+      }
+    ]
+  },
+  {
+    "id": "lead-003",
+    "source": "referral",
+    "ambassadorId": "ambassador-056",
+    "partnerId": null,
+    "status": "new",
+    "clientName": "Maria Rossi",
+    "clientEmail": "maria.rossi@libero.it",
+    "clientPhone": "+393281765490",
+    "clientNotes": "Interested in a family vacation in Hurghada. Two adults, two children. All-inclusive resort.",
+    "destination": "hurghada",
+    "budget": "medium",
+    "createdAt": "2026-06-01T08:15:00Z",
+    "updatedAt": "2026-06-01T08:15:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-01T08:15:00Z",
+        "details": "Lead created via referral from ambassador"
+      }
+    ]
+  },
+  {
+    "id": "lead-004",
+    "source": "direct",
+    "ambassadorId": null,
+    "partnerId": "partner-016",
+    "status": "contacted",
+    "clientName": "Ahmed Al-Rashid",
+    "clientEmail": "a.alrashid@hotmail.com",
+    "clientPhone": "+966501234567",
+    "clientNotes": "Visiting Cairo for business. Looking for authentic Egyptian dining recommendations and restaurant reservations.",
+    "destination": "cairo",
+    "budget": "high",
+    "createdAt": "2026-05-25T12:00:00Z",
+    "updatedAt": "2026-05-30T09:30:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-25T12:00:00Z",
+        "details": "Lead created directly via partner page"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-05-28T10:00:00Z",
+        "details": "Sent restaurant recommendations and menu previews"
+      }
+    ]
+  },
+  {
+    "id": "lead-005",
+    "source": "partner-page",
+    "ambassadorId": null,
+    "partnerId": "partner-009",
+    "status": "proposal-sent",
+    "clientName": "Elena Petrova",
+    "clientEmail": "elena.petrova@yandex.ru",
+    "clientPhone": "+79161234567",
+    "clientNotes": "Interested in a 10-day all-inclusive package at Rixos Sharm. Wants spa and diving packages included.",
+    "destination": "sharm-el-sheikh",
+    "budget": "high",
+    "createdAt": "2026-05-10T14:00:00Z",
+    "updatedAt": "2026-06-10T11:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-10T14:00:00Z",
+        "details": "Lead created via partner page"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-05-12T16:00:00Z",
+        "details": "Called client, discussed package options"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-05-20T09:00:00Z",
+        "details": "Client selected premium all-inclusive package"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-06-05T13:00:00Z",
+        "details": "Sent detailed proposal with spa and diving add-ons"
+      }
+    ]
+  },
+  {
+    "id": "lead-006",
+    "source": "explorer",
+    "ambassadorId": "ambassador-081",
+    "partnerId": null,
+    "status": "lost",
+    "clientName": "Thomas Weber",
+    "clientEmail": "thomas.weber@web.de",
+    "clientPhone": "+491577654321",
+    "clientNotes": "Wanted to do free diving course in Dahab but decided to go to Thailand instead.",
+    "destination": "dahab",
+    "budget": "low",
+    "createdAt": "2026-03-15T10:30:00Z",
+    "updatedAt": "2026-04-20T12:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-03-15T10:30:00Z",
+        "details": "Lead created via explorer"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-03-18T14:00:00Z",
+        "details": "Sent free diving course information"
+      },
+      {
+        "action": "lead_lost",
+        "timestamp": "2026-04-20T12:00:00Z",
+        "details": "Client chose alternative destination in Thailand"
+      }
+    ]
+  },
+  {
+    "id": "lead-007",
+    "source": "zainab",
+    "ambassadorId": "ambassador-019",
+    "partnerId": "partner-017",
+    "status": "closed",
+    "clientName": "Emily Clarke",
+    "clientEmail": "emily.clarke@gmail.com",
+    "clientPhone": "+447891234567",
+    "clientNotes": "Completed a food tour package in Alexandria. Very satisfied with the seafood experience.",
+    "destination": "alexandria",
+    "budget": "medium",
+    "createdAt": "2026-02-01T09:00:00Z",
+    "updatedAt": "2026-04-15T17:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-02-01T09:00:00Z",
+        "details": "Lead created via Zainab"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-02-05T11:30:00Z",
+        "details": "Discussed food tour options"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-02-15T10:00:00Z",
+        "details": "Client confirmed interest in seafood tour"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-02-20T15:00:00Z",
+        "details": "Sent 3-day Alexandria food tour proposal"
+      },
+      {
+        "action": "lead_converted",
+        "timestamp": "2026-03-01T12:00:00Z",
+        "details": "Client booked and completed the tour"
+      },
+      {
+        "action": "lead_closed",
+        "timestamp": "2026-04-15T17:00:00Z",
+        "details": "Trip completed successfully, client left 5-star review"
+      }
+    ]
+  },
+  {
+    "id": "lead-008",
+    "source": "direct",
+    "ambassadorId": null,
+    "partnerId": null,
+    "status": "new",
+    "clientName": "Yuki Tanaka",
+    "clientEmail": "yuki.tanaka@gmail.jp",
+    "clientPhone": "+819012345678",
+    "clientNotes": "Interested in hot air balloon ride in Luxor. Solo traveler, prefers morning flight.",
+    "destination": "luxor",
+    "budget": "medium",
+    "createdAt": "2026-06-15T07:45:00Z",
+    "updatedAt": "2026-06-15T07:45:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-15T07:45:00Z",
+        "details": "Lead created via direct website visit"
+      }
+    ]
+  },
+  {
+    "id": "lead-009",
+    "source": "referral",
+    "ambassadorId": "ambassador-040",
+    "partnerId": "partner-003",
+    "status": "proposal-sent",
+    "clientName": "Sarah Johnson",
+    "clientEmail": "sarah.johnson@yahoo.com",
+    "clientPhone": "+12065551234",
+    "clientNotes": "Planning a Nile cruise from Luxor to Aswan. Wants luxury cabin and private guide.",
+    "destination": "aswan",
+    "budget": "high",
+    "createdAt": "2026-05-20T11:00:00Z",
+    "updatedAt": "2026-06-12T10:30:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-20T11:00:00Z",
+        "details": "Lead created via ambassador referral"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-05-22T14:00:00Z",
+        "details": "Discussed Nile cruise options"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-06-01T09:00:00Z",
+        "details": "Client wants 5-night cruise with Abu Simbel visit"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-06-10T16:00:00Z",
+        "details": "Sent luxury Nile cruise proposal"
+      }
+    ]
+  },
+  {
+    "id": "lead-010",
+    "source": "partner-page",
+    "ambassadorId": null,
+    "partnerId": "partner-046",
+    "status": "contacted",
+    "clientName": "Pierre Dubois",
+    "clientEmail": "pierre.dubois@orange.fr",
+    "clientPhone": "+33612345678",
+    "clientNotes": "Interested in a hot air balloon ride and Valley of the Kings tour combo.",
+    "destination": "luxor",
+    "budget": "medium",
+    "createdAt": "2026-06-08T13:30:00Z",
+    "updatedAt": "2026-06-14T15:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-08T13:30:00Z",
+        "details": "Lead created via Sky Egypt Balloons partner page"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-12T10:00:00Z",
+        "details": "Called client with combo package details"
+      }
+    ]
+  },
+  {
+    "id": "lead-011",
+    "source": "explorer",
+    "ambassadorId": "ambassador-069",
+    "partnerId": "partner-024",
+    "status": "converted",
+    "clientName": "Anna Kowalski",
+    "clientEmail": "anna.kowalski@wp.pl",
+    "clientPhone": "+48601234567",
+    "clientNotes": "Completed PADI Open Water course at Emperor Divers. Excellent experience.",
+    "destination": "hurghada",
+    "budget": "medium",
+    "createdAt": "2026-04-05T09:00:00Z",
+    "updatedAt": "2026-06-10T14:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-04-05T09:00:00Z",
+        "details": "Lead created via explorer"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-04-08T11:00:00Z",
+        "details": "Sent PADI course information"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-04-15T10:00:00Z",
+        "details": "Client confirmed Open Water course booking"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-04-22T16:00:00Z",
+        "details": "Sent detailed course schedule and pricing"
+      },
+      {
+        "action": "lead_converted",
+        "timestamp": "2026-05-01T12:00:00Z",
+        "details": "Client paid deposit and booked course"
+      }
+    ]
+  },
+  {
+    "id": "lead-012",
+    "source": "zainab",
+    "ambassadorId": "ambassador-091",
+    "partnerId": null,
+    "status": "qualified",
+    "clientName": "Markus Fischer",
+    "clientEmail": "markus.fischer@gmail.ch",
+    "clientPhone": "+41791234567",
+    "clientNotes": "Interested in Siwa Oasis eco-tourism. Wants sustainable accommodation and desert safari.",
+    "destination": "siwa",
+    "budget": "medium",
+    "createdAt": "2026-05-30T15:00:00Z",
+    "updatedAt": "2026-06-15T11:30:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-30T15:00:00Z",
+        "details": "Lead created via Zainab"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-02T10:00:00Z",
+        "details": "Discussed eco-tourism options in Siwa"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-06-10T14:00:00Z",
+        "details": "Client confirmed interest in 5-day eco package"
+      }
+    ]
+  },
+  {
+    "id": "lead-013",
+    "source": "referral",
+    "ambassadorId": "ambassador-005",
+    "partnerId": "partner-048",
+    "status": "new",
+    "clientName": "Carlos Silva",
+    "clientEmail": "carlos.silva@gmail.pt",
+    "clientPhone": "+351912345678",
+    "clientNotes": "Looking for desert safari adventure in Hurghada. Wants quad biking and Bedouin dinner.",
+    "destination": "hurghada",
+    "budget": "low",
+    "createdAt": "2026-06-20T10:00:00Z",
+    "updatedAt": "2026-06-20T10:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-20T10:00:00Z",
+        "details": "Lead created via referral from ambassador"
+      }
+    ]
+  },
+  {
+    "id": "lead-014",
+    "source": "direct",
+    "ambassadorId": null,
+    "partnerId": null,
+    "status": "lost",
+    "clientName": "Liam O'Brien",
+    "clientEmail": "liam.obrien@gmail.ie",
+    "clientPhone": "+353851234567",
+    "clientNotes": "Was interested in archaeological tour of Luxor but budget was too limited.",
+    "destination": "luxor",
+    "budget": "low",
+    "createdAt": "2026-05-12T08:00:00Z",
+    "updatedAt": "2026-06-01T10:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-12T08:00:00Z",
+        "details": "Lead created via direct website visit"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-05-15T14:00:00Z",
+        "details": "Sent budget tour options"
+      },
+      {
+        "action": "lead_lost",
+        "timestamp": "2026-06-01T10:00:00Z",
+        "details": "Client decided trip was too expensive"
+      }
+    ]
+  },
+  {
+    "id": "lead-015",
+    "source": "partner-page",
+    "ambassadorId": null,
+    "partnerId": "partner-010",
+    "status": "contacted",
+    "clientName": "Nadia Ben Ali",
+    "clientEmail": "nadia.benali@laposte.tn",
+    "clientPhone": "+21650123456",
+    "clientNotes": "Interested in a week at Baron Resort Hurghada. Wants sea-view room and spa package.",
+    "destination": "hurghada",
+    "budget": "medium",
+    "createdAt": "2026-06-12T09:30:00Z",
+    "updatedAt": "2026-06-18T16:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-12T09:30:00Z",
+        "details": "Lead created via Baron Resort partner page"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-16T11:00:00Z",
+        "details": "Sent room availability and spa packages"
+      }
+    ]
+  },
+  {
+    "id": "lead-016",
+    "source": "explorer",
+    "ambassadorId": "ambassador-022",
+    "partnerId": null,
+    "status": "converted",
+    "clientName": "David Cohen",
+    "clientEmail": "david.cohen@gmail.il",
+    "clientPhone": "+972501234567",
+    "clientNotes": "Completed cultural tour of Alexandria with focus on ancient library and Roman heritage.",
+    "destination": "alexandria",
+    "budget": "medium",
+    "createdAt": "2026-03-01T10:00:00Z",
+    "updatedAt": "2026-05-20T16:30:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-03-01T10:00:00Z",
+        "details": "Lead created via explorer"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-03-05T12:00:00Z",
+        "details": "Discussed Alexandria cultural package"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-03-15T11:00:00Z",
+        "details": "Client confirmed 3-day cultural tour"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-03-22T15:00:00Z",
+        "details": "Sent detailed cultural itinerary"
+      },
+      {
+        "action": "lead_converted",
+        "timestamp": "2026-04-01T10:00:00Z",
+        "details": "Client booked and completed tour successfully"
+      }
+    ]
+  },
+  {
+    "id": "lead-017",
+    "source": "zainab",
+    "ambassadorId": "ambassador-070",
+    "partnerId": null,
+    "status": "qualified",
+    "clientName": "Olga Smirnova",
+    "clientEmail": "olga.smirnova@mail.ru",
+    "clientPhone": "+79031234567",
+    "clientNotes": "Wants a desert safari in Hurghada with photography focus. Professional photographer.",
+    "destination": "hurghada",
+    "budget": "high",
+    "createdAt": "2026-06-05T11:00:00Z",
+    "updatedAt": "2026-06-19T14:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-05T11:00:00Z",
+        "details": "Lead created via Zainab"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-08T13:00:00Z",
+        "details": "Discussed photography safari options"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-06-15T10:00:00Z",
+        "details": "Client confirmed premium photography safari package"
+      }
+    ]
+  },
+  {
+    "id": "lead-018",
+    "source": "referral",
+    "ambassadorId": "ambassador-012",
+    "partnerId": "partner-042",
+    "status": "closed",
+    "clientName": "Fatima Al-Sayed",
+    "clientEmail": "fatima.alsayed@qatar.qa",
+    "clientPhone": "+97450123456",
+    "clientNotes": "Completed shopping tour at City Stars Mall. Purchased luxury brands and local crafts.",
+    "destination": "cairo",
+    "budget": "high",
+    "createdAt": "2026-02-10T09:00:00Z",
+    "updatedAt": "2026-04-30T18:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-02-10T09:00:00Z",
+        "details": "Lead created via referral"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-02-14T11:00:00Z",
+        "details": "Sent shopping concierge service details"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-02-25T10:00:00Z",
+        "details": "Client confirmed personal shopping experience"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-03-01T16:00:00Z",
+        "details": "Sent VIP shopping package proposal"
+      },
+      {
+        "action": "lead_converted",
+        "timestamp": "2026-03-10T12:00:00Z",
+        "details": "Client booked and completed shopping tour"
+      },
+      {
+        "action": "lead_closed",
+        "timestamp": "2026-04-30T18:00:00Z",
+        "details": "Tour completed, client very satisfied"
+      }
+    ]
+  },
+  {
+    "id": "lead-019",
+    "source": "direct",
+    "ambassadorId": null,
+    "partnerId": null,
+    "status": "new",
+    "clientName": "Ingrid Svensson",
+    "clientEmail": "ingrid.svensson@gmail.se",
+    "clientPhone": "+46701234567",
+    "clientNotes": "Solo female traveler interested in Siwa Oasis. Wants authentic cultural experience.",
+    "destination": "siwa",
+    "budget": "medium",
+    "createdAt": "2026-06-22T14:00:00Z",
+    "updatedAt": "2026-06-22T14:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-22T14:00:00Z",
+        "details": "Lead created directly on website"
+      }
+    ]
+  },
+  {
+    "id": "lead-020",
+    "source": "partner-page",
+    "ambassadorId": null,
+    "partnerId": "partner-038",
+    "status": "contacted",
+    "clientName": "Hassan Ali",
+    "clientEmail": "hassan.ali@emirates.ae",
+    "clientPhone": "+971501234567",
+    "clientNotes": "Needs domestic flight bookings from Cairo to Luxor and Aswan. Family of 4.",
+    "destination": "cairo",
+    "budget": "medium",
+    "createdAt": "2026-06-18T10:30:00Z",
+    "updatedAt": "2026-06-21T09:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-18T10:30:00Z",
+        "details": "Lead created via EgyptAir partner page"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-20T11:00:00Z",
+        "details": "Sent flight availability and family fare options"
+      }
+    ]
+  },
+  {
+    "id": "lead-021",
+    "source": "referral",
+    "ambassadorId": "ambassador-045",
+    "partnerId": null,
+    "status": "proposal-sent",
+    "clientName": "Ana Garcia",
+    "clientEmail": "ana.garcia@hotmail.es",
+    "clientPhone": "+34600123456",
+    "clientNotes": "Interested in Nubian cultural immersion in Aswan. Wants to visit Nubian villages and learn crafts.",
+    "destination": "aswan",
+    "budget": "medium",
+    "createdAt": "2026-05-28T09:00:00Z",
+    "updatedAt": "2026-06-15T12:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-28T09:00:00Z",
+        "details": "Lead created via ambassador referral"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-05-30T14:00:00Z",
+        "details": "Discussed Nubian cultural packages"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-06-05T10:00:00Z",
+        "details": "Client wants 4-day Nubian immersion experience"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-06-12T16:00:00Z",
+        "details": "Sent Nubian cultural package proposal"
+      }
+    ]
+  },
+  {
+    "id": "lead-022",
+    "source": "explorer",
+    "ambassadorId": "ambassador-063",
+    "partnerId": "partner-025",
+    "status": "converted",
+    "clientName": "Dmitry Volkov",
+    "clientEmail": "dmitry.volkov@gmail.ru",
+    "clientPhone": "+79161239876",
+    "clientNotes": "Completed Tec Diving course at Red Sea Diving College. Advanced wreck diving.",
+    "destination": "sharm-el-sheikh",
+    "budget": "high",
+    "createdAt": "2026-03-10T08:00:00Z",
+    "updatedAt": "2026-05-25T15:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-03-10T08:00:00Z",
+        "details": "Lead created via explorer"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-03-12T10:00:00Z",
+        "details": "Sent technical diving course info"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-03-22T11:00:00Z",
+        "details": "Client confirmed Advanced Wreck Diving course"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-04-01T15:00:00Z",
+        "details": "Sent full technical diving package"
+      },
+      {
+        "action": "lead_converted",
+        "timestamp": "2026-04-10T12:00:00Z",
+        "details": "Client booked and completed course successfully"
+      }
+    ]
+  },
+  {
+    "id": "lead-023",
+    "source": "zainab",
+    "ambassadorId": "ambassador-025",
+    "partnerId": null,
+    "status": "qualified",
+    "clientName": "Katherine Lee",
+    "clientEmail": "katherine.lee@gmail.hk",
+    "clientPhone": "+85261234567",
+    "clientNotes": "Interested in water sports in Alexandria. Wants sailing and windsurfing lessons.",
+    "destination": "alexandria",
+    "budget": "medium",
+    "createdAt": "2026-06-02T10:00:00Z",
+    "updatedAt": "2026-06-16T13:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-02T10:00:00Z",
+        "details": "Lead created via Zainab"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-05T15:00:00Z",
+        "details": "Discussed water sports packages"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-06-12T11:00:00Z",
+        "details": "Client confirmed 5-day water sports course"
+      }
+    ]
+  },
+  {
+    "id": "lead-024",
+    "source": "direct",
+    "ambassadorId": null,
+    "partnerId": null,
+    "status": "lost",
+    "clientName": "John Smith",
+    "clientEmail": "john.smith@gmail.com",
+    "clientPhone": "+12125551234",
+    "clientNotes": "Was interested in a general Egypt tour but decided to postpone travel due to work.",
+    "destination": "cairo",
+    "budget": "medium",
+    "createdAt": "2026-04-20T09:00:00Z",
+    "updatedAt": "2026-05-30T10:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-04-20T09:00:00Z",
+        "details": "Lead created directly on website"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-04-25T11:00:00Z",
+        "details": "Sent tour packages information"
+      },
+      {
+        "action": "lead_lost",
+        "timestamp": "2026-05-30T10:00:00Z",
+        "details": "Client postponed trip indefinitely"
+      }
+    ]
+  },
+  {
+    "id": "lead-025",
+    "source": "partner-page",
+    "ambassadorId": null,
+    "partnerId": "partner-050",
+    "status": "new",
+    "clientName": "Mei Chen",
+    "clientEmail": "mei.chen@gmail.cn",
+    "clientPhone": "+8613912345678",
+    "clientNotes": "Interested in Siwa Adventure desert camp experience. Wants eco-friendly accommodation.",
+    "destination": "siwa",
+    "budget": "medium",
+    "createdAt": "2026-06-21T11:15:00Z",
+    "updatedAt": "2026-06-21T11:15:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-21T11:15:00Z",
+        "details": "Lead created via Siwa Adventure partner page"
+      }
+    ]
+  },
+  {
+    "id": "lead-026",
+    "source": "explorer",
+    "ambassadorId": "ambassador-090",
+    "partnerId": null,
+    "status": "contacted",
+    "clientName": "Lars Nielsen",
+    "clientEmail": "lars.nielsen@gmail.dk",
+    "clientPhone": "+4540123456",
+    "clientNotes": "Wants windsurfing and kitesurfing lessons in Dahab. Experienced beginner.",
+    "destination": "dahab",
+    "budget": "medium",
+    "createdAt": "2026-06-10T08:30:00Z",
+    "updatedAt": "2026-06-17T14:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-10T08:30:00Z",
+        "details": "Lead created via explorer"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-14T10:00:00Z",
+        "details": "Sent windsurfing course options and pricing"
+      }
+    ]
+  },
+  {
+    "id": "lead-027",
+    "source": "zainab",
+    "ambassadorId": "ambassador-037",
+    "partnerId": null,
+    "status": "proposal-sent",
+    "clientName": "Rebecca Taylor",
+    "clientEmail": "rebecca.taylor@gmail.com",
+    "clientPhone": "+61412345678",
+    "clientNotes": "Interested in Pharaonic storytelling and mythology tours in Luxor. History enthusiast.",
+    "destination": "luxor",
+    "budget": "medium",
+    "createdAt": "2026-05-18T12:00:00Z",
+    "updatedAt": "2026-06-10T15:30:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-05-18T12:00:00Z",
+        "details": "Lead created via Zainab"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-05-21T14:00:00Z",
+        "details": "Discussed mythology tour options"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-05-28T10:00:00Z",
+        "details": "Client confirmed storytelling tour package"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-06-08T16:00:00Z",
+        "details": "Sent Pharaonic mythology tour proposal"
+      }
+    ]
+  },
+  {
+    "id": "lead-028",
+    "source": "referral",
+    "ambassadorId": "ambassador-059",
+    "partnerId": "partner-047",
+    "status": "converted",
+    "clientName": "Mohamed Hassan",
+    "clientEmail": "mohamed.hassan@gmail.com",
+    "clientPhone": "+201001234567",
+    "clientNotes": "Booked Bedouin camp experience in Sinai for family of 5. Excellent Bedouin hospitality.",
+    "destination": "sharm-el-sheikh",
+    "budget": "medium",
+    "createdAt": "2026-04-15T09:00:00Z",
+    "updatedAt": "2026-06-05T17:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-04-15T09:00:00Z",
+        "details": "Lead created via referral"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-04-18T11:00:00Z",
+        "details": "Discussed Bedouin camp family package"
+      },
+      {
+        "action": "lead_qualified",
+        "timestamp": "2026-04-25T10:00:00Z",
+        "details": "Client wants 2-night Bedouin experience"
+      },
+      {
+        "action": "proposal_sent",
+        "timestamp": "2026-05-01T15:00:00Z",
+        "details": "Sent family Bedouin package proposal"
+      },
+      {
+        "action": "lead_converted",
+        "timestamp": "2026-05-10T12:00:00Z",
+        "details": "Client booked family experience"
+      }
+    ]
+  },
+  {
+    "id": "lead-029",
+    "source": "direct",
+    "ambassadorId": null,
+    "partnerId": null,
+    "status": "new",
+    "clientName": "Priya Sharma",
+    "clientEmail": "priya.sharma@gmail.in",
+    "clientPhone": "+919876543210",
+    "clientNotes": "Looking for budget-friendly tour covering Cairo and Luxor. First time visitor to Egypt.",
+    "destination": "cairo",
+    "budget": "low",
+    "createdAt": "2026-06-23T08:00:00Z",
+    "updatedAt": "2026-06-23T08:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-23T08:00:00Z",
+        "details": "Lead created directly on website"
+      }
+    ]
+  },
+  {
+    "id": "lead-030",
+    "source": "partner-page",
+    "ambassadorId": null,
+    "partnerId": "partner-029",
+    "status": "contacted",
+    "clientName": "Hans Schmidt",
+    "clientEmail": "hans.schmidt@gmail.de",
+    "clientPhone": "+491701234567",
+    "clientNotes": "Asked about Memphis Tours' 12-day Egypt itinerary. Interested in group tour.",
+    "destination": "cairo",
+    "budget": "medium",
+    "createdAt": "2026-06-15T15:00:00Z",
+    "updatedAt": "2026-06-22T10:00:00Z",
+    "history": [
+      {
+        "action": "lead_created",
+        "timestamp": "2026-06-15T15:00:00Z",
+        "details": "Lead created via Memphis Tours partner page"
+      },
+      {
+        "action": "lead_contacted",
+        "timestamp": "2026-06-18T11:00:00Z",
+        "details": "Sent group tour itinerary and availability"
+      }
+    ]
+  }
+]

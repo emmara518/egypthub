@@ -1,0 +1,40 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: egypthub
+      POSTGRES_PASSWORD: egypthub
+      POSTGRES_DB: egypthub
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U egypthub"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: "postgresql://egypthub:egypthub@postgres:5432/egypthub?schema=public"
+      NODE_ENV: production
+      JWT_PRIVATE_KEY: "${JWT_PRIVATE_KEY}"
+      JWT_PUBLIC_KEY: "${JWT_PUBLIC_KEY}"
+      JWT_ISSUER: "egypthub"
+      JWT_AUDIENCE: "egypthub-api"
+      JWT_EXPIRES_IN: "15m"
+      JWT_REFRESH_EXPIRES_IN: "7d"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    command: >
+      sh -c "npx prisma db push && npx prisma db seed && node server.js"
+
+volumes:
+  pgdata:

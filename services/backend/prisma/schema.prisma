@@ -1,0 +1,550 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["fullTextSearch", "postgresqlExtensions", "multiSchema"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  url        = env("DATABASE_URL")
+  extensions = [postgis, pgcrypto]
+  schemas    = ["identity", "catalog", "audit", "event_store", "vault", "read_models"]
+}
+
+// ─── Identity Schema ─────────────────────────────────────────────────────
+
+model User {
+  userId String @id @default(uuid()) @map("user_id")
+
+  emailEncrypted String  @map("email_encrypted")
+  emailHash      String  @unique @map("email_hash")
+  phoneEncrypted String? @map("phone_encrypted")
+  phoneHash      String? @unique @map("phone_hash")
+
+  passwordHash String @map("password_hash")
+  passwordAlgo String @default("argon2id") @map("password_algo")
+  passwordChangedAt DateTime @default(now()) @map("password_changed_at")
+
+  nameAr      String? @map("name_ar")
+  nameEn      String? @map("name_en")
+  nationality String?
+  dateOfBirth DateTime? @map("date_of_birth")
+
+  role    String @default("traveler")
+  status  String @default("active")
+
+  lastLoginAt DateTime? @map("last_login_at")
+  failedAttempts Int @default(0) @map("failed_attempts")
+  lockedUntil DateTime? @map("locked_until")
+
+  mfaEnabled   Boolean @default(false) @map("mfa_enabled")
+  mfaSecret    String? @map("mfa_secret")
+  mfaMethod    String? @map("mfa_method")
+
+  version Int @default(1)
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  deletedAt DateTime? @map("deleted_at")
+
+  sessions        Session[]
+  passwordHistory PasswordHistory[]
+  userRoles        UserRole[]
+
+  @@schema("identity")
+  @@map("users")
+}
+
+model UserRole {
+  userId String @map("user_id")
+  role   String
+  scope  String?
+
+  user User @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@id([userId, role])
+  @@schema("identity")
+  @@map("user_roles")
+}
+
+model Session {
+  sessionId String @id @default(uuid()) @map("session_id")
+  userId    String @map("user_id")
+
+  refreshTokenHash String  @map("refresh_token_hash")
+  familyId         String? @map("family_id")
+  familyCounter    Int     @default(0) @map("family_counter")
+
+  ipAddress  String   @map("ip_address")
+  userAgent  String?  @map("user_agent")
+  deviceInfo String?  @map("device_info")
+
+  isActive   Boolean  @default(true) @map("is_active")
+  revokedAt  DateTime? @map("revoked_at")
+
+  lastUsedAt DateTime? @map("last_used_at")
+  createdAt  DateTime  @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@schema("identity")
+  @@map("sessions")
+}
+
+model PasswordHistory {
+  historyId    String   @id @default(uuid()) @map("history_id")
+  userId       String   @map("user_id")
+  passwordHash String   @map("password_hash")
+  passwordAlgo String   @default("argon2id") @map("password_algo")
+  createdAt    DateTime @default(now()) @map("created_at")
+
+  user User @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  @@index([userId, createdAt(sort: Desc)], name: "idx_password_history_user")
+  @@schema("identity")
+  @@map("password_history")
+}
+
+model ApiKey {
+  apiKeyId  String   @id @default(uuid()) @map("api_key_id")
+  userId    String   @map("user_id")
+  keyPrefix String   @map("key_prefix")
+  keyHash   String   @unique @map("key_hash")
+  name      String
+  status    String   @default("active")
+  lastUsedAt DateTime? @map("last_used_at")
+  expiresAt DateTime? @map("expires_at")
+  createdAt DateTime @default(now()) @map("created_at")
+  revokedAt DateTime? @map("revoked_at")
+
+  @@schema("identity")
+  @@map("api_keys")
+}
+
+// ─── Audit Schema ────────────────────────────────────────────────────────
+
+model AuditLog {
+  auditLogId String   @id @default(uuid()) @map("audit_log_id")
+  userId     String?  @map("user_id")
+  action     String
+  resource   String
+  resourceId String?  @map("resource_id")
+  metadata   Json?
+  ipAddress  String?  @map("ip_address")
+  userAgent  String?  @map("user_agent")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([createdAt], name: "idx_audit_logs_created")
+  @@index([userId], name: "idx_audit_logs_user")
+  @@index([action, createdAt(sort: Desc)], name: "idx_audit_logs_action")
+  @@schema("audit")
+  @@map("audit_logs")
+}
+
+model FraudAlert {
+  alertId    String   @id @default(uuid()) @map("alert_id")
+  userId     String?  @map("user_id")
+  severity   String
+  ruleId     String   @map("rule_id")
+  ruleName   String   @map("rule_name")
+  checks     Json
+  data       Json
+  status     String   @default("open")
+  reviewedBy String?  @map("reviewed_by")
+  reviewedAt DateTime? @map("reviewed_at")
+  resolution String?
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  @@index([status], name: "idx_fraud_alerts_status")
+  @@index([severity], name: "idx_fraud_alerts_severity")
+  @@schema("audit")
+  @@map("fraud_alerts")
+}
+
+// ─── Event Store Schema ──────────────────────────────────────────────────
+
+model OutboxMessage {
+  outboxId    String   @id @default(uuid()) @map("outbox_id")
+  eventType   String   @map("event_type")
+  aggregateId String   @map("aggregate_id")
+  aggregateType String @map("aggregate_type")
+  payload     Json
+  context     Json?
+  status      String   @default("pending")
+  attemptCount Int     @default(0) @map("attempt_count")
+  lastError   String?  @map("last_error")
+  scheduledAt DateTime? @map("scheduled_at")
+  processedAt DateTime? @map("processed_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([status, scheduledAt], name: "idx_outbox_pending")
+  @@index([eventType, createdAt(sort: Desc)], name: "idx_outbox_event_type")
+  @@schema("event_store")
+  @@map("outbox")
+}
+
+model IdempotencyKey {
+  idempotencyKey String   @id @map("idempotency_key")
+  response       Json
+  statusCode     Int      @map("status_code")
+  expiresAt      DateTime @map("expires_at")
+  createdAt      DateTime @default(now()) @map("created_at")
+
+  @@index([expiresAt], name: "idx_idempotency_keys_expires")
+  @@schema("event_store")
+  @@map("idempotency_keys")
+}
+
+model InboxMessage {
+  inboxId     String   @id @default(uuid()) @map("inbox_id")
+  messageId   String   @unique @map("message_id")
+  source      String
+  eventType   String   @map("event_type")
+  aggregateId String   @map("aggregate_id")
+  payload     Json
+  status      String   @default("pending")
+  attemptCount Int     @default(0) @map("attempt_count")
+  lastError   String?  @map("last_error")
+  processedAt DateTime? @map("processed_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+
+  @@index([status, createdAt], name: "idx_inbox_status")
+  @@schema("event_store")
+  @@map("inbox")
+}
+
+// ─── Vault Schema ────────────────────────────────────────────────────────
+
+model EncryptionKey {
+  keyId       String   @id @default(uuid()) @map("key_id")
+  keyAlias    String   @unique @map("key_alias")
+  algorithm   String   @default("AES-256-GCM")
+  keyStatus   String   @default("active") @map("key_status")
+  rotatedFrom String?  @map("rotated_from")
+  createdAt   DateTime @default(now()) @map("created_at")
+  retiredAt   DateTime? @map("retired_at")
+
+  @@schema("vault")
+  @@map("encryption_keys")
+}
+
+// ─── Read Models Schema ──────────────────────────────────────────────────
+
+model DestinationReadModel {
+  id            String   @id @default(uuid())
+  destinationId String   @unique @map("destination_id")
+  nameAr        String   @map("name_ar")
+  nameEn        String   @map("name_en")
+  slug          String   @unique
+  summaryAr     String?  @map("summary_ar")
+  summaryEn     String?  @map("summary_en")
+  location      Json?
+  averageRating Float?   @map("average_rating")
+  reviewCount   Int      @default(0) @map("review_count")
+  experienceCount Int    @default(0) @map("experience_count")
+  bookingCount  Int      @default(0) @map("booking_count")
+  isActive      Boolean  @default(true) @map("is_active")
+  cachedAt      DateTime @default(now()) @map("cached_at")
+  refreshedAt   DateTime @default(now()) @map("refreshed_at")
+
+  @@schema("read_models")
+  @@map("destination_summary")
+}
+
+// ─── Catalog Schema ─────────────────────────────────────────────────────
+
+model Destination {
+  destinationId String   @id @default(uuid()) @map("destination_id")
+  nameAr        String   @map("name_ar")
+  nameEn        String   @map("name_en")
+  slug          String   @unique
+  summaryAr     String?  @map("summary_ar")
+  summaryEn     String?  @map("summary_en")
+  descriptionAr String?  @map("description_ar")
+  descriptionEn String?  @map("description_en")
+  location      Json?
+  imageUrl      String?  @map("image_url")
+  images        Json?
+  status        String   @default("draft")
+  publishedAt   DateTime? @map("published_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  seasons     Season[]
+  experiences Experience[]
+  stories     Story[]
+
+  @@index([slug], name: "idx_destination_slug")
+  @@index([status], name: "idx_destination_status")
+  @@schema("catalog")
+  @@map("destinations")
+}
+
+model Season {
+  seasonId           String   @id @default(uuid()) @map("season_id")
+  destinationId      String   @map("destination_id")
+  nameAr             String   @map("name_ar")
+  nameEn             String   @map("name_en")
+  slug               String
+  startDate          DateTime @map("start_date")
+  endDate            DateTime @map("end_date")
+  pricingMultiplier  Float    @default(1.0) @map("pricing_multiplier")
+  status             String   @default("draft")
+  createdAt          DateTime @default(now()) @map("created_at")
+  updatedAt          DateTime @updatedAt @map("updated_at")
+
+  destination Destination @relation(fields: [destinationId], references: [destinationId], onDelete: Cascade)
+
+  @@unique([destinationId, slug])
+  @@index([destinationId, status], name: "idx_season_active")
+  @@schema("catalog")
+  @@map("seasons")
+}
+
+model Category {
+  categoryId  String   @id @default(uuid()) @map("category_id")
+  nameAr      String   @map("name_ar")
+  nameEn      String   @map("name_en")
+  slug        String   @unique
+  descriptionAr String? @map("description_ar")
+  descriptionEn String? @map("description_en")
+  icon        String?
+  imageUrl    String?  @map("image_url")
+  sortOrder   Int      @default(0) @map("sort_order")
+  isActive    Boolean  @default(true) @map("is_active")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  experiences ExperienceCategory[]
+
+  @@index([slug], name: "idx_category_slug")
+  @@schema("catalog")
+  @@map("categories")
+}
+
+model Experience {
+  experienceId  String   @id @default(uuid()) @map("experience_id")
+  destinationId String   @map("destination_id")
+  partnerId     String?  @map("partner_id")
+  nameAr        String   @map("name_ar")
+  nameEn        String   @map("name_en")
+  slug          String   @unique
+  summaryAr     String?  @map("summary_ar")
+  summaryEn     String?  @map("summary_en")
+  descriptionAr String?  @map("description_ar")
+  descriptionEn String?  @map("description_en")
+  location      Json?
+  duration      Int?
+  durationUnit  String?  @map("duration_unit")
+  maxGuests     Int?     @map("max_guests")
+  minGuests     Int?     @map("min_guests")
+  originalPrice Decimal? @map("original_price")
+  salePrice     Decimal? @map("sale_price")
+  currency      String   @default("EGP")
+  imageUrl      String?  @map("image_url")
+  images        Json?
+  includes      Json?
+  excludes      Json?
+  requirements  Json?
+  status        String   @default("draft")
+  publishedAt   DateTime? @map("published_at")
+  version       Int      @default(1)
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  destination Destination @relation(fields: [destinationId], references: [destinationId])
+  partner     Partner?    @relation(fields: [partnerId], references: [partnerId])
+  categories  ExperienceCategory[]
+  offers      OfferExperience[]
+  stories     Story[]
+
+  @@index([slug], name: "idx_experience_slug")
+  @@index([destinationId], name: "idx_experience_destination")
+  @@index([status], name: "idx_experience_status")
+  @@schema("catalog")
+  @@map("experiences")
+}
+
+model ExperienceCategory {
+  experienceId String @map("experience_id")
+  categoryId   String @map("category_id")
+
+  experience Experience @relation(fields: [experienceId], references: [experienceId], onDelete: Cascade)
+  category   Category   @relation(fields: [categoryId], references: [categoryId], onDelete: Cascade)
+
+  @@id([experienceId, categoryId])
+  @@schema("catalog")
+  @@map("experience_categories")
+}
+
+model Story {
+  storyId       String   @id @default(uuid()) @map("story_id")
+  destinationId String?  @map("destination_id")
+  experienceId  String?  @map("experience_id")
+  authorId      String?  @map("author_id")
+  titleAr       String   @map("title_ar")
+  titleEn       String   @map("title_en")
+  slug          String   @unique
+  contentAr     String?  @map("content_ar")
+  contentEn     String?  @map("content_en")
+  excerptAr     String?  @map("excerpt_ar")
+  excerptEn     String?  @map("excerpt_en")
+  imageUrl      String?  @map("image_url")
+  images        Json?
+  tags          Json?
+  status        String   @default("draft")
+  publishedAt   DateTime? @map("published_at")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  destination Destination? @relation(fields: [destinationId], references: [destinationId])
+  experience  Experience?  @relation(fields: [experienceId], references: [experienceId])
+
+  @@index([slug], name: "idx_story_slug")
+  @@index([status], name: "idx_story_status")
+  @@schema("catalog")
+  @@map("stories")
+}
+
+model Offer {
+  offerId       String   @id @default(uuid()) @map("offer_id")
+  titleAr       String   @map("title_ar")
+  titleEn       String   @map("title_en")
+  slug          String   @unique
+  descriptionAr String?  @map("description_ar")
+  descriptionEn String?  @map("description_en")
+  couponCode    String?  @map("coupon_code")
+  discountType  String   @map("discount_type")
+  discountValue Decimal  @map("discount_value")
+  maxRedemptions Int?    @map("max_redemptions")
+  maxPerUser    Int?     @map("max_per_user")
+  minBookingAmount Decimal? @map("min_booking_amount")
+  startsAt      DateTime? @map("starts_at")
+  expiresAt     DateTime? @map("expires_at")
+  status        String   @default("draft")
+  imageUrl      String?  @map("image_url")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+  deletedAt     DateTime? @map("deleted_at")
+
+  experiences   OfferExperience[]
+  redemptions   OfferRedemption[]
+
+  @@index([slug], name: "idx_offer_slug")
+  @@index([couponCode], name: "idx_offer_coupon")
+  @@index([status], name: "idx_offer_status")
+  @@schema("catalog")
+  @@map("offers")
+}
+
+model OfferExperience {
+  offerId      String @map("offer_id")
+  experienceId String @map("experience_id")
+
+  offer      Offer      @relation(fields: [offerId], references: [offerId], onDelete: Cascade)
+  experience Experience @relation(fields: [experienceId], references: [experienceId], onDelete: Cascade)
+
+  @@id([offerId, experienceId])
+  @@schema("catalog")
+  @@map("offer_experiences")
+}
+
+model OfferRedemption {
+  redemptionId    String   @id @default(uuid()) @map("redemption_id")
+  offerId         String   @map("offer_id")
+  userId          String   @map("user_id")
+  bookingId       String?  @map("booking_id")
+  status          String   @default("pending")
+  discountApplied Decimal? @map("discount_applied")
+  redeemedAt      DateTime? @map("redeemed_at")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  offer Offer @relation(fields: [offerId], references: [offerId], onDelete: Cascade)
+
+  @@unique([userId, offerId])
+  @@index([offerId], name: "idx_redemption_offer")
+  @@index([userId], name: "idx_redemption_user")
+  @@schema("catalog")
+  @@map("offer_redemptions")
+}
+
+model Partner {
+  partnerId   String   @id @default(uuid()) @map("partner_id")
+  userId      String?  @map("user_id")
+  nameAr      String   @map("name_ar")
+  nameEn      String   @map("name_en")
+  slug        String   @unique
+  descriptionAr String? @map("description_ar")
+  descriptionEn String? @map("description_en")
+  email       String?
+  phone       String?
+  website     String?
+  location    Json?
+  imageUrl    String?  @map("image_url")
+  images      Json?
+  status      String   @default("pending")
+  commissionRate Float  @default(0.0) @map("commission_rate")
+  earningsJson Json?   @map("earnings_json")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+  deletedAt   DateTime? @map("deleted_at")
+
+  experiences Experience[]
+  payouts     PayoutRecord[]
+
+  @@index([slug], name: "idx_partner_slug")
+  @@index([status], name: "idx_partner_status")
+  @@schema("catalog")
+  @@map("partners")
+}
+
+model PayoutRecord {
+  payoutId    String   @id @default(uuid()) @map("payout_id")
+  partnerId   String   @map("partner_id")
+  amount      Decimal  @map("amount")
+  currency    String   @default("EGP")
+  status      String   @default("pending")
+  periodStart DateTime @map("period_start")
+  periodEnd   DateTime @map("period_end")
+  method      String
+  reference   String?
+  notes       String?
+  gatewayResponse Json? @map("gateway_response")
+  processedAt DateTime? @map("processed_at")
+  failedAt    DateTime? @map("failed_at")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  partner Partner @relation(fields: [partnerId], references: [partnerId], onDelete: Cascade)
+
+  @@index([partnerId], name: "idx_payout_partner")
+  @@index([status], name: "idx_payout_status")
+  @@schema("catalog")
+  @@map("payout_records")
+}
+
+model Media {
+  mediaId    String   @id @default(uuid()) @map("media_id")
+  userId     String?  @map("user_id")
+  filename   String
+  originalName String @map("original_name")
+  mimeType   String   @map("mime_type")
+  size       Int
+  url        String
+  thumbnailUrl String? @map("thumbnail_url")
+  altAr      String?  @map("alt_ar")
+  altEn      String?  @map("alt_en")
+  entityType String?  @map("entity_type")
+  entityId   String?  @map("entity_id")
+  sortOrder  Int      @default(0) @map("sort_order")
+  status     String   @default("active")
+  createdAt  DateTime @default(now()) @map("created_at")
+  deletedAt  DateTime? @map("deleted_at")
+
+  @@index([entityType, entityId], name: "idx_media_entity")
+  @@index([userId], name: "idx_media_user")
+  @@schema("catalog")
+  @@map("media")
+}

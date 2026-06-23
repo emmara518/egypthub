@@ -1,0 +1,20 @@
+{
+  "commissionRates": {
+    "flat": { "default": 50, "min": 10, "max": 500, "currency": "USD" },
+    "percentage": { "default": 10, "min": 3, "max": 25 },
+    "tier": {
+      "bronze": { "rate": 5, "minLeads": 0 },
+      "silver": { "rate": 8, "minLeads": 10 },
+      "gold": { "rate": 12, "minLeads": 25 },
+      "platinum": { "rate": 15, "minLeads": 50 }
+    }
+  },
+  "referralCodePrefix": "EGY-AMB",
+  "leadStates": ["new", "contacted", "qualified", "proposal-sent", "converted", "closed", "lost"],
+  "partnerStates": ["draft", "pending-review", "approved", "rejected", "suspended", "archived"],
+  "defaultPartnerStatus": "pending-review",
+  "maxFeaturedPartners": 12,
+  "currency": "EGP",
+  "platformFee": { "type": "percentage", "value": 5 },
+  "createdAt": "2026-06-23T00:00:00Z"
+}

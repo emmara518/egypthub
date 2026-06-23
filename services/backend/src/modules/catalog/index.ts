@@ -1,0 +1,9 @@
+export { CategoriesModule } from './categories/categories.module';
+export { DestinationsModule } from './destinations/destinations.module';
+export { ExperiencesModule } from './experiences/experiences.module';
+export { StoriesModule } from './stories/stories.module';
+export { OffersModule } from './offers/offers.module';
+export { PartnersModule } from './partners/partners.module';
+export { SearchModule } from './search/search.module';
+export { MediaModule } from './media/media.module';
+export { CatalogModule } from './catalog.module';
