@@ -13,9 +13,10 @@ const partners = [
 
 export default function PartnerLogos() {
   return (
-    <section className="py-16 bg-[#080C18] relative border-y border-white/[0.03]">
-      <div className="max-w-[1440px] mx-auto px-6 lg:px-8">
-        <div className="flex items-center justify-center gap-12 flex-wrap">
+    <section className="py-10 md:py-16 bg-[#080C18] relative border-y border-white/[0.03]">
+      <div className="max-w-[1440px] mx-auto px-4 md:px-8">
+        {/* Desktop: centered row */}
+        <div className="hidden md:flex items-center justify-center gap-8 xl:gap-12 flex-wrap">
           {partners.map((partner, i) => (
             <motion.div
               key={partner.name}
@@ -35,6 +36,20 @@ export default function PartnerLogos() {
           >
             <HiChevronRight className="w-4 h-4 text-white/40" />
           </motion.button>
+        </div>
+
+        {/* Mobile: horizontal scrolling marquee */}
+        <div className="md:hidden overflow-x-auto scrollbar-hide">
+          <div className="flex items-center gap-8 min-w-max px-2">
+            {[...partners, ...partners].map((partner, i) => (
+              <div
+                key={`${partner.name}-${i}`}
+                className={`font-english text-white/30 whitespace-nowrap shrink-0 ${partner.style}`}
+              >
+                {partner.name}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
