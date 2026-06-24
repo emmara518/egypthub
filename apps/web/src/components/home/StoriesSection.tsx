@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiStar, HiPlay, HiArrowRight, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
 
@@ -121,7 +122,7 @@ export default function StoriesSection() {
                 >
                   <div className="relative h-36 md:h-44 lg:h-48 overflow-hidden">
                     <div className="w-full h-full group-hover:scale-110 transition-transform duration-700 ease-out">
-                      <img src={story.img} alt={story.title} className="w-full h-full object-cover" />
+                      <Image src={story.img} alt={story.title} fill sizes="(max-width: 768px) 200px, 280px" className="object-cover" unoptimized />
                     </div>
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0F1525] via-[#0F1525]/20 to-transparent" />
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[#0F1525]/60" />

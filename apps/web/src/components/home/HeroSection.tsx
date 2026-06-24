@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { HiPlay, HiSearch, HiGlobe, HiUser, HiSparkles, HiLocationMarker, HiStar, HiMenu, HiX } from 'react-icons/hi';
 
 const sidebarItems = [
@@ -30,10 +31,12 @@ export default function HeroSection() {
     <section dir="ltr" className="relative min-h-screen overflow-hidden">
       {/* ═══ BACKGROUND ═══ */}
       <div className="absolute inset-0">
-        <img
+        <Image
           src="/assets/back_ground.png"
           alt=""
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[#080C18]/95 via-[#080C18]/60 to-transparent" />
         <div className="absolute inset-0 bg-gradient-to-t from-[#080C18] via-transparent to-[#080C18]/30" />
@@ -430,17 +433,24 @@ export default function HeroSection() {
             })}
 
             {/* Avatar Image */}
-            <motion.img
+            <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              src="/assets/avatar.png"
-              alt="Zainab - AI Travel Concierge"
-              className="relative z-30 h-full max-h-[clamp(280px,55vh,620px)] w-auto object-contain object-bottom"
+              className="relative z-30 w-full h-full max-h-[clamp(280px,55vh,620px)]"
               style={{
                 filter: 'drop-shadow(0 0 35px rgba(65,190,220,0.08)) drop-shadow(0 10px 25px rgba(0,0,0,0.5))',
               }}
-            />
+            >
+              <Image
+                src="/assets/avatar.png"
+                alt="Zainab - AI Travel Concierge"
+                fill
+                sizes="(max-width: 1024px) 50vw, 40vw"
+                className="object-contain object-bottom"
+                priority
+              />
+            </motion.div>
           </div>
         </div>
       </div>

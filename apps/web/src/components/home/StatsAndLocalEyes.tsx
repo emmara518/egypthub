@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { HiHeart, HiLocationMarker, HiUsers, HiStar, HiSupport, HiPlay } from 'react-icons/hi';
 
 const stats = [
@@ -72,8 +73,8 @@ export default function StatsAndLocalEyes() {
                   className="flex flex-col items-center gap-2 group cursor-pointer shrink-0"
                 >
                   <div className="relative">
-                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-theme-gold/30 group-hover:border-theme-gold/60 transition-all duration-300 shadow-[0_0_15px_rgba(212,162,76,0.1)]">
-                      <img src={local.img} alt={local.name} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden border-2 border-theme-gold/30 group-hover:border-theme-gold/60 transition-all duration-300 shadow-[0_0_15px_rgba(212,162,76,0.1)] relative">
+                      <Image src={local.img} alt={local.name} fill sizes="56px" className="object-cover transition-transform duration-500 group-hover:scale-110" unoptimized />
                     </div>
                     <div className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-green-400 border-2 border-[#080C18]" />
                   </div>

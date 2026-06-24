@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import { HiArrowRight, HiStar, HiSun, HiOfficeBuilding, HiUsers, HiMusicNote } from 'react-icons/hi';
 
 const liveItems = [
@@ -80,10 +81,13 @@ export default function SignatureCollection() {
                 className="relative rounded-2xl overflow-hidden border border-white/[0.06] group hover:border-theme-gold/20 transition-all duration-500"
               >
                 <div className="relative min-h-[250px] md:min-h-[380px]">
-                  <img
+                  <Image
                     src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=1920&q=85"
                     alt="Luxury resort in Egypt"
-                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-[1.5s]"
+                    fill
+                    sizes="(max-width: 1280px) 100vw, 60vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-[1.5s]"
+                    unoptimized
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#080C18] via-[#080C18]/60 to-[#080C18]/20" />
                   <div className="absolute inset-0 bg-gradient-to-r from-[#080C18]/80 to-transparent" />
@@ -183,7 +187,7 @@ export default function SignatureCollection() {
                           {popularDestinations.map((dest) => (
                             <div key={dest.name} className="flex-1 rounded-lg overflow-hidden bg-[#0F1525] border border-white/[0.04]">
                               <div className="h-10 md:h-14 overflow-hidden relative">
-                                <img src={dest.img} alt={dest.name} className="w-full h-full object-cover" />
+                                <Image src={dest.img} alt={dest.name} fill sizes="70px" className="object-cover" unoptimized />
                                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F1525]/60 to-transparent" />
                               </div>
                               <div className="p-1 md:p-1.5">
@@ -207,8 +211,8 @@ export default function SignatureCollection() {
                         </div>
                         {topExperiences.map((exp) => (
                           <div key={exp.name} className="flex gap-2 md:gap-3 p-1.5 md:p-2 rounded-xl bg-[#0F1525] border border-white/[0.04]">
-                            <div className="w-9 h-9 md:w-11 md:h-11 rounded-lg overflow-hidden shrink-0">
-                              <img src={exp.img} alt={exp.name} className="w-full h-full object-cover" />
+                          <div className="w-9 h-9 md:w-11 md:h-11 rounded-lg overflow-hidden shrink-0 relative">
+                            <Image src={exp.img} alt={exp.name} fill sizes="44px" className="object-cover" unoptimized />
                             </div>
                             <div className="flex-1 min-w-0">
                               <p className="text-[7px] md:text-[8px] font-bold truncate">{exp.name}</p>

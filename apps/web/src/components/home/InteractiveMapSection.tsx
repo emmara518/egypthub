@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { HiStar } from 'react-icons/hi';
 
@@ -112,7 +113,7 @@ export default function InteractiveMapSection() {
               >
                 <div className="flex flex-col sm:flex-row">
                   <div className="w-full sm:w-[140px] xl:w-[180px] h-[120px] sm:h-[140px] xl:h-[180px] overflow-hidden relative shrink-0">
-                    <img src={selectedCity.img} alt={selectedCity.name} className="w-full h-full object-cover" />
+                    <Image src={selectedCity.img} alt={selectedCity.name} fill sizes="180px" className="object-cover" unoptimized />
                   </div>
                   <div className="p-3 md:p-4 flex flex-col justify-center">
                     <h4 className="text-base md:text-lg font-bold text-white font-display">{selectedCity.name}</h4>
@@ -139,10 +140,12 @@ export default function InteractiveMapSection() {
             <div className="relative w-full h-full min-h-[300px] md:min-h-[450px] bg-[#0a1020]/60 rounded-xl md:rounded-2xl border border-white/[0.04] overflow-hidden">
 
               {/* Egypt Night-Lights Map Image */}
-              <img
+              <Image
                 src="/assets/egypt-map.png"
                 alt="Egypt interactive map"
-                className="absolute inset-0 w-full h-full object-contain"
+                fill
+                sizes="(max-width: 1024px) 100vw, 70vw"
+                className="object-contain"
                 style={{ objectPosition: 'center center' }}
               />
 
@@ -156,8 +159,8 @@ export default function InteractiveMapSection() {
                   whileHover={{ scale: 1.08 }}
                 >
                   <div className="relative flex flex-col items-center">
-                    <div className="w-[clamp(32px,4vw,56px)] h-[clamp(32px,4vw,56px)] rounded-full overflow-hidden border-2 border-theme-gold/50 shadow-[0_0_14px_rgba(212,162,76,0.35)] group-hover:shadow-[0_0_22px_rgba(212,162,76,0.55)] group-hover:border-theme-gold transition-all duration-300">
-                      <img src={city.img} alt={city.name} className="w-full h-full object-cover" />
+                    <div className="w-[clamp(32px,4vw,56px)] h-[clamp(32px,4vw,56px)] rounded-full overflow-hidden border-2 border-theme-gold/50 shadow-[0_0_14px_rgba(212,162,76,0.35)] group-hover:shadow-[0_0_22px_rgba(212,162,76,0.55)] group-hover:border-theme-gold transition-all duration-300 relative">
+                      <Image src={city.img} alt={city.name} fill sizes="56px" className="object-cover" unoptimized />
                     </div>
                     <div className="hidden sm:flex items-center gap-1.5 mt-1 sm:mt-1.5 bg-[#080C18]/70 backdrop-blur-sm px-1.5 sm:px-2 py-0.5 rounded-full">
                       <span className="text-[9px] sm:text-[11px] font-bold text-white font-english whitespace-nowrap">{city.name}</span>
