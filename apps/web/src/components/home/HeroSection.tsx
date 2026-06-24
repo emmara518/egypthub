@@ -254,20 +254,86 @@ export default function HeroSection() {
 
           {/* ═══ RIGHT — Avatar Area ═══ */}
           <div className="flex-1 relative flex items-end justify-center h-[85vh]">
-            {/* Holographic effects behind avatar */}
+
+            {/* ═══ GLOWING RINGS ═══ */}
+            {/* Outer ring - horizontal ellipse, rotating */}
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+              className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20"
+              style={{
+                width: '260px', height: '80px',
+                border: '1.5px solid rgba(65,190,220,0.25)',
+                borderRadius: '50%',
+                boxShadow: '0 0 15px rgba(65,190,220,0.15), inset 0 0 15px rgba(65,190,220,0.05)',
+                transform: 'translateX(-50%) perspective(400px) rotateX(65deg)',
+              }}
+            />
+            {/* Middle ring */}
+            <motion.div
+              animate={{ rotate: [360, 0] }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
+              style={{
+                width: '210px', height: '65px',
+                border: '1px solid rgba(65,190,220,0.18)',
+                borderRadius: '50%',
+                boxShadow: '0 0 10px rgba(65,190,220,0.1)',
+                transform: 'translateX(-50%) perspective(400px) rotateX(65deg)',
+              }}
+            />
+            {/* Inner ring */}
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 8, repeat: Infinity, ease: 'linear' }}
+              className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20"
+              style={{
+                width: '160px', height: '50px',
+                border: '1px solid rgba(65,190,220,0.22)',
+                borderRadius: '50%',
+                boxShadow: '0 0 12px rgba(65,190,220,0.12)',
+                transform: 'translateX(-50%) perspective(400px) rotateX(65deg)',
+              }}
+            />
+            {/* Ring glow dot 1 */}
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 12, repeat: Infinity, ease: 'linear' }}
+              className="absolute bottom-8 left-1/2 z-21"
+              style={{
+                width: '260px', height: '80px',
+                transform: 'translateX(-50%) perspective(400px) rotateX(65deg)',
+                transformOrigin: 'center center',
+              }}
+            >
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#41BEDC] shadow-[0_0_8px_#41BEDC,0_0_16px_#41BEDC]" />
+            </motion.div>
+            {/* Ring glow dot 2 */}
+            <motion.div
+              animate={{ rotate: [360, 0] }}
+              transition={{ duration: 18, repeat: Infinity, ease: 'linear' }}
+              className="absolute bottom-8 left-1/2 z-21"
+              style={{
+                width: '210px', height: '65px',
+                transform: 'translateX(-50%) perspective(400px) rotateX(65deg)',
+                transformOrigin: 'center center',
+              }}
+            >
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-[#D4A24C] shadow-[0_0_6px_#D4A24C,0_0_12px_#D4A24C]" />
+            </motion.div>
 
             {/* Base glow */}
-            <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20"
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-19"
               style={{
-                width: '220px', height: '30px',
-                background: 'radial-gradient(ellipse, rgba(65,190,220,0.45) 0%, rgba(65,190,220,0.12) 40%, transparent 70%)',
-                filter: 'blur(10px)',
+                width: '280px', height: '40px',
+                background: 'radial-gradient(ellipse, rgba(65,190,220,0.4) 0%, rgba(65,190,220,0.1) 40%, transparent 70%)',
+                filter: 'blur(12px)',
                 borderRadius: '50%'
               }}
             />
 
             {/* Pedestal */}
-            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30" style={{ width: '200px', height: '32px' }}>
+            <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-30" style={{ width: '200px', height: '32px' }}>
               <div className="absolute top-0 left-1/2 -translate-x-1/2"
                 style={{
                   width: '180px', height: '26px',
@@ -293,7 +359,7 @@ export default function HeroSection() {
             <motion.div
               animate={{ opacity: [0.12, 0.35, 0.12] }}
               transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
-              className="absolute bottom-10 left-1/2 -translate-x-1/2 z-15"
+              className="absolute bottom-8 left-1/2 -translate-x-1/2 z-15"
               style={{
                 width: '50px', height: '320px',
                 background: 'linear-gradient(to top, rgba(10,58,74,0.6) 0%, rgba(65,190,220,0.15) 30%, rgba(65,190,220,0) 100%)',

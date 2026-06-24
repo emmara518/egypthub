@@ -1,4 +1,5 @@
 import HeroSection from '@/components/home/HeroSection';
+import InteractiveMapSection from '@/components/home/InteractiveMapSection';
 import StoriesSection from '@/components/home/StoriesSection';
 import LiveInEgypt from '@/components/home/LiveInEgypt';
 import SignatureCollection from '@/components/home/SignatureCollection';
@@ -14,6 +15,7 @@ export default function Home() {
     <div className="min-h-screen bg-[#080C18] text-white">
       <main className="relative">
         <HeroSection />
+        <InteractiveMapSection />
         <StoriesSection />
         <LiveInEgypt />
         <SignatureCollection />
