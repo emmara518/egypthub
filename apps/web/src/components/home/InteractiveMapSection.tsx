@@ -23,12 +23,12 @@ const features = [
 ];
 
 const cities = [
-  { name: 'Alexandria', rating: '4.6', x: '48%', y: '12%', img: 'https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=400&q=80' },
-  { name: 'Cairo', rating: '4.8', x: '55%', y: '25%', img: 'https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=400&q=80' },
-  { name: 'Siwa', rating: '4.7', x: '30%', y: '28%', img: 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=400&q=80' },
-  { name: 'Luxor', rating: '4.9', x: '47%', y: '50%', img: 'https://images.unsplash.com/photo-1568322503122-d214271f3be4?w=400&q=80' },
-  { name: 'Aswan', rating: '4.9', x: '45%', y: '72%', img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80' },
-  { name: 'Dahab', rating: '4.8', x: '65%', y: '58%', img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
+  { name: 'Alexandria', rating: '4.6', x: '42%', y: '14%', desc: 'Mediterranean gem', img: 'https://images.unsplash.com/photo-1572252009286-268acec5ca0a?w=400&q=80' },
+  { name: 'Cairo', rating: '4.8', x: '52%', y: '25%', desc: 'City of a thousand minarets', img: 'https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=400&q=80' },
+  { name: 'Siwa', rating: '4.7', x: '28%', y: '26%', desc: 'Hidden oasis paradise', img: 'https://images.unsplash.com/photo-1509023464722-18d996393ca8?w=400&q=80' },
+  { name: 'Luxor', rating: '4.9', x: '48%', y: '52%', desc: 'Open-air museum of temples', img: 'https://images.unsplash.com/photo-1568322503122-d214271f3be4?w=400&q=80' },
+  { name: 'Aswan', rating: '4.9', x: '45%', y: '72%', desc: 'Nubian heritage & tranquil Nile', img: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&q=80' },
+  { name: 'Dahab', rating: '4.8', x: '66%', y: '55%', desc: 'Red Sea diving haven', img: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80' },
 ];
 
 const legendItems = [
@@ -116,7 +116,7 @@ export default function InteractiveMapSection() {
                   </div>
                   <div className="p-4 flex flex-col justify-center">
                     <h4 className="font-bold text-lg text-white font-display">{selectedCity.name}</h4>
-                    <p className="text-[11px] text-white/40 font-english">South Sinai</p>
+                    <p className="text-[11px] text-white/40 font-english">{selectedCity.desc}</p>
                     <div className="flex items-center gap-1.5 mt-1">
                       <HiStar className="w-3.5 h-3.5 text-theme-gold fill-theme-gold" />
                       <span className="text-sm font-bold text-theme-gold font-english">{selectedCity.rating}</span>
@@ -141,47 +141,13 @@ export default function InteractiveMapSection() {
           <div className="absolute left-[320px] right-0 top-0 bottom-0">
             <div className="relative w-full h-full bg-[#0a1020]/60 rounded-2xl border border-white/[0.04] overflow-hidden">
 
-              {/* SVG Map */}
-              <svg className="absolute inset-0 w-full h-full" viewBox="0 0 900 700" preserveAspectRatio="xMidYMid slice">
-                <defs>
-                  <radialGradient id="mapCenterGlow" cx="50%" cy="45%" r="55%">
-                    <stop offset="0%" stopColor="#D4A24C" stopOpacity="0.04" />
-                    <stop offset="100%" stopColor="transparent" stopOpacity="0" />
-                  </radialGradient>
-                  <linearGradient id="nileGrad" x1="0" y1="0" x2="0" y2="1">
-                    <stop offset="0%" stopColor="#D4A24C" stopOpacity="0.08" />
-                    <stop offset="50%" stopColor="#D4A24C" stopOpacity="0.18" />
-                    <stop offset="100%" stopColor="#D4A24C" stopOpacity="0.04" />
-                  </linearGradient>
-                </defs>
-                <rect width="900" height="700" fill="url(#mapCenterGlow)" />
-
-                {/* Egypt detailed outline */}
-                <path d="M320,30 L380,18 L440,15 L500,20 L550,35 L590,60 L620,100 L640,155 L650,215 L655,280 L650,340 L635,395 L610,445 L580,485 L545,520 L505,545 L460,560 L420,565 L385,555 L355,535 L330,505 L310,465 L295,415 L280,360 L270,300 L260,240 L252,180 L248,125 L250,75 L270,45 Z"
-                  fill="#0c1428" stroke="#D4A24C" strokeOpacity="0.12" strokeWidth="0.8" />
-
-                {/* Nile River - main */}
-                <path d="M480,28 Q488,85 495,150 Q500,210 497,275 Q492,340 482,400 Q472,455 462,510 Q455,545 450,570"
-                  fill="none" stroke="url(#nileGrad)" strokeWidth="3.5" strokeLinecap="round" />
-                <path d="M480,28 Q488,85 495,150 Q500,210 497,275 Q492,340 482,400 Q472,455 462,510 Q455,545 450,570"
-                  fill="none" stroke="#D4A24C" strokeOpacity="0.08" strokeWidth="1" />
-
-                {/* Nile branch - Delta */}
-                <path d="M480,30 Q460,50 440,60" fill="none" stroke="#D4A24C" strokeOpacity="0.06" strokeWidth="1.5" />
-                <path d="M480,30 Q500,50 520,55" fill="none" stroke="#D4A24C" strokeOpacity="0.06" strokeWidth="1.5" />
-
-                {/* Route lines connecting cities */}
-                <path d="M495,150 Q510,180 520,210 Q530,235 530,260" fill="none" stroke="#D4A24C" strokeOpacity="0.06" strokeWidth="0.8" strokeDasharray="4,4" />
-                <path d="M495,150 Q460,180 430,200 Q400,220 370,240 Q340,260 310,280" fill="none" stroke="#D4A24C" strokeOpacity="0.06" strokeWidth="0.8" strokeDasharray="4,4" />
-                <path d="M497,275 Q490,310 485,340 Q478,370 472,400" fill="none" stroke="#D4A24C" strokeOpacity="0.06" strokeWidth="0.8" strokeDasharray="4,4" />
-                <path d="M482,400 Q475,430 468,460 Q462,490 458,520" fill="none" stroke="#D4A24C" strokeOpacity="0.06" strokeWidth="0.8" strokeDasharray="4,4" />
-                <path d="M497,275 Q520,300 540,330 Q560,360 570,390 Q580,420 590,450 Q600,475 610,490" fill="none" stroke="#D4A24C" strokeOpacity="0.06" strokeWidth="0.8" strokeDasharray="4,4" />
-
-                {/* Mediterranean Sea label */}
-                <text x="480" y="12" fill="#41BEDC" fillOpacity="0.3" fontSize="11" fontFamily="Poppins, sans-serif" textAnchor="middle" fontStyle="italic">Mediterranean Sea</text>
-                {/* Red Sea label */}
-                <text x="680" y="480" fill="#41BEDC" fillOpacity="0.25" fontSize="10" fontFamily="Poppins, sans-serif" textAnchor="middle" fontStyle="italic">Red Sea</text>
-              </svg>
+              {/* Egypt Night-Lights Map Image */}
+              <img
+                src="/assets/egypt-map.png"
+                alt="Egypt interactive map"
+                className="absolute inset-0 w-full h-full object-contain"
+                style={{ objectPosition: 'center center' }}
+              />
 
               {/* City Markers */}
               {cities.map((city) => (
