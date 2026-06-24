@@ -49,6 +49,8 @@ const config: Config = {
         amiri: ["'Amiri'", 'serif'],
         arabic: ["'Cairo'", 'sans-serif'],
         english: ["'Poppins'", 'sans-serif'],
+        display: ["'Playfair Display'", 'serif'],
+        body: ["'Poppins'", 'sans-serif'],
       },
       borderRadius: {
         xs: '4px',

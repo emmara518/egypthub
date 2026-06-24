@@ -26,7 +26,7 @@ export default function HeroSection() {
   const [activeChip, setActiveChip] = useState(0);
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section dir="ltr" className="relative min-h-screen overflow-hidden">
       {/* ═══ BACKGROUND ═══ */}
       <div className="absolute inset-0">
         <img
@@ -131,14 +131,14 @@ export default function HeroSection() {
         <div className="w-full max-w-[1440px] mx-auto px-8 flex items-center">
 
           {/* ═══ LEFT — Headline + Booking ═══ */}
-          <div className="flex-1 max-w-[620px] pt-20">
+          <div className="flex-1 max-w-[620px] pt-20 text-left">
 
             {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="text-5xl md:text-6xl lg:text-[68px] font-bold font-display leading-[1.06] mb-5"
+              className="text-5xl md:text-6xl lg:text-[68px] font-bold font-display leading-[1.06] mb-5 text-left"
             >
               <span className="text-white">Egypt is</span><br />
               <span className="text-white">not just a</span><br />
@@ -152,7 +152,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.45 }}
-              className="text-white/45 text-[15px] max-w-[440px] mb-7 leading-relaxed"
+              className="text-white/45 text-[15px] max-w-[440px] mb-7 leading-relaxed text-left"
             >
               Discover Egypt through authentic experiences and local connections.
             </motion.p>
@@ -171,7 +171,7 @@ export default function HeroSection() {
                   <HiPlay className="w-[18px] h-[18px] text-white ml-0.5 group-hover:text-theme-gold transition-colors duration-300" />
                 </div>
               </div>
-              <span className="text-[13px] font-semibold text-white/90 font-english">Watch Egypt Come Alive</span>
+              <span className="text-[13px] font-semibold text-white/90 font-english text-left">Watch Egypt Come Alive</span>
             </motion.button>
 
             {/* ═══ AI CONCIERGE BOOKING PANEL ═══ */}
@@ -180,7 +180,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.6 }}
             >
-              <div className="bg-[#0F1525]/65 backdrop-blur-2xl rounded-2xl border border-white/[0.07] p-5 shadow-[0_8px_40px_rgba(0,0,0,0.4)] max-w-[600px]">
+              <div className="bg-[#0F1525]/65 backdrop-blur-2xl rounded-2xl border border-white/[0.07] p-5 shadow-[0_8px_40px_rgba(0,0,0,0.4)] max-w-[600px] text-left">
                 {/* Label */}
                 <div className="flex items-center gap-2 mb-3">
                   <div className="relative">
@@ -199,8 +199,8 @@ export default function HeroSection() {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-lg font-bold font-display mb-0.5 text-white">What brings you to Egypt?</h3>
-                <p className="text-[12px] text-white/40 mb-3.5">We&apos;ll craft your perfect journey</p>
+                <h3 className="text-lg font-bold font-display mb-0.5 text-white text-left">What brings you to Egypt?</h3>
+                <p className="text-[12px] text-white/40 mb-3.5 text-left">We&apos;ll craft your perfect journey</p>
 
                 {/* Category Chips */}
                 <div className="flex flex-wrap gap-2 mb-4">
