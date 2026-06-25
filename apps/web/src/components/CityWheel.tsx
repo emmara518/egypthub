@@ -1,17 +1,18 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const cities = [
-  { name: 'شرم الشيخ', nameEn: 'Sharm El Sheikh', slug: 'sharm-el-sheikh', image: '/egypthub/images/destinations/dahab.svg', rating: 4.8, desc: 'غوص عالمي وحياة ليلية' },
-  { name: 'الغردقة', nameEn: 'Hurghada', slug: 'hurghada', image: '/egypthub/images/destinations/hurghada.svg', rating: 4.8, desc: 'شواطئ ذهبية ورياضات مائية' },
-  { name: 'القاهرة', nameEn: 'Cairo', slug: 'cairo', image: '/egypthub/images/destinations/cairo.svg', rating: 4.5, desc: 'مدينة الألف مئذنة' },
-  { name: 'الأقصر', nameEn: 'Luxor', slug: 'luxor', image: '/egypthub/images/destinations/luxor.svg', rating: 4.9, desc: 'معابد فرعونية ووادي الملوك' },
-  { name: 'الإسكندرية', nameEn: 'Alexandria', slug: 'alexandria', image: '/egypthub/images/destinations/alexandria.svg', rating: 4.6, desc: 'عروس البحر الأبيض المتوسط' },
-  { name: 'أسوان', nameEn: 'Aswan', slug: 'aswan', image: '/egypthub/images/destinations/aswan.svg', rating: 4.7, desc: 'سحر النيل وروحانياته' },
-  { name: 'سيوة', nameEn: 'Siwa', slug: 'siwa', image: '/egypthub/images/destinations/hurghada.svg', rating: 4.7, desc: 'واحة الأحلام' },
-  { name: 'دهب', nameEn: 'Dahab', slug: 'dahab', image: '/egypthub/images/destinations/dahab.svg', rating: 4.6, desc: 'مغامرات البدو والغوص' },
+  { name: 'شرم الشيخ', nameEn: 'Sharm El Sheikh', slug: 'sharm-el-sheikh', image: '/images/destinations/dahab.svg', rating: 4.8, desc: 'غوص عالمي وحياة ليلية' },
+  { name: 'الغردقة', nameEn: 'Hurghada', slug: 'hurghada', image: '/images/destinations/hurghada.svg', rating: 4.8, desc: 'شواطئ ذهبية ورياضات مائية' },
+  { name: 'القاهرة', nameEn: 'Cairo', slug: 'cairo', image: '/images/destinations/cairo.svg', rating: 4.5, desc: 'مدينة الألف مئذنة' },
+  { name: 'الأقصر', nameEn: 'Luxor', slug: 'luxor', image: '/images/destinations/luxor.svg', rating: 4.9, desc: 'معابد فرعونية ووادي الملوك' },
+  { name: 'الإسكندرية', nameEn: 'Alexandria', slug: 'alexandria', image: '/images/destinations/alexandria.svg', rating: 4.6, desc: 'عروس البحر الأبيض المتوسط' },
+  { name: 'أسوان', nameEn: 'Aswan', slug: 'aswan', image: '/images/destinations/aswan.svg', rating: 4.7, desc: 'سحر النيل وروحانياته' },
+  { name: 'سيوة', nameEn: 'Siwa', slug: 'siwa', image: '/images/destinations/hurghada.svg', rating: 4.7, desc: 'واحة الأحلام' },
+  { name: 'دهب', nameEn: 'Dahab', slug: 'dahab', image: '/images/destinations/dahab.svg', rating: 4.6, desc: 'مغامرات البدو والغوص' },
 ];
 
 const CARD_WIDTH = 280;
@@ -239,16 +240,16 @@ export default function CityWheel() {
                 <path d="M18 6L6 18M6 6l12 12" />
               </svg>
             </button>
-            <motion.img
+            <motion.div
               key={lightboxImg}
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              src={lightboxImg}
-              alt=""
-              className="max-w-[90vw] max-h-[90vh] rounded-2xl shadow-2xl"
+              className="relative max-w-[90vw] max-h-[90vh]"
               onClick={(e) => e.stopPropagation()}
-            />
+            >
+              <Image src={lightboxImg} alt="" width={800} height={600} className="rounded-2xl shadow-2xl w-auto h-auto max-w-[90vw] max-h-[90vh] object-contain" />
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

@@ -1,14 +1,12 @@
-'use client';
-
 import { motion } from 'framer-motion';
-import { HiShieldCheck, HiCurrencyDollar, HiBadgeCheck, HiSupport, HiRefresh } from 'react-icons/hi';
+import { Shield, Dollar, Check, Support, Refresh } from '@/components/Icons';
 
 const benefits = [
-  { icon: HiShieldCheck, title: 'Secure Booking', desc: 'Your data is safe with us' },
-  { icon: HiCurrencyDollar, title: 'Best Price Guarantee', desc: 'Get the best value on every booking' },
-  { icon: HiBadgeCheck, title: 'Verified & Trusted', desc: 'All partners verified for your peace of mind' },
-  { icon: HiSupport, title: '24/7 Concierge', desc: 'We\'re with you every step of the journey' },
-  { icon: HiRefresh, title: 'Flexible Cancellation', desc: 'Plans that adapt to your plans' },
+  { icon: Shield, title: 'Secure Booking', desc: 'Your data is safe with us' },
+  { icon: Dollar, title: 'Best Price Guarantee', desc: 'Get the best value on every booking' },
+  { icon: Check, title: 'Verified & Trusted', desc: 'All partners verified for your peace of mind' },
+  { icon: Support, title: '24/7 Concierge', desc: 'We\'re with you every step of the journey' },
+  { icon: Refresh, title: 'Flexible Cancellation', desc: 'Plans that adapt to your plans' },
 ];
 
 export default function BenefitsRow() {
@@ -27,7 +25,7 @@ export default function BenefitsRow() {
               className="flex flex-col items-center text-center group"
             >
               <div className="w-12 h-12 rounded-xl bg-theme-gold/10 flex items-center justify-center mb-3 group-hover:bg-theme-gold/15 transition-all duration-300 group-hover:shadow-[0_0_16px_rgba(212,162,76,0.1)]">
-                <item.icon className="w-5 h-5 text-theme-gold" />
+                <item.icon size={20} />
               </div>
               <p className="text-xs font-bold mb-1">{item.title}</p>
               <p className="text-[10px] text-white/40 leading-relaxed">{item.desc}</p>

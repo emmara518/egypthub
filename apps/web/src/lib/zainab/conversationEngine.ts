@@ -15,6 +15,68 @@ import type { Destination } from './types';
 
 const destinations: Destination[] = destinationsData as Destination[];
 
+let _store: any = null;
+function getStore() {
+  if (!_store) {
+    try { _store = require('@/lib/store').useAppStore; } catch {}
+  }
+  return _store;
+}
+
+function rememberPreference(key: string, value: any) {
+  const store = getStore();
+  if (store) {
+    const state = store.getState();
+    const current = state.aiMemory || {};
+    if (JSON.stringify(current[key]) !== JSON.stringify(value)) {
+      store.getState().setAiMemory(key, value);
+    }
+  }
+}
+
+function recallPreference(key: string): any {
+  const store = getStore();
+  if (store) {
+    const state = store.getState();
+    return state.aiMemory?.[key];
+  }
+  return null;
+}
+
+function loadTravelDna() {
+  const store = getStore();
+  if (store) {
+    const state = store.getState();
+    return state.travelDna || {};
+  }
+  return {};
+}
+
+function extractPreferences(text: string): Record<string, any> {
+  const prefs: Record<string, any> = {};
+  const lower = text.toLowerCase();
+
+  if (/استرخا|راحة|هدو|spa|yoga|تأمل|peace|relax/.test(lower)) prefs.intent = 'relaxation';
+  else if (/مغامر|إثارة|adventure|safari|desert|تحدي/.test(lower)) prefs.intent = 'adventure';
+  else if (/ثقاف|تاريخ|متحف|culture|museum|history|معبد|فرعون/.test(lower)) prefs.intent = 'culture';
+  else if (/أكل|طعام|مطعم|food|اكل|مأكولات/.test(lower)) prefs.intent = 'food';
+  else if (/فخام|luxury|خمس.*نجوم|منتجع/.test(lower)) prefs.intent = 'luxury';
+  else if (/عائل|أسرة|أطفال|family|kids/.test(lower)) prefs.intent = 'family';
+  else if (/غوص|diving|غطس|snorkel|شعاب|مرجان/.test(lower)) prefs.intent = 'diving';
+
+  const durationMatch = lower.match(/(\d+)\s*(أيام|يوم|ايام|days?)/i);
+  if (durationMatch) prefs.tripDuration = parseInt(durationMatch[1]);
+
+  if (/اقتصادي|budget|رخيص|أرخص/.test(lower)) prefs.budget = 'budget';
+  else if (/فاخر|luxury|غالي/.test(lower)) prefs.budget = 'luxury';
+  else if (/متوسط|mid/.test(lower)) prefs.budget = 'mid-range';
+
+  if (/سريع|مزدحم|busy|packed|full/.test(lower)) prefs.pace = 'fast';
+  else if (/هادئ|relax|slow|بطيء/.test(lower)) prefs.pace = 'slow';
+
+  return prefs;
+}
+
 const WELCOME_MESSAGE: string = `أهلاً بيك في مصر يا صديقي 🇪🇬
 
 أنا زينب، مرشدتك السياحية الذكية. أقدر أساعدك تكتشف مصر بطريقة مختلفة — من شواطئ البحر الأحمر لمعابد الأقصر، ومن سحر سيوة لصخب القاهرة.
@@ -89,10 +151,25 @@ function buildContextualResponse(
 ): { text: string; recommendations?: Recommendations; tripPlan?: TripPlan } {
   const city = extractCity(message);
   const days = extractDays(message);
+  const preferences = extractPreferences(message);
+  const travelDna = loadTravelDna();
+
+  if (Object.keys(preferences).length > 0) {
+    rememberPreference('lastPreferences', preferences);
+  }
+
+  const budgetFromStore = travelDna.budget || recallPreference('budget');
+  const travelerTypeFromStore = travelDna.travelerType || recallPreference('travelerType');
 
   if (city && days) {
-    const tripPlan = planTrip(city, days);
+    const tripPlan = planTrip(city, days, {
+      budget: budgetFromStore,
+      travelerType: travelerTypeFromStore,
+      preferences,
+    });
     if (tripPlan) {
+      rememberPreference('lastCity', city);
+      rememberPreference('tripDuration', days);
       return {
         text: `جميل! خليني أرتبلك برنامج كامل لـ ${tripPlan.city.nameAr} لمدة ${days} أيام 🎯`,
         recommendations: {
@@ -107,9 +184,10 @@ function buildContextualResponse(
   }
 
   if (city && intent === 'trip-planning') {
-    const recs = getRecommendationsByCity(city);
+    const recs = getRecommendationsByCity(city, { budget: budgetFromStore, travelerType: travelerTypeFromStore });
     const dest = recs.destinations[0];
     memory.preferredCity = city;
+    rememberPreference('lastCity', city);
     return {
       text: `${dest?.nameAr || 'هذه'} مدينة رائعة! عندي كذا اقتراح لتجارب هناك 👇`,
       recommendations: recs,
@@ -117,10 +195,11 @@ function buildContextualResponse(
   }
 
   if (city) {
-    const recs = getRecommendationsByCity(city);
+    const recs = getRecommendationsByCity(city, { budget: budgetFromStore, travelerType: travelerTypeFromStore });
     const dest = recs.destinations[0];
     memory.preferredCity = city;
     memory.mentionedCities.push(city);
+    rememberPreference('lastCity', city);
     return {
       text: `أهلاً بيك في ${dest?.nameAr || city}! 🎉 مدينة مليانة حكايات وتجارب. ده بعض اللي أقترحه عليك 👇`,
       recommendations: recs,
@@ -128,9 +207,14 @@ function buildContextualResponse(
   }
 
   if (days) {
-    const targetCity = memory.preferredCity || 'cairo';
-    const tripPlan = planTrip(targetCity, days);
+    const targetCity = memory.preferredCity || recallPreference('lastCity') || 'cairo';
+    const tripPlan = planTrip(targetCity, days, {
+      budget: budgetFromStore,
+      travelerType: travelerTypeFromStore,
+      preferences,
+    });
     if (tripPlan) {
+      rememberPreference('tripDuration', days);
       return {
         text: `خلاص كده! هخططلك ${days} أيام في ${tripPlan.city.nameAr} 👇`,
         tripPlan,
@@ -139,10 +223,22 @@ function buildContextualResponse(
   }
 
   if (intent === 'greeting') {
+    const pastCity = recallPreference('lastCity');
+    if (pastCity) {
+      return { text: `أهلاً بيك تاني! لسه مهتم بـ ${pastCity}؟ ولا عاوز حاجة جديدة النهاردة؟` };
+    }
     return { text: pickRandom(GREETING_RESPONSES) };
   }
 
   if (intent === 'general' && memory.knownIntents.length === 0) {
+    const pastPrefs = recallPreference('lastPreferences');
+    if (pastPrefs?.intent) {
+      const recs = getRecommendationsByIntent(pastPrefs.intent, memory);
+      return {
+        text: `أهلاً بيك تاني! أتذكر إنك كنت مهتم بـ ${INTENT_GREETINGS[pastPrefs.intent as Intent] || 'رحلات في مصر'}. عاوز تكمل ولا تجرب حاجة جديدة؟`,
+        recommendations: recs,
+      };
+    }
     return {
       text: 'أنا في خدمتك! ممكن أساعدك في:\n🌴 وجهات ومغامرات\n🏛️ تاريخ وثقافة\n🍽️ أكل ومطاعم\n🛏️ فخامة واستجمام\n\nقولي عاوز إيه بالضبط.',
       recommendations: getDefaultRecommendations(),
@@ -152,11 +248,15 @@ function buildContextualResponse(
   const advice = getAdviceForIntent(intent);
   const greeting = INTENT_GREETINGS[intent];
   const enhancedRecs = memory.knownIntents.length > 0
-    ? combineRecommendationsWithMemory(intent, memory)
-    : getRecommendationsByIntent(intent, memory);
+    ? combineRecommendationsWithMemory(intent, memory, { budget: budgetFromStore, travelerType: travelerTypeFromStore })
+    : getRecommendationsByIntent(intent, memory, { budget: budgetFromStore, travelerType: travelerTypeFromStore });
 
   if (!memory.knownIntents.includes(intent)) {
     memory.knownIntents.push(intent);
+  }
+
+  if (preferences.intent) {
+    rememberPreference('lastIntent', preferences.intent);
   }
 
   return {

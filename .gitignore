@@ -11,3 +11,8 @@ dist/
 docker-data/
 coverage/
 .turbo/
+out/
+.next/
+*.tsbuildinfo
+.vercel/
+apps/web/*.md

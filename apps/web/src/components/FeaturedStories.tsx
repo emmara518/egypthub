@@ -1,5 +1,3 @@
-'use client';
-
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -7,7 +5,7 @@ const stories = [
   {
     title: 'ليلة في الصحراء البيضاء',
     slug: 'white-desert',
-    image: '/egypthub/images/stories/sunset-over-the-pyramids.svg',
+    image: '/images/stories/sunset-over-the-pyramids.svg',
     author: 'أحمد سمير',
     readTime: '5 دقائق',
     excerpt: 'التخييم تحت النجوم في منظر الصحراء البيضاء الساحر في مصر.',
@@ -15,7 +13,7 @@ const stories = [
   {
     title: 'مقاهي القاهرة القديمة المخفية',
     slug: 'hidden-cafes-cairo',
-    image: '/egypthub/images/stories/diving-red-sea-magic.svg',
+    image: '/images/stories/diving-red-sea-magic.svg',
     author: 'ليلى حسن',
     readTime: '4 دقائق',
     excerpt: 'اكتشاف مقاهٍ عمرها قرون في قلب القاهرة الإسلامية.',
@@ -23,7 +21,7 @@ const stories = [
   {
     title: 'الغوص في البلوهول',
     slug: 'blue-hole-dahab',
-    image: '/egypthub/images/activities/diving.svg',
+    image: '/images/activities/diving.svg',
     author: 'كريم نور',
     readTime: '6 دقائق',
     excerpt: 'كل ما تحتاج معرفته عن الغوص في البلوهول الشهير في دهب.',
@@ -31,7 +29,7 @@ const stories = [
   {
     title: 'ليالي رمضان في الإسكندرية',
     slug: 'ramadan-alexandria',
-    image: '/egypthub/images/destinations/alexandria.svg',
+    image: '/images/destinations/alexandria.svg',
     author: 'نادية فوزي',
     readTime: '3 دقائق',
     excerpt: 'المدينة الساحلية تنبض بالحياة خلال الشهر الكريم بالفوانيس والنكهات.',

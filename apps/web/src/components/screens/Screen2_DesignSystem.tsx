@@ -8,6 +8,7 @@ import {
   HiUser, HiCog, HiHome, HiBell, HiBookmark,
   HiChat, HiGlobe, HiShoppingBag, HiTruck, HiCash,
 } from 'react-icons/hi';
+import Image from 'next/image';
 
 /* ───── Section wrapper ───── */
 const Section = ({ id, num, title, children }: { id: string; num: string; title: string; children: React.ReactNode }) => (
@@ -62,7 +63,7 @@ export default function Screen2_DesignSystem() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Sidebar ─── */}
         <motion.aside
@@ -293,8 +294,8 @@ export default function Screen2_DesignSystem() {
                   <motion.div whileHover={{ y: -6 }} className="col-span-1">
                     <p className="text-[10px] text-[#5A6478] font-english mb-2">Card / Large</p>
                     <div className="rounded-2xl overflow-hidden border border-[#1E2A3D] bg-[#0F1420] group cursor-pointer hover:border-theme-gold/30 transition-all">
-                      <div className="h-36 overflow-hidden">
-                        <img src="/egypthub/images/destinations/cairo.svg" alt="أهرامات" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      <div className="h-36 overflow-hidden relative">
+                        <Image src="/images/destinations/cairo.svg" alt="أهرامات" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                       </div>
                       <div className="p-3">
                         <h4 className="font-bold text-sm mb-1">أهرامات الجيزة</h4>
@@ -311,8 +312,8 @@ export default function Screen2_DesignSystem() {
                   <motion.div whileHover={{ y: -6 }} className="col-span-1">
                     <p className="text-[10px] text-[#5A6478] font-english mb-2">Card / Medium</p>
                     <div className="rounded-2xl overflow-hidden border border-[#1E2A3D] bg-[#0F1420] group cursor-pointer hover:border-theme-gold/30 transition-all">
-                      <div className="h-28 overflow-hidden">
-                        <img src="/egypthub/images/destinations/cairo.svg" alt="القاهرة" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                      <div className="h-28 overflow-hidden relative">
+                        <Image src="/images/destinations/cairo.svg" alt="القاهرة" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                       </div>
                       <div className="p-3">
                         <h4 className="font-bold text-xs">Hidden Cairo</h4>
@@ -325,8 +326,8 @@ export default function Screen2_DesignSystem() {
                   <motion.div whileHover={{ y: -6 }} className="col-span-1">
                     <p className="text-[10px] text-[#5A6478] font-english mb-2">Card / Small</p>
                     <div className="rounded-xl overflow-hidden border border-[#1E2A3D] bg-[#0F1420] p-3 group cursor-pointer hover:border-theme-gold/30 transition-all flex gap-3 items-center">
-                      <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                        <img src="/egypthub/images/destinations/luxor.svg" alt="النيل" className="w-full h-full object-cover" />
+                      <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
+                        <Image src="/images/destinations/luxor.svg" alt="النيل" fill className="object-cover" />
                       </div>
                       <div>
                         <h4 className="font-bold text-xs">Nile Cruise</h4>
@@ -408,14 +409,14 @@ export default function Screen2_DesignSystem() {
             <Section id="imagery" num="10" title="قواعد الصور (Imagery)">
               <div className="space-y-3">
                 {[
-                  { label: 'Hero / 16:9', img: '/egypthub/images/destinations/cairo.svg', ratio: 'aspect-video' },
-                  { label: 'Card / 4:3', img: '/egypthub/images/destinations/luxor.svg', ratio: 'aspect-[4/3]' },
-                  { label: 'Gallery / 1:1', img: '/egypthub/images/destinations/sharm-el-sheikh.svg', ratio: 'aspect-square' },
+                  { label: 'Hero / 16:9', img: '/images/destinations/cairo.svg', ratio: 'aspect-video' },
+                  { label: 'Card / 4:3', img: '/images/destinations/luxor.svg', ratio: 'aspect-[4/3]' },
+                  { label: 'Gallery / 1:1', img: '/images/destinations/sharm-el-sheikh.svg', ratio: 'aspect-square' },
                 ].map(item => (
                   <div key={item.label}>
                     <p className="text-[10px] text-[#5A6478] font-english mb-1">{item.label}</p>
-                    <div className={`${item.ratio} rounded-xl overflow-hidden border border-[#1E2A3D]`}>
-                      <img src={item.img} alt={item.label} className="w-full h-full object-cover" />
+                    <div className={`${item.ratio} rounded-xl overflow-hidden border border-[#1E2A3D] relative`}>
+                      <Image src={item.img} alt={item.label} fill className="object-cover" />
                     </div>
                   </div>
                 ))}
@@ -461,14 +462,14 @@ export default function Screen2_DesignSystem() {
                 <p className="text-[10px] text-[#5A6478] font-english mb-2">Style</p>
                 <div className="grid grid-cols-2 gap-3">
                   {[
-                    { img: '/egypthub/images/activities/desert-safari.svg', label: 'معالجة دافئة' },
-                    { img: '/egypthub/images/destinations/cairo.svg', label: 'تباين عالي' },
-                    { img: '/egypthub/images/activities/diving.svg', label: 'حيوية' },
-                    { img: '/egypthub/images/destinations/sharm-el-sheikh.svg', label: 'درامي' },
+                    { img: '/images/activities/desert-safari.svg', label: 'معالجة دافئة' },
+                    { img: '/images/destinations/cairo.svg', label: 'تباين عالي' },
+                    { img: '/images/activities/diving.svg', label: 'حيوية' },
+                    { img: '/images/destinations/sharm-el-sheikh.svg', label: 'درامي' },
                   ].map(item => (
                     <motion.div key={item.label} whileHover={{ scale: 1.03 }} className="cursor-pointer">
-                      <div className="aspect-[4/3] rounded-xl overflow-hidden border border-[#1E2A3D] mb-1">
-                        <img src={item.img} alt={item.label} className="w-full h-full object-cover" />
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden border border-[#1E2A3D] mb-1 relative">
+                        <Image src={item.img} alt={item.label} fill className="object-cover" />
                       </div>
                       <p className="text-[10px] text-[#8B95A5] text-center">{item.label}</p>
                     </motion.div>

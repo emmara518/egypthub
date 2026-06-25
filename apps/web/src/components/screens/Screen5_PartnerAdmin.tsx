@@ -9,6 +9,7 @@ import {
   HiLocationMarker, HiPhotograph, HiClock, HiCheckCircle, HiUser,
   HiChevronLeft,
 } from 'react-icons/hi';
+import Image from 'next/image';
 
 /* ───── Data ───── */
 const kpis = [
@@ -19,15 +20,15 @@ const kpis = [
 ];
 
 const partnersData = [
-  { name: 'فندق النيل ريتز', type: 'فنادق', status: 'نشط', revenue: 'EGP 450K', img: '/egypthub/images/destinations/luxor.svg' },
-  { name: 'سفاري مصر', type: 'مغامرات', status: 'نشط', revenue: 'EGP 280K', img: '/egypthub/images/activities/desert-safari.svg' },
-  { name: 'رحلات الأقصر', type: 'جولات', status: 'معلق', revenue: 'EGP 180K', img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
+  { name: 'فندق النيل ريتز', type: 'فنادق', status: 'نشط', revenue: 'EGP 450K', img: '/images/destinations/luxor.svg' },
+  { name: 'سفاري مصر', type: 'مغامرات', status: 'نشط', revenue: 'EGP 280K', img: '/images/activities/desert-safari.svg' },
+  { name: 'رحلات الأقصر', type: 'جولات', status: 'معلق', revenue: 'EGP 180K', img: '/images/destinations/sharm-el-sheikh.svg' },
 ];
 
 const offersData = [
-  { title: 'رحلة سفاري في الصحراء', price: 'EGP 1,200', bookings: 145, rating: 4.8, img: '/egypthub/images/activities/desert-safari.svg' },
-  { title: 'جولة معبد الكرنك', price: 'EGP 450', bookings: 230, rating: 4.9, img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
-  { title: 'غوص البحر الأحمر', price: 'EGP 800', bookings: 98, rating: 4.7, img: '/egypthub/images/activities/diving.svg' },
+  { title: 'رحلة سفاري في الصحراء', price: 'EGP 1,200', bookings: 145, rating: 4.8, img: '/images/activities/desert-safari.svg' },
+  { title: 'جولة معبد الكرنك', price: 'EGP 450', bookings: 230, rating: 4.9, img: '/images/destinations/sharm-el-sheikh.svg' },
+  { title: 'غوص البحر الأحمر', price: 'EGP 800', bookings: 98, rating: 4.7, img: '/images/activities/diving.svg' },
 ];
 
 const bookingsTable = [
@@ -65,7 +66,7 @@ export default function Screen5_PartnerAdmin() {
   const [activeSidebar, setActiveSidebar] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="flex">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
@@ -178,8 +179,8 @@ export default function Screen5_PartnerAdmin() {
                       <tr key={i} className="border-b border-[#1E2A3D]/50 hover:bg-[#1A2235]/50 transition-colors">
                         <td className="py-3">
                           <div className="flex items-center gap-2">
-                            <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0">
-                              <img src={p.img} alt={p.name} className="w-full h-full object-cover" />
+                            <div className="w-8 h-8 rounded-lg overflow-hidden shrink-0 relative">
+                              <Image src={p.img} alt={p.name} fill className="object-cover" />
                             </div>
                             <span className="font-medium">{p.name}</span>
                           </div>
@@ -214,8 +215,8 @@ export default function Screen5_PartnerAdmin() {
               <div className="space-y-2">
                 {offersData.map((o, i) => (
                   <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-theme-gold/20 transition-colors cursor-pointer">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                      <img src={o.img} alt={o.title} className="w-full h-full object-cover" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
+                      <Image src={o.img} alt={o.title} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-bold truncate">{o.title}</p>
@@ -241,7 +242,7 @@ export default function Screen5_PartnerAdmin() {
                 <h3 className="font-bold text-sm">تفاصيل عرض (Offer Details)</h3>
               </div>
               <div className="relative h-40">
-                <img src="/egypthub/images/activities/desert-safari.svg" alt="رحلة سفاري" className="w-full h-full object-cover" />
+                <Image src="/images/activities/desert-safari.svg" alt="رحلة سفاري" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#141B2D] to-transparent" />
                 <div className="absolute bottom-3 right-5">
                   <p className="text-lg font-bold">رحلة سفاري في الصحراء</p>

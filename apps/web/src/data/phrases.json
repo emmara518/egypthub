@@ -1,0 +1,62 @@
+{
+  "Greetings": [
+    { "arabic": "السلام عليكم", "transliteration": "al-salamu alaykum", "english": "Peace be upon you" },
+    { "arabic": "صباح الخير", "transliteration": "sabah al-kheir", "english": "Good morning" },
+    { "arabic": "مساء الخير", "transliteration": "masa' al-kheir", "english": "Good evening" },
+    { "arabic": "ازيك؟", "transliteration": "izzayak?", "english": "How are you?" },
+    { "arabic": "الحمد لله", "transliteration": "alhamdulillah", "english": "Thank God (I'm fine)" },
+    { "arabic": "اسمي...", "transliteration": "ismi...", "english": "My name is..." },
+    { "arabic": "تشرفنا", "transliteration": "tasharrafna", "english": "Nice to meet you" },
+    { "arabic": "مع السلامة", "transliteration": "ma'a al-salama", "english": "Goodbye" },
+    { "arabic": "شكراً", "transliteration": "shukran", "english": "Thank you" },
+    { "arabic": "عفواً", "transliteration": "afwan", "english": "You're welcome" }
+  ],
+  "Food": [
+    { "arabic": "عاوز أكل", "transliteration": "ayiz akl", "english": "I want to eat" },
+    { "arabic": "كشري", "transliteration": "koshari", "english": "Koshari (national dish)" },
+    { "arabic": "طعمية", "transliteration": "ta'amiya", "english": "Falafel" },
+    { "arabic": "فول وفلافل", "transliteration": "ful wa falafl", "english": "Fava beans and falafel" },
+    { "arabic": "الحساب من فضلك", "transliteration": "al-hisab min fadlak", "english": "The bill please" },
+    { "arabic": "عاوز مية", "transliteration": "ayiz mayya", "english": "I want water" },
+    { "arabic": "عاوز شاي", "transliteration": "ayiz shay", "english": "I want tea" },
+    { "arabic": "أكلة مصرية", "transliteration": "akla masriya", "english": "Egyptian dish" },
+    { "arabic": "هات لي منيو", "transliteration": "hat li menu", "english": "Give me the menu" },
+    { "arabic": "مفيش جلوتين", "transliteration": "mafish gluten", "english": "Gluten-free" }
+  ],
+  "Directions": [
+    { "arabic": "فين المحطة؟", "transliteration": "fein al-mahatta?", "english": "Where is the station?" },
+    { "arabic": "عاوز أروح...", "transliteration": "ayiz aruh...", "english": "I want to go to..." },
+    { "arabic": "كام كيلو؟", "transliteration": "kam kilo?", "english": "How many kilometers?" },
+    { "arabic": "دولّني على...", "transliteration": "dallini ala...", "english": "Show me the way to..." },
+    { "arabic": "يمين", "transliteration": "yameen", "english": "Right" },
+    { "arabic": "شمال", "transliteration": "shimal", "english": "Left" },
+    { "arabic": "على طول", "transliteration": "ala tul", "english": "Straight ahead" },
+    { "arabic": "بعد كام شارع؟", "transliteration": "ba'd kam share'?", "english": "How many streets away?" },
+    { "arabic": "هنا", "transliteration": "hena", "english": "Here" },
+    { "arabic": "هناك", "transliteration": "henak", "english": "There" }
+  ],
+  "Shopping": [
+    { "arabic": "كام ده؟", "transliteration": "kam da?", "english": "How much is this?" },
+    { "arabic": "غالي قوي", "transliteration": "ghali awi", "english": "Too expensive" },
+    { "arabic": "عاوز أشتري...", "transliteration": "ayiz ashtari...", "english": "I want to buy..." },
+    { "arabic": "فين السوق؟", "transliteration": "fein al-sooq?", "english": "Where is the market?" },
+    { "arabic": "كاش ولا كارت؟", "transliteration": "cash wala card?", "english": "Cash or card?" },
+    { "arabic": "عندك مقاس تاني؟", "transliteration": "andak magas tani?", "english": "Do you have another size?" },
+    { "arabic": "هدية", "transliteration": "hadiya", "english": "Gift" },
+    { "arabic": "محتاج فكة", "transliteration": "mohtag fakka", "english": "I need change" },
+    { "arabic": "ده جامد", "transliteration": "da gamid", "english": "This is high quality" },
+    { "arabic": "عاوز أرخص", "transliteration": "ayiz arkhas", "english": "I want something cheaper" }
+  ],
+  "Emergency": [
+    { "arabic": "الإسعاف!", "transliteration": "al-is'af!", "english": "Ambulance!" },
+    { "arabic": "النجدة", "transliteration": "al-najda", "english": "Help!" },
+    { "arabic": "عاوز دكتور", "transliteration": "ayiz doktor", "english": "I need a doctor" },
+    { "arabic": "فين المستشفى؟", "transliteration": "fein al-mostashfa?", "english": "Where is the hospital?" },
+    { "arabic": "اتصل بالبوليس", "transliteration": "ittasil bil-bolis", "english": "Call the police" },
+    { "arabic": "ضاع مني...", "transliteration": "da' minni...", "english": "I lost my..." },
+    { "arabic": "أنا توهت", "transliteration": "ana tuh't", "english": "I'm lost" },
+    { "arabic": "السفارة", "transliteration": "al-sifara", "english": "The embassy" },
+    { "arabic": "حرامي!", "transliteration": "harami!", "english": "Thief!" },
+    { "arabic": "رقم الطوارئ", "transliteration": "raqam al-tawari'", "english": "Emergency number" }
+  ]
+}

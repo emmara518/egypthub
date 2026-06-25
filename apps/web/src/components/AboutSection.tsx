@@ -1,14 +1,12 @@
-'use client';
-
+import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { HiArrowLeft } from 'react-icons/hi';
 import { PyramidIcon } from './EgyptianIcons';
 import SandWave from './SandWave';
 
 const collageImages = [
-  '/egypthub/images/destinations/sharm-el-sheikh.svg', // Sharm
-  '/egypthub/images/destinations/cairo.svg', // Cairo
-  '/egypthub/images/destinations/luxor.svg', // Luxor
+  '/images/destinations/sharm-el-sheikh.svg', // Sharm
+  '/images/destinations/cairo.svg', // Cairo
+  '/images/destinations/luxor.svg', // Luxor
 ];
 
 export default function AboutSection() {
@@ -26,7 +24,7 @@ export default function AboutSection() {
               transition={{ duration: 0.6 }}
               className="absolute right-0 top-10 w-[60%] aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl border-4 border-white z-20"
             >
-              <img src={collageImages[0]} alt="Sharm" className="w-full h-full object-cover" />
+              <Image src={collageImages[0]} alt="Sharm" fill sizes="(max-width: 1024px) 60vw, 30vw" className="object-cover" />
             </motion.div>
 
             {/* Top left smaller image */}
@@ -37,7 +35,7 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="absolute left-[10%] top-0 w-[45%] aspect-square rounded-3xl overflow-hidden shadow-xl border-4 border-white z-10"
             >
-              <img src={collageImages[1]} alt="Cairo" className="w-full h-full object-cover" />
+              <Image src={collageImages[1]} alt="Cairo" fill sizes="(max-width: 1024px) 45vw, 22vw" className="object-cover" />
             </motion.div>
 
             {/* Bottom left smaller image */}
@@ -48,7 +46,7 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.4 }}
               className="absolute left-0 bottom-10 w-[50%] aspect-video rounded-3xl overflow-hidden shadow-xl border-4 border-white z-30"
             >
-              <img src={collageImages[2]} alt="Luxor" className="w-full h-full object-cover" />
+              <Image src={collageImages[2]} alt="Luxor" fill sizes="(max-width: 1024px) 50vw, 25vw" className="object-cover" />
             </motion.div>
           </div>
 
@@ -93,7 +91,7 @@ export default function AboutSection() {
             >
               <a href="#about-more" className="inline-flex items-center gap-2 bg-theme-gold hover:bg-theme-gold/80 text-[#0A0E17] px-8 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                 اعرف أكتر
-                <HiArrowLeft className="text-lg" />
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
               </a>
             </motion.div>
           </div>

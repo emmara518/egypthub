@@ -7,6 +7,7 @@ import {
   HiCalendar, HiClock, HiBell, HiChat, HiMap, HiCamera,
   HiBookmark, HiCog, HiChevronLeft, HiMenu, HiShoppingBag,
 } from 'react-icons/hi';
+import Image from 'next/image';
 
 /* ───── Phone Frame Wrapper ───── */
 const PhoneFrame = ({ title, num, children, active = false }: { title: string; num: string; children: React.ReactNode; active?: boolean }) => (
@@ -66,7 +67,7 @@ export default function Screen6_MobileExperience() {
   const [activeScreen, setActiveScreen] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0">
@@ -111,7 +112,7 @@ export default function Screen6_MobileExperience() {
                     <span className="text-[8px] text-[#5A6478]">ابحث عن وجهة...</span>
                   </div>
                   <div className="relative rounded-xl overflow-hidden h-28 mb-3">
-                    <img src="/egypthub/images/destinations/cairo.svg" alt="hero" className="w-full h-full object-cover" />
+                    <Image src="/images/destinations/cairo.svg" alt="hero" fill className="object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17]/80 to-transparent" />
                     <div className="absolute bottom-2 right-2">
                       <p className="text-[8px] font-bold">اكتشف مصر</p>
@@ -128,9 +129,9 @@ export default function Screen6_MobileExperience() {
                   </div>
                   <p className="text-[8px] font-bold mb-1.5">وجهات مميزة</p>
                   <div className="flex gap-2">
-                    {['/egypthub/images/destinations/luxor.svg', '/egypthub/images/destinations/sharm-el-sheikh.svg'].map((img, i) => (
-                      <div key={i} className="flex-1 rounded-lg overflow-hidden h-16">
-                        <img src={img} alt="" className="w-full h-full object-cover" />
+                    {['/images/destinations/luxor.svg', '/images/destinations/sharm-el-sheikh.svg'].map((img, i) => (
+                      <div key={i} className="flex-1 rounded-lg overflow-hidden h-16 relative">
+                        <Image src={img} alt="" fill className="object-cover" />
                       </div>
                     ))}
                   </div>
@@ -147,9 +148,9 @@ export default function Screen6_MobileExperience() {
                       <span key={t} className={`px-2 py-1 rounded-lg text-[7px] whitespace-nowrap ${i === 0 ? 'bg-theme-gold text-[#0A0E17] font-bold' : 'bg-[#1A2235] text-[#8B95A5]'}`}>{t}</span>
                     ))}
                   </div>
-                  {['/egypthub/images/destinations/cairo.svg', '/egypthub/images/destinations/cairo.svg', '/egypthub/images/activities/desert-safari.svg'].map((img, i) => (
+                  {['/images/destinations/cairo.svg', '/images/destinations/cairo.svg', '/images/activities/desert-safari.svg'].map((img, i) => (
                     <div key={i} className="relative rounded-xl overflow-hidden h-[72px] mb-2">
-                      <img src={img} alt="" className="w-full h-full object-cover" />
+                      <Image src={img} alt="" fill className="object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17]/80 to-transparent" />
                       <div className="absolute bottom-1.5 right-2 flex items-center gap-1">
                         <HiLocationMarker className="text-theme-gold text-[8px]" />
@@ -168,7 +169,7 @@ export default function Screen6_MobileExperience() {
               {/* 03 - Destination Detail */}
               <PhoneFrame title="تفاصيل الوجهة" num="03" active={activeScreen === 2}>
                 <div className="relative h-36">
-                  <img src="/egypthub/images/destinations/sharm-el-sheikh.svg" alt="" className="w-full h-full object-cover" />
+                  <Image src="/images/destinations/sharm-el-sheikh.svg" alt="" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent" />
                   <div className="absolute top-2 right-2 left-2 flex justify-between">
                     <div className="w-6 h-6 rounded-full bg-[#0A0E17]/50 flex items-center justify-center"><HiChevronLeft className="text-white text-xs rtl:rotate-180" /></div>
@@ -200,7 +201,7 @@ export default function Screen6_MobileExperience() {
               {/* 04 - Experience Detail */}
               <PhoneFrame title="تفاصيل التجربة" num="04" active={activeScreen === 3}>
                 <div className="relative h-32">
-                  <img src="/egypthub/images/activities/desert-safari.svg" alt="" className="w-full h-full object-cover" />
+                  <Image src="/images/activities/desert-safari.svg" alt="" fill className="object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
                   <div className="absolute bottom-2 right-3">
                     <p className="text-xs font-bold">رحلة سفاري في الصحراء</p>
@@ -253,7 +254,7 @@ export default function Screen6_MobileExperience() {
                   </div>
                   {/* Recommendation card */}
                   <div className="rounded-xl overflow-hidden border border-[#1E2A3D] bg-[#141B2D]">
-                    <div className="h-14"><img src="/egypthub/images/destinations/cairo.svg" alt="" className="w-full h-full object-cover" /></div>
+                    <div className="h-14 relative"><Image src="/images/destinations/cairo.svg" alt="" fill className="object-cover" /></div>
                     <div className="p-2">
                       <p className="text-[7px] font-bold">جولة الأهرامات الكاملة</p>
                       <p className="text-[6px] text-theme-gold font-english">EGP 450</p>
@@ -279,7 +280,7 @@ export default function Screen6_MobileExperience() {
                 <ScreenHeader title="حجز سريع" showBack />
                 <div className="px-3 py-2">
                   <div className="relative rounded-xl overflow-hidden h-20 mb-3">
-                    <img src="/egypthub/images/destinations/luxor.svg" alt="" className="w-full h-full object-cover" />
+                    <Image src="/images/destinations/luxor.svg" alt="" fill className="object-cover" />
                     <div className="absolute inset-0 bg-[#0A0E17]/40" />
                     <div className="absolute bottom-1.5 right-2"><p className="text-[8px] font-bold">رحلة نيلية</p></div>
                   </div>
@@ -305,12 +306,12 @@ export default function Screen6_MobileExperience() {
               <PhoneFrame title="الحجوزات" num="07" active={activeScreen === 6}>
                 <ScreenHeader title="حجوزاتي" />
                 <div className="px-3 py-2 space-y-2">
-                  {[{ title: 'رحلة سفاري', date: '15 يناير', status: 'مؤكد', img: '/egypthub/images/activities/desert-safari.svg' },
-                    { title: 'جولة المعبد', date: '18 يناير', status: 'قادم', img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
-                    { title: 'غوص البحر الأحمر', date: '20 يناير', status: 'مؤكد', img: '/egypthub/images/activities/diving.svg' }].map((r, i) => (
+                  {[{ title: 'رحلة سفاري', date: '15 يناير', status: 'مؤكد', img: '/images/activities/desert-safari.svg' },
+                    { title: 'جولة المعبد', date: '18 يناير', status: 'قادم', img: '/images/destinations/sharm-el-sheikh.svg' },
+                    { title: 'غوص البحر الأحمر', date: '20 يناير', status: 'مؤكد', img: '/images/activities/diving.svg' }].map((r, i) => (
                     <div key={i} className="flex items-center gap-2 p-2 rounded-xl bg-[#141B2D] border border-[#1E2A3D]">
-                      <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
-                        <img src={r.img} alt="" className="w-full h-full object-cover" />
+                      <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 relative">
+                        <Image src={r.img} alt="" fill className="object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-[8px] font-bold truncate">{r.title}</p>
@@ -328,9 +329,9 @@ export default function Screen6_MobileExperience() {
                 <ScreenHeader title="المفضلة" />
                 <div className="px-3 py-2">
                   <div className="grid grid-cols-2 gap-1.5">
-                    {['/egypthub/images/destinations/cairo.svg', '/egypthub/images/destinations/luxor.svg', '/egypthub/images/activities/desert-safari.svg', '/egypthub/images/destinations/cairo.svg', '/egypthub/images/destinations/sharm-el-sheikh.svg', '/egypthub/images/activities/diving.svg'].map((img, i) => (
+                    {['/images/destinations/cairo.svg', '/images/destinations/luxor.svg', '/images/activities/desert-safari.svg', '/images/destinations/cairo.svg', '/images/destinations/sharm-el-sheikh.svg', '/images/activities/diving.svg'].map((img, i) => (
                       <div key={i} className="relative rounded-lg overflow-hidden aspect-square">
-                        <img src={img} alt="" className="w-full h-full object-cover" />
+                        <Image src={img} alt="" fill className="object-cover" />
                         <div className="absolute top-1 left-1"><HiHeart className="text-red-400 text-[10px]" /></div>
                       </div>
                     ))}
@@ -435,7 +436,7 @@ export default function Screen6_MobileExperience() {
               <PhoneFrame title="شاشة البداية" num="13" active={activeScreen === 12}>
                 <div className="flex flex-col items-center justify-center min-h-[340px] bg-gradient-to-b from-[#0A0E17] via-[#141B2D] to-[#0A0E17] relative overflow-hidden">
                   <div className="absolute inset-0 opacity-30">
-                    <img src="/egypthub/images/destinations/cairo.svg" alt="" className="w-full h-full object-cover" />
+                    <Image src="/images/destinations/cairo.svg" alt="" fill className="object-cover" />
                   </div>
                   <div className="absolute inset-0 bg-[#0A0E17]/70" />
                   <div className="relative z-10 text-center">

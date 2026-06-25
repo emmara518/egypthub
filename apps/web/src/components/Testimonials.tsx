@@ -4,11 +4,11 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const testimonials = [
-  { name: 'Sarah M.', avatar: '/egypthub/images/avatars/avatar-1.svg', text: 'EgyptHub made planning my trip to Luxor effortless. The AI concierge recommended hidden gems I would never have found on my own!', rating: 5, location: 'London, UK' },
-  { name: 'Ahmed K.', avatar: '/egypthub/images/avatars/avatar-2.svg', text: 'كمنصة مصرية، EgyptHub فخري الحقيقي. سهلت علينا السفر الداخلي وخليتنا نكتشف أماكن جديدة في بلدنا.', rating: 5, location: 'Cairo, Egypt' },
-  { name: 'Elena V.', avatar: '/egypthub/images/avatars/avatar-3.svg', text: 'The Red Sea diving package was incredible. Everything was organized perfectly. Can\'t wait to book my next trip!', rating: 5, location: 'Moscow, Russia' },
-  { name: 'James W.', avatar: '/egypthub/images/avatars/avatar-4.svg', text: 'From the pyramids to Siwa Oasis, every detail was taken care of. This is how travel should be.', rating: 4, location: 'New York, USA' },
-  { name: 'Nour A.', avatar: '/egypthub/images/avatars/avatar-5.svg', text: 'تجربة رائعة! حجزت رحلة الغردقة وكان كل شيء تمام. أنصح الكل يجرب.', rating: 5, location: 'Riyadh, KSA' },
+  { name: 'Sarah M.', avatar: '/images/avatars/avatar-1.svg', text: 'EgyptHub made planning my trip to Luxor effortless. The AI concierge recommended hidden gems I would never have found on my own!', rating: 5, location: 'London, UK' },
+  { name: 'Ahmed K.', avatar: '/images/avatars/avatar-2.svg', text: 'كمنصة مصرية، EgyptHub فخري الحقيقي. سهلت علينا السفر الداخلي وخليتنا نكتشف أماكن جديدة في بلدنا.', rating: 5, location: 'Cairo, Egypt' },
+  { name: 'Elena V.', avatar: '/images/avatars/avatar-3.svg', text: 'The Red Sea diving package was incredible. Everything was organized perfectly. Can\'t wait to book my next trip!', rating: 5, location: 'Moscow, Russia' },
+  { name: 'James W.', avatar: '/images/avatars/avatar-4.svg', text: 'From the pyramids to Siwa Oasis, every detail was taken care of. This is how travel should be.', rating: 4, location: 'New York, USA' },
+  { name: 'Nour A.', avatar: '/images/avatars/avatar-5.svg', text: 'تجربة رائعة! حجزت رحلة الغردقة وكان كل شيء تمام. أنصح الكل يجرب.', rating: 5, location: 'Riyadh, KSA' },
 ];
 
 export default function Testimonials() {

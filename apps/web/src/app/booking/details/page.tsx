@@ -31,7 +31,7 @@ export default function BookingDetailsPage() {
   const [activeTab, setActiveTab] = useState('details');
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="rtl">
+    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronRight className="w-4 h-4" />

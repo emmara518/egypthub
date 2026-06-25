@@ -6,6 +6,37 @@ import experiencesData from '@/data/experiences.json';
 const destinations: Destination[] = destinationsData as Destination[];
 const experiences: Experience[] = experiencesData as Experience[];
 
+export interface TripOptions {
+  budget?: string;
+  travelerType?: string;
+  preferences?: Record<string, any>;
+}
+
+const TRAVELER_LABELS: Record<string, string> = {
+  solo: 'مغامر منفرد',
+  couple: 'ثنائي رومانسي',
+  family: 'عائلة',
+  friends: 'أصدقاء',
+  business: 'رجال أعمال',
+};
+
+const BUDGET_LABELS: Record<string, string> = {
+  budget: 'اقتصادي',
+  'mid-range': 'متوسط',
+  luxury: 'فاخر',
+};
+
+const TRAVEL_TIMES: Record<string, Record<string, string>> = {
+  'cairo': { 'alexandria': 'ساعتين ونص', 'luxor': 'ساعة طيران' },
+  'alexandria': { 'cairo': 'ساعتين ونص' },
+  'luxor': { 'aswan': '٣ ساعات', 'cairo': 'ساعة طيران' },
+  'aswan': { 'luxor': '٣ ساعات', 'abu-simbel': '٣ ساعات' },
+};
+
+function getTimeEstimate(citySlug: string, targetSlug: string): string | null {
+  return TRAVEL_TIMES[citySlug]?.[targetSlug] || TRAVEL_TIMES[targetSlug]?.[citySlug] || null;
+}
+
 const CITY_ITINERARIES: Record<string, { day: number; title: string; expIds: string[]; }[]> = {
   'cairo': [
     { day: 1, title: 'اليوم الأول — عظمة الفراعنة', expIds: ['cairo-1', 'cairo-10'] },
@@ -54,37 +85,68 @@ const CITY_ITINERARIES: Record<string, { day: number; title: string; expIds: str
   ],
 };
 
-export function planTrip(citySlug: string, days: number): TripPlan | null {
+export function planTrip(citySlug: string, days: number, options?: TripOptions): TripPlan | null {
   const city = destinations.find(d => d.slug === citySlug);
   if (!city) return null;
 
-  const itinerary = CITY_ITINERARIES[citySlug] || generateAutoItinerary(citySlug, days);
+  const budget = options?.budget || 'mid-range';
+  const travelerType = options?.travelerType || 'solo';
+  const preferences = options?.preferences || {};
+
+  const itinerary = CITY_ITINERARIES[citySlug] || generateAutoItinerary(citySlug, days, preferences);
   const clampedDays = itinerary.slice(0, Math.min(days, itinerary.length));
 
   const planDays: TripPlanDay[] = clampedDays.map(d => {
     const dayExperiences = d.expIds
       .map(id => experiences.find(e => e.id === id))
-      .filter(Boolean) as Experience[];
+      .filter((e): e is Experience => !!e);
+
+    const filteredExps = budget === 'budget'
+      ? dayExperiences.filter(e => e.priceRange === 'منخفض' || !e.priceRange)
+      : budget === 'luxury'
+        ? dayExperiences.filter(e => e.priceRange === 'مرتفع' || !e.priceRange)
+        : dayExperiences;
+
+    const finalExps = filteredExps.length > 0 ? filteredExps : dayExperiences.slice(0, 3);
 
     return {
       day: d.day,
       title: d.title,
-      experiences: dayExperiences,
-      description: dayExperiences.map(e => e.name).join(' | '),
+      experiences: finalExps,
+      description: finalExps.map(e => `${e.name} (${e.duration})`).join(' ← '),
     };
   });
 
   const dayLabels: Record<number, string> = { 1: 'يوم', 2: 'يومين' };
   const durationLabel = days <= 2 ? dayLabels[days] || `${days} أيام` : `${days} أيام`;
 
+  const budgetLabel = BUDGET_LABELS[budget] || '';
+  const travelerLabel = TRAVELER_LABELS[travelerType] || '';
+
+  const nearbyCities: string[] = [];
+  for (const [from, tos] of Object.entries(TRAVEL_TIMES)) {
+    if (from === citySlug) nearbyCities.push(...Object.keys(tos));
+    else {
+      for (const to of Object.keys(tos)) {
+        if (to === citySlug && !nearbyCities.includes(from)) nearbyCities.push(from);
+      }
+    }
+  }
+
   return {
     city,
     days: planDays,
     totalDuration: durationLabel,
+    budget: budgetLabel || undefined,
+    travelerType: travelerLabel || undefined,
+    timeEstimates: planDays.length > 1 ? {
+      betweenDays: `متوسط وقت التنقل بين الأنشطة: ٣٠-٤٥ دقيقة`,
+      travelToCity: nearbyCities.length > 0 ? `مدن قريبة: ${nearbyCities.slice(0, 2).join('، ')}` : undefined,
+    } : undefined,
   };
 }
 
-function generateAutoItinerary(citySlug: string, days: number): { day: number; title: string; expIds: string[]; }[] {
+function generateAutoItinerary(citySlug: string, days: number, preferences?: Record<string, any>): { day: number; title: string; expIds: string[]; }[] {
   const cityExps = experiences.filter(e => e.citySlug === citySlug);
   const result: { day: number; title: string; expIds: string[]; }[] = [];
 

@@ -7,13 +7,13 @@ import { CompassIcon } from './EgyptianIcons';
 import SandWave from './SandWave';
 
 const heroImages = [
-  { url: '/egypthub/images/destinations/sharm-el-sheikh.svg', alt: 'شرم الشيخ' },
-  { url: '/egypthub/images/destinations/luxor.svg', alt: 'الأقصر' },
-  { url: '/egypthub/images/destinations/aswan.svg', alt: 'أسوان' },
-  { url: '/egypthub/images/destinations/alexandria.svg', alt: 'الإسكندرية' },
-  { url: '/egypthub/images/destinations/dahab.svg', alt: 'الغردقة' },
-  { url: '/egypthub/images/destinations/cairo.svg', alt: 'القاهرة' },
-  { url: '/egypthub/images/destinations/hurghada.svg', alt: 'سيوة' },
+  { url: '/images/destinations/sharm-el-sheikh.svg', alt: 'شرم الشيخ' },
+  { url: '/images/destinations/luxor.svg', alt: 'الأقصر' },
+  { url: '/images/destinations/aswan.svg', alt: 'أسوان' },
+  { url: '/images/destinations/alexandria.svg', alt: 'الإسكندرية' },
+  { url: '/images/destinations/dahab.svg', alt: 'الغردقة' },
+  { url: '/images/destinations/cairo.svg', alt: 'القاهرة' },
+  { url: '/images/destinations/hurghada.svg', alt: 'سيوة' },
 ];
 
 const typewriterWords = ['مزاجك', 'طريقتك', 'ذوقك'];

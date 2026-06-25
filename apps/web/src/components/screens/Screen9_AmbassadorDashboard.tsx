@@ -8,6 +8,7 @@ import {
   HiCalendar, HiClock, HiUser, HiPencil, HiPlus, HiSearch,
   HiCreditCard, HiCheckCircle, HiChat, HiShare, HiBookmark,
 } from 'react-icons/hi';
+import Image from 'next/image';
 
 /* ───── Data ───── */
 const kpis = [
@@ -37,9 +38,9 @@ const recentActivities = [
 ];
 
 const referrals = [
-  { name: 'سارة أحمد', status: 'نشط', earnings: 'EGP 450', img: '/egypthub/images/destinations/cairo.svg' },
-  { name: 'محمد علي', status: 'جديد', earnings: 'EGP 120', img: '/egypthub/images/destinations/luxor.svg' },
-  { name: 'فاطمة حسن', status: 'نشط', earnings: 'EGP 780', img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
+  { name: 'سارة أحمد', status: 'نشط', earnings: 'EGP 450', img: '/images/destinations/cairo.svg' },
+  { name: 'محمد علي', status: 'جديد', earnings: 'EGP 120', img: '/images/destinations/luxor.svg' },
+  { name: 'فاطمة حسن', status: 'نشط', earnings: 'EGP 780', img: '/images/destinations/sharm-el-sheikh.svg' },
 ];
 
 const notifications = [
@@ -49,9 +50,9 @@ const notifications = [
 ];
 
 const offers = [
-  { title: 'رحلة سفاري في الصحراء', price: 'EGP 1,200', bookings: 145, rating: 4.8, img: '/egypthub/images/activities/desert-safari.svg' },
-  { title: 'جولة معبد الكرنك', price: 'EGP 450', bookings: 230, rating: 4.9, img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
-  { title: 'غوص البحر الأحمر', price: 'EGP 800', bookings: 98, rating: 4.7, img: '/egypthub/images/activities/diving.svg' },
+  { title: 'رحلة سفاري في الصحراء', price: 'EGP 1,200', bookings: 145, rating: 4.8, img: '/images/activities/desert-safari.svg' },
+  { title: 'جولة معبد الكرنك', price: 'EGP 450', bookings: 230, rating: 4.9, img: '/images/destinations/sharm-el-sheikh.svg' },
+  { title: 'غوص البحر الأحمر', price: 'EGP 800', bookings: 98, rating: 4.7, img: '/images/activities/diving.svg' },
 ];
 
 const testimonials = [
@@ -81,7 +82,7 @@ export default function Screen9_AmbassadorDashboard() {
   const [rating, setRating] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="flex">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
@@ -329,8 +330,8 @@ export default function Screen9_AmbassadorDashboard() {
               <div className="space-y-2">
                 {offers.map((o, i) => (
                   <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-theme-gold/20 transition-colors cursor-pointer">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                      <img src={o.img} alt={o.title} className="w-full h-full object-cover" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
+                      <Image src={o.img} alt={o.title} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-bold truncate">{o.title}</p>
@@ -405,8 +406,8 @@ export default function Screen9_AmbassadorDashboard() {
               <div className="space-y-2">
                 {referrals.map((r, i) => (
                   <div key={i} className="flex items-center gap-3 p-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D]">
-                    <div className="w-9 h-9 rounded-full bg-[#1A2235] flex items-center justify-center overflow-hidden shrink-0">
-                      <img src={r.img} alt={r.name} className="w-full h-full object-cover" />
+                    <div className="w-9 h-9 rounded-full bg-[#1A2235] flex items-center justify-center overflow-hidden shrink-0 relative">
+                      <Image src={r.img} alt={r.name} fill className="object-cover" />
                     </div>
                     <div className="flex-1">
                       <p className="text-xs font-bold">{r.name}</p>

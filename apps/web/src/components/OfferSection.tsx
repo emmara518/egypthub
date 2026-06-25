@@ -8,7 +8,7 @@ const offers = [
   {
     title: 'Summer Nile Escape',
     slug: 'summer-nile',
-    image: '/egypthub/images/luxury/four-seasons.svg',
+    image: '/images/luxury/four-seasons.svg',
     discount: '30%',
     originalPrice: 'EGP 12,000',
     discountedPrice: 'EGP 8,400',
@@ -17,7 +17,7 @@ const offers = [
   {
     title: 'Red Sea Diving Package',
     slug: 'red-sea-diving-offer',
-    image: '/egypthub/images/activities/diving.svg',
+    image: '/images/activities/diving.svg',
     discount: '25%',
     originalPrice: 'EGP 8,500',
     discountedPrice: 'EGP 6,375',
@@ -26,7 +26,7 @@ const offers = [
   {
     title: 'Luxor & Aswan Combo',
     slug: 'luxor-aswan-combo',
-    image: '/egypthub/images/destinations/luxor.svg',
+    image: '/images/destinations/luxor.svg',
     discount: '40%',
     originalPrice: 'EGP 18,000',
     discountedPrice: 'EGP 10,800',

@@ -8,6 +8,11 @@ import ZainabRecommendations from './ZainabRecommendations';
 import TripPlannerCard from './TripPlannerCard';
 import QuickIntents from './QuickIntents';
 
+const TRANSLATIONS: Record<string, Record<string, string>> = {
+  ar: { zainab: 'زينب', online: 'متصلة الآن', newChat: 'بداية جديدة', placeholder: 'اكتب رسالتك...', suggestions: 'اقتراحات سريعة', langToggle: 'EN' },
+  en: { zainab: 'Zainab', online: 'Online', newChat: 'New Chat', placeholder: 'Type your message...', suggestions: 'Quick Suggestions', langToggle: 'ع' },
+};
+
 let messageIdCounter = 0;
 
 function createMessage(role: 'user' | 'zainab', content: string, extra?: Partial<ChatMessage>): ChatMessage {
@@ -26,9 +31,46 @@ export default function AIConciergeChat() {
   const [isTyping, setIsTyping] = useState(false);
   const [memory] = useState(() => createSessionMemory());
   const [showSuggestions, setShowSuggestions] = useState(true);
+  const [lang, setLang] = useState<'ar' | 'en'>('ar');
+  const [isListening, setIsListening] = useState(false);
   const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+  const recognitionRef = useRef<any>(null);
+
+  const SpeechRecognition = typeof window !== 'undefined'
+    ? (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition
+    : null;
+  const isSpeechSupported = !!SpeechRecognition;
+
+  const toggleVoice = useCallback(() => {
+    if (!isSpeechSupported) return;
+    if (isListening) {
+      recognitionRef.current?.stop();
+      setIsListening(false);
+      return;
+    }
+    try {
+      const recognition = new SpeechRecognition();
+      recognition.lang = lang === 'ar' ? 'ar-EG' : 'en-US';
+      recognition.continuous = false;
+      recognition.interimResults = false;
+      recognition.onresult = (event: any) => {
+        const transcript = event.results[0][0].transcript;
+        setInput(transcript);
+        setIsListening(false);
+      };
+      recognition.onerror = () => setIsListening(false);
+      recognition.onend = () => setIsListening(false);
+      recognition.start();
+      recognitionRef.current = recognition;
+      setIsListening(true);
+    } catch {
+      setIsListening(false);
+    }
+  }, [isListening, SpeechRecognition, isSpeechSupported, lang]);
+
+  const t = TRANSLATIONS[lang];
 
   const scrollToBottom = useCallback(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -108,18 +150,26 @@ export default function AIConciergeChat() {
             />
           </div>
           <div>
-            <h3 className="font-bold text-sm text-theme font-cairo">زينب</h3>
-            <p className="text-[10px] text-green-400 font-cairo">متصلة الآن</p>
+            <h3 className="font-bold text-sm text-theme font-cairo">{t.zainab}</h3>
+            <p className="text-[10px] text-green-400 font-cairo">{t.online}</p>
           </div>
         </div>
-        {messages.length > 1 && (
+        <div className="flex items-center gap-2">
           <button
-            onClick={() => { setMessages([createMessage('zainab', generateResponse('/start', [], memory).text, { recommendations: generateResponse('/start', [], memory).recommendations })]); setShowSuggestions(true); }}
-            className="text-[10px] text-theme-secondary hover:text-theme-gold transition-colors px-3 py-1 rounded-lg border border-theme-gold/10 font-cairo"
+            onClick={() => setLang(lang === 'ar' ? 'en' : 'ar')}
+            className="text-[10px] px-2 py-1 rounded-lg border border-theme-gold/20 text-theme-gold hover:bg-theme-gold/10 transition-colors font-cairo"
           >
-            بداية جديدة
+            {t.langToggle}
           </button>
-        )}
+          {messages.length > 1 && (
+            <button
+              onClick={() => { setMessages([createMessage('zainab', generateResponse('/start', [], memory).text, { recommendations: generateResponse('/start', [], memory).recommendations })]); setShowSuggestions(true); }}
+              className="text-[10px] text-theme-secondary hover:text-theme-gold transition-colors px-3 py-1 rounded-lg border border-theme-gold/10 font-cairo"
+            >
+              {t.newChat}
+            </button>
+          )}
+        </div>
       </div>
 
       <div ref={chatContainerRef} className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
@@ -184,7 +234,7 @@ export default function AIConciergeChat() {
             transition={{ delay: 0.5 }}
             className="pt-2"
           >
-            <p className="text-xs text-theme-secondary text-center mb-3 font-cairo">اقتراحات سريعة</p>
+            <p className="text-xs text-theme-secondary text-center mb-3 font-cairo">{t.suggestions}</p>
             <QuickIntents onSelect={handleIntentSelect} />
           </motion.div>
         )}
@@ -199,9 +249,24 @@ export default function AIConciergeChat() {
             value={input}
             onChange={e => setInput(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="اكتب رسالتك..."
+            placeholder={t.placeholder}
             className="flex-1 bg-theme-bg rounded-xl px-4 py-2.5 text-sm border border-theme focus:border-theme-gold/40 outline-none transition-colors placeholder:text-theme-muted text-theme font-cairo"
           />
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={toggleVoice}
+            disabled={!isSpeechSupported}
+            className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all disabled:opacity-30 ${isListening ? 'bg-red-500 shadow-[0_0_20px_rgba(239,68,68,0.5)]' : 'bg-theme-elevated border border-theme-gold/30 hover:border-theme-gold/60'}`}
+          >
+            <motion.svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={isListening ? '#fff' : '#D4A24C'} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+              animate={isListening ? { scale: [1, 1.2, 1] } : {}} transition={{ duration: 0.8, repeat: Infinity }}>
+              <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+              <line x1="12" y1="19" x2="12" y2="23" />
+              <line x1="8" y1="23" x2="16" y2="23" />
+            </motion.svg>
+          </motion.button>
           <motion.button
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}

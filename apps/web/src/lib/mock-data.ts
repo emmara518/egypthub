@@ -42,8 +42,8 @@ export const destinations: Destination[] = [
     name: 'شرم الشيخ',
     subtitle: 'Red Sea Paradise',
     description: 'وجهة الغوص الأولى في العالم، بشواطئ خلابة وحياة بحرية مذهلة ومنتجعات عالمية.',
-    image: '/egypthub/images/destinations/sharm-el-sheikh.svg',
-    heroImage: '/egypthub/images/destinations/sharm-el-sheikh.svg',
+    image: '/images/destinations/sharm-el-sheikh.jpg',
+    heroImage: '/images/destinations/sharm-el-sheikh.jpg',
     rating: 4.8,
     experienceCount: 240,
     region: 'بحر أحمر',
@@ -60,8 +60,8 @@ export const destinations: Destination[] = [
     name: 'القاهرة',
     subtitle: 'City of a Thousand Minarets',
     description: 'عاصمة مصر الخالدة، حيث تلتقي الحضارة الفرعونية بالحياة العصرية.',
-    image: '/egypthub/images/destinations/cairo.svg',
-    heroImage: '/egypthub/images/destinations/cairo.svg',
+    image: '/images/destinations/cairo.jpg',
+    heroImage: '/images/destinations/cairo.jpg',
     rating: 4.5,
     experienceCount: 380,
     region: 'القاهرة الكبرى',
@@ -78,8 +78,8 @@ export const destinations: Destination[] = [
     name: 'الأقصر',
     subtitle: 'Ancient Wonders',
     description: 'أعظم متحف مفتوح في العالم، موطن وادي الملوك والمعابد الفرعونية.',
-    image: '/egypthub/images/destinations/luxor.svg',
-    heroImage: '/egypthub/images/destinations/luxor.svg',
+    image: '/images/destinations/luxor.jpg',
+    heroImage: '/images/destinations/luxor.jpg',
     rating: 4.9,
     experienceCount: 160,
     region: 'صعيد مصر',
@@ -95,8 +95,8 @@ export const destinations: Destination[] = [
     name: 'أسوان',
     subtitle: 'Nile Serenity',
     description: 'مدينة النيل الساحرة، بطبيعتها الخلابة ومعابدها النوبية وأجوائها الهادئة.',
-    image: '/egypthub/images/destinations/aswan.svg',
-    heroImage: '/egypthub/images/destinations/aswan.svg',
+    image: '/images/destinations/aswan.jpg',
+    heroImage: '/images/destinations/aswan.jpg',
     rating: 4.7,
     experienceCount: 120,
     region: 'صعيد مصر',
@@ -112,8 +112,8 @@ export const destinations: Destination[] = [
     name: 'الإسكندرية',
     subtitle: 'Mediterranean Bride',
     description: 'عروس البحر المتوسط، مدينة تجمع بين التاريخ اليوناني الروماني وسحر البحر.',
-    image: '/egypthub/images/destinations/alexandria.svg',
-    heroImage: '/egypthub/images/destinations/alexandria.svg',
+    image: '/images/destinations/alexandria.jpg',
+    heroImage: '/images/destinations/alexandria.jpg',
     rating: 4.6,
     experienceCount: 180,
     region: 'ساحل البحر المتوسط',
@@ -129,8 +129,8 @@ export const destinations: Destination[] = [
     name: 'الغردقة',
     subtitle: 'Diving Capital',
     description: 'عاصمة الغوص في مصر، بشواطئها الذهبية ومياهها الفيروزية ومنتجعاتها الفاخرة.',
-    image: '/egypthub/images/destinations/hurghada.svg',
-    heroImage: '/egypthub/images/destinations/hurghada.svg',
+    image: '/images/destinations/hurghada.jpg',
+    heroImage: '/images/destinations/hurghada.jpg',
     rating: 4.8,
     experienceCount: 290,
     region: 'بحر أحمر',
@@ -146,8 +146,8 @@ export const destinations: Destination[] = [
     name: 'سيوة',
     subtitle: 'Oasis Magic',
     description: 'واحة سحرية في قلب الصحراء الغربية، بطبيعتها الفريدة وثقافتها البربرية الأصيلة.',
-    image: '/egypthub/images/destinations/siwa.svg',
-    heroImage: '/egypthub/images/destinations/siwa.svg',
+    image: '/images/destinations/siwa.jpg',
+    heroImage: '/images/destinations/siwa.jpg',
     rating: 4.7,
     experienceCount: 60,
     region: 'الصحراء الغربية',
@@ -163,8 +163,8 @@ export const destinations: Destination[] = [
     name: 'دهب',
     subtitle: 'Bedouin Vibes',
     description: 'وجهة البدو ومحبي الغوص والاسترخاء، بأجوائها البوهيمية الفريدة.',
-    image: '/egypthub/images/destinations/dahab.svg',
-    heroImage: '/egypthub/images/destinations/dahab.svg',
+    image: '/images/destinations/dahab.jpg',
+    heroImage: '/images/destinations/dahab.jpg',
     rating: 4.6,
     experienceCount: 90,
     region: 'بحر أحمر',
@@ -192,12 +192,12 @@ export const experiences: Experience[] = [
     price: 2500,
     currency: 'EGP',
     duration: '8 ساعات',
-    image: '/egypthub/images/destinations/cairo.svg',
+    image: '/images/destinations/cairo.jpg',
     gallery: [
-      '/egypthub/images/destinations/cairo.svg',
-      '/egypthub/images/destinations/luxor.svg',
-      '/egypthub/images/destinations/aswan.svg',
-      '/egypthub/images/destinations/sharm-el-sheikh.svg',
+      '/images/destinations/cairo.jpg',
+      '/images/destinations/luxor.jpg',
+      '/images/destinations/aswan.jpg',
+      '/images/destinations/sharm-el-sheikh.jpg',
     ],
     highlights: [
       'مرشد سياحي خبير متحدث بالعربية',
@@ -226,7 +226,7 @@ export const experiences: Experience[] = [
     ],
     host: {
       name: 'محمد علي',
-      avatar: '/egypthub/images/avatars/avatar-11.svg',
+      avatar: '/images/avatars/avatar-11.svg',
       bio: 'مرشد سياحي محترف بخبرة 15 عامًا في مجال السياحة التاريخية. خبير في الحضارة المصرية القديمة ومتحدث بطلاقة بالعربية والإنجليزية والفرنسية.',
     },
     amenities: [
@@ -251,11 +251,11 @@ export const experiences: Experience[] = [
     price: 1800,
     currency: 'EGP',
     duration: 'يوم كامل',
-    image: '/egypthub/images/activities/diving.svg',
+    image: '/images/businesses/diving.jpg',
     gallery: [
-      '/egypthub/images/activities/diving.svg',
-      '/egypthub/images/destinations/hurghada.svg',
-      '/egypthub/images/destinations/sharm-el-sheikh.svg',
+      '/images/activities/diving-activity.jpg',
+      '/images/destinations/hurghada.jpg',
+      '/images/destinations/sharm-el-sheikh.jpg',
     ],
     highlights: [
       'مدرب غوص معتمد دولياً (PADI)',
@@ -285,7 +285,7 @@ export const experiences: Experience[] = [
     ],
     host: {
       name: 'نادية جمال',
-      avatar: '/egypthub/images/avatars/avatar-9.svg',
+      avatar: '/images/avatars/avatar-9.svg',
       bio: 'مدربة غوص محترفة معتمدة من PADI مع أكثر من 3000 غوصة في البحر الأحمر. شغوفة بالحياة البحرية والحفاظ على الشعاب المرجانية.',
     },
     amenities: [
@@ -310,11 +310,11 @@ export const experiences: Experience[] = [
     price: 2200,
     currency: 'EGP',
     duration: 'يوم كامل',
-    image: '/egypthub/images/destinations/luxor.svg',
+    image: '/images/destinations/luxor.jpg',
     gallery: [
-      '/egypthub/images/destinations/luxor.svg',
-      '/egypthub/images/destinations/aswan.svg',
-      '/egypthub/images/destinations/alexandria.svg',
+      '/images/destinations/luxor.jpg',
+      '/images/destinations/aswan.jpg',
+      '/images/destinations/alexandria.jpg',
     ],
     highlights: [
       'زيارة وادي الملوك',
@@ -345,7 +345,7 @@ export const experiences: Experience[] = [
     ],
     host: {
       name: 'خالد عبدالله',
-      avatar: '/egypthub/images/avatars/avatar-12.svg',
+      avatar: '/images/avatars/avatar-12.svg',
       bio: 'أخصائي آثار ومصريات بخبرة 20 عاماً. قام بتأليف عدة كتب عن الحضارة المصرية القديمة ويقدم محاضرات في الجامعات العالمية.',
     },
     amenities: [
@@ -370,11 +370,11 @@ export const experiences: Experience[] = [
     price: 3500,
     currency: 'EGP',
     duration: 'يومان / ليلة',
-    image: '/egypthub/images/stories/sunset-over-the-pyramids.svg',
+    image: '/images/destinations/siwa.jpg',
     gallery: [
-      '/egypthub/images/stories/sunset-over-the-pyramids.svg',
-      '/egypthub/images/destinations/siwa.svg',
-      '/egypthub/images/destinations/hurghada.svg',
+      '/images/destinations/siwa.jpg',
+      '/images/destinations/hurghada.jpg',
+      '/images/activities/desert-safari-activity.jpg',
     ],
     highlights: [
       'ركوب الدفع الرباعي في الكثبان الرملية',
@@ -404,7 +404,7 @@ export const experiences: Experience[] = [
     ],
     host: {
       name: 'موسى الطويل',
-      avatar: '/egypthub/images/avatars/avatar-20.svg',
+      avatar: '/images/avatars/avatar-20.svg',
       bio: 'مرشد صحراوي من سيوة يعرف الصحراء الغربية مثل ظهر يده. يقدم تجارب سفاري أصيلة تجمع بين المغامرة والثقافة البدوية.',
     },
     amenities: [
@@ -429,11 +429,11 @@ export const experiences: Experience[] = [
     price: 8500,
     currency: 'EGP',
     duration: '5 أيام / 4 ليالٍ',
-    image: '/egypthub/images/luxury/four-seasons.svg',
+    image: '/images/activities/nile-cruise.jpg',
     gallery: [
-      '/egypthub/images/luxury/four-seasons.svg',
-      '/egypthub/images/destinations/aswan.svg',
-      '/egypthub/images/destinations/luxor.svg',
+      '/images/activities/nile-cruise.jpg',
+      '/images/destinations/aswan.jpg',
+      '/images/destinations/luxor.jpg',
     ],
     highlights: [
       'الإقامة على متن المركب',
@@ -464,7 +464,7 @@ export const experiences: Experience[] = [
     ],
     host: {
       name: 'أسامة النوبي',
-      avatar: '/egypthub/images/avatars/avatar-15.svg',
+      avatar: '/images/avatars/avatar-15.svg',
       bio: 'قبطان نيلية من أسوان بخبرة 25 عاماً في الملاحة النيلية. يعشق نهر النيل ويقدم لضيوفه تجربة أصيلة تجمع بين الفخامة والتقاليد.',
     },
     amenities: [
@@ -509,10 +509,10 @@ export const stories: Story[] = [
     title: 'غروب الشمس خلف الأهرامات',
     subtitle: 'رحلة في قلب التاريخ المصري القديم',
     author: 'سارة أحمد',
-    authorAvatar: '/egypthub/images/avatars/avatar-32.svg',
+    authorAvatar: '/images/avatars/avatar-32.svg',
     date: '15 يناير 2025',
     readTime: '5 دقائق',
-    image: '/egypthub/images/destinations/cairo.svg',
+    image: '/images/destinations/cairo.svg',
     category: 'تاريخ',
     tags: ['الأهرامات', 'الجيزة', 'الحضارة', 'الفراعنة'],
     excerpt: 'لا شيء يضاهي شعور الوقوف أمام أعظم عجائب العالم القديم مع غروب الشمس.',
@@ -533,10 +533,10 @@ export const stories: Story[] = [
     title: 'الغوص في سحر البحر الأحمر',
     subtitle: 'عالم تحت الماء يفوق الخيال',
     author: 'أحمد كمال',
-    authorAvatar: '/egypthub/images/avatars/avatar-53.svg',
+    authorAvatar: '/images/avatars/avatar-53.svg',
     date: '10 يناير 2025',
     readTime: '7 دقائق',
-    image: '/egypthub/images/activities/diving.svg',
+    image: '/images/activities/diving.svg',
     category: 'مغامرات',
     tags: ['الغوص', 'البحر الأحمر', 'الشعاب المرجانية', 'الحياة البحرية'],
     excerpt: 'اكتشاف عالم ملون تحت سطح البحر الأحمر — تجربة تغير حياتك.',
@@ -557,10 +557,10 @@ export const stories: Story[] = [
     title: 'معابد الأقصر: رحلة عبر الزمن',
     subtitle: 'أعظم متحف مفتوح في العالم',
     author: 'ليلى حسن',
-    authorAvatar: '/egypthub/images/avatars/avatar-47.svg',
+    authorAvatar: '/images/avatars/avatar-47.svg',
     date: '5 يناير 2025',
     readTime: '6 دقائق',
-    image: '/egypthub/images/destinations/luxor.svg',
+    image: '/images/destinations/luxor.svg',
     category: 'تاريخ',
     tags: ['الأقصر', 'معابد', 'وادي الملوك', 'الفراعنة'],
     excerpt: 'بين أعمدة الكرنك وأسرار وادي الملوك، رحلة لا تنسى في مدينة الأقصر الساحرة.',
@@ -581,10 +581,10 @@ export const stories: Story[] = [
     title: 'سيوة: واحة الهدوء والسحر',
     subtitle: 'هروب من صخب المدينة إلى قلب الصحراء',
     author: 'محمد فريد',
-    authorAvatar: '/egypthub/images/avatars/avatar-68.svg',
+    authorAvatar: '/images/avatars/avatar-68.svg',
     date: '28 ديسمبر 2024',
     readTime: '8 دقائق',
-    image: '/egypthub/images/destinations/siwa.svg',
+    image: '/images/destinations/siwa.svg',
     category: 'طبيعة',
     tags: ['سيوة', 'الصحراء', 'الواحات', 'الطبيعة'],
     excerpt: 'في قلب الصحراء الغربية، توجد واحة سيوة — جنة مخفية بطبيعتها الساحرة وثقافتها الفريدة.',
@@ -605,10 +605,10 @@ export const stories: Story[] = [
     title: 'الإسكندرية: عروس البحر المتوسط',
     subtitle: 'مدينة تجمع بين التاريخ وسحر البحر',
     author: 'نورا إبراهيم',
-    authorAvatar: '/egypthub/images/avatars/avatar-44.svg',
+    authorAvatar: '/images/avatars/avatar-44.svg',
     date: '20 ديسمبر 2024',
     readTime: '4 دقائق',
-    image: '/egypthub/images/destinations/alexandria.svg',
+    image: '/images/destinations/alexandria.svg',
     category: 'مدن',
     tags: ['الإسكندرية', 'البحر المتوسط', 'تاريخ', 'ثقافة'],
     excerpt: 'المدينة التي تأسر القلوب بمزيجها الفريد من التاريخ القديم والحياة العصرية.',
@@ -629,10 +629,10 @@ export const stories: Story[] = [
     title: 'رحلة نيلية من أسوان إلى الأقصر',
     subtitle: 'خمسة أيام من السحر على ضفاف النيل',
     author: 'هند سليمان',
-    authorAvatar: '/egypthub/images/avatars/avatar-23.svg',
+    authorAvatar: '/images/avatars/avatar-23.svg',
     date: '15 ديسمبر 2024',
     readTime: '6 دقائق',
-    image: '/egypthub/images/luxury/four-seasons.svg',
+    image: '/images/luxury/four-seasons.svg',
     category: 'رحلات',
     tags: ['النيل', 'أسوان', 'الأقصر', 'رحلة نيلية'],
     excerpt: 'رحلة بحرية فاخرة على نهر النيل — مزيج من الاسترخاء والمغامرة والاكتشاف.',
@@ -665,3 +665,138 @@ export const categoryIcons: Record<string, string> = {
   sports: '⚽',
   all: '📍',
 };
+
+/* ───── Centralized User ───── */
+export const MOCK_USER = {
+  id: 'user-1',
+  name: 'يوسف عبدالله',
+  email: 'youssef@egypthub.com',
+  phone: '+201001234567',
+  role: 'user' as const,
+  avatar: '/images/avatars/avatar-11.svg',
+  title: 'مستكشف مصر',
+  stats: { trips: 8, destinations: 5, reviews: 12, favorites: 6 },
+  wallet: { balance: 2750, points: 1250 },
+  memberSince: 'يناير 2024',
+};
+
+export interface MockBooking {
+  id: string; code: string; title: string; date: string; duration: string;
+  price: number; guests: string; status: string; image: string; tickets: boolean;
+}
+
+export const MOCK_BOOKINGS: MockBooking[] = [
+  { id: 'b1', code: 'EH-4521', title: 'مغامرة الغوص في البحر الأحمر', date: '15 يناير 2025', duration: 'يوم كامل', price: 5900, guests: '2 بالغين + 1 طفل', status: 'مؤكد', image: '/images/activities/diving.svg', tickets: true },
+  { id: 'b2', code: 'EH-4520', title: 'جولة في معبد الأقصر', date: '18 يناير 2025', duration: 'نصف يوم', price: 2200, guests: '2 بالغين', status: 'قادم', image: '/images/destinations/luxor.svg', tickets: false },
+  { id: 'b3', code: 'EH-4519', title: 'رحلة نيلية أسوان - الأقصر', date: '25 يناير 2025', duration: '5 أيام / 4 ليالٍ', price: 8500, guests: '2 بالغين', status: 'مؤكد', image: '/images/luxury/four-seasons.svg', tickets: true },
+  { id: 'b4', code: 'EH-4518', title: 'رحلة سفاري في الصحراء', date: '02 فبراير 2025', duration: 'يوم كامل', price: 4100, guests: '2 بالغين', status: 'قيد المراجعة', image: '/images/activities/desert-safari.svg', tickets: false },
+  { id: 'b5', code: 'EH-4517', title: 'رحلة غوص في الغردقة', date: '10 فبراير 2025', duration: 'نصف يوم', price: 3500, guests: '3 بالغين', status: 'مؤكد', image: '/images/activities/diving.svg', tickets: true },
+  { id: 'b6', code: 'EH-4522', title: 'جولة أهرامات الجيزة', date: '5 مارس 2025', duration: '8 ساعات', price: 2500, guests: 'بالغين', status: 'ملغي', image: '/images/destinations/cairo.svg', tickets: false },
+];
+
+export interface MockTransaction {
+  id: number; title: string; amount: number; date: string; type: 'expense' | 'income'; category: string;
+}
+
+export const MOCK_TRANSACTIONS: MockTransaction[] = [
+  { id: 1, title: 'حجز رحلة سفاري', amount: -450, date: '14 يناير', type: 'expense', category: 'مغامرات' },
+  { id: 2, title: 'استرداد مبلغ', amount: +200, date: '12 يناير', type: 'income', category: 'استرد' },
+  { id: 3, title: 'حجز فندق النيل', amount: -1200, date: '10 يناير', type: 'expense', category: 'فنادق' },
+  { id: 4, title: 'حجز غوص', amount: -850, date: '8 يناير', type: 'expense', category: 'رياضات مائية' },
+  { id: 5, title: 'استرداد مبلغ', amount: +500, date: '5 يناير', type: 'income', category: 'استرد' },
+  { id: 6, title: 'حجز رحلة نيلية', amount: -3400, date: '2 يناير', type: 'expense', category: 'رحلات' },
+  { id: 7, title: 'مكافأة إحالة', amount: +150, date: '30 ديسمبر', type: 'income', category: 'مكافآت' },
+  { id: 8, title: 'حجز مطعم', amount: -320, date: '28 ديسمبر', type: 'expense', category: 'مطاعم' },
+];
+
+export interface MockNotification {
+  text: string; time: string; type: 'success' | 'offer' | 'reminder';
+}
+
+export const MOCK_NOTIFICATIONS: MockNotification[] = [
+  { text: 'تم تأكيد حجز رحلة الصحراء', time: 'منذ 5 دقائق', type: 'success' },
+  { text: 'عرض خاص: خصم 20% على رحلات النيل', time: 'منذ ساعة', type: 'offer' },
+  { text: 'تذكير: رحلتك بعد 3 أيام', time: 'منذ 3 ساعات', type: 'reminder' },
+  { text: 'تم إضافة تقييم جديد على حسابك', time: 'منذ يوم', type: 'success' },
+  { text: 'عرض العيد: احجز الآن واستمتع بخصم 30%', time: 'منذ يومين', type: 'offer' },
+  { text: 'تم تحديث معلومات رحلتك', time: 'منذ 3 أيام', type: 'reminder' },
+];
+
+export interface MockReview {
+  title: string; stars: number; text: string; date: string;
+}
+
+export const MOCK_REVIEWS: MockReview[] = [
+  { title: 'رحلة سفاري رائعة', stars: 5, text: 'تجربة لا تنسى في صحراء مصر', date: 'يناير 2025' },
+  { title: 'معبد الأقصر مذهل', stars: 4, text: 'جولة تاريخية ممتعة جداً', date: 'ديسمبر 2024' },
+  { title: 'غوص ممتاز', stars: 5, text: 'أجمل تجربة غوص في حياتي', date: 'نوفمبر 2024' },
+  { title: 'فندق رائع', stars: 4, text: 'إقامة ممتازة وخدمة رائعة', date: 'أكتوبر 2024' },
+];
+
+export interface MockReward {
+  id: number; title: string; points: number; expiry: string; icon: string;
+}
+
+export const MOCK_REWARDS: MockReward[] = [
+  { id: 1, title: 'خصم 15% على الحجز القادم', points: 500, expiry: '31 يناير', icon: '🎫' },
+  { id: 2, title: 'ترقية VIP مجانية', points: 1000, expiry: '28 فبراير', icon: '👑' },
+  { id: 3, title: 'تجربة مجانية', points: 2000, expiry: '15 مارس', icon: '🎁' },
+  { id: 4, title: 'نقاط إضافية', points: 50, expiry: '90 يوم', icon: '⭐' },
+];
+
+/* ───── Sharm El-Sheikh Businesses (for Category Pages) ───── */
+export interface MockBusiness {
+  id: string; name: string; nameEn: string; slug: string; category: string;
+  subcategory: string; description: string; rating: number; reviewsCount: number;
+  image: string; priceLevel: number; phone: string; address: string;
+  workingHours: string; featured: boolean; tags: string[];
+}
+
+export const SHARM_BUSINESSES: MockBusiness[] = [
+  { id: 'biz-1', name: 'فول وفلافل أبو العلا', nameEn: 'Abou El-Ella', slug: 'foul-wa-falafel', category: 'مطاعم', subcategory: 'مصري', description: 'أشهر مطعم فول وفلافل في شرم الشيخ، طعم أصيل وخدمة سريعة.', rating: 4.5, reviewsCount: 238, image: '/images/businesses/foul-falafel.jpg', priceLevel: 1, phone: '01012345678', address: 'شارع السلام، حي النور', workingHours: '٦ صباحاً - ١١ مساءً', featured: true, tags: ['فول', 'فلافل', 'مصري', 'إفطار'] },
+  { id: 'biz-2', name: 'سمك رزق البحر', nameEn: 'Rizq El-Bahr', slug: 'rizq-el-bahr', category: 'مطاعم', subcategory: 'مأكولات بحرية', description: 'أطعم المأكولات البحرية الطازجة يومياً.', rating: 4.7, reviewsCount: 312, image: '/images/businesses/seafood.jpg', priceLevel: 2, phone: '01023456789', address: 'شارع الميناء، المنطقة السياحية', workingHours: '١٢ ظهراً - ١٢ صباحاً', featured: true, tags: ['سمك', 'بحرية', 'طازج'] },
+  { id: 'biz-3', name: 'قهوة سي سلام بلدي', nameEn: 'Sea Salam Balady', slug: 'sea-salam-balady', category: 'كافيهات', subcategory: 'بلدي', description: 'قهوة بلدي أصيلة مع إطلالة رائعة على البحر.', rating: 4.3, reviewsCount: 156, image: '/images/businesses/sea-salam-cafe.jpg', priceLevel: 1, phone: '01034567890', address: 'الكورنيش، المنطقة السياحية', workingHours: '٧ صباحاً - ٢ صباحاً', featured: true, tags: ['قهوة', 'شيشة', 'إطلالة', 'بحر'] },
+  { id: 'biz-4', name: 'دايف دايف للغوص', nameEn: 'Dive Dive', slug: 'dive-dive', category: 'أنشطة', subcategory: 'غوص', description: 'مركز غوص معتمد دولياً لتعليم الغوص والرحلات البحرية.', rating: 4.9, reviewsCount: 445, image: '/images/businesses/diving.jpg', priceLevel: 3, phone: '01045678901', address: 'مارينا شرم الشيخ', workingHours: '٨ صباحاً - ٦ مساءً', featured: true, tags: ['غوص', 'PADI', 'رحلات بحرية', 'تدريب'] },
+  { id: 'biz-5', name: 'بازار خان الخليلي', nameEn: 'Khan El-Khalili', slug: 'khan-el-khalili-bazaar', category: 'تسوق', subcategory: 'هدايا تذكارية', description: 'أكبر بازار للهدايا التذكارية والمشغولات اليدوية.', rating: 4.2, reviewsCount: 89, image: '/images/businesses/khan-bazaar.jpg', priceLevel: 2, phone: '01056789012', address: 'سوق شرم الشيخ القديم', workingHours: '١٠ صباحاً - ١١ مساءً', featured: false, tags: ['هدايا', 'مشغولات يدوية', 'تذكارات'] },
+  { id: 'biz-6', name: 'فندق رويال ريف', nameEn: 'Royal Reef Resort', slug: 'royal-reef', category: 'فنادق', subcategory: 'منتجع', description: 'منتجع 5 نجوم على البحر مع شاطئ خاص وسبا فاخر.', rating: 4.8, reviewsCount: 512, image: '/images/businesses/royal-reef.jpg', priceLevel: 4, phone: '01067890123', address: 'خليج نعمة', workingHours: 'على مدار 24 ساعة', featured: true, tags: ['فندق', 'منتجع', 'سبا', 'شاطئ'] },
+  { id: 'biz-7', name: 'سفاري الصحراء', nameEn: 'Desert Safari', slug: 'desert-safari-sharm', category: 'أنشطة', subcategory: 'سفاري', description: 'رحلة سفاري مثيرة في صحراء سيناء مع ركوب الجمال وعشاء بدوي.', rating: 4.6, reviewsCount: 278, image: '/images/businesses/desert-safari.jpg', priceLevel: 2, phone: '01078901234', address: 'منطقة الصحراء، طريق دهب', workingHours: '٤ عصراً - ١٠ مساءً', featured: true, tags: ['سفاري', 'جمال', 'صحراء', 'عشاء بدوي'] },
+  { id: 'biz-8', name: 'ترانسفير شرم', nameEn: 'Sharm Transfers', slug: 'sharm-transfers', category: 'نقل', subcategory: 'توصيل', description: 'خدمة نقل خاصة مكيفة من وإلى المطار والفنادق.', rating: 4.4, reviewsCount: 167, image: '/images/businesses/sharm-transfers.jpg', priceLevel: 2, phone: '01089012345', address: 'جميع أنحاء شرم الشيخ', workingHours: 'على مدار 24 ساعة', featured: false, tags: ['نقل', 'مطار', 'خاص', 'مكيف'] },
+];
+
+export const categoryDisplayNames: Record<string, string> = {
+  restaurants: 'مطاعم', cafes: 'كافيهات', activities: 'أنشطة ومغامرات',
+  hotels: 'فنادق', shopping: 'تسوق', transport: 'نقل',
+};
+
+export function getBusinessesByCategory(categorySlug: string): MockBusiness[] {
+  const name = categoryDisplayNames[categorySlug];
+  if (!name) return [];
+  return SHARM_BUSINESSES.filter(b => b.category === name);
+}
+
+export function getCategoryCounts() {
+  const counts: Record<string, number> = {};
+  SHARM_BUSINESSES.forEach(b => {
+    counts[b.category] = (counts[b.category] || 0) + 1;
+  });
+  return counts;
+}
+
+export const MOCK_OFFERS = [
+  { id: 'off-1', title: 'خصم 50% على الغوص', business: 'دايف دايف للغوص', originalPrice: 1800, offerPrice: 900, validUntil: '31 يناير 2025', image: '/images/businesses/diving.jpg' },
+  { id: 'off-2', title: 'فول وفلافل بسعر 10 جنيه', business: 'فول وفلافل أبو العلا', originalPrice: 25, offerPrice: 10, validUntil: '15 فبراير 2025', image: '/images/businesses/foul-falafel.jpg' },
+  { id: 'off-3', title: 'إقامة فندقية خصم 30%', business: 'فندق رويال ريف', originalPrice: 5000, offerPrice: 3500, validUntil: '28 فبراير 2025', image: '/images/businesses/royal-reef.jpg' },
+  { id: 'off-4', title: 'سفاري للشخصين بسعر واحد', business: 'سفاري الصحراء', originalPrice: 820, offerPrice: 410, validUntil: '31 مارس 2025', image: '/images/businesses/desert-safari.jpg' },
+];
+
+export const MOCK_PARTNERS = [
+  { slug: 'abu-ella', name: 'فول وفلافل أبو العلا', category: 'مطاعم', city: 'شرم الشيخ', rating: 4.5, description: 'أشهر مطعم فول وفلافل في شرم الشيخ', image: '/images/businesses/foul-falafel.jpg' },
+  { slug: 'dive-dive', name: 'دايف دايف للغوص', category: 'أنشطة', city: 'شرم الشيخ', rating: 4.9, description: 'مركز غوص معتمد دولياً', image: '/images/businesses/diving.jpg' },
+  { slug: 'royal-reef', name: 'فندق رويال ريف', category: 'فنادق', city: 'شرم الشيخ', rating: 4.8, description: 'منتجع 5 نجوم على البحر', image: '/images/businesses/royal-reef.jpg' },
+];
+
+export const MOCK_AMBASSADORS = [
+  { slug: 'nour', name: 'نور الشرم', role: 'سفير شرم الشيخ', city: 'شرم الشيخ', rating: 4.9, specialties: ['الغوص', 'السفاري', 'المطاعم'], languages: ['العربية', 'الإنجليزية', 'الروسية'], referrals: 45, leads: 28, conversions: 19, earnings: 12400, image: '/images/avatars/ambassador-nour.jpg', bio: 'خبير في شرم الشيخ، بعرف كل حتة فيها. هديك أفضل التجارب وأضمنلك أحسن الأسعار.', verified: true },
+  { slug: 'ahmed', name: 'أحمد السائح', role: 'سفير القاهرة', city: 'القاهرة', rating: 4.7, specialties: ['التاريخ', 'المتاحف', 'الجولات'], languages: ['العربية', 'الإنجليزية'], referrals: 32, leads: 20, conversions: 14, earnings: 8700, image: '/images/avatars/ambassador-ahmed.jpg', bio: 'مؤرخ شغوف بالحضارة المصرية، هتعرف مني حاجات مكتوبهاش الكتب.', verified: true },
+  { slug: 'mariam', name: 'مريم النيل', role: 'سفير الأقصر', city: 'الأقصر', rating: 4.8, specialties: ['الآثار', 'التصوير', 'الرحلات النيلية'], languages: ['العربية', 'الإنجليزية', 'الفرنسية'], referrals: 28, leads: 22, conversions: 16, earnings: 11200, image: '/images/avatars/ambassador-mariam.jpg', bio: 'بنحب الأقصر وبحب أعرف الناس بجمالها، مرشدة سياحية وأثرية بخبرة ١٠ سنين.', verified: true },
+];

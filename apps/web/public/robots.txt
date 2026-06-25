@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /screens
+Disallow: /api
+
+Sitemap: https://egypthub.co/sitemap.xml

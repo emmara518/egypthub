@@ -34,7 +34,7 @@ export default function CheckoutPage() {
     return total;
   };
 
-  if (step === 2) {
+  if (step === 5) {
     return (
       <div className="min-h-screen bg-theme-bg pt-24">
         <div className="max-w-[600px] mx-auto px-4 py-12">
@@ -67,7 +67,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="rtl">
+    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronRight className="w-4 h-4" />
@@ -326,7 +326,7 @@ export default function CheckoutPage() {
                         السابق
                       </motion.button>
                       <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
-                        onClick={() => setStep(2)}
+                        onClick={() => setStep(5)}
                         className="px-8 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-accent-amber text-dark-900 font-bold text-sm font-cairo">
                         ادفع الآن
                       </motion.button>

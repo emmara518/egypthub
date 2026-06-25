@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   HiCalendar, HiUsers, HiCog, HiEye, HiUser, HiCreditCard,
@@ -93,7 +94,7 @@ export default function BookingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="rtl">
+    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronRight className="w-4 h-4" />
@@ -275,7 +276,7 @@ export default function BookingPage() {
                     <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-theme-gold/10 text-theme-gold font-english mb-3 inline-block">04</span>
                     <h2 className="text-xl font-bold font-playfair text-theme mb-6">مراجعة الحجز</h2>
                     <div className="relative rounded-xl overflow-hidden h-40 mb-6">
-                      <img src="/egypthub/images/activities/diving.svg" alt="" className="w-full h-full object-cover" />
+                      <Image src="/egypthub/images/activities/diving.svg" alt="" fill className="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                       <div className="absolute inset-0 bg-gradient-to-t from-theme-bg to-transparent" />
                       <div className="absolute bottom-3 right-3">
                         <p className="text-lg font-bold text-theme font-cairo">مغامرة الغوص في البحر الأحمر</p>

@@ -117,6 +117,12 @@ export interface TripPlan {
   city: Destination;
   days: TripPlanDay[];
   totalDuration: string;
+  budget?: string;
+  travelerType?: string;
+  timeEstimates?: {
+    betweenDays?: string;
+    travelToCity?: string;
+  };
 }
 
 export interface ChatMessage {

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -98,8 +99,8 @@ export default function AIConciergePage() {
               <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-5">
                 <div className="relative w-24 h-24 mx-auto mb-4">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber p-[2px]">
-                    <div className="w-full h-full rounded-full overflow-hidden bg-theme-card">
-                      <img src="/egypthub/images/destinations/cairo.svg" alt="زينب" className="w-full h-full object-cover" />
+                    <div className="relative w-full h-full rounded-full overflow-hidden bg-theme-card">
+                      <Image src="/egypthub/images/destinations/cairo.svg" alt="زينب" fill className="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                     </div>
                   </div>
                   <motion.div
@@ -163,8 +164,8 @@ export default function AIConciergePage() {
                 className="rounded-2xl border border-theme-gold/20 bg-theme-card overflow-hidden flex flex-col xl:row-span-2"
               >
                 <div className="p-4 border-b border-theme-gold/10 flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber overflow-hidden">
-                    <img src="/egypthub/images/destinations/cairo.svg" alt="زينب" className="w-full h-full object-cover" />
+                  <div className="relative w-8 h-8 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber overflow-hidden">
+                    <Image src="/egypthub/images/destinations/cairo.svg" alt="زينب" fill className="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                   </div>
                   <div>
                     <h3 className="font-bold text-sm text-theme font-cairo">محادثة ذكية</h3>
@@ -300,8 +301,8 @@ export default function AIConciergePage() {
                       className="bg-theme-bg rounded-xl p-3 border border-theme hover:border-theme-gold/20 transition-colors cursor-pointer"
                     >
                       <div className="flex gap-3">
-                        <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0">
-                          <img src={day.img} alt={day.day} className="w-full h-full object-cover" />
+                        <div className="relative w-14 h-14 rounded-lg overflow-hidden shrink-0">
+                          <Image src={day.img} alt={day.day} fill className="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                         </div>
                         <div className="flex-1 min-w-0">
                           <p className="text-xs font-bold text-theme-gold mb-1 font-cairo">{day.day}</p>
@@ -331,8 +332,8 @@ export default function AIConciergePage() {
                 <div className="space-y-2">
                   {recommendations.map((rec, i) => (
                     <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2 rounded-xl hover:bg-theme-bg transition-colors cursor-pointer">
-                      <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                        <img src={rec.img} alt={rec.title} className="w-full h-full object-cover" />
+                      <div className="relative w-12 h-12 rounded-lg overflow-hidden shrink-0">
+                        <Image src={rec.img} alt={rec.title} fill className="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                       </div>
                       <div className="flex-1">
                         <p className="text-xs font-bold text-theme font-cairo">{rec.title}</p>
@@ -374,8 +375,8 @@ export default function AIConciergePage() {
                       whileHover={{ x: -3 }}
                       className="flex items-center gap-3 p-2.5 rounded-xl bg-theme-bg border border-theme cursor-pointer hover:border-theme-gold/20 transition-colors"
                     >
-                      <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
-                        <img src={r.img} alt={r.title} className="w-full h-full object-cover" />
+                      <div className="relative w-10 h-10 rounded-lg overflow-hidden shrink-0">
+                        <Image src={r.img} alt={r.title} fill className="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
                       </div>
                       <span className="text-xs text-theme font-cairo">{r.title}</span>
                     </motion.div>

@@ -52,7 +52,7 @@ export default function Screen8_SuperAdminDashboard() {
   const [activeSidebar, setActiveSidebar] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="flex h-screen overflow-hidden">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}

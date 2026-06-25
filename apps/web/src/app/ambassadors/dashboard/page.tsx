@@ -77,7 +77,7 @@ export default function AmbassadorDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="rtl">
+    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8 py-8">
         <Link href="/ambassadors" className="inline-flex items-center gap-2 text-theme-gold font-cairo mb-6 hover:underline">
           <HiChevronRight className="w-4 h-4" />

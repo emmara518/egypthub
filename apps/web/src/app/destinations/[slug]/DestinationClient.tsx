@@ -12,7 +12,7 @@ export default function DestinationClient({ slug }: { slug: string }) {
 
   if (!dest) {
     return (
-      <div className="min-h-screen bg-theme-bg pt-24 flex items-center justify-center" dir="rtl">
+      <div className="min-h-screen bg-theme-bg pt-24 flex items-center justify-center" dir="ltr">
         <div className="text-center">
           <CompassIcon className="text-6xl text-theme-gold mx-auto mb-4" />
           <h1 className="text-2xl font-bold text-theme mb-2 font-playfair">الوجهة غير موجودة</h1>
@@ -26,7 +26,7 @@ export default function DestinationClient({ slug }: { slug: string }) {
   }
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="rtl">
+    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/destinations" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronLeft className="w-4 h-4" />

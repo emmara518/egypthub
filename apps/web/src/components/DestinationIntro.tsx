@@ -1,7 +1,4 @@
-'use client';
-
 import { motion } from 'framer-motion';
-import { HiArrowLeft } from 'react-icons/hi';
 import { PalmIcon } from './EgyptianIcons';
 
 const destinations = [
@@ -9,32 +6,32 @@ const destinations = [
   {
     name: 'شرم الشيخ',
     desc: 'غوص عالمي، سفاري، وحياة ليلية نابضة',
-    image: '/egypthub/images/destinations/sharm-el-sheikh.svg',
+    image: '/images/destinations/sharm-el-sheikh.svg',
     span: 'col-span-1 md:col-span-6',
   },
   {
     name: 'القاهرة',
     desc: 'متحف مفتوح، أهرامات، تاريخ ٧٠٠٠ سنة',
-    image: '/egypthub/images/destinations/cairo.svg',
+    image: '/images/destinations/cairo.svg',
     span: 'col-span-1 md:col-span-6',
   },
   // Bottom 3 (Small)
   {
     name: 'الأقصر',
     desc: 'معابد فرعونية، وادي الملوك',
-    image: '/egypthub/images/destinations/luxor.svg',
+    image: '/images/destinations/luxor.svg',
     span: 'col-span-1 md:col-span-4',
   },
   {
     name: 'الغردقة',
     desc: 'شواطئ ذهبية ورياضات مائية',
-    image: '/egypthub/images/destinations/dahab.svg',
+    image: '/images/destinations/dahab.svg',
     span: 'col-span-1 md:col-span-4',
   },
   {
     name: 'الساحل الشمالي',
     desc: 'ريزورتات فاخرة، جو رايق',
-    image: '/egypthub/images/destinations/hurghada.svg',
+    image: '/images/destinations/hurghada.svg',
     span: 'col-span-1 md:col-span-4',
   },
 ];
@@ -83,7 +80,7 @@ export default function DestinationIntro() {
                   <p className="text-white/80 font-medium">{dest.desc}</p>
                 </div>
                 <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-theme-gold group-hover:text-[#0A0E17] transition-colors duration-300">
-                  <HiArrowLeft className="text-xl" />
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 </div>
               </div>
             </motion.div>

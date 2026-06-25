@@ -50,7 +50,7 @@ export default function ExplorePage() {
       else delete merged[key];
     }
     const search = new URLSearchParams(merged).toString();
-    const url = search ? `/egypthub/explore?${search}` : '/egypthub/explore';
+    const url = search ? `/explore?${search}` : '/explore';
     window.history.replaceState(null, '', url);
   }, []);
 
@@ -98,12 +98,12 @@ export default function ExplorePage() {
 
   const handlePlanTrip = useCallback((citySlug: string) => {
     trackEvent('trip_plan_request', { citySlug });
-    window.location.href = `/egypthub/zainab?city=${citySlug}`;
+    window.location.href = `/zainab?city=${citySlug}`;
   }, []);
 
   const handleTalkToZainab = useCallback((citySlug: string) => {
     trackEvent('zainab_interaction', { citySlug });
-    window.location.href = `/egypthub/zainab?city=${citySlug}`;
+    window.location.href = `/zainab?city=${citySlug}`;
   }, []);
 
   const handleNodeSelect = useCallback((nodeId: string) => {

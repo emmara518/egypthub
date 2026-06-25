@@ -99,7 +99,7 @@ export default function Screen1_Overview() {
   const [activeToolbar, setActiveToolbar] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       {/* ─── Top Toolbar ─── */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}

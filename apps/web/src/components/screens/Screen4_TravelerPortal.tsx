@@ -9,19 +9,20 @@ import {
   HiPencil, HiPlus, HiChevronLeft,
 } from 'react-icons/hi';
 import { FaGoogle, FaFacebook, FaApple, FaInstagram } from 'react-icons/fa';
+import Image from 'next/image';
 
 /* ───── Data ───── */
 const reservations = [
-  { title: 'رحلة سفاري في الصحراء', date: '15 يناير 2025', status: 'مؤكد', statusColor: 'bg-green-500/15 text-green-400', img: '/egypthub/images/activities/desert-safari.svg' },
-  { title: 'جولة في معبد الأقصر', date: '18 يناير 2025', status: 'قادم', statusColor: 'bg-theme-gold/15 text-theme-gold', img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
-  { title: 'رحلة نيلية فاخرة', date: '20 يناير 2025', status: 'مؤكد', statusColor: 'bg-green-500/15 text-green-400', img: '/egypthub/images/destinations/luxor.svg' },
+  { title: 'رحلة سفاري في الصحراء', date: '15 يناير 2025', status: 'مؤكد', statusColor: 'bg-green-500/15 text-green-400', img: '/images/activities/desert-safari.svg' },
+  { title: 'جولة في معبد الأقصر', date: '18 يناير 2025', status: 'قادم', statusColor: 'bg-theme-gold/15 text-theme-gold', img: '/images/destinations/sharm-el-sheikh.svg' },
+  { title: 'رحلة نيلية فاخرة', date: '20 يناير 2025', status: 'مؤكد', statusColor: 'bg-green-500/15 text-green-400', img: '/images/destinations/luxor.svg' },
 ];
 
 const favorites = [
-  { title: 'أهرامات الجيزة', img: '/egypthub/images/destinations/cairo.svg' },
-  { title: 'البحر الأحمر', img: '/egypthub/images/activities/diving.svg' },
-  { title: 'القاهرة القديمة', img: '/egypthub/images/destinations/cairo.svg' },
-  { title: 'معبد الأقصر', img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
+  { title: 'أهرامات الجيزة', img: '/images/destinations/cairo.svg' },
+  { title: 'البحر الأحمر', img: '/images/activities/diving.svg' },
+  { title: 'القاهرة القديمة', img: '/images/destinations/cairo.svg' },
+  { title: 'معبد الأقصر', img: '/images/destinations/sharm-el-sheikh.svg' },
 ];
 
 const notifications = [
@@ -64,7 +65,7 @@ export default function Screen4_TravelerPortal() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0">
@@ -145,8 +146,8 @@ export default function Screen4_TravelerPortal() {
             <div className="space-y-2">
               {reservations.map((r, i) => (
                 <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-theme-gold/20 transition-colors cursor-pointer">
-                  <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                    <img src={r.img} alt={r.title} className="w-full h-full object-cover" />
+                    <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
+                      <Image src={r.img} alt={r.title} fill className="object-cover" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold truncate">{r.title}</p>
@@ -170,8 +171,8 @@ export default function Screen4_TravelerPortal() {
             <div className="grid grid-cols-2 gap-2">
               {favorites.map((f, i) => (
                 <motion.div key={i} whileHover={{ scale: 1.03 }} className="relative rounded-xl overflow-hidden cursor-pointer group">
-                  <div className="aspect-[4/3]">
-                    <img src={f.img} alt={f.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+                  <div className="aspect-[4/3] relative">
+                    <Image src={f.img} alt={f.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
                   <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17]/90 to-transparent" />
                   <div className="absolute bottom-2 right-2">
@@ -213,7 +214,7 @@ export default function Screen4_TravelerPortal() {
               <h3 className="font-bold text-sm">رحلات القائمة</h3>
             </div>
             <div className="relative rounded-xl overflow-hidden mb-4">
-              <img src="/egypthub/images/activities/desert-safari.svg" alt="رحلة سفاري" className="w-full h-32 object-cover" />
+              <Image src="/images/activities/desert-safari.svg" alt="رحلة سفاري" fill className="object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
               <div className="absolute bottom-3 right-3">
                 <p className="text-sm font-bold">رحلة سفاري في الصحراء</p>
@@ -336,9 +337,9 @@ export default function Screen4_TravelerPortal() {
               <h3 className="font-bold text-sm">صور بين المستخدمين</h3>
             </div>
             <div className="grid grid-cols-3 gap-1.5 mb-3">
-              {['/egypthub/images/destinations/cairo.svg', '/egypthub/images/destinations/luxor.svg', '/egypthub/images/activities/desert-safari.svg', '/egypthub/images/destinations/sharm-el-sheikh.svg', '/egypthub/images/activities/diving.svg', '/egypthub/images/destinations/cairo.svg'].map((img, i) => (
-                <motion.div key={i} whileHover={{ scale: 1.05 }} className="aspect-square rounded-lg overflow-hidden cursor-pointer">
-                  <img src={img} alt="" className="w-full h-full object-cover" />
+              {['/images/destinations/cairo.svg', '/images/destinations/luxor.svg', '/images/activities/desert-safari.svg', '/images/destinations/sharm-el-sheikh.svg', '/images/activities/diving.svg', '/images/destinations/cairo.svg'].map((img, i) => (
+                <motion.div key={i} whileHover={{ scale: 1.05 }} className="aspect-square rounded-lg overflow-hidden cursor-pointer relative">
+                  <Image src={img} alt="" fill className="object-cover" />
                 </motion.div>
               ))}
             </div>
@@ -383,7 +384,7 @@ export default function Screen4_TravelerPortal() {
             </div>
             <div className="space-y-3">
               <div className="relative rounded-xl overflow-hidden group cursor-pointer">
-                <img src="/egypthub/images/destinations/luxor.svg" alt="عرض" className="w-full h-24 object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/images/destinations/luxor.svg" alt="عرض" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
                 <div className="absolute top-2 right-2 px-2 py-1 rounded-lg bg-red-500 text-[10px] font-bold">20%</div>
                 <div className="absolute bottom-2 right-2">
@@ -391,7 +392,7 @@ export default function Screen4_TravelerPortal() {
                 </div>
               </div>
               <div className="relative rounded-xl overflow-hidden group cursor-pointer">
-                <img src="/egypthub/images/activities/desert-safari.svg" alt="عرض" className="w-full h-24 object-cover group-hover:scale-110 transition-transform duration-700" />
+                <Image src="/images/activities/desert-safari.svg" alt="عرض" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
                 <div className="absolute bottom-2 right-2">
                   <p className="text-xs font-bold">عروض الشتاء</p>

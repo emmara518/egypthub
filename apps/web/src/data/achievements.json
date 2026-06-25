@@ -1,0 +1,12 @@
+[
+  { "id": "first_visit", "name": "أول خطوة", "icon": "👣", "desc": "زر أول مدينة", "xp": 50 },
+  { "id": "explorer_5", "name": "مستكشف 5 مدن", "icon": "🗺️", "desc": "زر 5 مدن مصرية", "xp": 200 },
+  { "id": "explorer_10", "name": "مستكشف 10 مدن", "icon": "🌟", "desc": "زر 10 مدن مصرية", "xp": 500 },
+  { "id": "complete_passport", "name": "عاشق مصر", "icon": "❤️", "desc": "أكمل جواز السفر بالكامل", "xp": 1000 },
+  { "id": "first_challenge", "name": "أول تحدى", "icon": "🎯", "desc": "أكمل أول تحدي", "xp": 50 },
+  { "id": "five_challenges", "name": "بطل التحديات", "icon": "🏆", "desc": "أكمل 5 تحديات", "xp": 300 },
+  { "id": "level_3", "name": "مغامر حقيقي", "icon": "⚔️", "desc": "وصل للمستوى 3", "xp": 150 },
+  { "id": "level_6", "name": "أسطورة", "icon": "👑", "desc": "وصل للمستوى 6", "xp": 1000 },
+  { "id": "share_story", "name": "راوٍ", "icon": "📖", "desc": "شارك أول قصة", "xp": 100 },
+  { "id": "first_referral", "name": "سفير", "icon": "🤝", "desc": "أضف أول صديق", "xp": 150 }
+]

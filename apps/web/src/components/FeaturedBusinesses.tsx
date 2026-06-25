@@ -1,15 +1,13 @@
-'use client';
-
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const businesses = [
-  { name: 'Four Seasons Nile', slug: 'four-seasons-nile', image: '/egypthub/images/luxury/four-seasons.svg', rating: 4.9, type: 'Hotel', location: 'Cairo' },
-  { name: 'Red Sea Diving Center', slug: 'red-sea-diving', image: '/egypthub/images/activities/diving.svg', rating: 4.8, type: 'Activity', location: 'Hurghada' },
-  { name: 'Sofitel Legend Old Cataract', slug: 'old-cataract', image: '/egypthub/images/luxury/marriott.svg', rating: 4.9, type: 'Hotel', location: 'Aswan' },
-  { name: 'Khan El Khalili Bazaar', slug: 'khan-el-khalili', image: '/egypthub/images/food/street-food.svg', rating: 4.6, type: 'Shopping', location: 'Cairo' },
-  { name: 'Siwa Oasis Retreat', slug: 'siwa-retreat', image: '/egypthub/images/destinations/siwa.svg', rating: 4.7, type: 'Resort', location: 'Siwa' },
-  { name: 'Abu Simbel Tours', slug: 'abu-simbel', image: '/egypthub/images/destinations/luxor.svg', rating: 4.8, type: 'Tour', location: 'Aswan' },
+  { name: 'Four Seasons Nile', slug: 'four-seasons-nile', image: '/images/luxury/four-seasons.svg', rating: 4.9, type: 'Hotel', location: 'Cairo' },
+  { name: 'Red Sea Diving Center', slug: 'red-sea-diving', image: '/images/activities/diving.svg', rating: 4.8, type: 'Activity', location: 'Hurghada' },
+  { name: 'Sofitel Legend Old Cataract', slug: 'old-cataract', image: '/images/luxury/marriott.svg', rating: 4.9, type: 'Hotel', location: 'Aswan' },
+  { name: 'Khan El Khalili Bazaar', slug: 'khan-el-khalili', image: '/images/food/street-food.svg', rating: 4.6, type: 'Shopping', location: 'Cairo' },
+  { name: 'Siwa Oasis Retreat', slug: 'siwa-retreat', image: '/images/destinations/siwa.svg', rating: 4.7, type: 'Resort', location: 'Siwa' },
+  { name: 'Abu Simbel Tours', slug: 'abu-simbel', image: '/images/destinations/luxor.svg', rating: 4.8, type: 'Tour', location: 'Aswan' },
 ];
 
 export default function FeaturedBusinesses() {

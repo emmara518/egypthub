@@ -7,6 +7,7 @@ import {
   HiClock, HiCalendar, HiHeart, HiPhotograph, HiLightningBolt,
   HiPaperAirplane, HiBell, HiUser, HiTrash, HiChevronLeft,
 } from 'react-icons/hi';
+import Image from 'next/image';
 
 /* ───── Chat data ───── */
 const chatMessages = [
@@ -18,16 +19,16 @@ const chatMessages = [
 ];
 
 const itinerary = [
-  { day: 'اليوم 1 - وصول والدقة', items: ['وصول مطار الأقصر', 'تسجيل في الفندق', 'جولة معبد الكرنك', 'عشاء نيلي'], img: '/egypthub/images/destinations/sharm-el-sheikh.svg' },
-  { day: 'اليوم 2 - المعابد الغربية', items: ['وادي الملوك', 'معبد حتشبسوت', 'تمثالي ممنون', 'سهرة في الأقصر'], img: '/egypthub/images/destinations/cairo.svg' },
-  { day: 'اليوم 3 - رحلة نيلية', items: ['إبحار إلى إدفو', 'معبد حورس', 'استكمال الإبحار', 'عشاء على السفينة'], img: '/egypthub/images/destinations/luxor.svg' },
+  { day: 'اليوم 1 - وصول والدقة', items: ['وصول مطار الأقصر', 'تسجيل في الفندق', 'جولة معبد الكرنك', 'عشاء نيلي'], img: '/images/destinations/sharm-el-sheikh.svg' },
+  { day: 'اليوم 2 - المعابد الغربية', items: ['وادي الملوك', 'معبد حتشبسوت', 'تمثالي ممنون', 'سهرة في الأقصر'], img: '/images/destinations/cairo.svg' },
+  { day: 'اليوم 3 - رحلة نيلية', items: ['إبحار إلى إدفو', 'معبد حورس', 'استكمال الإبحار', 'عشاء على السفينة'], img: '/images/destinations/luxor.svg' },
 ];
 
 const recommendations = [
-  { title: 'معبد أبو سمبل', rating: 4.9, img: '/egypthub/images/destinations/sharm-el-sheikh.svg', cat: 'معالم أثرية' },
-  { title: 'رحلة نيلية فاخرة', rating: 4.8, img: '/egypthub/images/destinations/luxor.svg', cat: 'رحلات' },
-  { title: 'سفاري الصحراء', rating: 4.7, img: '/egypthub/images/activities/desert-safari.svg', cat: 'مغامرات' },
-  { title: 'الغوص في الغردقة', rating: 4.9, img: '/egypthub/images/activities/diving.svg', cat: 'رياضات مائية' },
+  { title: 'معبد أبو سمبل', rating: 4.9, img: '/images/destinations/sharm-el-sheikh.svg', cat: 'معالم أثرية' },
+  { title: 'رحلة نيلية فاخرة', rating: 4.8, img: '/images/destinations/luxor.svg', cat: 'رحلات' },
+  { title: 'سفاري الصحراء', rating: 4.7, img: '/images/activities/desert-safari.svg', cat: 'مغامرات' },
+  { title: 'الغوص في الغردقة', rating: 4.9, img: '/images/activities/diving.svg', cat: 'رياضات مائية' },
 ];
 
 const smartActions = [
@@ -59,7 +60,7 @@ export default function Screen3_AIConcierge() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Left Panel - Intro ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0">
@@ -72,8 +73,8 @@ export default function Screen3_AIConcierge() {
               {/* Avatar */}
               <div className="relative w-32 h-32 mx-auto mb-4">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-gold to-accent-orange p-[2px]">
-                  <div className="w-full h-full rounded-full overflow-hidden">
-                    <img src="/egypthub/images/destinations/cairo.svg" alt="زينب" className="w-full h-full object-cover" />
+                  <div className="w-full h-full rounded-full overflow-hidden relative">
+                    <Image src="/images/destinations/cairo.svg" alt="زينب" fill className="object-cover" />
                   </div>
                 </div>
                 <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-theme-gold flex items-center justify-center">
@@ -104,8 +105,8 @@ export default function Screen3_AIConcierge() {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
             className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] overflow-hidden flex flex-col xl:row-span-2">
             <div className="p-4 border-b border-[#1E2A3D] flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-theme-gold to-accent-orange overflow-hidden">
-                <img src="/egypthub/images/destinations/cairo.svg" alt="زينب" className="w-full h-full object-cover" />
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-theme-gold to-accent-orange overflow-hidden relative">
+                <Image src="/images/destinations/cairo.svg" alt="زينب" fill className="object-cover" />
               </div>
               <div>
                 <h3 className="font-bold text-sm">محادثة ذكية</h3>
@@ -208,8 +209,8 @@ export default function Screen3_AIConcierge() {
               {itinerary.map((day, i) => (
                 <motion.div key={i} whileHover={{ x: -3 }} className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D] hover:border-theme-gold/20 transition-colors cursor-pointer">
                   <div className="flex gap-3">
-                    <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0">
-                      <img src={day.img} alt={day.day} className="w-full h-full object-cover" />
+                    <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 relative">
+                      <Image src={day.img} alt={day.day} fill className="object-cover" />
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-bold text-theme-gold mb-1">{day.day}</p>
@@ -236,8 +237,8 @@ export default function Screen3_AIConcierge() {
             <div className="space-y-2">
               {recommendations.map((rec, i) => (
                 <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#0F1420] transition-colors cursor-pointer">
-                  <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0">
-                    <img src={rec.img} alt={rec.title} className="w-full h-full object-cover" />
+                  <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
+                    <Image src={rec.img} alt={rec.title} fill className="object-cover" />
                   </div>
                   <div className="flex-1">
                     <p className="text-xs font-bold">{rec.title}</p>
@@ -264,10 +265,10 @@ export default function Screen3_AIConcierge() {
               <input placeholder="ابحث عن أماكن، تجارب..." className="w-full bg-[#0F1420] rounded-xl pr-10 pl-4 py-2.5 text-sm border border-[#1E2A3D] focus:border-theme-gold/40 outline-none placeholder:text-[#5A6478]" />
             </div>
             <div className="space-y-2">
-              {[{ title: 'أفضل مطاعم القاهرة', img: '/egypthub/images/destinations/cairo.svg' }, { title: 'رحلات البحر الأحمر', img: '/egypthub/images/activities/diving.svg' }].map((r, i) => (
+              {[{ title: 'أفضل مطاعم القاهرة', img: '/images/destinations/cairo.svg' }, { title: 'رحلات البحر الأحمر', img: '/images/activities/diving.svg' }].map((r, i) => (
                 <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D] cursor-pointer hover:border-theme-gold/20 transition-colors">
-                  <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0">
-                    <img src={r.img} alt={r.title} className="w-full h-full object-cover" />
+                  <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 relative">
+                    <Image src={r.img} alt={r.title} fill className="object-cover" />
                   </div>
                   <span className="text-xs">{r.title}</span>
                 </motion.div>
@@ -383,8 +384,8 @@ export default function Screen3_AIConcierge() {
             <div className="text-center">
               <div className="relative w-20 h-20 mx-auto mb-3">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-gold to-accent-orange p-[2px] animate-glow">
-                  <div className="w-full h-full rounded-full overflow-hidden">
-                    <img src="/egypthub/images/destinations/cairo.svg" alt="زينب" className="w-full h-full object-cover" />
+                  <div className="w-full h-full rounded-full overflow-hidden relative">
+                    <Image src="/images/destinations/cairo.svg" alt="زينب" fill className="object-cover" />
                   </div>
                 </div>
               </div>

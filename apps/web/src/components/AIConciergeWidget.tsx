@@ -68,7 +68,7 @@ export default function AIConciergeWidget() {
                 <div
                   key={i}
                   className="w-8 h-8 rounded-full bg-theme-card border border-theme bg-cover bg-center"
-                  style={{ backgroundImage: `url(/egypthub/images/avatars/avatar-${i + 10}.svg)` }}
+                  style={{ backgroundImage: `url(/images/avatars/avatar-${i + 10}.svg)` }}
                 />
               ))}
               <span className="text-theme-secondary text-xs font-cairo mr-2">+2.4K محادثة اليوم</span>

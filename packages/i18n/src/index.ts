@@ -1,176 +1,141 @@
 // ============================================================
-// مصر هب - الترجمة باللهجة المصرية
+// مصر هب - Bilingual Translation System (AR / EN)
 // ============================================================
 
+export type Locale = 'ar' | 'en';
+
 // كل النصوص هنا باللهجة المصرية (مش فصحى)
-const translations = {
+const translationsAr = {
   common: {
-    loading: 'استنى شوية...',
-    error: 'حصل خطأ، ارجع جرب تاني',
-    success: 'تمام، تم بنجاح!',
-    save: 'احفظ',
-    cancel: 'ألفين سلامة',
-    delete: 'احذف',
-    edit: 'عدل',
-    search: 'دور',
-    filter: 'فلتر',
-    back: 'رجوع',
-    next: 'كمل',
-    confirm: 'أكيد',
-    yes: 'أيوه',
-    no: 'لأ',
-    welcome: 'أهلًا بيك',
-    logout: 'تسجيل خروج',
-    login: 'تسجيل دخول',
-    register: 'حساب جديد',
-    phone: 'رقم الموبايل',
-    password: 'كلمة السر',
-    submit: 'تقديم',
+    loading: 'استنى شوية...', error: 'حصل خطأ، ارجع جرب تاني', success: 'تمام، تم بنجاح!',
+    save: 'احفظ', cancel: 'إلغاء', delete: 'احذف', edit: 'عدل',
+    search: 'دور', filter: 'فلتر', back: 'رجوع', next: 'كمل',
+    confirm: 'أكيد', yes: 'أيوه', no: 'لأ', welcome: 'أهلًا بيك',
+    logout: 'تسجيل خروج', login: 'تسجيل دخول', register: 'حساب جديد',
+    phone: 'رقم الموبايل', password: 'كلمة السر', submit: 'تقديم',
+    language: 'English', lang_label: 'EN',
   },
-
   nav: {
-    home: 'الرئيسية',
-    explore: 'اكتشف',
-    offers: 'العروض',
-    partners: 'الشركاء',
-    about: 'عن مصر هب',
-    contact: 'كلمنا',
-    dashboard: 'لوحة التحكم',
-    profile: 'البروفايل',
-    bookings: 'حجوزاتي',
+    home: 'الرئيسية', explore: 'اكتشف', offers: 'العروض',
+    search: 'دوّر', dashboard: 'لوحة التحكم', profile: 'البروفايل',
+    bookings: 'حجوزاتي', favorites: 'المفضلة', wallet: 'المحفظة',
+    ai: 'الذكاء الاصطناعي', more: 'المزيد',
   },
-
   hero: {
     title: 'مصر على مزاجك',
     subtitle: 'جرب مصر بالطريقة الأصيلة. مطاعم، غوص، سفاري، وبازار - كل حاجة مع سفير مصري.',
     cta: 'اكتشف شرم الشيخ',
     search_placeholder: 'دوّر على مطعم، نشاط، أو مكان...',
   },
-
-  features: {
-    ambassadors: 'سفراء مصريين',
-    ambassadors_desc: 'ناس من البلد يعرفوك على أحلى الأماكن',
-    authentic: 'تجربة أصيلة',
-    authentic_desc: 'مش سياحة تقليدية، دي مصر الحقيقية',
-    earn: 'اكسب كمان',
-    earn_desc: 'سجّل سفير واكسب عمولة على كل حجز',
-  },
-
   categories: {
-    restaurants: 'مطاعم',
-    cafes: 'كافيهات وقهوة بلدي',
-    activities: 'أنشطة ومغامرات',
-    shopping: 'تسوق وبازار',
-    diving: 'غوص وسنوركلينج',
+    restaurants: 'مطاعم', cafes: 'كافيهات', activities: 'أنشطة',
+    hotels: 'فنادق', shopping: 'تسوق', transport: 'نقل',
+    all: 'كل التصنيفات',
   },
-
-  business: {
-    about: 'عن المكان',
-    offers: 'العروض',
-    reviews: 'التقييمات',
-    contact: 'اتصل بنا',
-    location: 'الموقع',
-    whatsapp: 'واتساب',
-    call: 'اتصال',
-    book_now: 'احجز دلوقتي',
-    share: 'شارك',
-    working_hours: 'مواعيد الشغل',
+  ai: {
+    zainab: 'زينب — المساعد الذكي', advanced: 'المساعد المتقدم',
+    budget: 'مخطط الميزانية', translator: 'المترجم الذكي',
+    safety: 'السفر الآمن', follow_up: 'متابعة الرحلة',
   },
-
+  header: {
+    login_btn: 'دخول', register_btn: 'حساب جديد',
+    egypt: 'مصر', hub: 'هب', subtitle: 'EGYPT HUB',
+  },
   booking: {
-    title: 'احجز مكانك',
-    date: 'اختر اليوم',
-    time: 'اختر الوقت',
-    guests: 'عدد الأشخاص',
-    notes: 'ملاحظات (اختياري)',
-    total: 'الإجمالي',
-    commission: 'خصم السفير',
-    confirm_booking: 'أكد الحجز',
-    success: 'تم الحجز! هنبعتلك كود الحجز على الموبايل',
-    code: 'كود الحجز',
-    qr: 'QR كود',
-    status: {
-      pending: 'تحت المراجعة',
-      confirmed: 'مؤكد',
-      completed: 'تم',
-      cancelled: 'ملغي',
-    },
+    title: 'احجز مكانك', date: 'اختر اليوم', time: 'اختر الوقت',
+    guests: 'عدد الأشخاص', notes: 'ملاحظات (اختياري)',
+    total: 'الإجمالي', confirm_booking: 'أكد الحجز',
+    pay_now: 'ادفع الآن', success_title: 'تم تأكيد حجزك بنجاح!',
+    status_pending: 'تحت المراجعة', status_confirmed: 'مؤكد',
+    status_completed: 'تم', status_cancelled: 'ملغي',
   },
-
-  ambassador: {
-    dashboard: 'لوحة السفير',
-    earnings: 'أرباحي',
-    total_earnings: 'إجمالي الأرباح',
-    available: 'المتاح للسحب',
-    referral_link: 'الرابط بتاعي',
-    copy_link: 'انسخ الرابط',
-    copied: 'تم النسخ!',
-    withdraw: 'طلب سحب',
-    history: 'سجل الأرباح',
-    no_earnings: 'لسه ما كسبتش حاجة. ابدأ شارك الرابط!',
-    commission_rate: 'نسبة العمولة',
-  },
-
-  partner: {
-    dashboard: 'لوحة الشريك',
-    my_bookings: 'حجوزاتي',
-    my_offers: 'عروضي',
-    add_offer: 'ضيف عرض',
-    business_info: 'بينات المنشأة',
-    earnings: 'الأرباح',
-    today_bookings: 'حجوزات النهاردة',
-    total_bookings: 'كل الحجوزات',
-  },
-
-  admin: {
-    dashboard: 'لوحة الأدمن',
-    pending_partners: 'شركاء في الانتظار',
-    manage_partners: 'إدارة الشركاء',
-    manage_ambassadors: 'إدارة السفراء',
-    commission_settings: 'إعدادات العمولات',
-    cities: 'المدن',
-    categories: 'التصنيفات',
-    app_settings: 'إعدادات التطبيق',
-    approve: 'وافقت',
-    reject: 'مرفوض',
-    suspend: 'إيقاف',
-  },
-
-  auth: {
-    login_title: 'أهلاً بيك تاني',
-    register_title: 'أنشئ حسابك',
-    otp_sent: 'كود التفعيل اتبعت لـ',
-    otp_placeholder: 'اكتب الكود',
-    verify: 'تأكيد',
-    resend: 'ابعته تاني',
-    terms: 'بالتسجيل أنا موافق على شروط الاستخدام',
-    role_user: 'زائر',
-    role_partner: 'شريك (صاحب منشأة)',
-    role_ambassador: 'سفير',
-    role_admin: 'أدمن',
-  },
-
   footer: {
     tagline: 'مصر هب - شبكة السفراء الرقمية للسياحة المصرية',
     rights: 'جميع الحقوق محفوظة © 2024 مصر هب',
-    privacy: 'سياسة الخصوصية',
-    terms: 'شروط الاستخدام',
+    privacy: 'سياسة الخصوصية', terms: 'شروط الاستخدام',
   },
 } as const;
 
-export type TranslationKey = keyof typeof translations;
-export type SectionKey<T extends TranslationKey> = keyof (typeof translations)[T];
+const translationsEn = {
+  common: {
+    loading: 'Loading...', error: 'Something went wrong', success: 'Done successfully!',
+    save: 'Save', cancel: 'Cancel', delete: 'Delete', edit: 'Edit',
+    search: 'Search', filter: 'Filter', back: 'Back', next: 'Next',
+    confirm: 'Confirm', yes: 'Yes', no: 'No', welcome: 'Welcome',
+    logout: 'Logout', login: 'Login', register: 'Register',
+    phone: 'Phone Number', password: 'Password', submit: 'Submit',
+    language: 'العربية', lang_label: 'AR',
+  },
+  nav: {
+    home: 'Home', explore: 'Explore', offers: 'Offers',
+    search: 'Search', dashboard: 'Dashboard', profile: 'Profile',
+    bookings: 'My Bookings', favorites: 'Favorites', wallet: 'Wallet',
+    ai: 'AI', more: 'More',
+  },
+  hero: {
+    title: 'Egypt Your Way',
+    subtitle: 'Experience Egypt authentically. Restaurants, diving, safaris, and bazaars — all with a local ambassador.',
+    cta: 'Explore Sharm El-Sheikh',
+    search_placeholder: 'Search restaurants, activities, places...',
+  },
+  categories: {
+    restaurants: 'Restaurants', cafes: 'Cafes', activities: 'Activities',
+    hotels: 'Hotels', shopping: 'Shopping', transport: 'Transport',
+    all: 'All Categories',
+  },
+  ai: {
+    zainab: 'Zainab — AI Assistant', advanced: 'Advanced Assistant',
+    budget: 'Budget Planner', translator: 'Smart Translator',
+    safety: 'Safe Travel', follow_up: 'Trip Follow-up',
+  },
+  header: {
+    login_btn: 'Login', register_btn: 'Sign Up',
+    egypt: 'Egypt', hub: 'Hub', subtitle: 'EGYPT HUB',
+  },
+  booking: {
+    title: 'Book Now', date: 'Pick Date', time: 'Pick Time',
+    guests: 'Number of Guests', notes: 'Notes (optional)',
+    total: 'Total', confirm_booking: 'Confirm Booking',
+    pay_now: 'Pay Now', success_title: 'Booking Confirmed!',
+    status_pending: 'Pending', status_confirmed: 'Confirmed',
+    status_completed: 'Completed', status_cancelled: 'Cancelled',
+  },
+  footer: {
+    tagline: 'Egypt Hub — Digital Ambassador Network for Egyptian Tourism',
+    rights: 'All rights reserved © 2024 Egypt Hub',
+    privacy: 'Privacy Policy', terms: 'Terms of Use',
+  },
+} as const;
 
-export function t<T extends TranslationKey>(
-  section: T,
-  key: SectionKey<T>,
-  params?: Record<string, string | number>,
-): string {
-  const value = (translations[section] as any)?.[key];
-  if (!value) return `${section}.${String(key)}`;
+const allTranslations = { ar: translationsAr, en: translationsEn } as const;
+
+type ArType = typeof translationsAr;
+type DeepKey<T, Prefix extends string = ''> = {
+  [K in keyof T & string]: T[K] extends Record<string, unknown>
+    ? DeepKey<T[K], `${Prefix}${K}.`>
+    : `${Prefix}${K}`;
+}[keyof T & string];
+export type TranslationKey = DeepKey<ArType>;
+
+function getNested(obj: Record<string, unknown>, path: string): string {
+  const keys = path.split('.');
+  let current: unknown = obj;
+  for (const key of keys) {
+    if (current && typeof current === 'object' && key in current) {
+      current = (current as Record<string, unknown>)[key];
+    } else {
+      return path;
+    }
+  }
+  return typeof current === 'string' ? current : path;
+}
+
+export function t(locale: Locale, path: TranslationKey, params?: Record<string, string | number>): string {
+  const dict = allTranslations[locale] as unknown as Record<string, unknown>;
+  let value = getNested(dict, path);
 
   if (params) {
-    return Object.entries(params).reduce(
+    value = Object.entries(params).reduce(
       (acc, [k, v]) => acc.replace(`{{${k}}}`, String(v)),
       value,
     );
@@ -179,4 +144,6 @@ export function t<T extends TranslationKey>(
   return value;
 }
 
-export default translations;
+export function getDir(locale: Locale): 'rtl' | 'ltr' {
+  return locale === 'ar' ? 'rtl' : 'ltr';
+}

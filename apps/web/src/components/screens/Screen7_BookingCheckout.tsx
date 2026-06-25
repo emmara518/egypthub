@@ -7,6 +7,7 @@ import {
   HiCheckCircle, HiQrcode, HiLocationMarker, HiStar, HiGift,
   HiChevronLeft, HiChevronRight, HiClock, HiShieldCheck, HiHeart,
 } from 'react-icons/hi';
+import Image from 'next/image';
 
 /* ───── Step data ───── */
 const steps = [
@@ -50,7 +51,7 @@ export default function Screen7_BookingCheckout() {
   const [rating, setRating] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="rtl">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0">
@@ -134,7 +135,7 @@ export default function Screen7_BookingCheckout() {
                 <PhoneFrame active={activeStep === 1}>
                   <div className="px-3 py-3">
                     <div className="relative rounded-xl overflow-hidden h-20 mb-3">
-                      <img src="/egypthub/images/activities/desert-safari.svg" alt="" className="w-full h-full object-cover" />
+                      <Image src="/images/activities/desert-safari.svg" alt="" fill className="object-cover" />
                       <div className="absolute inset-0 bg-[#0A0E17]/50" />
                       <div className="absolute bottom-2 right-2"><p className="text-[8px] font-bold">رحلة سفاري في الصحراء</p></div>
                     </div>
@@ -198,7 +199,7 @@ export default function Screen7_BookingCheckout() {
                 <PhoneFrame active={activeStep === 3}>
                   <div className="px-3 py-3">
                     <div className="relative rounded-xl overflow-hidden h-24 mb-3">
-                      <img src="/egypthub/images/activities/desert-safari.svg" alt="" className="w-full h-full object-cover" />
+                      <Image src="/images/activities/desert-safari.svg" alt="" fill className="object-cover" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
                       <div className="absolute bottom-2 right-2"><p className="text-[9px] font-bold">رحلة سفاري في الصحراء</p></div>
                     </div>

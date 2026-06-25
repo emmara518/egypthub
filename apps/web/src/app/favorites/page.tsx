@@ -1,114 +1,166 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiStar, HiLocationMarker, HiChevronLeft, HiChevronRight, HiHeart, HiBookmark, HiClock, HiCurrencyDollar, HiUser } from 'react-icons/hi';
-import { destinations, experiences } from '@/lib/mock-data';
+import { destinations, experiences, stories } from '@/lib/mock-data';
+import { useAppStore } from '@/lib/store';
+
+const categoryLabels: Record<string, string> = {
+  experiences: 'التجارب',
+  destinations: 'الوجهات',
+  stories: 'القصص',
+};
 
 export default function FavoritesPage() {
   const [activeTab, setActiveTab] = useState('destinations');
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showCollectionModal, setShowCollectionModal] = useState<string | null>(null);
+  const { collections, addToCollection } = useAppStore();
 
   const favoriteDestinations = destinations.filter(d => d.slug === 'sharm-el-sheikh' || d.slug === 'cairo' || d.slug === 'luxor');
   const favoriteExperiences = experiences.filter(e => e.slug === 'pyramids-private-tour' || e.slug === 'red-sea-diving-adventure' || e.slug === 'luxor-temple-tour');
+  const favoriteStories = stories?.filter(s => s.slug === 'bedouin-night-under-stars' || s.slug === 'diving-with-turtles') || [];
+
+  const groupedByCategory = useMemo(() => ({
+    destinations: favoriteDestinations.filter((d) =>
+      d.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ),
+    experiences: favoriteExperiences.filter((e) =>
+      e.name.toLowerCase().includes(searchQuery.toLowerCase())
+    ),
+    stories: favoriteStories.filter((s) =>
+      s.title?.toLowerCase().includes(searchQuery.toLowerCase())
+    ),
+  }), [searchQuery]);
+
+  const collectionNames = Object.keys(collections);
+
+  const assignToCollection = (itemId: string, collectionName: string) => {
+    addToCollection(collectionName, itemId);
+    setShowCollectionModal(null);
+  };
+
+  const tabs = [
+    { id: 'destinations', label: 'الوجهات', count: groupedByCategory.destinations.length },
+    { id: 'experiences', label: 'التجارب', count: groupedByCategory.experiences.length },
+    { id: 'stories', label: 'القصص', count: groupedByCategory.stories.length },
+  ];
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="rtl">
+    <div className="min-h-screen bg-[#080C18] pt-24" dir="rtl">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
-        <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
-          <HiChevronRight className="w-4 h-4" />
+        <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
           العودة للرئيسية
         </Link>
 
+        <div className="mb-6">
+          <h1 className="text-3xl font-bold text-white font-playfair">المفضلة</h1>
+          <p className="text-white/50 font-cairo mt-1">جميع عناصرك المفضلة في مكان واحد</p>
+        </div>
+
+        <div className="relative mb-6">
+          <svg className="absolute right-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="ابحث في المفضلة..."
+            className="w-full max-w-md pr-12 pl-4 py-3 rounded-xl bg-[#0F1525] border border-white/[0.08] text-white placeholder:text-white/30 font-cairo text-sm focus:outline-none focus:border-[#D4A24C]/30 transition-all"
+          />
+        </div>
+
+        {/* Mobile Tabs */}
+        <div className="lg:hidden flex gap-2 mb-6 overflow-x-auto pb-2">
+          {tabs.map(tab => (
+            <button key={tab.id} onClick={() => setActiveTab(tab.id)}
+              className={`px-4 py-2 rounded-xl text-xs font-cairo whitespace-nowrap transition-all ${
+                activeTab === tab.id ? 'bg-[#D4A24C]/10 text-[#D4A24C] border border-[#D4A24C]/20' : 'bg-[#0F1525] text-white/60 border border-white/[0.06]'
+              }`}>
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
         <div className="flex gap-6">
+          {/* Sidebar */}
           <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0 hidden lg:block">
             <div className="sticky top-28 space-y-4">
-              <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-5 text-center">
+              <div className="rounded-2xl border border-[#D4A24C]/10 bg-[#0F1525] p-5 text-center">
                 <div className="relative w-20 h-20 mx-auto mb-3">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber p-[2px]">
-                    <div className="w-full h-full rounded-full bg-theme-surface flex items-center justify-center">
-                      <HiUser className="text-3xl text-theme-gold" />
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#D4A24C] to-[#C89A3D] p-[2px]">
+                    <div className="w-full h-full rounded-full bg-[#0F1525] flex items-center justify-center">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </div>
                   </div>
                 </div>
-                <h2 className="font-bold text-lg font-playfair text-theme">أحمد محمد</h2>
-                <p className="text-xs text-theme-muted font-cairo mb-4">مستكشف مصر</p>
+                <h2 className="font-bold text-lg font-playfair text-white">أحمد محمد</h2>
+                <p className="text-xs text-white/40 font-cairo mb-4">مستكشف مصر</p>
                 <div className="grid grid-cols-3 gap-2">
                   {[{ val: '24', label: 'رحلة' }, { val: '14', label: 'تقييم' }, { val: '8', label: 'مفضلة' }].map(s => (
-                    <div key={s.label} className="bg-theme-surface rounded-xl p-2 text-center">
-                      <p className="text-lg font-bold text-theme-gold font-english">{s.val}</p>
-                      <p className="text-[9px] text-theme-muted font-cairo">{s.label}</p>
+                    <div key={s.label} className="bg-[#141B2D] rounded-xl p-2 text-center">
+                      <p className="text-lg font-bold text-[#D4A24C] font-english">{s.val}</p>
+                      <p className="text-[9px] text-white/40 font-cairo">{s.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-4 space-y-0.5">
-                {[
-                  { id: 'destinations', label: 'الوجهات المفضلة' },
-                  { id: 'experiences', label: 'التجارب المفضلة' },
-                  { id: 'history', label: 'سجل المشاهدة' },
-                  { id: 'lists', label: 'قوائمي' },
-                ].map(tab => (
+              <div className="rounded-2xl border border-[#D4A24C]/10 bg-[#0F1525] p-4 space-y-0.5">
+                {tabs.map(tab => (
                   <button key={tab.id} onClick={() => setActiveTab(tab.id)}
                     className={`w-full text-right px-3 py-2.5 rounded-lg text-sm transition-all ${
-                      activeTab === tab.id ? 'bg-theme-gold/10 text-theme-gold font-medium' : 'text-theme-secondary hover:text-theme hover:bg-theme-elevated'
+                      activeTab === tab.id ? 'bg-[#D4A24C]/10 text-[#D4A24C] font-medium' : 'text-white/50 hover:text-white hover:bg-[#141B2D]'
                     }`}>
-                    {tab.label}
+                    <div className="flex items-center justify-between">
+                      <span>{tab.label}</span>
+                      <span className="text-[10px] opacity-60">{tab.count}</span>
+                    </div>
                   </button>
                 ))}
               </div>
+              <Link href="/collections" className="block w-full text-center px-4 py-2.5 rounded-xl border border-[#D4A24C]/20 text-[#D4A24C] text-sm font-cairo hover:bg-[#D4A24C]/10 transition-all">
+                إدارة المجموعات
+              </Link>
             </div>
           </motion.aside>
 
+          {/* Content */}
           <div className="flex-1 min-w-0">
-            <div className="lg:hidden flex gap-2 mb-6 overflow-x-auto pb-2">
-              {[
-                { id: 'destinations', label: 'الوجهات' },
-                { id: 'experiences', label: 'التجارب' },
-                { id: 'history', label: 'السجل' },
-                { id: 'lists', label: 'القوائم' },
-              ].map(tab => (
-                <button key={tab.id} onClick={() => setActiveTab(tab.id)}
-                  className={`px-4 py-2 rounded-xl text-xs font-cairo whitespace-nowrap transition-all ${
-                    activeTab === tab.id ? 'bg-theme-gold/10 text-theme-gold border border-theme-gold/20' : 'bg-theme-card text-theme-secondary border border-theme-border'
-                  }`}>
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
             <AnimatePresence mode="wait">
               {activeTab === 'destinations' && (
                 <motion.div key="destinations" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {favoriteDestinations.map((dest, idx) => (
-                    <motion.div key={dest.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  className="space-y-3">
+                  {groupedByCategory.destinations.length === 0 ? (
+                    <div className="text-center py-20">
+                      <svg className="w-16 h-16 mx-auto mb-4 text-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                      <p className="text-white/40 font-cairo">لا توجد وجهات مطابقة</p>
+                    </div>
+                  ) : groupedByCategory.destinations.map((dest, idx) => (
+                    <motion.div key={dest.slug} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-                      className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
-                      <div className="relative h-40 overflow-hidden">
-                        <div className="absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-105"
-                          style={{ backgroundImage: `url(${dest.image})` }} />
-                        <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent" />
-                        <button className="absolute top-2 left-2">
-                          <HiHeart className="text-red-400 text-lg" />
-                        </button>
+                      className="rounded-xl border border-white/[0.06] bg-[#0F1525] hover:border-[#D4A24C]/20 transition-all overflow-hidden flex">
+                      <div className="relative w-28 shrink-0 overflow-hidden">
+                        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${dest.image})` }} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
                       </div>
-                      <div className="p-4">
-                        <div className="flex items-center gap-1 mb-2">
-                          <HiLocationMarker className="text-theme-gold text-xs" />
-                          <span className="text-xs text-theme-muted font-cairo">{dest.region}</span>
-                        </div>
-                        <h3 className="font-bold text-theme font-cairo mb-1 group-hover:text-theme-gold transition-colors">{dest.name}</h3>
-                        <p className="text-xs text-theme-muted font-cairo line-clamp-2 mb-3">{dest.description}</p>
-                        <div className="flex items-center justify-between">
-                          <div className="flex items-center gap-1">
-                            <HiStar className="text-theme-gold text-xs" />
-                            <span className="text-xs text-theme-secondary font-english">{dest.rating}</span>
+                      <div className="flex-1 p-4 flex items-center justify-between">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span className="text-[10px] text-white/40 font-cairo">{dest.region}</span>
                           </div>
-                          <Link href={`/destinations/${dest.slug}`}
-                            className="text-xs text-theme-gold font-cairo hover:underline">
-                            استكشف
-                          </Link>
+                          <h3 className="font-bold text-white font-cairo mb-0.5">{dest.name}</h3>
+                          <p className="text-[10px] text-white/35 font-cairo line-clamp-1">{dest.description}</p>
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0 mr-4">
+                          <div className="flex items-center gap-1">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+                            <span className="text-xs text-white/60 font-english">{dest.rating}</span>
+                          </div>
+                          <button className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center hover:bg-red-500/20 transition-all" aria-label="إزالة من المفضلة">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#EF4444" stroke="#EF4444" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                          </button>
                         </div>
                       </div>
                     </motion.div>
@@ -118,81 +170,70 @@ export default function FavoritesPage() {
 
               {activeTab === 'experiences' && (
                 <motion.div key="experiences" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {favoriteExperiences.map((exp, idx) => (
-                    <motion.div key={exp.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                  className="space-y-3">
+                  {groupedByCategory.experiences.length === 0 ? (
+                    <div className="text-center py-20">
+                      <svg className="w-16 h-16 mx-auto mb-4 text-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                      <p className="text-white/40 font-cairo">لا توجد تجارب مطابقة</p>
+                    </div>
+                  ) : groupedByCategory.experiences.map((exp, idx) => (
+                    <motion.div key={exp.slug} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-                      className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
-                      <div className="relative h-36 overflow-hidden">
-                        <div className="absolute inset-0 bg-cover bg-center transition-all duration-500 group-hover:scale-105"
-                          style={{ backgroundImage: `url(${exp.image})` }} />
-                        <div className="absolute inset-0 bg-gradient-to-t from-dark-900/80 to-transparent" />
-                        <button className="absolute top-2 left-2">
-                          <HiBookmark className="text-theme-gold text-lg" />
+                      className="rounded-xl border border-white/[0.06] bg-[#0F1525] hover:border-[#D4A24C]/20 transition-all overflow-hidden flex">
+                      <div className="relative w-28 shrink-0 overflow-hidden">
+                        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${exp.image})` }} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
+                      </div>
+                      <div className="flex-1 p-4 flex items-center justify-between">
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-center gap-1.5 mb-1">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <span className="text-[10px] text-white/40 font-cairo">{exp.location}</span>
+                          </div>
+                          <h3 className="font-bold text-white text-sm font-cairo mb-0.5">{exp.name}</h3>
+                          <div className="flex items-center gap-3 mt-1">
+                            <span className="text-[#D4A24C] text-xs font-bold font-english">EGP {exp.price.toLocaleString()}</span>
+                            <span className="text-[10px] text-white/30 font-cairo flex items-center gap-1">
+                              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                              {exp.duration}
+                            </span>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2 shrink-0 mr-4">
+                          <button className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center hover:bg-red-500/20 transition-all" aria-label="إزالة من المفضلة">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="#EF4444" stroke="#EF4444" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                          </button>
+                        </div>
+                      </div>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              )}
+
+              {activeTab === 'stories' && (
+                <motion.div key="stories" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
+                  className="space-y-3">
+                  {groupedByCategory.stories.length === 0 ? (
+                    <div className="text-center py-20">
+                      <svg className="w-16 h-16 mx-auto mb-4 text-white/20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                      <p className="text-white/40 font-cairo">لا توجد قصص مطابقة</p>
+                    </div>
+                  ) : groupedByCategory.stories.map((story, idx) => (
+                    <motion.div key={story.slug} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
+                      className="rounded-xl border border-white/[0.06] bg-[#0F1525] hover:border-[#D4A24C]/20 transition-all overflow-hidden flex">
+                      <div className="relative w-28 shrink-0 overflow-hidden">
+                        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${story.image})` }} />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
+                      </div>
+                      <div className="flex-1 p-4 flex items-center justify-between">
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-bold text-white font-cairo mb-1">{story.title}</h3>
+                          <p className="text-[10px] text-white/35 font-cairo line-clamp-1">{story.excerpt}</p>
+                        </div>
+                        <button className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center hover:bg-red-500/20 transition-all shrink-0 mr-4" aria-label="إزالة من المفضلة">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="#EF4444" stroke="#EF4444" strokeWidth="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
                         </button>
-                      </div>
-                      <div className="p-4">
-                        <div className="flex items-center gap-1 mb-2">
-                          <HiLocationMarker className="text-theme-gold text-xs" />
-                          <span className="text-xs text-theme-muted font-cairo">{exp.location}</span>
-                        </div>
-                        <h3 className="font-bold text-theme text-sm font-cairo mb-1 group-hover:text-theme-gold transition-colors">{exp.name}</h3>
-                        <p className="text-[10px] text-theme-muted font-cairo line-clamp-2 mb-3">{exp.description}</p>
-                        <div className="flex items-center justify-between">
-                          <span className="text-theme-gold text-xs font-bold font-english">EGP {exp.price.toLocaleString()}</span>
-                          <span className="text-[10px] text-theme-muted font-cairo flex items-center gap-1">
-                            <HiClock />{exp.duration}
-                          </span>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-
-              {activeTab === 'history' && (
-                <motion.div key="history" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-                  className="space-y-4">
-                  {[
-                    { title: 'رحلة سفاري في الصحراء', date: 'منذ يومين', price: 5900, status: 'مؤكد', image: '/egypthub/images/activities/desert-safari.svg' },
-                    { title: 'جولة في معبد الأقصر', date: 'منذ أسبوع', price: 2200, status: 'قادم', image: '/egypthub/images/destinations/luxor.svg' },
-                    { title: 'رحلة غوص في البحر الأحمر', date: 'منذ أسبوعين', price: 1800, status: 'مؤكد', image: '/egypthub/images/activities/diving.svg' },
-                  ].map((booking, i) => (
-                    <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-4 p-4 rounded-xl bg-theme-card border border-theme-gold/10 hover:border-theme-gold/30 transition-all cursor-pointer">
-                      <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0">
-                        <img src={booking.image} alt={booking.title} className="w-full h-full object-cover" />
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-bold text-theme text-sm font-cairo">{booking.title}</p>
-                        <p className="text-xs text-theme-muted font-cairo mt-0.5">{booking.date}</p>
-                        <div className="flex items-center gap-2 mt-1">
-                          <span className={`px-2 py-0.5 rounded-md text-[10px] font-bold ${booking.status === 'مؤكد' ? 'bg-green-500/15 text-green-400' : 'bg-theme-gold/15 text-theme-gold'}`}>{booking.status}</span>
-                          <span className="text-xs text-theme-secondary font-english">EGP {booking.price.toLocaleString()}</span>
-                        </div>
-                      </div>
-                      <Link href="#" className="text-theme-gold text-sm font-cairo hover:underline">
-                        عرض التفاصيل
-                      </Link>
-                    </motion.div>
-                  ))}
-                </motion.div>
-              )}
-
-              {activeTab === 'lists' && (
-                <motion.div key="lists" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-                  className="space-y-4">
-                  {[
-                    { title: 'وجهات البحر الأحمر', count: 3, icon: '🏖️' },
-                    { title: 'معابد صعيد مصر', count: 2, icon: '🏛️' },
-                    { title: 'الوجهات الثقافية', count: 5, icon: '📚' },
-                  ].map((list, i) => (
-                    <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-4 p-4 rounded-xl bg-theme-card border border-theme-gold/10 hover:border-theme-gold/30 transition-all cursor-pointer">
-                      <div className="w-10 h-10 rounded-lg bg-theme-gold/15 flex items-center justify-center text-lg">
-                        {list.icon}
-                      </div>
-                      <div className="flex-1">
-                        <p className="font-bold text-theme text-sm font-cairo">{list.title}</p>
-                        <p className="text-xs text-theme-muted font-cairo">{list.count} عناصر</p>
                       </div>
                     </motion.div>
                   ))}
@@ -202,6 +243,49 @@ export default function FavoritesPage() {
           </div>
         </div>
       </div>
+
+      <AnimatePresence>
+        {showCollectionModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm"
+            onClick={() => setShowCollectionModal(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              onClick={(e) => e.stopPropagation()}
+              className="w-full max-w-sm rounded-2xl bg-[#141B2D] border border-[#D4A24C]/20 p-6 mx-4"
+            >
+              <h3 className="text-lg font-bold text-white font-cairo mb-4">أضف إلى مجموعة</h3>
+              {collectionNames.length === 0 ? (
+                <p className="text-sm text-white/40 font-cairo">لا توجد مجموعات. أنشئ مجموعة أولاً.</p>
+              ) : (
+                <div className="space-y-2 max-h-48 overflow-y-auto">
+                  {collectionNames.map((name) => (
+                    <button
+                      key={name}
+                      onClick={() => assignToCollection(showCollectionModal, name)}
+                      className="w-full text-right px-4 py-3 rounded-xl bg-[#0F1525]/50 hover:bg-[#D4A24C]/10 border border-white/[0.05] hover:border-[#D4A24C]/20 transition-all text-sm text-white font-cairo"
+                    >
+                      {name}
+                    </button>
+                  ))}
+                </div>
+              )}
+              <button
+                onClick={() => setShowCollectionModal(null)}
+                className="mt-4 w-full py-2.5 rounded-xl border border-white/10 text-white/50 text-sm font-cairo hover:border-white/20 transition-all"
+              >
+                إلغاء
+              </button>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
