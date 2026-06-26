@@ -143,6 +143,7 @@ export default function PremiumBottomNav() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [tabWidth, setTabWidth] = useState(0);
   const [isJumping, setIsJumping] = useState(false);
+  const [impactScale, setImpactScale] = useState(1);
   const prevIdx = useRef(activeIdx);
   const isInitialMount = useRef(true);
 
@@ -162,9 +163,19 @@ export default function PremiumBottomNav() {
     }
     if (prevIdx.current !== activeIdx) {
       setIsJumping(true);
-      const timer = setTimeout(() => setIsJumping(false), 550);
       prevIdx.current = activeIdx;
-      return () => clearTimeout(timer);
+
+      const impactTimer = setTimeout(() => {
+        setImpactScale(0.965);
+        setTimeout(() => setImpactScale(1), 80);
+      }, 420);
+
+      const jumpTimer = setTimeout(() => setIsJumping(false), 550);
+
+      return () => {
+        clearTimeout(impactTimer);
+        clearTimeout(jumpTimer);
+      };
     }
   }, [activeIdx]);
 
@@ -188,25 +199,57 @@ export default function PremiumBottomNav() {
       aria-label="التنقل الرئيسي"
     >
       <div className="relative h-full">
-        <div
-          className="absolute inset-0 border-t border-theme-gold/[0.08]"
-          style={{
-            background: 'linear-gradient(180deg, rgba(8,12,24,0.85) 0%, rgba(8,12,24,0.98) 100%)',
-            backdropFilter: 'blur(24px) saturate(1.4)',
-            WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
-          }}
-        />
-
         <motion.div
-          className="absolute top-0 left-0 right-0 h-[1px]"
-          animate={{
-            opacity: activeIdx >= 0 ? 1 : 0,
-            background: activeIdx >= 0
-              ? 'linear-gradient(90deg, transparent 0%, rgba(212,162,76,0.15) 20%, rgba(212,162,76,0.3) 50%, rgba(212,162,76,0.15) 80%, transparent 100%)'
-              : 'transparent',
-          }}
-          transition={{ duration: 0.4 }}
-        />
+          className="absolute inset-0"
+          animate={{ scaleY: impactScale }}
+          transition={{ type: 'spring', stiffness: 1800, damping: 22 }}
+          style={{ transformOrigin: 'center', willChange: 'transform' }}
+        >
+          <div
+            className="absolute inset-0 border-t border-theme-gold/[0.08]"
+            style={{
+              background: 'linear-gradient(180deg, rgba(8,12,24,0.85) 0%, rgba(8,12,24,0.98) 100%)',
+              backdropFilter: 'blur(24px) saturate(1.4)',
+              WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
+            }}
+          />
+
+          <motion.div
+            className="absolute top-0 left-0 right-0 h-[1px]"
+            animate={{
+              opacity: activeIdx >= 0 ? 1 : 0,
+              background: activeIdx >= 0
+                ? 'linear-gradient(90deg, transparent 0%, rgba(212,162,76,0.15) 20%, rgba(212,162,76,0.3) 50%, rgba(212,162,76,0.15) 80%, transparent 100%)'
+                : 'transparent',
+            }}
+            transition={{ duration: 0.4 }}
+          />
+
+          <div
+            className="flex items-center justify-around h-full"
+            style={{ paddingBottom: 0 }}
+          >
+            {TABS.map((tab, i) => {
+              const Icon = TAB_ICONS[i];
+              const isActive = i === activeIdx;
+              return (
+                <div
+                  key={tab.id}
+                  className="flex-1 flex items-center justify-center"
+                >
+                  <TabContent
+                    id={tab.id}
+                    Icon={Icon}
+                    label={tab.label}
+                    labelEn={tab.labelEn}
+                    href={tab.href}
+                    isActive={isActive}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </motion.div>
 
         <motion.div
           className="absolute rounded-full pointer-events-none"
@@ -222,7 +265,7 @@ export default function PremiumBottomNav() {
             ].join(', '),
             border: '1px solid rgba(212,162,76,0.15)',
             willChange: 'transform',
-            zIndex: 0,
+            zIndex: 1,
           }}
           animate={{
             x: orbX,
@@ -240,30 +283,25 @@ export default function PremiumBottomNav() {
           }}
         />
 
-        <div
-          className="relative flex items-center justify-around h-full"
-          style={{ paddingBottom: 0 }}
-        >
-          {TABS.map((tab, i) => {
-            const Icon = TAB_ICONS[i];
-            const isActive = i === activeIdx;
-            return (
-              <div
-                key={tab.id}
-                className="flex-1 flex items-center justify-center"
-              >
-                <TabContent
-                  id={tab.id}
-                  Icon={Icon}
-                  label={tab.label}
-                  labelEn={tab.labelEn}
-                  href={tab.href}
-                  isActive={isActive}
-                />
-              </div>
-            );
-          })}
-        </div>
+        <AnimatePresence>
+          {impactScale < 1 && (
+            <motion.div
+              key="impact-dent"
+              className="absolute pointer-events-none"
+              style={{
+                width: ORB_SIZE * 1.6,
+                height: ORB_SIZE * 0.45,
+                top: ORB_SIZE + 2,
+                borderRadius: '50%',
+                background: 'radial-gradient(ellipse at center, rgba(212,162,76,0.1) 0%, transparent 70%)',
+              }}
+              initial={{ scaleY: 0.4, opacity: 0.7, x: orbX + ORB_SIZE / 2 - (ORB_SIZE * 1.6) / 2 }}
+              animate={{ scaleY: 1.6, opacity: 0, x: orbX + ORB_SIZE / 2 - (ORB_SIZE * 1.6) / 2 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
+            />
+          )}
+        </AnimatePresence>
       </div>
     </nav>
   );
