@@ -325,7 +325,7 @@ export default function HeroSection() {
           <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[clamp(220px,24vw,380px)] h-[clamp(220px,24vw,380px)] rounded-full opacity-[0.12]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
           <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[clamp(144px,18vw,240px)] h-[clamp(14px,2vw,24px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
           <div className="relative w-full h-full overflow-hidden cursor-pointer" onClick={() => setDnaModalOpen(true)}>
-            <Image src="/assets/avatar.webp" alt="AI Concierge" fill sizes="450px" className="object-contain object-bottom" priority />
+            <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="450px" className="object-contain object-bottom" priority />
           </div>
         </div>
       </motion.div>
@@ -369,7 +369,7 @@ export default function HeroSection() {
             <div className="absolute bottom-[6%] left-1/2 -translate-x-1/2 w-[clamp(180px, 45vw, 260px)] h-[clamp(16px, 4vw, 28px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
               className="relative w-full h-full overflow-hidden cursor-pointer" onClick={() => setDnaModalOpen(true)}>
-              <Image src="/assets/avatar.webp" alt="AI Concierge" fill sizes="420px" className="object-contain object-bottom" priority />
+              <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="420px" className="object-contain object-bottom" priority />
             </motion.div>
           </div>
         </div>
