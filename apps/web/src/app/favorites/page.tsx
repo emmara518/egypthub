@@ -51,7 +51,7 @@ export default function FavoritesPage() {
   return (
     <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
-        <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
+        <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M9 18l6-6-6-6"/></svg>
           العودة للرئيسية
         </Link>
@@ -68,7 +68,7 @@ export default function FavoritesPage() {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="ابحث في المفضلة..."
-            className="w-full max-w-md pr-12 pl-4 py-3 rounded-xl bg-[#0F1525] border border-white/[0.08] text-white placeholder:text-white/30 font-cairo text-sm focus:outline-none focus:border-[#D4A24C]/30 transition-all"
+            className="w-full max-w-md pr-12 pl-4 py-3 rounded-xl bg-theme-surface border border-white/[0.08] text-white placeholder:text-white/30 font-cairo text-sm focus:outline-none focus:border-theme-gold/30 transition-all"
           />
         </div>
 
@@ -77,7 +77,7 @@ export default function FavoritesPage() {
           {tabs.map(tab => (
             <button key={tab.id} onClick={() => setActiveTab(tab.id)}
               className={`px-4 py-2 rounded-xl text-xs font-cairo whitespace-nowrap transition-all ${
-                activeTab === tab.id ? 'bg-[#D4A24C]/10 text-[#D4A24C] border border-[#D4A24C]/20' : 'bg-[#0F1525] text-white/60 border border-white/[0.06]'
+                activeTab === tab.id ? 'bg-theme-gold/10 text-theme-gold border border-theme-gold/20' : 'bg-theme-surface text-white/60 border border-white/[0.06]'
               }`}>
               {tab.label}
             </button>
@@ -88,11 +88,11 @@ export default function FavoritesPage() {
           {/* Sidebar */}
           <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0 hidden lg:block">
             <div className="sticky top-28 space-y-4">
-              <div className="rounded-2xl border border-[#D4A24C]/10 bg-[#0F1525] p-5 text-center">
+              <div className="rounded-2xl border border-theme-gold/10 bg-theme-surface p-5 text-center">
                 <div className="relative w-20 h-20 mx-auto mb-3">
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-[#D4A24C] to-[#C89A3D] p-[2px]">
-                    <div className="w-full h-full rounded-full bg-[#0F1525] flex items-center justify-center">
-                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber p-[2px]">
+                    <div className="w-full h-full rounded-full bg-theme-surface flex items-center justify-center">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" className="text-theme-gold" stroke="currentColor" strokeWidth="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     </div>
                   </div>
                 </div>
@@ -100,18 +100,18 @@ export default function FavoritesPage() {
                 <p className="text-xs text-white/40 font-cairo mb-4">مستكشف مصر</p>
                 <div className="grid grid-cols-3 gap-2">
                   {[{ val: '24', label: 'رحلة' }, { val: '14', label: 'تقييم' }, { val: '8', label: 'مفضلة' }].map(s => (
-                    <div key={s.label} className="bg-[#141B2D] rounded-xl p-2 text-center">
-                      <p className="text-lg font-bold text-[#D4A24C] font-english">{s.val}</p>
+                    <div key={s.label} className="bg-theme-card rounded-xl p-2 text-center">
+                      <p className="text-lg font-bold text-theme-gold font-english">{s.val}</p>
                       <p className="text-[9px] text-white/40 font-cairo">{s.label}</p>
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="rounded-2xl border border-[#D4A24C]/10 bg-[#0F1525] p-4 space-y-0.5">
+              <div className="rounded-2xl border border-theme-gold/10 bg-theme-surface p-4 space-y-0.5">
                 {tabs.map(tab => (
                   <button key={tab.id} onClick={() => setActiveTab(tab.id)}
                     className={`w-full text-right px-3 py-2.5 rounded-lg text-sm transition-all ${
-                      activeTab === tab.id ? 'bg-[#D4A24C]/10 text-[#D4A24C] font-medium' : 'text-white/50 hover:text-white hover:bg-[#141B2D]'
+                      activeTab === tab.id ? 'bg-theme-gold/10 text-theme-gold font-medium' : 'text-white/50 hover:text-white hover:bg-theme-card'
                     }`}>
                     <div className="flex items-center justify-between">
                       <span>{tab.label}</span>
@@ -120,7 +120,7 @@ export default function FavoritesPage() {
                   </button>
                 ))}
               </div>
-              <Link href="/collections" className="block w-full text-center px-4 py-2.5 rounded-xl border border-[#D4A24C]/20 text-[#D4A24C] text-sm font-cairo hover:bg-[#D4A24C]/10 transition-all">
+              <Link href="/collections" className="block w-full text-center px-4 py-2.5 rounded-xl border border-theme-gold/20 text-theme-gold text-sm font-cairo hover:bg-theme-gold/10 transition-all">
                 إدارة المجموعات
               </Link>
             </div>
@@ -140,7 +140,7 @@ export default function FavoritesPage() {
                   ) : groupedByCategory.destinations.map((dest, idx) => (
                     <motion.div key={dest.slug} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-                      className="rounded-xl border border-white/[0.06] bg-[#0F1525] hover:border-[#D4A24C]/20 transition-all overflow-hidden flex">
+                      className="rounded-xl border border-white/[0.06] bg-theme-surface hover:border-theme-gold/20 transition-all overflow-hidden flex">
                       <div className="relative w-28 shrink-0 overflow-hidden">
                         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${dest.image})` }} />
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
@@ -180,7 +180,7 @@ export default function FavoritesPage() {
                   ) : groupedByCategory.experiences.map((exp, idx) => (
                     <motion.div key={exp.slug} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-                      className="rounded-xl border border-white/[0.06] bg-[#0F1525] hover:border-[#D4A24C]/20 transition-all overflow-hidden flex">
+                      className="rounded-xl border border-white/[0.06] bg-theme-surface hover:border-theme-gold/20 transition-all overflow-hidden flex">
                       <div className="relative w-28 shrink-0 overflow-hidden">
                         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${exp.image})` }} />
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
@@ -193,7 +193,7 @@ export default function FavoritesPage() {
                           </div>
                           <h3 className="font-bold text-white text-sm font-cairo mb-0.5">{exp.name}</h3>
                           <div className="flex items-center gap-3 mt-1">
-                            <span className="text-[#D4A24C] text-xs font-bold font-english">EGP {exp.price.toLocaleString()}</span>
+                            <span className="text-theme-gold text-xs font-bold font-english">EGP {exp.price.toLocaleString()}</span>
                             <span className="text-[10px] text-white/30 font-cairo flex items-center gap-1">
                               <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                               {exp.duration}
@@ -222,7 +222,7 @@ export default function FavoritesPage() {
                   ) : groupedByCategory.stories.map((story, idx) => (
                     <motion.div key={story.slug} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-                      className="rounded-xl border border-white/[0.06] bg-[#0F1525] hover:border-[#D4A24C]/20 transition-all overflow-hidden flex">
+                      className="rounded-xl border border-white/[0.06] bg-theme-surface hover:border-theme-gold/20 transition-all overflow-hidden flex">
                       <div className="relative w-28 shrink-0 overflow-hidden">
                         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${story.image})` }} />
                         <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
@@ -259,7 +259,7 @@ export default function FavoritesPage() {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
-              className="w-full max-w-sm rounded-2xl bg-[#141B2D] border border-[#D4A24C]/20 p-6 mx-4"
+              className="w-full max-w-sm rounded-2xl bg-theme-card border border-theme-gold/20 p-6 mx-4"
             >
               <h3 className="text-lg font-bold text-white font-cairo mb-4">أضف إلى مجموعة</h3>
               {collectionNames.length === 0 ? (
@@ -270,7 +270,7 @@ export default function FavoritesPage() {
                     <button
                       key={name}
                       onClick={() => assignToCollection(showCollectionModal, name)}
-                      className="w-full text-right px-4 py-3 rounded-xl bg-[#0F1525]/50 hover:bg-[#D4A24C]/10 border border-white/[0.05] hover:border-[#D4A24C]/20 transition-all text-sm text-white font-cairo"
+                      className="w-full text-right px-4 py-3 rounded-xl bg-theme-surface/50 hover:bg-theme-gold/10 border border-white/[0.05] hover:border-theme-gold/20 transition-all text-sm text-white font-cairo"
                     >
                       {name}
                     </button>

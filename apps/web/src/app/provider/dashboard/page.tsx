@@ -61,7 +61,7 @@ const menuItems: { id: MenuItem; label: string }[] = [
 
 const statusColors: Record<string, string> = {
   CONFIRMED: 'bg-[#10B981]/15 text-[#10B981]',
-  PENDING: 'bg-[#D4A24C]/15 text-[#D4A24C]',
+  PENDING: 'bg-[#D4A24C]/15 text-theme-gold',
   CANCELLED: 'bg-[#EF4444]/15 text-[#EF4444]',
   COMPLETED: 'bg-[#3B82F6]/15 text-[#3B82F6]',
 };
@@ -87,15 +87,15 @@ function StatCard({ value, label, icon }: { value: string | number; label: strin
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-[#0C1120] rounded-2xl border border-[#1E2A3D] p-5 hover:border-[#D4A24C]/30 transition-all duration-300"
+      className="bg-theme-bg rounded-2xl border border-theme-border p-5 hover:border-theme-gold/30 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-3">
-        <div className="w-10 h-10 rounded-xl bg-[#D4A24C]/10 flex items-center justify-center text-[#D4A24C]">
+        <div className="w-10 h-10 rounded-xl bg-[#D4A24C]/10 flex items-center justify-center text-theme-gold">
           {icon}
         </div>
       </div>
       <p className="text-2xl lg:text-3xl font-bold font-english text-white">{value}</p>
-      <p className="text-xs text-[#8B95A5] mt-1">{label}</p>
+      <p className="text-xs text-theme-secondary mt-1">{label}</p>
     </motion.div>
   );
 }
@@ -184,7 +184,7 @@ export default function ProviderDashboardPage() {
       <div className="min-h-screen bg-theme-bg flex items-center justify-center">
         <div className="text-center max-w-md">
           <div className="w-20 h-20 rounded-full bg-theme-gold/10 flex items-center justify-center mx-auto mb-6">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
             </svg>
           </div>
@@ -208,13 +208,13 @@ export default function ProviderDashboardPage() {
     <div className="min-h-screen bg-theme-bg text-white font-cairo">
       <div className="flex min-h-screen">
         {/* Sidebar */}
-        <aside className="hidden lg:flex flex-col w-72 shrink-0 bg-[#0C1120] border-l border-[#1E2A3D] sticky top-0 h-screen overflow-y-auto">
-          <div className="p-5 border-b border-[#1E2A3D]">
+        <aside className="hidden lg:flex flex-col w-72 shrink-0 bg-theme-bg border-l border-theme-border sticky top-0 h-screen overflow-y-auto">
+          <div className="p-5 border-b border-theme-border">
             <div className="flex items-center gap-3 mb-4">
               <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4A24C] to-[#C89A3D] p-[2px]">
-                  <div className="w-full h-full rounded-full bg-[#0C1120] flex items-center justify-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber p-[2px]">
+                  <div className="w-full h-full rounded-full bg-theme-bg flex items-center justify-center">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                       <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
                     </svg>
                   </div>
@@ -228,17 +228,17 @@ export default function ProviderDashboardPage() {
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-sm truncate">{profile.businessNameAr}</p>
                 {profile.category && (
-                  <p className="text-[10px] text-[#D4A24C] font-cairo">{profile.category}</p>
+                  <p className="text-[10px] text-theme-gold font-cairo">{profile.category}</p>
                 )}
               </div>
             </div>
             <div className="flex items-center gap-2">
               {[1, 2, 3, 4, 5].map((s) => (
-                <svg key={s} width="12" height="12" viewBox="0 0 24 24" fill={s <= Math.round(profile.averageRating) ? '#D4A24C' : 'none'} stroke="#D4A24C" strokeWidth="1.5">
+                <svg key={s} width="12" height="12" viewBox="0 0 24 24" fill={s <= Math.round(profile.averageRating) ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5">
                   <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                 </svg>
               ))}
-              <span className="text-[10px] text-[#D4A24C] font-english">{profile.averageRating.toFixed(1)}</span>
+              <span className="text-[10px] text-theme-gold font-english">{profile.averageRating.toFixed(1)}</span>
             </div>
           </div>
 
@@ -253,8 +253,8 @@ export default function ProviderDashboardPage() {
                   onClick={() => setActiveMenu(item.id)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-[#D4A24C]/10 text-[#D4A24C] font-medium border border-[#D4A24C]/20'
-                      : 'text-[#8B95A5] hover:text-white hover:bg-[#1A2235]'
+                      ? 'bg-[#D4A24C]/10 text-theme-gold font-medium border border-theme-gold/20'
+                      : 'text-theme-secondary hover:text-white hover:bg-[#1A2235]'
                   }`}
                 >
                   <span>{item.label}</span>
@@ -266,8 +266,8 @@ export default function ProviderDashboardPage() {
             })}
           </nav>
 
-          <div className="p-4 border-t border-[#1E2A3D]">
-            <Link href="/providers" className="flex items-center gap-2 text-[10px] text-[#5A6478] hover:text-[#D4A24C] transition-colors">
+          <div className="p-4 border-t border-theme-border">
+            <Link href="/providers" className="flex items-center gap-2 text-[10px] text-theme-muted hover:text-theme-gold transition-colors">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="15 18 9 12 15 6" />
               </svg>
@@ -281,9 +281,9 @@ export default function ProviderDashboardPage() {
           <div className="px-6 pt-6 lg:pt-8 pb-6">
             <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
               <h1 className="text-2xl lg:text-3xl font-bold">
-                مرحباً <span className="text-[#D4A24C]">{profile.businessNameAr}</span>
+                مرحباً <span className="text-theme-gold">{profile.businessNameAr}</span>
               </h1>
-              <p className="text-sm text-[#8B95A5] mt-1">
+              <p className="text-sm text-theme-secondary mt-1">
                 {new Date().toLocaleDateString('ar-EG', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
               </p>
             </motion.div>
@@ -327,20 +327,20 @@ export default function ProviderDashboardPage() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-[#D4A24C]/20 transition-all"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all"
                     >
-                      <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-gradient-to-br from-[#D4A24C]/10 to-[#0F1420]">
+                      <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-gradient-to-br from-theme-gold/10 to-[#0F1420]">
                         {exp.images?.[0] ? (
                           <div className="w-full h-full bg-cover bg-center" style={{ backgroundImage: `url(${exp.images[0]})` }} />
                         ) : (
                           <div className="w-full h-full flex items-center justify-center opacity-30">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><rect x="3" y="3" width="18" height="18" rx="2" /><circle cx="8.5" cy="8.5" r="1.5" /><path d="M21 15l-5-5L5 21" /></svg>
                           </div>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold truncate">{exp.titleAr}</p>
-                        <p className="text-[#D4A24C] text-sm font-english mt-0.5">{exp.priceEgp.toLocaleString()} ج.م</p>
+                        <p className="text-theme-gold text-sm font-english mt-0.5">{exp.priceEgp.toLocaleString()} ج.م</p>
                       </div>
                       <div className="flex items-center gap-3">
                         <button
@@ -356,7 +356,7 @@ export default function ProviderDashboardPage() {
                         </button>
                         <Link
                           href={`/provider/experiences/${exp.id}/edit`}
-                          className="px-3 py-1.5 rounded-lg bg-[#D4A24C]/10 text-[#D4A24C] text-[10px] font-bold hover:bg-[#D4A24C]/20 transition-all"
+                          className="px-3 py-1.5 rounded-lg bg-[#D4A24C]/10 text-theme-gold text-[10px] font-bold hover:bg-[#D4A24C]/20 transition-all"
                         >
                           تعديل
                         </Link>
@@ -365,8 +365,8 @@ export default function ProviderDashboardPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12 rounded-2xl border border-[#1E2A3D] bg-[#0C1120]">
-                  <p className="text-[#8B95A5] text-sm font-cairo mb-4">لا توجد تجارب بعد</p>
+                <div className="text-center py-12 rounded-2xl border border-theme-border bg-theme-bg">
+                  <p className="text-theme-secondary text-sm font-cairo mb-4">لا توجد تجارب بعد</p>
                   <Link href="/provider/experiences/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D4A24C] text-dark-900 text-sm font-bold transition-all hover:bg-[#D4A24C]/90">
                     إضافة تجربة جديدة
                   </Link>
@@ -385,17 +385,17 @@ export default function ProviderDashboardPage() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.04 }}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-[#D4A24C]/20 transition-all"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all"
                     >
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold truncate">{booking.experience?.titleAr || booking.bookingReference}</p>
-                        <p className="text-[11px] text-[#5A6478] mt-1">
+                        <p className="text-[11px] text-theme-muted mt-1">
                           {booking.user?.name} • {new Date(booking.bookingDate).toLocaleDateString('ar-EG')}
                         </p>
                       </div>
                       <div className="text-left">
-                        <p className="text-sm font-bold font-english text-[#D4A24C]">{booking.totalPriceEgp.toLocaleString()} ج.م</p>
-                        <span className={`inline-block px-2.5 py-1 rounded-lg text-[10px] font-bold mt-1 ${statusColors[booking.status] || 'bg-[#5A6478]/15 text-[#5A6478]'}`}>
+                        <p className="text-sm font-bold font-english text-theme-gold">{booking.totalPriceEgp.toLocaleString()} ج.م</p>
+                        <span className={`inline-block px-2.5 py-1 rounded-lg text-[10px] font-bold mt-1 ${statusColors[booking.status] || 'bg-[#5A6478]/15 text-theme-muted'}`}>
                           {statusLabels[booking.status] || booking.status}
                         </span>
                       </div>
@@ -403,8 +403,8 @@ export default function ProviderDashboardPage() {
                   ))}
                 </div>
               ) : (
-                <div className="text-center py-12 rounded-2xl border border-[#1E2A3D] bg-[#0C1120]">
-                  <p className="text-[#8B95A5] text-sm font-cairo">لا توجد حجوزات بعد</p>
+                <div className="text-center py-12 rounded-2xl border border-theme-border bg-theme-bg">
+                  <p className="text-theme-secondary text-sm font-cairo">لا توجد حجوزات بعد</p>
                 </div>
               )}
             </div>
@@ -413,7 +413,7 @@ export default function ProviderDashboardPage() {
       </div>
 
       {/* Mobile Bottom Nav */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0C1120]/95 backdrop-blur-lg border-t border-[#1E2A3D]">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-theme-bg/95 backdrop-blur-lg border-t border-theme-border">
         <div className="flex items-center justify-around px-2 py-2">
           {menuItems.slice(0, 4).map((item) => {
             const isActive = activeMenu === item.id;
@@ -422,7 +422,7 @@ export default function ProviderDashboardPage() {
                 key={item.id}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setActiveMenu(item.id)}
-                className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all ${isActive ? 'text-[#D4A24C]' : 'text-[#5A6478]'}`}
+                className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all ${isActive ? 'text-theme-gold' : 'text-theme-muted'}`}
               >
                 <span className="text-[9px]">{item.label}</span>
                 {isActive && <motion.div layoutId="mobileIndicator" className="w-1 h-1 rounded-full bg-[#D4A24C]" />}

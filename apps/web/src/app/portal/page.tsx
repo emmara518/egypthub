@@ -309,13 +309,13 @@ export default function PortalPage() {
     <div className="min-h-screen bg-theme-bg text-white font-cairo">
       <div className="flex min-h-screen">
         {/* ─── Desktop Sidebar ─── */}
-        <aside className="hidden lg:flex flex-col w-72 shrink-0 bg-[#0C1120] border-l border-[#1E2A3D] sticky top-0 h-screen overflow-y-auto">
+        <aside className="hidden lg:flex flex-col w-72 shrink-0 bg-theme-bg border-l border-theme-border sticky top-0 h-screen overflow-y-auto">
           {/* Profile Card */}
-          <div className="p-5 border-b border-[#1E2A3D]">
+          <div className="p-5 border-b border-theme-border">
             <div className="flex items-center gap-3 mb-4">
               <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-[#D4A24C] to-[#C89A3D] p-[2px]">
-                  <div className="w-full h-full rounded-full bg-[#0C1120] flex items-center justify-center">
+                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber p-[2px]">
+                  <div className="w-full h-full rounded-full bg-theme-bg flex items-center justify-center">
                     <IconUser />
                   </div>
                 </div>
@@ -323,20 +323,20 @@ export default function PortalPage() {
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-sm truncate">{user.name}</p>
-                <p className="text-[10px] text-[#D4A24C] font-english">عضو منذ {user.memberSince}</p>
+                <p className="text-[10px] text-theme-gold font-english">عضو منذ {user.memberSince}</p>
               </div>
             </div>
-            <div className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D]">
+            <div className="bg-[#0F1420] rounded-xl p-3 border border-theme-border">
               <div className="flex items-center justify-between mb-1.5">
-                <span className="text-[10px] text-[#8B95A5]">{user.title}</span>
-                <span className="text-[10px] text-[#D4A24C] font-english">{user.xp} XP</span>
+                <span className="text-[10px] text-theme-secondary">{user.title}</span>
+                <span className="text-[10px] text-theme-gold font-english">{user.xp} XP</span>
               </div>
               <div className="w-full h-1.5 bg-[#1A2235] rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min((user.xp / 3000) * 100, 100)}%` }}
                   transition={{ duration: 1, ease: 'easeOut' }}
-                  className="h-full bg-gradient-to-l from-[#D4A24C] to-[#E8C97A] rounded-full"
+                  className="h-full bg-gradient-to-l from-theme-gold to-[#E8C97A] rounded-full"
                 />
               </div>
             </div>
@@ -362,8 +362,8 @@ export default function PortalPage() {
                   }}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-[#D4A24C]/10 text-[#D4A24C] font-medium border border-[#D4A24C]/20'
-                      : 'text-[#8B95A5] hover:text-white hover:bg-[#1A2235]'
+                      ? 'bg-[#D4A24C]/10 text-theme-gold font-medium border border-theme-gold/20'
+                      : 'text-theme-secondary hover:text-white hover:bg-[#1A2235]'
                   }`}
                 >
                   <IconComp />
@@ -380,8 +380,8 @@ export default function PortalPage() {
           </nav>
 
           {/* Sidebar Footer */}
-          <div className="p-4 border-t border-[#1E2A3D]">
-            <div className="flex items-center gap-2 text-[10px] text-[#5A6478]">
+          <div className="p-4 border-t border-theme-border">
+            <div className="flex items-center gap-2 text-[10px] text-theme-muted">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
@@ -401,9 +401,9 @@ export default function PortalPage() {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-2xl lg:text-3xl font-bold">
-                  مرحباً <span className="text-[#D4A24C]">{user.name.split(' ')[0]}</span>
+                  مرحباً <span className="text-theme-gold">{user.name.split(' ')[0]}</span>
                 </h1>
-                <p className="text-sm text-[#8B95A5] mt-1 flex items-center gap-2">
+                <p className="text-sm text-theme-secondary mt-1 flex items-center gap-2">
                   <IconCalendar />
                   <span className="font-english">
                     {new Date().toLocaleDateString('ar-EG', {
@@ -420,9 +420,9 @@ export default function PortalPage() {
                   <input
                     type="text"
                     placeholder="بحث..."
-                    className="w-64 px-4 py-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D] text-sm text-white placeholder-[#5A6478] focus:outline-none focus:border-[#D4A24C]/50 transition-colors"
+                    className="w-64 px-4 py-2.5 rounded-xl bg-[#0F1420] border border-theme-border text-sm text-white placeholder-[#5A6478] focus:outline-none focus:border-theme-gold/50 transition-colors"
                   />
-                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-[#5A6478]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-theme-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
                     <line x1="21" y1="21" x2="16.65" y2="16.65" />
                   </svg>
@@ -442,16 +442,16 @@ export default function PortalPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: i * 0.08 }}
-                    className="bg-[#0C1120] rounded-2xl border border-[#1E2A3D] p-5 hover:border-[#D4A24C]/30 transition-all duration-300 group"
+                    className="bg-theme-bg rounded-2xl border border-theme-border p-5 hover:border-theme-gold/30 transition-all duration-300 group"
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#D4A24C]/10 flex items-center justify-center text-[#D4A24C] group-hover:bg-[#D4A24C]/20 transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-[#D4A24C]/10 flex items-center justify-center text-theme-gold group-hover:bg-[#D4A24C]/20 transition-colors">
                         <StatIcon />
                       </div>
                       <IconChevronLeft />
                     </div>
                     <p className="text-2xl lg:text-3xl font-bold font-english text-white">{stat.value}</p>
-                    <p className="text-xs text-[#8B95A5] mt-1">{stat.label}</p>
+                    <p className="text-xs text-theme-secondary mt-1">{stat.label}</p>
                   </motion.div>
                 );
               })}
@@ -463,11 +463,11 @@ export default function PortalPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35 }}
-                className="xl:col-span-2 bg-[#0C1120] rounded-2xl border border-[#1E2A3D] p-5"
+                className="xl:col-span-2 bg-theme-bg rounded-2xl border border-theme-border p-5"
               >
                 <div className="flex items-center justify-between mb-5">
                   <h2 className="font-bold text-lg">الحجوزات الأخيرة</h2>
-                  <Link href="#" className="text-xs text-[#D4A24C] hover:text-[#E8C97A] transition-colors flex items-center gap-1">
+                  <Link href="#" className="text-xs text-theme-gold hover:text-[#E8C97A] transition-colors flex items-center gap-1">
                     عرض الكل
                     <IconChevronLeft />
                   </Link>
@@ -480,14 +480,14 @@ export default function PortalPage() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + i * 0.1 }}
                       whileHover={{ x: -4 }}
-                      className="flex items-center gap-4 p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-[#D4A24C]/20 transition-all cursor-pointer group"
+                      className="flex items-center gap-4 p-3 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all cursor-pointer group"
                     >
                       <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 relative">
                         <Image src={booking.img} alt={booking.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
                       </div>
                       <div className="flex-1 min-w-0">
-                        <p className="font-bold text-sm truncate group-hover:text-[#D4A24C] transition-colors">{booking.title}</p>
-                        <p className="text-[11px] text-[#5A6478] flex items-center gap-1.5 mt-1">
+                        <p className="font-bold text-sm truncate group-hover:text-theme-gold transition-colors">{booking.title}</p>
+                        <p className="text-[11px] text-theme-muted flex items-center gap-1.5 mt-1">
                           <IconCalendar />
                           <span className="font-english">{booking.date}</span>
                         </p>
@@ -497,12 +497,12 @@ export default function PortalPage() {
                           className={`px-2.5 py-1 rounded-lg text-[10px] font-bold ${
                             booking.statusType === 'confirmed'
                               ? 'bg-[#10B981]/15 text-[#10B981]'
-                              : 'bg-[#D4A24C]/15 text-[#D4A24C]'
+                              : 'bg-[#D4A24C]/15 text-theme-gold'
                           }`}
                         >
                           {booking.status}
                         </span>
-                        <span className="text-sm font-bold font-english text-[#D4A24C]">{booking.price}</span>
+                        <span className="text-sm font-bold font-english text-theme-gold">{booking.price}</span>
                       </div>
                     </motion.div>
                   ))}
@@ -514,11 +514,11 @@ export default function PortalPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.45 }}
-                className="bg-[#0C1120] rounded-2xl border border-[#1E2A3D] p-5"
+                className="bg-theme-bg rounded-2xl border border-theme-border p-5"
               >
                 <div className="flex items-center justify-between mb-5">
                   <h2 className="font-bold text-lg">الرحلات القادمة</h2>
-                  <Link href="#" className="text-xs text-[#D4A24C] hover:text-[#E8C97A] transition-colors flex items-center gap-1">
+                  <Link href="#" className="text-xs text-theme-gold hover:text-[#E8C97A] transition-colors flex items-center gap-1">
                     عرض الكل
                     <IconChevronLeft />
                   </Link>
@@ -539,8 +539,8 @@ export default function PortalPage() {
                         {/* Timeline Dot */}
                         <div className={`relative z-10 w-9 h-9 rounded-full shrink-0 flex items-center justify-center ${
                           i === 0
-                            ? 'bg-[#D4A24C]/20 border-2 border-[#D4A24C]'
-                            : 'bg-[#1A2235] border-2 border-[#1E2A3D]'
+                            ? 'bg-[#D4A24C]/20 border-2 border-theme-gold'
+                            : 'bg-[#1A2235] border-2 border-theme-border'
                         }`}>
                           {i === 0 && (
                             <motion.div
@@ -549,22 +549,22 @@ export default function PortalPage() {
                               className="absolute inset-0 rounded-full bg-[#D4A24C]/10"
                             />
                           )}
-                          <span className="text-xs font-bold font-english text-[#D4A24C]">{i + 1}</span>
+                          <span className="text-xs font-bold font-english text-theme-gold">{i + 1}</span>
                         </div>
 
                         {/* Trip Card */}
-                        <div className="flex-1 flex items-center gap-3 p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-[#D4A24C]/20 transition-all cursor-pointer">
+                        <div className="flex-1 flex items-center gap-3 p-3 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all cursor-pointer">
                           <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
                             <Image src={trip.img} alt={trip.title} fill className="object-cover" />
                           </div>
                           <div className="flex-1 min-w-0">
                             <p className="font-bold text-sm truncate">{trip.title}</p>
-                            <p className="text-[11px] text-[#5A6478] mt-0.5 font-english">{trip.date}</p>
+                            <p className="text-[11px] text-theme-muted mt-0.5 font-english">{trip.date}</p>
                           </div>
                           <div className="text-left shrink-0">
-                            <p className="text-[10px] text-[#8B95A5]">بعد</p>
-                            <p className="text-sm font-bold font-english text-[#D4A24C]">{trip.daysLeft}</p>
-                            <p className="text-[10px] text-[#5A6478]">يوم</p>
+                            <p className="text-[10px] text-theme-secondary">بعد</p>
+                            <p className="text-sm font-bold font-english text-theme-gold">{trip.daysLeft}</p>
+                            <p className="text-[10px] text-theme-muted">يوم</p>
                           </div>
                         </div>
                       </motion.div>
@@ -596,12 +596,12 @@ export default function PortalPage() {
                     >
                       <Link
                         href={action.href}
-                        className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-[#0C1120] border border-[#1E2A3D] hover:border-[#D4A24C]/30 hover:bg-[#0F1420] transition-all duration-300 group"
+                        className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-theme-bg border border-theme-border hover:border-theme-gold/30 hover:bg-[#0F1420] transition-all duration-300 group"
                       >
-                        <div className="w-14 h-14 rounded-2xl bg-[#D4A24C]/10 flex items-center justify-center text-[#D4A24C] group-hover:bg-[#D4A24C]/20 group-hover:scale-110 transition-all duration-300">
+                        <div className="w-14 h-14 rounded-2xl bg-[#D4A24C]/10 flex items-center justify-center text-theme-gold group-hover:bg-[#D4A24C]/20 group-hover:scale-110 transition-all duration-300">
                           <ActionIcon />
                         </div>
-                        <span className="text-sm font-medium text-center group-hover:text-[#D4A24C] transition-colors">{action.label}</span>
+                        <span className="text-sm font-medium text-center group-hover:text-theme-gold transition-colors">{action.label}</span>
                       </Link>
                     </motion.div>
                   );
@@ -613,7 +613,7 @@ export default function PortalPage() {
       </div>
 
       {/* ─── Mobile Bottom Nav ─── */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0C1120]/95 backdrop-blur-lg border-t border-[#1E2A3D]">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-theme-bg/95 backdrop-blur-lg border-t border-theme-border">
         <div className="flex items-center justify-around px-2 py-2">
           {menuItems.slice(0, 5).map((item) => {
             const IconComp = iconMap[item.icon];
@@ -624,7 +624,7 @@ export default function PortalPage() {
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setActiveMenu(item.id)}
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all ${
-                  isActive ? 'text-[#D4A24C]' : 'text-[#5A6478]'
+                  isActive ? 'text-theme-gold' : 'text-theme-muted'
                 }`}
               >
                 <div className={`relative ${isActive ? 'scale-110' : ''} transition-transform`}>

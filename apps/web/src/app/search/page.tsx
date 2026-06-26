@@ -68,7 +68,7 @@ function SearchContent() {
   return (
     <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
-        <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
+        <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
           العودة للرئيسية
         </Link>
@@ -89,7 +89,7 @@ function SearchContent() {
               type="text" value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               placeholder="ابحث عن تجارب، مزودين..."
-              className="w-full h-14 pr-12 pl-12 rounded-xl bg-[#0F1525] border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-[#D4A24C]/30 transition-all font-cairo text-base" />
+              className="w-full h-14 pr-12 pl-12 rounded-xl bg-theme-surface border border-white/[0.08] text-white placeholder:text-white/30 focus:outline-none focus:border-theme-gold/30 transition-all font-cairo text-base" />
             {searchQuery && (
               <button onClick={() => { setSearchQuery(''); setResults({ experiences: [], providers: [], stories: [], total: 0 }); setError(''); }}
                 className="absolute left-4 top-1/2 -translate-y-1/2 text-white/30 hover:text-white transition-colors">
@@ -100,14 +100,14 @@ function SearchContent() {
         </div>
 
         <div className="flex flex-wrap gap-3 mb-6">
-          <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-[#0F1525] border border-white/[0.06] text-xs text-white/40 font-cairo">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
+          <div className="flex items-center gap-2 px-3 py-2 rounded-xl bg-theme-surface border border-white/[0.06] text-xs text-white/40 font-cairo">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-theme-gold" stroke="currentColor" strokeWidth="2"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"/></svg>
             تصفية:
           </div>
           {filters.map(f => (
             <button key={f.id} onClick={() => setActiveFilter(f.id)}
               className={`px-4 py-2 rounded-full text-sm font-cairo font-medium transition-all ${
-                activeFilter === f.id ? 'bg-[#D4A24C] text-theme-bg' : 'bg-[#0F1525] border border-white/[0.06] text-white/50 hover:text-[#D4A24C] hover:border-[#D4A24C]/30'
+                activeFilter === f.id ? 'bg-theme-gold text-theme-bg' : 'bg-theme-surface border border-white/[0.06] text-white/50 hover:text-theme-gold hover:border-theme-gold/30'
               }`}>{f.label}</button>
           ))}
         </div>
@@ -117,7 +117,7 @@ function SearchContent() {
             <motion.div key="loading" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {[1, 2, 3].map(i => (
-                <div key={i} className="rounded-2xl overflow-hidden bg-[#0F1525] border border-white/[0.06] animate-pulse">
+                <div key={i} className="rounded-2xl overflow-hidden bg-theme-surface border border-white/[0.06] animate-pulse">
                   <div className="h-40 bg-white/[0.05]" />
                   <div className="p-3 space-y-2">
                     <div className="h-4 bg-white/[0.05] rounded w-2/3" />
@@ -132,7 +132,7 @@ function SearchContent() {
               className="text-center py-20">
               <p className="text-red-400 text-lg font-cairo mb-2">{error}</p>
               <button onClick={() => fetchResults(searchQuery)}
-                className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-theme-bg font-bold font-cairo transition-all hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)]">
+                className="px-6 py-3 rounded-xl bg-gradient-to-r from-theme-gold to-accent-amber text-theme-bg font-bold font-cairo transition-all hover:shadow-gold">
                 إعادة المحاولة
               </button>
             </motion.div>
@@ -148,7 +148,7 @@ function SearchContent() {
               className="text-center py-20">
               <p className="text-white/50 text-lg font-cairo mb-2">لا توجد نتائج لبحثك</p>
               <p className="text-white/30 text-sm font-cairo mb-6">حاول استخدام كلمات مختلفة أو تصفح التجارب</p>
-              <Link href="/experiences" className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-theme-bg font-bold font-cairo transition-all hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)]">
+              <Link href="/experiences" className="px-6 py-3 rounded-xl bg-gradient-to-r from-theme-gold to-accent-amber text-theme-bg font-bold font-cairo transition-all hover:shadow-gold">
                 تصفح التجارب
               </Link>
             </motion.div>
@@ -158,26 +158,26 @@ function SearchContent() {
               {filteredExperiences.length > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-theme-gold" stroke="currentColor" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
                     <h2 className="text-lg font-bold font-playfair text-white">التجارب ({filteredExperiences.length})</h2>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {filteredExperiences.map((exp, idx) => (
                       <motion.div key={exp.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                         <Link href={`/experiences/${exp.slug}`}
-                          className="group block rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0F1525] transition-all hover:-translate-y-1 hover:border-[#D4A24C]/20">
+                          className="group block rounded-2xl overflow-hidden border border-white/[0.06] bg-theme-surface transition-all hover:-translate-y-1 hover:border-theme-gold/20">
                           <div className="p-3">
                             <div className="flex items-center gap-1 mb-1">
                               <svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A24C"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
-                              <span className="text-[#D4A24C] text-xs font-bold font-english">{exp.averageRating}</span>
+                              <span className="text-theme-gold text-xs font-bold font-english">{exp.averageRating}</span>
                             </div>
-                            <h3 className="font-bold text-sm text-white font-cairo group-hover:text-[#D4A24C] transition-colors">{exp.titleAr}</h3>
+                            <h3 className="font-bold text-sm text-white font-cairo group-hover:text-theme-gold transition-colors">{exp.titleAr}</h3>
                             <p className="text-white/30 text-[10px] font-cairo mt-1 flex items-center gap-1">
                               <svg width="8" height="8" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                               {exp.locationCity}
                             </p>
                             <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/[0.06]">
-                              <span className="text-[#D4A24C] text-xs font-bold font-english">{exp.priceEgp.toLocaleString()} ج.م</span>
+                              <span className="text-theme-gold text-xs font-bold font-english">{exp.priceEgp.toLocaleString()} ج.م</span>
                             </div>
                           </div>
                         </Link>
@@ -197,15 +197,15 @@ function SearchContent() {
                     {filteredProviders.map((prov, idx) => (
                       <motion.div key={prov.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                         <Link href={`/partners/${prov.id}`}
-                          className="group block rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0F1525] transition-all hover:-translate-y-1 hover:border-[#D4A24C]/20">
+                          className="group block rounded-2xl overflow-hidden border border-white/[0.06] bg-theme-surface transition-all hover:-translate-y-1 hover:border-theme-gold/20">
                           <div className="p-3">
-                            <h3 className="font-bold text-sm text-white font-cairo group-hover:text-[#D4A24C] transition-colors">{prov.businessNameAr}</h3>
+                            <h3 className="font-bold text-sm text-white font-cairo group-hover:text-theme-gold transition-colors">{prov.businessNameAr}</h3>
                             <p className="text-white/30 text-[10px] font-cairo mt-1 flex items-center gap-1">
                               <svg width="8" height="8" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                               {prov.locationCity}
                             </p>
                             <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/[0.06]">
-                              <span className="text-[#D4A24C] text-xs font-bold font-cairo">{prov.category}</span>
+                              <span className="text-theme-gold text-xs font-bold font-cairo">{prov.category}</span>
                             </div>
                           </div>
                         </Link>
@@ -218,18 +218,18 @@ function SearchContent() {
               {filteredStories.length > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" className="text-theme-gold" stroke="currentColor" strokeWidth="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
                     <h2 className="text-lg font-bold font-playfair text-white">القصص ({filteredStories.length})</h2>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                     {filteredStories.map((story, idx) => (
                       <motion.div key={story.slug} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.03 }}>
                         <Link href={`/stories/${story.slug}`}
-                          className="group block rounded-2xl overflow-hidden border border-white/[0.06] bg-[#0F1525] transition-all hover:-translate-y-1 hover:border-[#D4A24C]/20">
+                          className="group block rounded-2xl overflow-hidden border border-white/[0.06] bg-theme-surface transition-all hover:-translate-y-1 hover:border-theme-gold/20">
                           <div className="p-3">
-                            <h3 className="font-bold text-sm text-white font-cairo group-hover:text-[#D4A24C] transition-colors">{story.titleAr}</h3>
+                            <h3 className="font-bold text-sm text-white font-cairo group-hover:text-theme-gold transition-colors">{story.titleAr}</h3>
                             <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/[0.06]">
-                              <span className="text-[#D4A24C] text-xs font-bold font-cairo">{story.category}</span>
+                              <span className="text-theme-gold text-xs font-bold font-cairo">{story.category}</span>
                             </div>
                           </div>
                         </Link>
@@ -250,7 +250,7 @@ export default function SearchPage() {
   return (
     <Suspense fallback={
       <div className="min-h-screen bg-theme-bg flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-[#D4A24C] border-t-transparent rounded-full animate-spin" />
+        <div className="w-8 h-8 border-2 border-theme-gold border-t-transparent rounded-full animate-spin" />
       </div>
     }>
       <SearchContent />
