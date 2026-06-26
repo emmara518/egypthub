@@ -324,7 +324,7 @@ export default function HeroSection() {
       </motion.div>
 
       {/* AVATAR — Mobile — click to discover Travel DNA */}
-      <div className="lg:hidden absolute bottom-0 left-0 right-0 flex justify-center group" style={{ height: 'clamp(312px, 60vw, 456px)', zIndex: 15 }} onClick={() => setDnaModalOpen(true)}>
+      <div className="lg:hidden absolute bottom-0 left-0 right-0 flex justify-center group" style={{ height: 'clamp(400px, 85vw, 560px)', zIndex: 15 }} onClick={() => setDnaModalOpen(true)}>
         <div className="relative w-full h-full flex items-end justify-center">
           {/* Brand Watermark */}
           <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
@@ -332,27 +332,34 @@ export default function HeroSection() {
               EGYPTHUB
             </span>
           </div>
-          {/* 3D Orbital Platform */}
-          <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(228px, 50vw, 336px)', height: 'clamp(66px, 16vw, 108px)' }}>
+          {/* Gold glow behind avatar */}
+          <div className="absolute bottom-[18%] left-1/2 -translate-x-1/2 w-[clamp(280px, 70vw, 380px)] h-[clamp(280px, 70vw, 380px)] rounded-full opacity-[0.1]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
+          <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-[clamp(180px, 45vw, 260px)] h-[clamp(16px, 4vw, 28px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
+          {/* 3D Orbital Platform — integrated behind avatar */}
+          <div className="absolute bottom-[18%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(300px, 72vw, 420px)', height: 'clamp(90px, 22vw, 140px)' }}>
             <div className="orbit-energy-base" />
-            <div className="orbit-glow-ring" style={{ inset: -3 }} />
+            <div className="orbit-glow-ring" style={{ inset: -5 }} />
             <div className="orbit-ring-a">
               <div className="orbit-particle-a" />
+              <div className="orbit-particle-a-2" />
               <div className="orbit-ring-b">
                 <div className="orbit-particle-b" />
+                <div className="orbit-particle-b-2" />
                 <div className="orbit-ring-c">
                   <div className="orbit-particle-c" />
+                  <div className="orbit-particle-c-2" />
                 </div>
               </div>
             </div>
             <div className="energy-p1" />
+            <div className="energy-p2" />
             <div className="energy-p3" />
+            <div className="energy-p4" />
             <div className="energy-p5" />
           </div>
-          <div className="absolute bottom-[12%] left-1/2 -translate-x-1/2 w-[clamp(168px, 41vw, 264px)] h-[clamp(168px, 41vw, 264px)] rounded-full opacity-[0.08]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative" style={{ width: 'clamp(192px, 46vw, 240px)', height: 'clamp(240px, 60vw, 336px)' }}>
-            <Image src="/assets/avatar.webp" alt="AI Concierge" fill sizes="240px" className="object-contain object-bottom" priority />
+            className="relative gold-ring rounded-[2rem] overflow-hidden" style={{ width: 'clamp(320px, 78vw, 420px)', height: 'clamp(380px, 95vw, 500px)' }}>
+            <Image src="/assets/avatar.webp" alt="AI Concierge" fill sizes="420px" className="object-contain object-bottom" priority />
           </motion.div>
         </div>
         {/* Gradient fade to blend with next section */}
