@@ -32,7 +32,7 @@ const config: Config = {
           bg: 'rgb(var(--bg-rgb) / <alpha-value>)',
           surface: 'rgb(var(--surface-rgb) / <alpha-value>)',
           card: 'rgb(var(--surface-elevated-rgb) / <alpha-value>)',
-          elevated: 'rgb(var(--surface-hover-rgb) / <alpha-value>)',
+          elevated: 'rgb(var(--surface-elevated-rgb) / <alpha-value>)',
           border: 'rgb(var(--border-rgb) / <alpha-value>)',
           hover: 'rgb(var(--surface-hover-rgb) / <alpha-value>)',
           text: 'rgb(var(--text-primary-rgb) / <alpha-value>)',
@@ -40,6 +40,7 @@ const config: Config = {
           muted: '#5A6478',
           gold: 'rgb(var(--gold-rgb) / <alpha-value>)',
           teal: '#0E8F94',
+          coral: 'rgb(var(--coral-rgb) / <alpha-value>)',
         },
       },
       fontFamily: {

@@ -63,10 +63,12 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="ar" dir="rtl" data-theme="dark" className={`${playfair.variable} ${cairo.variable} ${poppins.variable} ${amiri.variable}`}>
+    <html lang="ar" dir="rtl" data-theme="dark" className={`${playfair.variable} ${cairo.variable} ${poppins.variable} ${amiri.variable}`} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#D4A24C" />
+        <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="Egypt travel, Egypt tourism, AI travel planner, Nile cruises, Red Sea diving, Egyptian experiences, luxury travel Egypt, booking platform" />
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/assets/icon-192.png" />
         <meta name="apple-mobile-web-app-capable" content="yes" />

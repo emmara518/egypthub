@@ -66,14 +66,20 @@ export default function AdminPage() {
               <h2 className="text-lg font-bold text-theme font-cairo mb-4">مركز المساعدة</h2>
               <div className="space-y-3">
                 {[
-                  { label: 'دليل الاستخدام', desc: 'تعلم كيفية استخدام لوحة الأدمن' },
-                  { label: 'تقارير الأداء', desc: 'عرض إحصائيات المنصة والأداء' },
-                  { label: 'الدعم الفني', desc: 'تواصل مع فريق الدعم الفني' },
+                  { label: 'دليل الاستخدام', desc: 'تعلم كيفية استخدام لوحة الأدمن', href: '/admin/network' },
+                  { label: 'تقارير الأداء', desc: 'عرض إحصائيات المنصة والأداء', href: '/admin/network' },
+                  { label: 'الدعم الفني', desc: 'تواصل مع فريق الدعم الفني', href: '/admin/network' },
                 ].map(item => (
-                  <div key={item.label} className="p-4 rounded-xl bg-theme-surface border border-theme-border">
-                    <p className="text-sm font-bold text-theme font-cairo">{item.label}</p>
-                    <p className="text-xs text-theme-muted font-cairo">{item.desc}</p>
-                  </div>
+                  <Link key={item.label} href={item.href}
+                    className="flex items-center justify-between p-4 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-all group">
+                    <div>
+                      <p className="text-sm font-bold text-theme font-cairo">{item.label}</p>
+                      <p className="text-xs text-theme-muted font-cairo">{item.desc}</p>
+                    </div>
+                    <svg className="w-5 h-5 text-theme-muted group-hover:text-theme-gold transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7"/>
+                    </svg>
+                  </Link>
                 ))}
               </div>
             </div>
