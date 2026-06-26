@@ -1,29 +1,14 @@
 import type { ExplorerNode, ExplorerFilter, ExplorerGraph } from './types';
-
-const memoCache = new WeakMap<ExplorerFilter, ExplorerNode[]>();
+import { INITIAL_FILTER } from './types';
 
 export function createEmptyFilter(): ExplorerFilter {
-  return {
-    types: [],
-    categories: [],
-    cities: [],
-    intents: [],
-    search: '',
-    priceRange: [],
-    difficulty: [],
-  };
+  return { ...INITIAL_FILTER };
 }
 
 export function applyFilter(nodes: ExplorerNode[], filter: ExplorerFilter): ExplorerNode[] {
-  const cacheKey = { ...filter, _count: nodes.length };
-  if (memoCache.has(cacheKey as unknown as ExplorerFilter)) {
-    const cached = memoCache.get(cacheKey as unknown as ExplorerFilter);
-    if (cached && cached.length === nodes.length) return cached;
-  }
-
   if (isFilterEmpty(filter)) return nodes;
 
-  const result = nodes.filter(node => {
+  return nodes.filter(node => {
     if (filter.types.length > 0 && !filter.types.includes(node.type)) return false;
     if (filter.categories.length > 0 && !filter.categories.includes(node.category)) return false;
     if (filter.cities.length > 0 && !filter.cities.includes(node.citySlug)) return false;
@@ -46,9 +31,6 @@ export function applyFilter(nodes: ExplorerNode[], filter: ExplorerFilter): Expl
     }
     return true;
   });
-
-  memoCache.set(cacheKey as unknown as ExplorerFilter, result);
-  return result;
 }
 
 function isFilterEmpty(filter: ExplorerFilter): boolean {
@@ -59,8 +41,30 @@ function isFilterEmpty(filter: ExplorerFilter): boolean {
     filter.intents.length === 0 &&
     !filter.search &&
     filter.priceRange.length === 0 &&
-    filter.difficulty.length === 0
+    filter.difficulty.length === 0 &&
+    !filter.verifiedOnly &&
+    !filter.openNow &&
+    !filter.trending &&
+    !filter.recommended &&
+    filter.minRating === 0
   );
+}
+
+export function sortNodes(nodes: ExplorerNode[], sortBy: ExplorerFilter['sortBy']): ExplorerNode[] {
+  const arr = [...nodes];
+  switch (sortBy) {
+    case 'rating':
+      return arr.sort((a, b) => (b.data?.rating || 0) - (a.data?.rating || 0));
+    case 'price_low':
+      return arr.sort((a, b) => (a.data?.price || 0) - (b.data?.price || 0));
+    case 'price_high':
+      return arr.sort((a, b) => (b.data?.price || 0) - (a.data?.price || 0));
+    case 'newest':
+      return arr.sort((a, b) => b.priority - a.priority);
+    case 'recommended':
+    default:
+      return arr.sort((a, b) => (b.data?.rating || 0) * b.priority - (a.data?.rating || 0) * a.priority);
+  }
 }
 
 export function getAvailableCategories(graph: ExplorerGraph): string[] {
@@ -80,6 +84,11 @@ export function getActiveFilterCount(filter: ExplorerFilter): number {
   if (filter.search) count += 1;
   if (filter.priceRange.length > 0) count += filter.priceRange.length;
   if (filter.difficulty.length > 0) count += filter.difficulty.length;
+  if (filter.verifiedOnly) count += 1;
+  if (filter.openNow) count += 1;
+  if (filter.trending) count += 1;
+  if (filter.recommended) count += 1;
+  if (filter.minRating > 0) count += 1;
   return count;
 }
 
@@ -92,11 +101,18 @@ export function filterToUrlParams(filter: ExplorerFilter): string {
   if (filter.search) params.set('q', filter.search);
   if (filter.priceRange.length > 0) params.set('price', filter.priceRange.join(','));
   if (filter.difficulty.length > 0) params.set('difficulty', filter.difficulty.join(','));
+  if (filter.verifiedOnly) params.set('verified', '1');
+  if (filter.openNow) params.set('open', '1');
+  if (filter.trending) params.set('trending', '1');
+  if (filter.recommended) params.set('recommended', '1');
+  if (filter.minRating > 0) params.set('minRating', String(filter.minRating));
+  if (filter.sortBy !== 'recommended') params.set('sort', filter.sortBy);
   return params.toString();
 }
 
 export function urlParamsToFilter(params: URLSearchParams): ExplorerFilter {
   return {
+    ...INITIAL_FILTER,
     types: (params.get('types')?.split(',').filter(Boolean) ?? []) as ExplorerFilter['types'],
     categories: params.get('categories')?.split(',').filter(Boolean) ?? [],
     cities: params.get('cities')?.split(',').filter(Boolean) ?? [],
@@ -104,5 +120,11 @@ export function urlParamsToFilter(params: URLSearchParams): ExplorerFilter {
     search: params.get('q') ?? '',
     priceRange: params.get('price')?.split(',').filter(Boolean) ?? [],
     difficulty: params.get('difficulty')?.split(',').filter(Boolean) ?? [],
+    verifiedOnly: params.get('verified') === '1',
+    openNow: params.get('open') === '1',
+    trending: params.get('trending') === '1',
+    recommended: params.get('recommended') === '1',
+    minRating: Number(params.get('minRating')) || 0,
+    sortBy: (params.get('sort') as ExplorerFilter['sortBy']) || 'recommended',
   };
 }

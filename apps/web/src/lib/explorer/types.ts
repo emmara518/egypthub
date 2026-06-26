@@ -18,6 +18,29 @@ export interface ExplorerNode<T = any> {
   data: T;
 }
 
+export interface PremiumCardData {
+  image: string;
+  title: string;
+  titleEn: string;
+  subtitle: string;
+  rating: number;
+  reviewCount: number;
+  category: string;
+  categoryLabel: string;
+  location: string;
+  distance?: string;
+  price?: string;
+  currency?: string;
+  available?: boolean;
+  verified?: boolean;
+  trending?: boolean;
+  recommended?: boolean;
+  languages?: string[];
+  phone?: string;
+  whatsapp?: string;
+  slug?: string;
+}
+
 export interface ExplorerGraph {
   nodes: Map<string, ExplorerNode>;
   cityNodes: ExplorerNode[];
@@ -36,6 +59,12 @@ export interface ExplorerFilter {
   search: string;
   priceRange: string[];
   difficulty: string[];
+  verifiedOnly: boolean;
+  openNow: boolean;
+  trending: boolean;
+  recommended: boolean;
+  minRating: number;
+  sortBy: 'recommended' | 'rating' | 'price_low' | 'price_high' | 'newest';
 }
 
 export interface CityStats {
@@ -76,3 +105,29 @@ export interface DeepLinkParams {
   node?: string;
   view?: 'map' | 'feed' | 'city';
 }
+
+export type SortOption = 'recommended' | 'rating' | 'price_low' | 'price_high' | 'newest';
+
+export const SORT_OPTIONS: { value: SortOption; label: string }[] = [
+  { value: 'recommended', label: 'الموصى بها' },
+  { value: 'rating', label: 'التقييم' },
+  { value: 'price_low', label: 'السعر: من الأقل' },
+  { value: 'price_high', label: 'السعر: من الأعلى' },
+  { value: 'newest', label: 'الأحدث' },
+];
+
+export const INITIAL_FILTER: ExplorerFilter = {
+  types: [],
+  categories: [],
+  cities: [],
+  intents: [],
+  search: '',
+  priceRange: [],
+  difficulty: [],
+  verifiedOnly: false,
+  openNow: false,
+  trending: false,
+  recommended: false,
+  minRating: 0,
+  sortBy: 'recommended',
+};

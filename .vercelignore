@@ -1,0 +1,9 @@
+node_modules/
+.next/
+out/
+*.md
+services/
+docker-data/
+coverage/
+*.log
+*.pem

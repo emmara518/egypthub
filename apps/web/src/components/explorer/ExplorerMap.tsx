@@ -20,6 +20,7 @@ interface City {
   slug: string;
   lat: number;
   lng: number;
+  count?: number;
 }
 
 const CITIES: City[] = [
@@ -33,18 +34,26 @@ const CITIES: City[] = [
   { name: 'Siwa', nameAr: 'سيوة', slug: 'siwa', lat: 29.20, lng: 25.51 },
 ];
 
-const SVG_W = 800;
-const SVG_H = 700;
+const ROUTES: [string, string][] = [
+  ['cairo', 'alexandria'], ['cairo', 'luxor'], ['luxor', 'aswan'],
+  ['sharm-el-sheikh', 'dahab'], ['sharm-el-sheikh', 'hurghada'],
+  ['hurghada', 'luxor'], ['alexandria', 'siwa'], ['cairo', 'siwa'],
+];
 
+const SVG_W = 840;
+const SVG_H = 720;
 const EGYPT_BOUNDS = { minLat: 22, maxLat: 32, minLng: 25, maxLng: 37 };
+const PAD = 40;
+const VIEW_W = SVG_W - PAD * 2;
+const VIEW_H = SVG_H - PAD * 2;
 
-function toSvgCoords(lat: number, lng: number) {
-  const x = ((lng - EGYPT_BOUNDS.minLng) / (EGYPT_BOUNDS.maxLng - EGYPT_BOUNDS.minLng)) * SVG_W;
-  const y = ((EGYPT_BOUNDS.maxLat - lat) / (EGYPT_BOUNDS.maxLat - EGYPT_BOUNDS.minLat)) * SVG_H;
+function toSvg(lat: number, lng: number) {
+  const x = PAD + ((lng - EGYPT_BOUNDS.minLng) / (EGYPT_BOUNDS.maxLng - EGYPT_BOUNDS.minLng)) * VIEW_W;
+  const y = PAD + ((EGYPT_BOUNDS.maxLat - lat) / (EGYPT_BOUNDS.maxLat - EGYPT_BOUNDS.minLat)) * VIEW_H;
   return { x, y };
 }
 
-const EGYPT_SHAPE = [
+const EGYPT_OUTLINE = [
   { lat: 31.5, lng: 32.5 }, { lat: 31.5, lng: 34.5 }, { lat: 31.0, lng: 35.5 },
   { lat: 30.0, lng: 36.0 }, { lat: 29.0, lng: 36.0 }, { lat: 28.0, lng: 35.5 },
   { lat: 27.0, lng: 35.0 }, { lat: 26.0, lng: 34.5 }, { lat: 25.0, lng: 34.0 },
@@ -57,33 +66,18 @@ const EGYPT_SHAPE = [
   { lat: 31.5, lng: 30.5 }, { lat: 31.5, lng: 32.0 },
 ];
 
-const MARKER_COLORS: Record<ExplorerNodeType, string> = {
-  city: '#D4A24C',
-  experience: '#3B82F6',
-  story: '#8B5CF6',
-  food: '#F97316',
-  ambassador: '#10B981',
+const COLOR: Record<ExplorerNodeType, string> = {
+  city: '#D4A24C', experience: '#3B82F6', story: '#8B5CF6', food: '#F97316', ambassador: '#10B981',
 };
 
-const MARKER_RADII: Record<ExplorerNodeType, number> = {
-  city: 8,
-  experience: 6,
-  story: 5,
-  food: 5,
-  ambassador: 6,
+const RADIUS: Record<ExplorerNodeType, number> = {
+  city: 9, experience: 6, story: 5, food: 5, ambassador: 6,
 };
 
 export default function ExplorerMap({
-  nodes,
-  activeLayer,
-  onCitySelect,
-  onNodeSelect,
-  selectedNodeId,
-  highlightedIds,
-  className = '',
+  nodes, activeLayer, onCitySelect, onNodeSelect, selectedNodeId, highlightedIds, className = '',
 }: ExplorerMapProps) {
   const containerRef = useRef<HTMLDivElement>(null);
-  const svgRef = useRef<SVGSVGElement>(null);
   const [zoom, setZoom] = useState(1);
   const [pan, setPan] = useState({ x: 0, y: 0 });
   const [isPanning, setIsPanning] = useState(false);
@@ -95,22 +89,17 @@ export default function ExplorerMap({
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-    const ro = new ResizeObserver(([entry]) => {
-      setContainerWidth(entry.contentRect.width);
-    });
+    const ro = new ResizeObserver(([entry]) => setContainerWidth(entry.contentRect.width));
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
 
   const scale = containerWidth ? containerWidth / SVG_W : 0.5;
-  const effectiveZoom = zoom * Math.max(0.3, Math.min(1.5, scale));
+  const effectiveZoom = zoom * scale;
 
   const handleWheel = useCallback((e: React.WheelEvent) => {
     e.preventDefault();
-    setZoom(prev => {
-      const next = prev - e.deltaY * 0.001;
-      return Math.max(1, Math.min(3, next));
-    });
+    setZoom(prev => Math.max(1, Math.min(3, prev - e.deltaY * 0.001)));
   }, []);
 
   const handleMouseDown = useCallback((e: React.MouseEvent) => {
@@ -123,119 +112,156 @@ export default function ExplorerMap({
 
   const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isPanning) return;
-    const dx = e.clientX - panStart.current.x;
-    const dy = e.clientY - panStart.current.y;
-    setPan({ x: panOrigin.current.x + dx, y: panOrigin.current.y + dy });
+    setPan({ x: panOrigin.current.x + e.clientX - panStart.current.x, y: panOrigin.current.y + e.clientY - panStart.current.y });
   }, [isPanning]);
 
-  const handleMouseUp = useCallback(() => {
-    setIsPanning(false);
-  }, []);
+  const handleMouseUp = useCallback(() => setIsPanning(false), []);
 
-  const visibleMarkers = useMemo(() => {
-    const cityNodes = nodes.filter(n => n.type === 'city');
-    if (activeLayer === 'all') return nodes;
-    const layerNodes = nodes.filter(n => n.type === activeLayer || n.type === 'city');
-    return layerNodes;
-  }, [nodes, activeLayer]);
+  const shapePoints = EGYPT_OUTLINE.map(p => { const { x, y } = toSvg(p.lat, p.lng); return `${x},${y}`; }).join(' ');
 
-  const shapePoints = EGYPT_SHAPE.map(p => {
-    const { x, y } = toSvgCoords(p.lat, p.lng);
-    return `${x},${y}`;
-  }).join(' ');
+  const cityCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    nodes.filter(n => n.type !== 'city').forEach(n => { counts[n.citySlug] = (counts[n.citySlug] || 0) + 1; });
+    return counts;
+  }, [nodes]);
+
+  const visibleNonCities = useMemo(() => nodes.filter(n => n.type !== 'city'), [nodes]);
+
+  const hoveredNode = useMemo(() => {
+    if (!hoveredId) return null;
+    return nodes.find(n => n.id === hoveredId || `city-${n.citySlug}` === hoveredId) || null;
+  }, [hoveredId, nodes]);
+
+  const resetView = () => { setZoom(1); setPan({ x: 0, y: 0 }); };
 
   return (
     <div
       ref={containerRef}
-      className={`relative w-full overflow-hidden rounded-xl border border-theme-border bg-theme-bg ${className}`}
+      className={`relative w-full overflow-hidden rounded-2xl border border-theme-border bg-gradient-to-br from-theme-bg via-theme-surface/30 to-theme-bg ${className}`}
       onWheel={handleWheel}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-      style={{ cursor: isPanning ? 'grabbing' : 'grab', height: '100%', minHeight: 500 }}
+      style={{ cursor: isPanning ? 'grabbing' : 'grab', minHeight: 500, height: '100%' }}
     >
       <svg
-        ref={svgRef}
         viewBox={`0 0 ${SVG_W} ${SVG_H}`}
         className="w-full h-full"
-        style={{ transform: `scale(${effectiveZoom}) translate(${pan.x / effectiveZoom}px, ${pan.y / effectiveZoom}px)`, transformOrigin: 'center center' }}
+        style={{
+          transform: `scale(${effectiveZoom}) translate(${pan.x / effectiveZoom}px, ${pan.y / effectiveZoom}px)`,
+          transformOrigin: 'center center',
+          transition: isPanning ? 'none' : 'transform 0.3s ease',
+        }}
       >
-        <polygon
-          points={shapePoints}
-          fill="rgba(212,162,76,0.04)"
-          stroke="rgba(212,162,76,0.25)"
-          strokeWidth="1.5"
-        />
+        <defs>
+          <radialGradient id="pulse" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stopColor="#D4A24C" stopOpacity="0.4" />
+            <stop offset="100%" stopColor="#D4A24C" stopOpacity="0" />
+          </radialGradient>
+          <filter id="glow">
+            <feGaussianBlur stdDeviation="3" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+          <filter id="glowStrong">
+            <feGaussianBlur stdDeviation="6" result="blur" />
+            <feMerge><feMergeNode in="blur" /><feMergeNode in="SourceGraphic" /></feMerge>
+          </filter>
+        </defs>
 
-        <path
-          d="M0,0 L800,0 L800,700 L0,700 Z"
-          fill="none"
-          stroke="rgba(212,162,76,0.08)"
-          strokeWidth="0.5"
-        />
+        <polygon points={shapePoints} fill="rgba(212,162,76,0.03)" stroke="rgba(212,162,76,0.2)" strokeWidth="1.5" />
 
-        <line x1="400" y1="0" x2="400" y2="700" stroke="rgba(212,162,76,0.04)" strokeWidth="0.5" />
-        <line x1="0" y1="350" x2="800" y2="350" stroke="rgba(212,162,76,0.04)" strokeWidth="0.5" />
+        {ROUTES.map(([from, to]) => {
+          const f = CITIES.find(c => c.slug === from);
+          const t = CITIES.find(c => c.slug === to);
+          if (!f || !t) return null;
+          const p1 = toSvg(f.lat, f.lng);
+          const p2 = toSvg(t.lat, t.lng);
+          const mx = (p1.x + p2.x) / 2;
+          const my = (p1.y + p2.y) / 2 - 30;
+          return (
+            <g key={`route-${from}-${to}`}>
+              <path
+                d={`M${p1.x},${p1.y} Q${mx},${my} ${p2.x},${p2.y}`}
+                fill="none"
+                stroke="rgba(212,162,76,0.1)"
+                strokeWidth="1"
+                strokeDasharray="4 4"
+              />
+              <path
+                d={`M${p1.x},${p1.y} Q${mx},${my} ${p2.x},${p2.y}`}
+                fill="none"
+                stroke="rgba(212,162,76,0.3)"
+                strokeWidth="0.5"
+                strokeDasharray="2 4"
+                className="animate-dash"
+              >
+                <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3s" repeatCount="indefinite" />
+              </path>
+            </g>
+          );
+        })}
 
-        <text x="30" y="30" fill="rgba(255,255,255,0.3)" fontSize="10" fontFamily="Cairo">مصر</text>
+        <text x={PAD} y={PAD + 14} fill="rgba(255,255,255,0.15)" fontSize={11} fontFamily="Cairo" fontWeight="bold" letterSpacing="2">
+          EGYPT
+        </text>
 
         {CITIES.map(city => {
-          const { x, y } = toSvgCoords(city.lat, city.lng);
-          const marker = visibleMarkers.find(n => n.type === 'city' && n.citySlug === city.slug);
-          const isSelected = selectedNodeId === `city-${city.slug}`;
+          const { x, y } = toSvg(city.lat, city.lng);
+          const markerCity = nodes.find(n => n.type === 'city' && n.citySlug === city.slug);
+          const isSelected = selectedNodeId === markerCity?.id;
           const isHovered = hoveredId === `city-${city.slug}`;
-          const isHighlighted = highlightedIds.includes(`city-${city.slug}`);
+          const isHighlighted = highlightedIds.includes(city.slug);
+          const count = cityCounts[city.slug] || 0;
+          const hasContent = activeLayer === 'all' || nodes.some(n => n.type === activeLayer && n.citySlug === city.slug);
+
+          if (!hasContent) return null;
 
           return (
             <g
               key={city.slug}
-              onClick={() => onCitySelect(city.slug)}
+              onClick={() => markerCity && onCitySelect?.(city.slug)}
               onMouseEnter={() => setHoveredId(`city-${city.slug}`)}
               onMouseLeave={() => setHoveredId(null)}
               style={{ cursor: 'pointer' }}
             >
-              {isSelected && (
-                <circle
-                  cx={x}
-                  cy={y}
-                  r={MARKER_RADII.city + 8}
-                  fill="none"
-                  stroke="#D4A24C"
-                  strokeWidth="1.5"
-                  opacity={0.3}
-                />
+              {(isSelected || isHovered) && (
+                <circle cx={x} cy={y} r={RADIUS.city + 12} fill="url(#pulse)">
+                  <animate attributeName="r" values={`${RADIUS.city + 10};${RADIUS.city + 20};${RADIUS.city + 10}`} dur="2s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.6;0;0.6" dur="2s" repeatCount="indefinite" />
+                </circle>
               )}
               <circle
-                cx={x}
-                cy={y}
-                r={isSelected ? MARKER_RADII.city + 4 : isHovered ? MARKER_RADII.city + 3 : MARKER_RADII.city}
-                fill={MARKER_COLORS.city}
-                opacity={isHighlighted ? 1 : 0.85}
+                cx={x} cy={y}
+                r={isSelected ? RADIUS.city + 5 : isHovered ? RADIUS.city + 3 : RADIUS.city}
+                fill={COLOR.city}
+                opacity={isHighlighted ? 1 : 0.9}
                 stroke="#D4A24C"
-                strokeWidth={isSelected ? 2 : 1}
-                style={{ filter: isHovered || isSelected ? 'drop-shadow(0 0 8px rgba(212,162,76,0.6))' : 'none' }}
+                strokeWidth={isSelected ? 2.5 : 1}
+                filter={isSelected || isHovered ? 'url(#glowStrong)' : 'url(#glow)'}
               />
-              <circle
-                cx={x}
-                cy={y}
-                r={MARKER_RADII.city + 6}
-                fill="none"
-                stroke="#D4A24C"
-                strokeWidth={0.5}
-                opacity={0.4}
-              >
-                <animate attributeName="r" values={`${MARKER_RADII.city + 4};${MARKER_RADII.city + 12};${MARKER_RADII.city + 4}`} dur="2s" repeatCount="indefinite" />
-                <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite" />
+              <circle cx={x} cy={y} r={RADIUS.city + 8} fill="none" stroke="#D4A24C" strokeWidth={0.5} opacity={0.3}>
+                <animate attributeName="r" values={`${RADIUS.city + 6};${RADIUS.city + 14};${RADIUS.city + 6}`} dur="2s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
               </circle>
+              {count > 0 && (
+                <circle cx={x + RADIUS.city + 4} cy={y - RADIUS.city - 4} r="7" fill="#D4A24C" stroke="#1a1a2e" strokeWidth="1.5">
+                  <animate attributeName="r" values="7;8;7" dur="3s" repeatCount="indefinite" />
+                </circle>
+              )}
+              {count > 0 && (
+                <text x={x + RADIUS.city + 4} y={y - RADIUS.city - 1} textAnchor="middle" fill="#1a1a2e" fontSize="8" fontWeight="bold" fontFamily="Cairo">
+                  {count}
+                </text>
+              )}
               <text
-                x={x}
-                y={y - MARKER_RADII.city - 6}
+                x={x} y={y - RADIUS.city - 8}
                 textAnchor="middle"
-                fill={isSelected ? '#D4A24C' : 'rgba(255,255,255,0.8)'}
+                fill={isSelected ? '#D4A24C' : isHovered ? '#fff' : 'rgba(255,255,255,0.7)'}
                 fontSize={isSelected ? 12 : 10}
                 fontWeight={isSelected ? 'bold' : 'normal'}
                 fontFamily="Cairo"
+                filter={isSelected || isHovered ? 'url(#glow)' : undefined}
               >
                 {city.nameAr}
               </text>
@@ -243,96 +269,82 @@ export default function ExplorerMap({
           );
         })}
 
-        {visibleMarkers
-          .filter(n => n.type !== 'city')
-          .map(node => {
-            const { x, y } = toSvgCoords(node.coordinates.lat, node.coordinates.lng);
-            const isSelected = selectedNodeId === node.id;
-            const isHovered = hoveredId === node.id;
-            const isHighlighted = highlightedIds.includes(node.id);
-            const color = MARKER_COLORS[node.type];
+        {visibleNonCities.map(node => {
+          const { x, y } = toSvg(node.coordinates.lat, node.coordinates.lng);
+          const isSelected = selectedNodeId === node.id;
+          const isHovered = hoveredId === node.id;
+          const color = COLOR[node.type] || '#D4A24C';
 
-            return (
-              <g
-                key={node.id}
-                onClick={() => onNodeSelect(node.id)}
-                onMouseEnter={() => setHoveredId(node.id)}
-                onMouseLeave={() => setHoveredId(null)}
-                style={{ cursor: 'pointer' }}
-              >
-                {isSelected && (
-                  <circle
-                    cx={x}
-                    cy={y}
-                    r={MARKER_RADII[node.type] + 6}
-                    fill="none"
-                    stroke={color}
-                    strokeWidth="1"
-                    opacity={0.3}
-                  />
-                )}
-                <circle
-                  cx={x}
-                  cy={y}
-                  r={isSelected ? MARKER_RADII[node.type] + 3 : isHovered ? MARKER_RADII[node.type] + 2 : MARKER_RADII[node.type]}
-                  fill={color}
-                  opacity={isHighlighted ? 1 : 0.75}
-                  stroke={color}
-                  strokeWidth={isSelected ? 2 : 0.5}
-                />
-                {isHovered && (
-                  <text
-                    x={x}
-                    y={y - MARKER_RADII[node.type] - 4}
-                    textAnchor="middle"
-                    fill={color}
-                    fontSize={9}
-                    fontFamily="Cairo"
-                  >
-                    {node.label}
-                  </text>
-                )}
-              </g>
-            );
-          })}
+          return (
+            <g
+              key={node.id}
+              onClick={() => onNodeSelect(node.id)}
+              onMouseEnter={() => setHoveredId(node.id)}
+              onMouseLeave={() => setHoveredId(null)}
+              style={{ cursor: 'pointer' }}
+            >
+              {isSelected && (
+                <circle cx={x} cy={y} r={RADIUS[node.type] + 8} fill="none" stroke={color} strokeWidth="1" opacity={0.3}>
+                  <animate attributeName="r" values={`${RADIUS[node.type] + 6};${RADIUS[node.type] + 14};${RADIUS[node.type] + 6}`} dur="1.5s" repeatCount="indefinite" />
+                  <animate attributeName="opacity" values="0.3;0;0.3" dur="1.5s" repeatCount="indefinite" />
+                </circle>
+              )}
+              <circle
+                cx={x} cy={y}
+                r={isSelected ? RADIUS[node.type] + 4 : isHovered ? RADIUS[node.type] + 2 : RADIUS[node.type]}
+                fill={color}
+                opacity={0.85}
+                stroke={color}
+                strokeWidth={isSelected ? 2 : 0.5}
+                filter={isSelected || isHovered ? 'url(#glowStrong)' : undefined}
+              />
+              {isHovered && (
+                <text x={x} y={y - RADIUS[node.type] - 5} textAnchor="middle" fill={color} fontSize={9} fontFamily="Cairo" filter="url(#glow)">
+                  {node.label}
+                </text>
+              )}
+            </g>
+          );
+        })}
       </svg>
 
       <AnimatePresence>
-        {hoveredId && (
+        {hoveredNode && (
           <motion.div
-            initial={{ opacity: 0, y: 4 }}
+            initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 4 }}
-            className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-theme-card/90 backdrop-blur-md border border-theme-gold/20 rounded-lg px-4 py-2 shadow-lg"
+            exit={{ opacity: 0, y: 8 }}
+            className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-theme-card/90 backdrop-blur-xl border border-theme-gold/20 rounded-xl px-4 py-2.5 shadow-2xl shadow-black/20 flex items-center gap-3"
           >
-            <p className="text-sm text-theme font-cairo">
-              {hoveredId.startsWith('city-')
-                ? CITIES.find(c => `city-${c.slug}` === hoveredId)?.nameAr
-                : nodes.find(n => n.id === hoveredId)?.label}
-            </p>
+            <span className={`px-2 py-0.5 rounded-full text-[10px] font-cairo font-semibold ${
+              hoveredNode.type === 'city' ? 'bg-amber-500/15 text-amber-400' :
+              hoveredNode.type === 'experience' ? 'bg-blue-500/15 text-blue-400' :
+              hoveredNode.type === 'story' ? 'bg-purple-500/15 text-purple-400' :
+              hoveredNode.type === 'food' ? 'bg-orange-500/15 text-orange-400' :
+              'bg-emerald-500/15 text-emerald-400'
+            }`}>
+              {hoveredNode.type}
+            </span>
+            <span className="text-sm font-bold text-theme font-cairo">{hoveredNode.label}</span>
+            <span className="text-[10px] text-theme-secondary font-cairo">{hoveredNode.city}</span>
           </motion.div>
         )}
       </AnimatePresence>
 
-      <div className="absolute top-3 left-3 flex flex-col gap-1">
-        <button
-          onClick={() => setZoom(prev => Math.min(3, prev + 0.2))}
-          className="w-7 h-7 rounded bg-theme-card border border-theme-gold/20 flex items-center justify-center text-theme-gold text-sm hover:bg-theme-gold/10 transition-colors"
-        >
-          +
-        </button>
-        <button
-          onClick={() => setZoom(prev => Math.max(1, prev - 0.2))}
-          className="w-7 h-7 rounded bg-theme-card border border-theme-gold/20 flex items-center justify-center text-theme-gold text-sm hover:bg-theme-gold/10 transition-colors"
-        >
-          -
-        </button>
-        <button
-          onClick={() => { setZoom(1); setPan({ x: 0, y: 0 }); }}
-          className="w-7 h-7 rounded bg-theme-card border border-theme-gold/20 flex items-center justify-center text-theme-gold text-xs hover:bg-theme-gold/10 transition-colors"
-        >
-          ⟲
-        </button>
+      <div className="absolute top-3 left-3 flex flex-col gap-1 z-10">
+        {[
+          { label: '+', action: () => setZoom(prev => Math.min(3, prev + 0.25)) },
+          { label: '−', action: () => setZoom(prev => Math.max(1, prev - 0.25)) },
+          { label: '⟲', action: resetView },
+        ].map(btn => (
+          <button
+            key={btn.label}
+            onClick={btn.action}
+            className="w-8 h-8 rounded-xl bg-theme-card/80 backdrop-blur-sm border border-theme-gold/15 flex items-center justify-center text-theme-gold text-sm hover:bg-theme-gold/10 hover:border-theme-gold/30 transition-all active:scale-95"
+          >
+            {btn.label}
+          </button>
+        ))}
       </div>
     </div>
   );

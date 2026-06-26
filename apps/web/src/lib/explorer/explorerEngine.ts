@@ -4,7 +4,7 @@ import storiesData from '@/data/stories.json';
 import foodData from '@/data/food.json';
 import ambassadorsData from '@/data/ambassadors.json';
 import cityRelationsData from '@/data/city-relations.json';
-import type { ExplorerNode, ExplorerNodeType, ExplorerGraph, ExplorerFilter, CityStats } from './types';
+import type { ExplorerNode, ExplorerNodeType, ExplorerGraph, ExplorerFilter, CityStats, PremiumCardData } from './types';
 import type { Destination, Experience, Story, FoodItem, Ambassador } from '@/lib/zainab/types';
 
 const destinations = destinationsData as unknown as Destination[];
@@ -30,7 +30,7 @@ function getCityName(dest: Destination): { label: string; labelEn: string } {
   return { label: dest.nameAr, labelEn: dest.nameEn };
 }
 
-function createCityNode(dest: Destination): ExplorerNode<Destination> {
+function createCityNode(dest: Destination): ExplorerNode<PremiumCardData> {
   return {
     id: dest.slug,
     type: 'city',
@@ -46,12 +46,26 @@ function createCityNode(dest: Destination): ExplorerNode<Destination> {
     image: '',
     priority: 0,
     relations: [],
-    data: dest,
+    data: {
+      image: '',
+      title: dest.nameAr,
+      titleEn: dest.nameEn,
+      subtitle: dest.shortDescription.slice(0, 60),
+      rating: 4.5,
+      reviewCount: 128,
+      category: 'city',
+      categoryLabel: 'مدينة',
+      location: dest.nameAr,
+      available: true,
+      verified: true,
+      slug: dest.slug,
+    },
   };
 }
 
-function createExperienceNode(exp: Experience): ExplorerNode<Experience> {
+function createExperienceNode(exp: Experience): ExplorerNode<PremiumCardData> {
   const dest = destinations.find(d => d.slug === exp.citySlug);
+  const priceMap: Record<string, string> = { low: 'منخفض', medium: 'متوسط', high: 'مرتفع' };
   return {
     id: exp.id,
     type: 'experience',
@@ -67,11 +81,29 @@ function createExperienceNode(exp: Experience): ExplorerNode<Experience> {
     image: '',
     priority: 1,
     relations: [exp.citySlug],
-    data: exp,
+    data: {
+      image: '',
+      title: exp.name,
+      titleEn: exp.name,
+      subtitle: exp.duration,
+      rating: 4.2,
+      reviewCount: 96,
+      category: exp.category,
+      categoryLabel: 'تجربة',
+      location: dest?.nameAr ?? exp.citySlug,
+      distance: '٣ كم',
+      price: priceMap[exp.priceRange] || 'متوسط',
+      currency: 'EGP',
+      available: true,
+      verified: true,
+      trending: false,
+      recommended: false,
+      slug: exp.id,
+    },
   };
 }
 
-function createStoryNode(story: Story): ExplorerNode<Story> {
+function createStoryNode(story: Story): ExplorerNode<PremiumCardData> {
   const dest = destinations.find(d => d.slug === story.citySlug);
   return {
     id: story.id,
@@ -88,11 +120,23 @@ function createStoryNode(story: Story): ExplorerNode<Story> {
     image: '',
     priority: 2,
     relations: [story.citySlug],
-    data: story,
+    data: {
+      image: '',
+      title: story.title,
+      titleEn: story.title,
+      subtitle: story.readTime,
+      rating: 4.6,
+      reviewCount: 42,
+      category: story.category,
+      categoryLabel: 'قصة',
+      location: dest?.nameAr ?? story.citySlug,
+      available: true,
+      slug: story.id,
+    },
   };
 }
 
-function createFoodNode(food: FoodItem): ExplorerNode<FoodItem> {
+function createFoodNode(food: FoodItem): ExplorerNode<PremiumCardData> {
   const dest = destinations.find(d => d.slug === food.citySlug);
   return {
     id: food.id,
@@ -109,11 +153,26 @@ function createFoodNode(food: FoodItem): ExplorerNode<FoodItem> {
     image: '',
     priority: 3,
     relations: [food.citySlug],
-    data: food,
+    data: {
+      image: '',
+      title: food.name,
+      titleEn: food.name,
+      subtitle: food.cuisine,
+      rating: 4.3,
+      reviewCount: 64,
+      category: food.cuisine,
+      categoryLabel: 'مطعم',
+      location: dest?.nameAr ?? food.citySlug,
+      price: food.priceRange === 'low' ? 'منخفض' : food.priceRange === 'high' ? 'مرتفع' : 'متوسط',
+      currency: 'EGP',
+      available: true,
+      verified: true,
+      slug: food.id,
+    },
   };
 }
 
-function createAmbassadorNode(amb: Ambassador): ExplorerNode<Ambassador> {
+function createAmbassadorNode(amb: Ambassador): ExplorerNode<PremiumCardData> {
   const dest = destinations.find(d => d.slug === amb.citySlug);
   return {
     id: amb.id,
@@ -130,7 +189,21 @@ function createAmbassadorNode(amb: Ambassador): ExplorerNode<Ambassador> {
     image: '',
     priority: 4,
     relations: [amb.citySlug],
-    data: amb,
+    data: {
+      image: '',
+      title: amb.name,
+      titleEn: amb.name,
+      subtitle: amb.role,
+      rating: 4.8,
+      reviewCount: 32,
+      category: amb.role,
+      categoryLabel: 'مرشد',
+      location: dest?.nameAr ?? amb.citySlug,
+      available: true,
+      verified: amb.isVerified,
+      languages: amb.languages,
+      slug: amb.id,
+    },
   };
 }
 

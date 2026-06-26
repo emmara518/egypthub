@@ -30,7 +30,6 @@ const SessionRecovery = dynamic(() => import('@/components/planning/SessionRecov
 import BrandMotif from '@/components/BrandMotif';
 import ScrollProgress from '@/components/home/ScrollProgress';
 import BackToTop from '@/components/home/BackToTop';
-import MobileBottomNav from '@/components/home/MobileBottomNav';
 import ReferralBanner from '@/components/home/ReferralBanner';
 export default function HomePage() {
   return (
@@ -70,7 +69,6 @@ export default function HomePage() {
       <AbandonedRecovery />
       <SessionRecovery />
       <BackToTop />
-      <MobileBottomNav />
     </main>
   );
 }

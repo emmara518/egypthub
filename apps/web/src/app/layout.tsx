@@ -3,6 +3,7 @@ import { Playfair_Display, Cairo, Poppins, Amiri } from 'next/font/google';
 import './globals.css';
 import ThemeProvider from '@/components/ThemeProvider';
 import LanguageProvider from '@/components/LanguageProvider';
+import NavigationShell from '@/components/layout/NavigationShell';
 
 const playfair = Playfair_Display({
   subsets: ['latin', 'latin-ext'],
@@ -109,7 +110,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body className="min-h-screen flex flex-col noise-overlay">
         <LanguageProvider>
           <ThemeProvider>
-            {children}
+            <NavigationShell>
+              {children}
+            </NavigationShell>
           </ThemeProvider>
         </LanguageProvider>
       </body>
