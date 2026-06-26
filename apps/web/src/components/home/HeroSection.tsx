@@ -285,60 +285,29 @@ export default function HeroSection() {
         </div>
       </div>
 
-      {/* AVATAR — Desktop — click to discover Travel DNA */}
+      {/* AVATAR — Desktop */}
       <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.6 }}
-        className="absolute bottom-0 right-[5%] z-20 hidden lg:block group cursor-pointer" onClick={() => setDnaModalOpen(true)} style={{ height: 'clamp(400px, 40vw, 500px)' }}>
+        className="absolute bottom-0 right-[5%] z-20 hidden lg:block" style={{ height: 'clamp(400px, 40vw, 500px)' }}>
         {/* Brand Watermark */}
         <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
           <span className="text-[8rem] md:text-[10rem] font-bold text-white/5 font-display tracking-[0.2em]" style={{ transform: 'rotate(-5deg) translateY(-15%)' }}>
             EGYPTHUB
           </span>
         </div>
-        {/* 3D Orbital Platform */}
-        <div className="absolute bottom-[3%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(240px, 26vw, 380px)', height: 'clamp(72px, 8vw, 114px)' }}>
-          <div className="orbit-energy-base" />
-          <div className="orbit-glow-ring" style={{ inset: -4 }} />
-          <div className="orbit-ring-a">
-            <div className="orbit-particle-a" />
-            <div className="orbit-particle-a-2" />
-            <div className="orbit-ring-b">
-              <div className="orbit-particle-b" />
-              <div className="orbit-particle-b-2" />
-              <div className="orbit-ring-c">
-                <div className="orbit-particle-c" />
-                <div className="orbit-particle-c-2" />
-              </div>
-            </div>
+        {/* AI Travel Concierge label — floating above avatar */}
+        <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}
+          className="absolute top-[2%] left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+          <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-theme-gold/10 border border-theme-gold/20 backdrop-blur-sm">
+            <Sparkles size={10} />
+            <span className="text-[10px] font-english text-theme-gold font-semibold tracking-wide">AI Travel Concierge</span>
           </div>
-          <div className="energy-p1" />
-          <div className="energy-p2" />
-          <div className="energy-p3" />
-          <div className="energy-p4" />
-          <div className="energy-p5" />
-        </div>
-        <div className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[clamp(220px,24vw,380px)] h-[clamp(220px,24vw,380px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[clamp(144px,18vw,240px)] h-[clamp(14px,2vw,24px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
-        <div className="        relative gold-ring rounded-[2rem] overflow-hidden" style={{ width: 'clamp(260px, 30vw, 450px)', height: 'clamp(340px, 35vw, 500px)' }}>
-          <Image src="/assets/avatar.webp" alt="AI Concierge — click to discover your Travel DNA" fill sizes="450px" className="object-contain object-bottom" priority />
-        </div>
-      </motion.div>
-
-      {/* AVATAR — Mobile — click to discover Travel DNA */}
-      <div className="lg:hidden absolute bottom-0 left-0 right-0 flex justify-center group" style={{ height: 'clamp(400px, 85vw, 560px)', zIndex: 15 }} onClick={() => setDnaModalOpen(true)}>
-        <div className="relative w-full h-full flex items-end justify-center">
-          {/* Brand Watermark */}
-          <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
-            <span className="text-[6rem] font-bold text-white/5 font-display tracking-[0.2em]" style={{ transform: 'rotate(-5deg) translateY(-15%)' }}>
-              EGYPTHUB
-            </span>
-          </div>
-          {/* Gold glow behind avatar */}
-          <div className="absolute bottom-[18%] left-1/2 -translate-x-1/2 w-[clamp(280px, 70vw, 380px)] h-[clamp(280px, 70vw, 380px)] rounded-full opacity-[0.1]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
-          <div className="absolute bottom-[8%] left-1/2 -translate-x-1/2 w-[clamp(180px, 45vw, 260px)] h-[clamp(16px, 4vw, 28px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
-          {/* 3D Orbital Platform — integrated behind avatar */}
-          <div className="absolute bottom-[18%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(300px, 72vw, 420px)', height: 'clamp(90px, 22vw, 140px)' }}>
+        </motion.div>
+        {/* Avatar with 3D rings at same base level */}
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[clamp(260px, 30vw, 450px)]" style={{ height: 'clamp(340px, 35vw, 500px)' }}>
+          {/* 3D Orbital Platform — at avatar's base */}
+          <div className="absolute bottom-[2%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(260px, 30vw, 450px)', height: 'clamp(78px, 8.5vw, 120px)' }}>
             <div className="orbit-energy-base" />
-            <div className="orbit-glow-ring" style={{ inset: -5 }} />
+            <div className="orbit-glow-ring" style={{ inset: -4 }} />
             <div className="orbit-ring-a">
               <div className="orbit-particle-a" />
               <div className="orbit-particle-a-2" />
@@ -351,16 +320,58 @@ export default function HeroSection() {
                 </div>
               </div>
             </div>
-            <div className="energy-p1" />
-            <div className="energy-p2" />
-            <div className="energy-p3" />
-            <div className="energy-p4" />
-            <div className="energy-p5" />
+            <div className="energy-p1" /><div className="energy-p2" /><div className="energy-p3" /><div className="energy-p4" /><div className="energy-p5" />
           </div>
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
-            className="relative gold-ring rounded-[2rem] overflow-hidden" style={{ width: 'clamp(320px, 78vw, 420px)', height: 'clamp(380px, 95vw, 500px)' }}>
-            <Image src="/assets/avatar.webp" alt="AI Concierge" fill sizes="420px" className="object-contain object-bottom" priority />
-          </motion.div>
+          <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 w-[clamp(220px,24vw,380px)] h-[clamp(220px,24vw,380px)] rounded-full opacity-[0.12]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[clamp(144px,18vw,240px)] h-[clamp(14px,2vw,24px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
+          <div className="relative w-full h-full overflow-hidden cursor-pointer" onClick={() => setDnaModalOpen(true)}>
+            <Image src="/assets/avatar.webp" alt="AI Concierge" fill sizes="450px" className="object-contain object-bottom" priority />
+          </div>
+        </div>
+      </motion.div>
+
+      {/* AVATAR — Mobile */}
+      <div className="lg:hidden absolute bottom-0 left-0 right-0 flex justify-center" style={{ height: 'clamp(400px, 85vw, 560px)', zIndex: 15 }}>
+        <div className="relative w-full h-full flex items-end justify-center">
+          {/* Brand Watermark */}
+          <div className="absolute inset-0 flex items-center justify-center overflow-hidden pointer-events-none select-none">
+            <span className="text-[6rem] font-bold text-white/5 font-display tracking-[0.2em]" style={{ transform: 'rotate(-5deg) translateY(-15%)' }}>
+              EGYPTHUB
+            </span>
+          </div>
+          {/* AI Travel Concierge label — floating above avatar */}
+          <div className="absolute top-[2%] left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+            <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-theme-gold/10 border border-theme-gold/20 backdrop-blur-sm">
+              <Sparkles size={8} />
+              <span className="text-[8px] font-english text-theme-gold font-semibold tracking-wide whitespace-nowrap">AI Travel Concierge</span>
+            </div>
+          </div>
+          {/* Avatar at bottom + rings directly at its base */}
+          <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[clamp(320px, 78vw, 420px)]" style={{ height: 'clamp(380px, 95vw, 500px)' }}>
+            <div className="absolute bottom-[2%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(320px, 78vw, 420px)', height: 'clamp(80px, 20vw, 130px)' }}>
+              <div className="orbit-energy-base" />
+              <div className="orbit-glow-ring" style={{ inset: -5 }} />
+              <div className="orbit-ring-a">
+                <div className="orbit-particle-a" />
+                <div className="orbit-particle-a-2" />
+                <div className="orbit-ring-b">
+                  <div className="orbit-particle-b" />
+                  <div className="orbit-particle-b-2" />
+                  <div className="orbit-ring-c">
+                    <div className="orbit-particle-c" />
+                    <div className="orbit-particle-c-2" />
+                  </div>
+                </div>
+              </div>
+              <div className="energy-p1" /><div className="energy-p2" /><div className="energy-p3" /><div className="energy-p4" /><div className="energy-p5" />
+            </div>
+            <div className="absolute bottom-[18%] left-1/2 -translate-x-1/2 w-[clamp(280px, 70vw, 380px)] h-[clamp(280px, 70vw, 380px)] rounded-full opacity-[0.1]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
+            <div className="absolute bottom-[6%] left-1/2 -translate-x-1/2 w-[clamp(180px, 45vw, 260px)] h-[clamp(16px, 4vw, 28px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
+              className="relative w-full h-full overflow-hidden cursor-pointer" onClick={() => setDnaModalOpen(true)}>
+              <Image src="/assets/avatar.webp" alt="AI Concierge" fill sizes="420px" className="object-contain object-bottom" priority />
+            </motion.div>
+          </div>
         </div>
         {/* Gradient fade to blend with next section */}
         <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-gradient-to-t from-[#080C18] via-[#080C18]/60 to-transparent pointer-events-none" />
