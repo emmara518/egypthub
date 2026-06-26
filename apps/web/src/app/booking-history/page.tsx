@@ -89,7 +89,7 @@ export default function BookingHistoryPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24" dir="rtl">
+    <div className="min-h-screen bg-[#080C18] pt-24">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
           <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>

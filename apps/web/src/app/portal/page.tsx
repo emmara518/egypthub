@@ -301,7 +301,7 @@ export default function PortalPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080C18] text-white font-cairo" dir="rtl">
+    <div className="min-h-screen bg-[#080C18] text-white font-cairo">
       <div className="flex min-h-screen">
         {/* ─── Desktop Sidebar ─── */}
         <aside className="hidden lg:flex flex-col w-72 shrink-0 bg-[#0C1120] border-l border-[#1E2A3D] sticky top-0 h-screen overflow-y-auto">

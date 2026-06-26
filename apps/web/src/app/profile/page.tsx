@@ -131,7 +131,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24" dir="rtl">
+    <div className="min-h-screen bg-[#080C18] pt-24">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
         <div className="flex gap-6">
           <motion.aside

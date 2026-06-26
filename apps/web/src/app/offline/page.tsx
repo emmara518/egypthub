@@ -55,7 +55,7 @@ export default function OfflinePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24 pb-12 px-4" dir="rtl">
+    <div className="min-h-screen bg-[#080C18] pt-24 pb-12 px-4">
       <div className="max-w-2xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
           <h1 className="text-2xl font-bold text-white font-cairo mb-2">التصفح بدون نت</h1>

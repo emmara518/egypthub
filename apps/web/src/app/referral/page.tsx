@@ -130,7 +130,7 @@ export default function ReferralPage() {
   const totalEarned = referrals.reduce((sum, r) => sum + r.earned, 0);
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24 pb-12 px-4" dir="rtl">
+    <div className="min-h-screen bg-[#080C18] pt-24 pb-12 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
