@@ -18,9 +18,10 @@ const TABS: { id: string; label: string; labelEn: string; href: string }[] = [
 
 const ICON_SPRING = { type: 'spring' as const, stiffness: 500, damping: 22, mass: 0.6 };
 const LABEL_SPRING = { type: 'spring' as const, stiffness: 350, damping: 25 };
-const INDICATOR_SPRING = { type: 'spring' as const, stiffness: 600, damping: 35, mass: 0.5 };
 
 const TAB_HEIGHT = 72;
+const ORB_SIZE = 48;
+const JUMP_HEIGHT = -30;
 
 function RippleEffect({ isActive }: { isActive: boolean }) {
   return (
@@ -141,6 +142,9 @@ export default function PremiumBottomNav() {
   const [activeIdx, setActiveIdx] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [tabWidth, setTabWidth] = useState(0);
+  const [isJumping, setIsJumping] = useState(false);
+  const prevIdx = useRef(activeIdx);
+  const isInitialMount = useRef(true);
 
   useEffect(() => {
     const idx = TABS.findIndex(t => {
@@ -149,6 +153,20 @@ export default function PremiumBottomNav() {
     });
     if (idx >= 0) setActiveIdx(idx);
   }, [pathname]);
+
+  useEffect(() => {
+    if (isInitialMount.current) {
+      isInitialMount.current = false;
+      prevIdx.current = activeIdx;
+      return;
+    }
+    if (prevIdx.current !== activeIdx) {
+      setIsJumping(true);
+      const timer = setTimeout(() => setIsJumping(false), 550);
+      prevIdx.current = activeIdx;
+      return () => clearTimeout(timer);
+    }
+  }, [activeIdx]);
 
   useEffect(() => {
     const el = containerRef.current;
@@ -160,8 +178,7 @@ export default function PremiumBottomNav() {
     return () => ro.disconnect();
   }, []);
 
-  const indicatorX = tabWidth > 0 ? activeIdx * tabWidth + tabWidth / 2 - 18 : -999;
-  const indicatorWidth = 36;
+  const orbX = tabWidth > 0 ? activeIdx * tabWidth + tabWidth / 2 - ORB_SIZE / 2 : -999;
 
   return (
     <nav
@@ -192,19 +209,35 @@ export default function PremiumBottomNav() {
         />
 
         <motion.div
-          className="absolute bottom-1 rounded-full"
+          className="absolute rounded-full pointer-events-none"
           style={{
-            width: indicatorWidth,
-            height: 3,
-            background: 'linear-gradient(90deg, rgba(212,162,76,0.4), #D4A24C, rgba(212,162,76,0.4))',
-            boxShadow: '0 0 8px rgba(212,162,76,0.3), 0 0 20px rgba(212,162,76,0.1)',
-            borderRadius: 2,
+            width: ORB_SIZE,
+            height: ORB_SIZE,
+            top: 8,
+            background: 'radial-gradient(circle at 35% 30%, rgba(255,220,130,0.95) 0%, rgba(212,162,76,0.5) 45%, rgba(180,130,50,0.15) 70%, transparent 100%)',
+            boxShadow: [
+              '0 0 24px rgba(212,162,76,0.35)',
+              '0 0 60px rgba(212,162,76,0.1)',
+              'inset 0 2px 6px rgba(255,255,255,0.25)',
+            ].join(', '),
+            border: '1px solid rgba(212,162,76,0.15)',
+            willChange: 'transform',
+            zIndex: 0,
           }}
           animate={{
-            x: indicatorX,
-            opacity: activeIdx >= 0 ? 1 : 0,
+            x: orbX,
+            y: isJumping ? [0, JUMP_HEIGHT, 0] : 0,
+            scaleX: isJumping ? [1, 0.85, 1.18, 1] : 1,
+            scaleY: isJumping ? [1, 1.18, 0.82, 1] : 1,
+            rotate: isJumping ? [0, 180, 360] : 0,
           }}
-          transition={INDICATOR_SPRING}
+          transition={{
+            x: { type: 'spring', stiffness: 450, damping: 28, mass: 0.7 },
+            y: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+            scaleX: { duration: 0.5, ease: 'easeInOut' },
+            scaleY: { duration: 0.5, ease: 'easeInOut' },
+            rotate: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+          }}
         />
 
         <div
