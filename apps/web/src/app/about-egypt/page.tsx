@@ -70,13 +70,13 @@ const relatedExperiences = [
 
 export default function AboutEgyptPage() {
   return (
-    <div className="min-h-screen bg-[#080C18]">
+    <div className="min-h-screen bg-theme-bg">
       {/* Hero Section */}
       <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=1600&h=900&fit=crop)' }} />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080C18] via-[#080C18]/50 to-transparent" />
-        <div className="absolute inset-0 bg-[#080C18]/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/50 to-transparent" />
+        <div className="absolute inset-0 bg-theme-bg/30" />
         <div className="relative h-full flex items-center justify-center text-center px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <span className="text-[#D4A24C] text-sm font-cairo font-bold tracking-wider mb-4 block">مصر — أم الدنيا</span>
@@ -88,7 +88,7 @@ export default function AboutEgyptPage() {
               من أهرامات الجيزة إلى شواطئ البحر الأحمر، مصر تقدم تجربة سياحية لا تُنسى
             </p>
             <Link href="/experiences"
-              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-[#080C18] font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/30 transition-all">
+              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/30 transition-all">
               ابدأ رحلتك
             </Link>
           </motion.div>
@@ -117,7 +117,7 @@ export default function AboutEgyptPage() {
                 <div className="relative rounded-2xl overflow-hidden h-72 lg:h-96">
                   <div className="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-700"
                     style={{ backgroundImage: `url(${section.image})` }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#080C18]/60 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/60 to-transparent" />
                 </div>
               </div>
               <div className="flex-1">
@@ -169,7 +169,7 @@ export default function AboutEgyptPage() {
             <p className="text-sm text-[#5A6478] font-cairo mb-6">ابدأ رحلتك مع EgyptHub واكتشف أجمل الوجهات</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/experiences"
-                className="px-6 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-[#080C18] text-sm font-cairo font-bold">
+                className="px-6 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg text-sm font-cairo font-bold">
                 استكشف التجارب
               </Link>
               <Link href="/booking-history"

@@ -109,7 +109,7 @@ export default function PartnerDashboardPage() {
   }, [partners]);
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24 pb-16">
+    <div className="min-h-screen bg-theme-bg pb-16">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
           <div className="flex items-center gap-2 text-theme-muted text-sm font-cairo mb-2">
@@ -225,7 +225,7 @@ export default function PartnerDashboardPage() {
                     {recentLeads.map((lead) => (
                       <tr key={lead.id} className="border-b border-theme-gold/5">
                         <td className="py-3 text-sm font-cairo text-theme">{lead.clientName}</td>
-                        <td className="py-3 text-sm font-cairo text-theme-muted" dir="ltr">{lead.clientEmail}</td>
+                        <td className="py-3 text-sm font-cairo text-theme-muted">{lead.clientEmail}</td>
                         <td className="py-3">
                           <span className={`px-2 py-0.5 rounded text-[10px] font-bold font-cairo ${
                             lead.status === 'new' ? 'bg-blue-500/15 text-blue-500' :

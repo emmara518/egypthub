@@ -63,7 +63,7 @@ export default function Screen2_DesignSystem() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Sidebar ─── */}
         <motion.aside

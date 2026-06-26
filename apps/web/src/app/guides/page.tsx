@@ -106,7 +106,7 @@ export default function GuidesPage() {
   });
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
           <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -190,7 +190,7 @@ export default function GuidesPage() {
                   <span className="text-lg font-bold text-[#D4A24C] font-english">EGP {guide.price}</span>
                 </div>
 
-                <button className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-[#080C18] text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
+                <button className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
                   احجز الآن
                 </button>
               </div>

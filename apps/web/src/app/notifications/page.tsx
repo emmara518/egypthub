@@ -93,7 +93,7 @@ export default function NotificationsPage() {
   const order = ['اليوم', 'أمس', 'هذا الأسبوع', 'سابقاً'];
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-3xl mx-auto px-4 lg:px-6 py-8">
         {/* Back Link */}
         <Link href="/" className="inline-flex items-center gap-1.5 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm mb-6">
@@ -182,7 +182,7 @@ export default function NotificationsPage() {
                           } hover:border-[#D4A24C]/30`}
                         >
                           <div className="flex items-start gap-3">
-                            <div className="w-10 h-10 rounded-xl bg-[#080C18] border border-white/[0.05] flex items-center justify-center shrink-0">
+                            <div className="w-10 h-10 rounded-xl bg-theme-bg border border-white/[0.05] flex items-center justify-center shrink-0">
                               {getNotificationIcon(n.message)}
                             </div>
                             <div className="flex-1 min-w-0">

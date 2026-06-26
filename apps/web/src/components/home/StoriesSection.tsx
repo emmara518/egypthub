@@ -14,7 +14,7 @@ const stories = [
 
 export default function StoriesSection() {
   return (
-    <section className="bg-[#080C18] py-8 md:py-12 lg:py-16">
+    <section className="bg-theme-bg py-8 md:py-12 lg:py-16">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="flex items-end justify-between mb-6 md:mb-10">
           <div>
@@ -43,7 +43,7 @@ export default function StoriesSection() {
                 <div className="absolute inset-0 story-gradient-overlay pointer-events-none" />
                 <div className="absolute top-3 left-3 flex items-center gap-2">
                   {i === 0 && (
-                    <span className="text-[8px] md:text-[9px] font-bold font-english tracking-[0.15em] text-[#080C18] bg-theme-gold px-2 py-1 rounded-full">FEATURED</span>
+                    <span className="text-[8px] md:text-[9px] font-bold font-english tracking-[0.15em] text-theme-bg bg-theme-gold px-2 py-1 rounded-full">FEATURED</span>
                   )}
                   <span className="text-[9px] md:text-[10px] font-bold font-english tracking-[0.15em] text-theme-gold bg-black/50 backdrop-blur-md px-2.5 py-1 rounded-full border border-theme-gold/30">{story.category}</span>
                 </div>

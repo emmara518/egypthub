@@ -32,7 +32,7 @@ export default function OffersPage() {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24 pb-16">
+    <div className="min-h-screen bg-theme-bg pb-16">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
           <p className="text-theme-gold text-xs font-semibold tracking-widest uppercase mb-3 font-poppins">Limited Offers</p>

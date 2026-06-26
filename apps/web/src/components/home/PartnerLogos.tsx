@@ -28,7 +28,7 @@ export default function PartnerLogos() {
   }, []);
 
   return (
-    <section className="py-6 md:py-8 bg-[#080C18] border-y border-white/[0.03] overflow-hidden">
+    <section className="py-6 md:py-8 bg-theme-bg border-y border-white/[0.03] overflow-hidden">
       <div ref={scrollRef} className="flex gap-10 md:gap-16 overflow-x-hidden scrollbar-hide">
         {[...partners, ...partners, ...partners].map((name, i) => (
           <div

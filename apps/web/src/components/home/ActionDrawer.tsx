@@ -36,7 +36,7 @@ function CalendarModal({ onClose }: { onClose: () => void }) {
       <div className="grid grid-cols-6 gap-2">
         {days.map(({ d, price }) => (
           <button key={d} onClick={() => setSel(d)}
-            className={`p-2 rounded-xl text-center transition-all touch-target ${sel === d ? 'bg-theme-gold text-[#080C18]' : 'bg-white/[0.04] hover:bg-white/[0.08] text-white/60'}`}>
+            className={`p-2 rounded-xl text-center transition-all touch-target ${sel === d ? 'bg-theme-gold text-theme-bg' : 'bg-white/[0.04] hover:bg-white/[0.08] text-white/60'}`}>
             <p className="text-xs font-bold font-english">{d}</p>
             <p className="text-[8px] font-english opacity-60">${price}</p>
           </button>
@@ -106,7 +106,7 @@ export default function ActionDrawer() {
     { icon: Star, label: 'المساعد الذكي', color: '#8B5CF6', modal: <div className="p-4 space-y-2">
       {['خطط رحلتي', 'مطاعم', 'نصائح محلية', 'ترجمة'].map(a => <button key={a} className="w-full flex items-center gap-3 p-3 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] text-white/70 hover:text-white text-sm font-english transition-all"><Sparkles size={12} />{a}</button>)}
     </div> },
-    { icon: Play, label: 'جولة 360', color: '#EC4899', modal: <div className="p-4 text-center"><div className="aspect-video rounded-xl bg-gradient-to-br from-theme-gold/10 to-[#080C18] flex items-center justify-center border border-theme-gold/20 mb-3"><Play size={32} /></div><p className="text-sm text-white/60 font-english">Drag to explore panoramic views</p></div> },
+    { icon: Play, label: 'جولة 360', color: '#EC4899', modal: <div className="p-4 text-center"><div className="aspect-video rounded-xl bg-gradient-to-br from-theme-gold/10 to-theme-bg flex items-center justify-center border border-theme-gold/20 mb-3"><Play size={32} /></div><p className="text-sm text-white/60 font-english">Drag to explore panoramic views</p></div> },
     { icon: CalIcon, label: 'التقويم', color: '#41BEDC', modal: <CalendarModal onClose={() => setActiveModal(null)} /> },
     { icon: Dollar, label: 'العملة', color: '#10B981', modal: <CurrencyModal onClose={() => setActiveModal(null)} /> },
     { icon: Sun, label: 'الطقس', color: '#F59E0B', modal: <div className="p-4 text-center text-white/40 font-english text-sm">Weather: Cairo 34° ☀️<br />Luxor 42° 🔥<br />Alex 29° 🌊</div> },
@@ -135,7 +135,7 @@ export default function ActionDrawer() {
         }}
         aria-label="Open actions"
       >
-        <Sparkles size={20} className="text-[#080C18]" />
+        <Sparkles size={20} className="text-theme-bg" />
       </motion.button>
 
       {/* Drawer Backdrop */}

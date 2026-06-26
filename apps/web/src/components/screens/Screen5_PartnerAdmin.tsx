@@ -66,7 +66,7 @@ export default function Screen5_PartnerAdmin() {
   const [activeSidebar, setActiveSidebar] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic">
       <div className="flex">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}

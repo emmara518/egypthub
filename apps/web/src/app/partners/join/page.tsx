@@ -129,7 +129,7 @@ export default function JoinPartnerPage() {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-theme-bg flex items-center justify-center pt-24 pb-16">
+      <div className="min-h-screen bg-theme-bg flex items-center justify-center pb-16">
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -158,7 +158,7 @@ export default function JoinPartnerPage() {
   }
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24 pb-16">
+    <div className="min-h-screen bg-theme-bg pb-16">
       <div className="max-w-[720px] mx-auto px-6">
         <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
           <Link href="/partners" className="inline-flex items-center gap-2 text-theme-gold font-cairo text-sm hover:underline">
@@ -223,7 +223,7 @@ export default function JoinPartnerPage() {
                     onChange={(e) => setStep1({ ...step1, nameEn: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-theme-bg border border-theme-gold/15 text-theme font-cairo text-sm placeholder:text-theme-muted focus:outline-none focus:border-theme-gold/40"
                     placeholder="Ex: Abou El Sid"
-                    dir="ltr"
+                   
                   />
                   {errors.nameEn && <p className="text-red-400 text-[10px] font-cairo mt-1">{errors.nameEn}</p>}
                 </div>
@@ -313,7 +313,7 @@ export default function JoinPartnerPage() {
                     onChange={(e) => setStep2({ ...step2, email: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-theme-bg border border-theme-gold/15 text-theme font-cairo text-sm placeholder:text-theme-muted focus:outline-none focus:border-theme-gold/40"
                     placeholder="info@example.com"
-                    dir="ltr"
+                   
                   />
                   {errors.email && <p className="text-red-400 text-[10px] font-cairo mt-1">{errors.email}</p>}
                 </div>
@@ -325,7 +325,7 @@ export default function JoinPartnerPage() {
                     onChange={(e) => setStep2({ ...step2, phone: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-theme-bg border border-theme-gold/15 text-theme font-cairo text-sm placeholder:text-theme-muted focus:outline-none focus:border-theme-gold/40"
                     placeholder="+20xxxxxxxxx"
-                    dir="ltr"
+                   
                   />
                   {errors.phone && <p className="text-red-400 text-[10px] font-cairo mt-1">{errors.phone}</p>}
                 </div>
@@ -339,7 +339,7 @@ export default function JoinPartnerPage() {
                     onChange={(e) => setStep2({ ...step2, website: e.target.value })}
                     className="w-full px-4 py-3 rounded-xl bg-theme-bg border border-theme-gold/15 text-theme font-cairo text-sm placeholder:text-theme-muted focus:outline-none focus:border-theme-gold/40"
                     placeholder="https://example.com"
-                    dir="ltr"
+                   
                   />
                 </div>
                 <div>
@@ -371,7 +371,7 @@ export default function JoinPartnerPage() {
                   <h3 className="text-xs font-bold text-theme-gold font-cairo mb-3">معلومات النشاط</h3>
                   <div className="space-y-2 text-sm font-cairo">
                     <div className="flex justify-between"><span className="text-theme-muted">الاسم:</span><span className="text-theme">{step1.name}</span></div>
-                    <div className="flex justify-between"><span className="text-theme-muted">Name:</span><span className="text-theme" dir="ltr">{step1.nameEn}</span></div>
+                    <div className="flex justify-between"><span className="text-theme-muted">Name:</span><span className="text-theme">{step1.nameEn}</span></div>
                     <div className="flex justify-between"><span className="text-theme-muted">التصنيف:</span><span className="text-theme">{categories.find((c) => c.value === step1.category)?.label}</span></div>
                     <div className="flex justify-between"><span className="text-theme-muted">المدينة:</span><span className="text-theme">{cities.find((c) => c.value === step1.city)?.label}</span></div>
                   </div>
@@ -383,9 +383,9 @@ export default function JoinPartnerPage() {
                       <span className="text-theme-muted">الخدمات:</span>
                       <span className="text-theme text-left">{step2.services.length > 0 ? step2.services.join(' - ') : 'لا توجد'}</span>
                     </div>
-                    <div className="flex justify-between"><span className="text-theme-muted">البريد:</span><span className="text-theme" dir="ltr">{step2.email}</span></div>
-                    <div className="flex justify-between"><span className="text-theme-muted">الهاتف:</span><span className="text-theme" dir="ltr">{step2.phone}</span></div>
-                    {step2.website && <div className="flex justify-between"><span className="text-theme-muted">الموقع:</span><span className="text-theme-gold text-left" dir="ltr">{step2.website}</span></div>}
+                    <div className="flex justify-between"><span className="text-theme-muted">البريد:</span><span className="text-theme">{step2.email}</span></div>
+                    <div className="flex justify-between"><span className="text-theme-muted">الهاتف:</span><span className="text-theme">{step2.phone}</span></div>
+                    {step2.website && <div className="flex justify-between"><span className="text-theme-muted">الموقع:</span><span className="text-theme-gold text-left">{step2.website}</span></div>}
                     <div className="flex justify-between"><span className="text-theme-muted">العنوان:</span><span className="text-theme text-left">{step2.address}</span></div>
                   </div>
                 </div>

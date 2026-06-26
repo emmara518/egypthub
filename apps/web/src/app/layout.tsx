@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Playfair_Display, Cairo, Poppins, Amiri } from 'next/font/google';
 import './globals.css';
+import AuthProvider from '@/components/AuthProvider';
 import ThemeProvider from '@/components/ThemeProvider';
 import LanguageProvider from '@/components/LanguageProvider';
 import NavigationShell from '@/components/layout/NavigationShell';
@@ -110,13 +111,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body className="min-h-screen flex flex-col noise-overlay">
-        <LanguageProvider>
-          <ThemeProvider>
-            <NavigationShell>
-              {children}
-            </NavigationShell>
-          </ThemeProvider>
-        </LanguageProvider>
+        <AuthProvider>
+          <LanguageProvider>
+            <ThemeProvider>
+              <NavigationShell>
+                {children}
+              </NavigationShell>
+            </ThemeProvider>
+          </LanguageProvider>
+        </AuthProvider>
       </body>
     </html>
   );

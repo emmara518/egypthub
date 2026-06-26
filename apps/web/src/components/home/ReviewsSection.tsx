@@ -25,7 +25,7 @@ export default function ReviewsSection() {
   const next = () => setActiveIdx((p) => (p + 1) % reviews.length);
 
   return (
-    <section className="bg-[#080C18] py-8 md:py-14">
+    <section className="bg-theme-bg py-8 md:py-14">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="flex items-end justify-between mb-6 md:mb-10">
           <div>

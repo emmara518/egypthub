@@ -235,7 +235,7 @@ export default function MapLayers({ parentRef }: MapLayersProps) {
         })
       )}
 
-      <div className="absolute bottom-0 left-0 right-0 z-20 bg-[#080C18]/90 backdrop-blur-lg border-t border-theme-gold/[0.06] px-3 py-2">
+      <div className="absolute bottom-0 left-0 right-0 z-20 bg-theme-bg/90 backdrop-blur-lg border-t border-theme-gold/[0.06] px-3 py-2">
         <div className="flex flex-wrap gap-1.5 justify-center">
           {layers.map((layer) => {
             const isActive = activeLayers.has(layer.id);

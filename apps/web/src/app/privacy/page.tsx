@@ -2,7 +2,7 @@ import LegalPage from '@/components/LegalPage';
 
 export default function PrivacyPage() {
   return (
-    <LegalPage title="Privacy Policy" lastUpdated="June 1, 2026" dir="ltr">
+    <LegalPage title="Privacy Policy" lastUpdated="June 1, 2026">
       <Section title="1. Information We Collect">
         <p>We collect information you provide directly to us, including your name, email address, phone number, payment details, and travel preferences when you create an account, make a booking, or contact our support team.</p>
       </Section>

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import Image from 'next/image';
 import { useAppStore } from '@/lib/store';
+import { useAuthStore } from '@/lib/auth-store';
 
 /* ───── Data ───── */
 const menuItems = [
@@ -291,17 +292,21 @@ const quickActionIcons: Record<string, React.FC> = {
 export default function PortalPage() {
   const [activeMenu, setActiveMenu] = useState<MenuId>('dashboard');
   const gamification = useAppStore((s) => s.gamification);
+  const logout = useAuthStore((s) => s.logout);
+
+  const authUser = useAuthStore((s) => s.user);
 
   const user = {
-    name: 'أحمد محمد',
-    memberSince: '2024',
+    name: authUser?.name || 'زائر',
+    email: authUser?.email || '',
+    memberSince: authUser ? new Date().getFullYear().toString() : '2024',
     level: gamification.level,
     title: gamification.title,
     xp: gamification.xp,
   };
 
   return (
-    <div className="min-h-screen bg-[#080C18] text-white font-cairo">
+    <div className="min-h-screen bg-theme-bg text-white font-cairo">
       <div className="flex min-h-screen">
         {/* ─── Desktop Sidebar ─── */}
         <aside className="hidden lg:flex flex-col w-72 shrink-0 bg-[#0C1120] border-l border-[#1E2A3D] sticky top-0 h-screen overflow-y-auto">
@@ -347,7 +352,14 @@ export default function PortalPage() {
                   key={item.id}
                   whileHover={{ x: -3 }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={() => setActiveMenu(item.id)}
+                  onClick={() => {
+                    if (item.id === 'logout') {
+                      logout();
+                      window.location.href = '/';
+                    } else {
+                      setActiveMenu(item.id);
+                    }
+                  }}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
                     isActive
                       ? 'bg-[#D4A24C]/10 text-[#D4A24C] font-medium border border-[#D4A24C]/20'

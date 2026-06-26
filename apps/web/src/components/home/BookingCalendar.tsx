@@ -112,7 +112,7 @@ export default function BookingCalendar({ onSelect }: Props) {
                   <button key={d} disabled={disabled} onClick={() => handleDay(d)}
                     className={`w-8 h-8 rounded-lg text-xs font-english transition-all touch-target relative ${
                       disabled ? 'text-white/10 cursor-not-allowed' :
-                      sel ? 'bg-theme-gold text-[#080C18] font-bold shadow-[0_0_10px_rgba(212,162,76,0.3)]' :
+                      sel ? 'bg-theme-gold text-theme-bg font-bold shadow-[0_0_10px_rgba(212,162,76,0.3)]' :
                       range ? 'bg-theme-gold/15 text-theme-gold' :
                       'text-white/60 hover:bg-white/[0.06]'
                     }`}

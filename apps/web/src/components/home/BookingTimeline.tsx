@@ -15,7 +15,7 @@ export default function BookingTimeline() {
         <div key={s.num} className="flex items-center gap-0 md:gap-2">
           <div className="flex items-center gap-1.5 md:gap-2">
             <div className={`w-6 h-6 md:w-7 md:h-7 rounded-full flex items-center justify-center text-[9px] md:text-[10px] font-bold font-english transition-all ${
-              i < 3 ? 'bg-theme-gold text-[#080C18]' : 'bg-white/[0.06] text-white/40'
+              i < 3 ? 'bg-theme-gold text-theme-bg' : 'bg-white/[0.06] text-white/40'
             }`}>{s.num}</div>
             <div className="hidden md:block">
               <p className="text-[10px] font-bold font-english text-white leading-tight">{s.label}</p>

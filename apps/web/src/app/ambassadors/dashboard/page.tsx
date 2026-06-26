@@ -77,7 +77,7 @@ export default function AmbassadorDashboardPage() {
   };
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8 py-8">
         <Link href="/ambassadors" className="inline-flex items-center gap-2 text-theme-gold font-cairo mb-6 hover:underline">
           <HiChevronRight className="w-4 h-4" />
@@ -122,7 +122,7 @@ export default function AmbassadorDashboardPage() {
             className="lg:col-span-2 rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
             <h2 className="text-lg font-bold font-playfair text-theme mb-4">رابط الإحالة</h2>
             <div className="flex items-center gap-2 bg-theme-surface rounded-xl p-3 border border-theme mb-4">
-              <span className="flex-1 text-sm text-theme-secondary font-cairo truncate ltr" dir="ltr">{referralLink}</span>
+              <span className="flex-1 text-sm text-theme-secondary font-cairo truncate ltr">{referralLink}</span>
               <button onClick={handleCopyLink}
                 className="p-2 rounded-lg bg-theme-gold/10 hover:bg-theme-gold/20 text-theme-gold transition-all shrink-0">
                 {copied ? <HiBadgeCheck className="w-5 h-5" /> : <HiClipboardCopy className="w-5 h-5" />}

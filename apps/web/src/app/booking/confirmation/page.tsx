@@ -1,183 +1,216 @@
 'use client';
 
+import { useState, useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import {
   HiCheckCircle, HiLocationMarker, HiCalendar, HiClock,
-  HiUser, HiQrcode, HiShare, HiDownload, HiChevronRight,
-  HiStar,
+  HiUser, HiChevronRight, HiStar,
 } from 'react-icons/hi';
 
-const mockBooking = {
-  id: 'EH-4521',
-  title: 'مغامرة الغوص في البحر الأحمر',
-  subtitle: 'Explore the Coral Reefs',
-  date: '15 يناير 2025',
-  time: '09:00 صباحاً',
-  location: 'شرم الشيخ',
-  travelers: '2 بالغين + 1 طفل',
-  duration: 'يوم كامل',
-  price: 5900,
-  image: '/egypthub/images/activities/diving.svg',
-  status: 'مؤكد',
-  qrCode: 'EH-4521-SAFARI',
-  timeline: [
-    { time: '09:00', label: 'نقطة الانطلاق', status: 'done' as const },
-    { time: '10:30', label: 'ركوب الجمال', status: 'done' as const },
-    { time: '12:00', label: 'وقفة تصوير', status: 'current' as const },
-    { time: '14:00', label: 'عشاء بدوي', status: 'upcoming' as const },
-    { time: '17:00', label: 'مراقبة الغروب', status: 'upcoming' as const },
-  ],
-  loyalty: {
-    points: 2450,
-    offers: [
-      { label: 'خصم 15% على الحجز القادم', pts: '500' },
-      { label: 'ترقية VIP مجانية', pts: '1000' },
-      { label: 'تجربة مجانية', pts: '2000' },
-    ],
-  },
-};
+interface BookingData {
+  id: string;
+  bookingReference: string;
+  status: string;
+  bookingDate: string;
+  bookingTime: string | null;
+  participants: number;
+  totalPriceEgp: number;
+  discountAmount: number;
+  paymentMethod: string | null;
+  experience: {
+    titleAr: string;
+    slug: string;
+    images: string[];
+    locationCity: string;
+  };
+  provider: {
+    businessNameAr: string;
+  };
+}
 
 export default function BookingConfirmationPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const ref = searchParams.get('ref');
+
+  const [booking, setBooking] = useState<BookingData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!ref) {
+      router.replace('/bookings');
+      return;
+    }
+
+    const fetchBooking = async () => {
+      setLoading(true);
+      setError(null);
+      try {
+        const res = await fetch('/api/bookings');
+        if (!res.ok) {
+          setError('حدث خطأ أثناء تحميل بيانات الحجز');
+          return;
+        }
+        const data = await res.json();
+        const bookings: BookingData[] = data.bookings || [];
+        const found = bookings.find(b => b.bookingReference === ref);
+        if (!found) {
+          setError('لم يتم العثور على الحجز');
+          return;
+        }
+        setBooking(found);
+      } catch {
+        setError('حدث خطأ أثناء تحميل بيانات الحجز');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBooking();
+  }, [ref, router]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-theme-bg flex items-center justify-center">
+        <div className="w-10 h-10 border-4 border-theme-gold/20 border-t-theme-gold rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-theme-bg flex items-center justify-center">
+        <div className="text-center">
+          <p className="text-theme text-lg font-cairo mb-8">{error}</p>
+          <Link href="/bookings" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-theme-gold text-dark-900 font-bold font-cairo transition-all hover:bg-theme-gold/80">
+            الذهاب للحجوزات
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  if (!booking) return null;
+
+  const formatDate = (dateStr: string) => {
+    const d = new Date(dateStr);
+    const months = ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'];
+    return `${d.getDate()} ${months[d.getMonth()]} ${d.getFullYear()}`;
+  };
+
+  const formatTime = (time: string | null) => {
+    if (!time) return '';
+    const hour = parseInt(time.split(':')[0]);
+    const min = time.split(':')[1];
+    const period = hour < 12 ? 'صباحاً' : hour === 12 ? 'ظهراً' : 'مساءً';
+    return `${time} ${period}`;
+  };
+
+  const statusColors: Record<string, string> = {
+    PENDING: 'bg-yellow-500/15 text-yellow-400',
+    CONFIRMED: 'bg-green-500/15 text-green-400',
+    CANCELLED: 'bg-red-500/15 text-red-400',
+    COMPLETED: 'bg-blue-500/15 text-blue-400',
+    REFUNDED: 'bg-purple-500/15 text-purple-400',
+  };
+
+  const statusLabels: Record<string, string> = {
+    PENDING: 'قيد الانتظار',
+    CONFIRMED: 'مؤكد',
+    CANCELLED: 'ملغي',
+    COMPLETED: 'مكتمل',
+    REFUNDED: 'مسترجع',
+  };
+
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
-      <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
-        <Link href="/booking" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
+    <div className="min-h-screen bg-theme-bg">
+      <div className="max-w-[800px] mx-auto px-4 lg:px-6 py-8">
+        <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronRight className="w-4 h-4" />
-          العودة للحجز
+          العودة للرئيسية
         </Link>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="lg:col-span-2 space-y-6">
-            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6 lg:p-8 text-center">
-              <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }}
-                className="w-20 h-20 mx-auto rounded-full bg-green-500/15 flex items-center justify-center mb-4">
-                <HiCheckCircle className="text-4xl text-green-400" />
-              </motion.div>
-              <h1 className="text-2xl font-bold font-playfair text-theme mb-2">تم تأكيد حجزك بنجاح!</h1>
-              <p className="text-theme-secondary font-cairo text-sm mb-1">رقم الحجز</p>
-              <p className="text-3xl font-bold text-theme-gold font-english mb-6">{mockBooking.id}</p>
-
-              <div className="relative rounded-xl overflow-hidden h-48 mb-6">
-                <img src={mockBooking.image} alt={mockBooking.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/40 to-transparent" />
-                <div className="absolute bottom-3 right-3 text-right">
-                  <p className="text-xl font-bold text-theme font-cairo">{mockBooking.title}</p>
-                  <p className="text-sm text-theme-gold font-english">{mockBooking.subtitle}</p>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
-                {[
-                  { icon: HiCalendar, label: 'التاريخ', val: mockBooking.date },
-                  { icon: HiClock, label: 'الوقت', val: mockBooking.time },
-                  { icon: HiUser, label: 'المسافرون', val: mockBooking.travelers },
-                  { icon: HiLocationMarker, label: 'الموقع', val: mockBooking.location },
-                ].map((item, i) => (
-                  <div key={i} className="bg-theme-surface rounded-xl p-3 border border-theme-border">
-                    <item.icon className="text-theme-gold text-lg mb-1 mx-auto" />
-                    <p className="text-xs text-theme-muted font-cairo">{item.label}</p>
-                    <p className="text-sm font-bold text-theme font-cairo">{item.val}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="bg-gradient-to-l from-theme-gold/10 to-accent-amber/5 rounded-xl p-4 border border-theme-gold/20 mb-6">
-                <div className="flex justify-between items-center">
-                  <span className="text-sm text-theme font-cairo">إجمالي المبلغ</span>
-                  <span className="text-2xl font-bold text-theme-gold font-english">EGP {mockBooking.price.toLocaleString()}</span>
-                </div>
-              </div>
-
-              <div className="flex gap-3">
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  className="flex-1 py-3 rounded-xl border border-theme-gold/30 text-theme-gold text-sm font-cairo font-bold flex items-center justify-center gap-2 hover:bg-theme-gold/5 transition-all">
-                  <HiShare /> مشاركة
-                </motion.button>
-                <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                  className="flex-1 py-3 rounded-xl border border-theme-gold/30 text-theme-gold text-sm font-cairo font-bold flex items-center justify-center gap-2 hover:bg-theme-gold/5 transition-all">
-                  <HiDownload /> تحميل PDF
-                </motion.button>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
-              <h2 className="text-lg font-bold font-playfair text-theme mb-4">تتبع الرحلة</h2>
-              <div className="relative pr-5">
-                {mockBooking.timeline.map((s, i) => (
-                  <div key={i} className="flex gap-4 relative pb-6 last:pb-0">
-                    <div className="flex flex-col items-center">
-                      <div className={`w-4 h-4 rounded-full z-10 ${
-                        s.status === 'done' ? 'bg-green-400' : s.status === 'current' ? 'bg-theme-gold animate-pulse' : 'bg-theme-elevated border border-theme-border'
-                      }`} />
-                      {i < mockBooking.timeline.length - 1 && (
-                        <div className={`w-0.5 flex-1 mt-1 ${s.status === 'done' ? 'bg-green-400/30' : 'bg-theme-border'}`} />
-                      )}
-                    </div>
-                    <div>
-                      <p className="text-xs text-theme-muted font-english">{s.time}</p>
-                      <p className={`text-sm font-cairo ${s.status === 'current' ? 'text-theme-gold font-bold' : 'text-theme-secondary'}`}>{s.label}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
+          className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6 lg:p-8 text-center">
+          <motion.div animate={{ scale: [1, 1.1, 1] }} transition={{ duration: 2, repeat: Infinity }}
+            className="w-20 h-20 mx-auto rounded-full bg-green-500/15 flex items-center justify-center mb-4">
+            <HiCheckCircle className="text-4xl text-green-400" />
           </motion.div>
+          <h1 className="text-2xl font-bold font-playfair text-theme mb-2">تم تأكيد حجزك بنجاح!</h1>
+          <p className="text-theme-secondary font-cairo text-sm mb-1">رقم الحجز</p>
+          <p className="text-3xl font-bold text-theme-gold font-english mb-6">{booking.bookingReference}</p>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="space-y-6">
-            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6 text-center">
-              <div className="flex items-center gap-2 justify-center mb-4">
-                <div className="w-8 h-8 rounded bg-gradient-to-br from-theme-gold to-accent-amber flex items-center justify-center">
-                  <span className="text-xs text-dark-900 font-bold">م</span>
-                </div>
-                <span className="text-sm font-bold font-english text-theme">EGYPTHUB</span>
+          <div className="relative rounded-xl overflow-hidden h-44 mb-6">
+            {booking.experience.images?.[0] ? (
+              <img src={booking.experience.images[0]} alt={booking.experience.titleAr} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full bg-theme-elevated flex items-center justify-center">
+                <HiCheckCircle className="text-4xl text-theme-muted" />
               </div>
-              <h3 className="font-bold text-theme text-sm font-cairo mb-1">{mockBooking.title}</h3>
-              <p className="text-xs text-theme-muted font-cairo mb-4">{mockBooking.date} | {mockBooking.time}</p>
-              <div className="w-36 h-36 mx-auto bg-white rounded-xl p-3 mb-4">
-                <div className="w-full h-full grid grid-cols-7 gap-0.5">
-                  {Array.from({ length: 49 }).map((_, i) => (
-                    <div key={i} className={`rounded-sm ${Math.random() > 0.5 ? 'bg-[#0A0E17]' : 'bg-white'}`} />
-                  ))}
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-2 mb-4">
-                <HiQrcode className="text-theme-gold" />
-                <p className="text-xs text-theme-muted font-english font-bold">{mockBooking.qrCode}</p>
-              </div>
-              <p className="text-[10px] text-theme-muted font-cairo">امسح الكود عند نقطة الدخول</p>
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/40 to-transparent" />
+            <div className="absolute bottom-3 right-3 text-right">
+              <p className="text-xl font-bold text-theme font-cairo">{booking.experience.titleAr}</p>
+              <p className="text-sm text-theme-gold font-english">{booking.provider.businessNameAr}</p>
             </div>
+          </div>
 
-            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6 text-center">
-              <motion.div animate={{ rotate: [0, 10, -10, 0] }} transition={{ duration: 3, repeat: Infinity }}
-                className="w-14 h-14 mx-auto rounded-full bg-theme-gold/15 flex items-center justify-center mb-3">
-                <HiStar className="text-2xl text-theme-gold" />
-              </motion.div>
-              <h3 className="font-bold text-theme text-sm font-cairo mb-2">نقاط الولاء</h3>
-              <p className="text-3xl font-bold text-theme-gold font-english mb-1">{mockBooking.loyalty.points.toLocaleString()}</p>
-              <p className="text-xs text-theme-muted font-cairo mb-4">نقطة مكتسبة</p>
-              <div className="space-y-2">
-                {mockBooking.loyalty.offers.map((offer, i) => (
-                  <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-theme-surface border border-theme-border">
-                    <span className="text-xs text-theme font-cairo">{offer.label}</span>
-                    <span className="text-[10px] text-theme-gold font-english font-bold">{offer.pts} نقطة</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <span className={`px-3 py-1 rounded-lg text-xs font-bold ${statusColors[booking.status] || 'bg-theme-elevated text-theme-muted'}`}>
+              {statusLabels[booking.status] || booking.status}
+            </span>
+          </div>
 
-            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
-              <h3 className="font-bold text-theme text-sm font-cairo mb-3">تحتاج مساعدة؟</h3>
-              <p className="text-xs text-theme-muted font-cairo mb-4">تواصل مع فريق الدعم الفني على مدار الساعة</p>
-              <Link href="/ai-concierge"
-                className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-accent-amber text-dark-900 font-bold text-sm font-cairo text-center block hover:opacity-90 transition-all">
-                تحدث مع زينب
-              </Link>
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+            <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+              <HiCalendar className="text-theme-gold text-lg mb-1 mx-auto" />
+              <p className="text-xs text-theme-muted font-cairo">التاريخ</p>
+              <p className="text-sm font-bold text-theme font-cairo">{formatDate(booking.bookingDate)}</p>
             </div>
-          </motion.div>
-        </div>
+            <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+              <HiClock className="text-theme-gold text-lg mb-1 mx-auto" />
+              <p className="text-xs text-theme-muted font-cairo">الوقت</p>
+              <p className="text-sm font-bold text-theme font-cairo">{formatTime(booking.bookingTime)}</p>
+            </div>
+            <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+              <HiUser className="text-theme-gold text-lg mb-1 mx-auto" />
+              <p className="text-xs text-theme-muted font-cairo">المسافرون</p>
+              <p className="text-sm font-bold text-theme font-cairo">{booking.participants} {booking.participants === 1 ? 'شخص' : 'أشخاص'}</p>
+            </div>
+            <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+              <HiLocationMarker className="text-theme-gold text-lg mb-1 mx-auto" />
+              <p className="text-xs text-theme-muted font-cairo">الموقع</p>
+              <p className="text-sm font-bold text-theme font-cairo">{booking.experience.locationCity}</p>
+            </div>
+          </div>
+
+          <div className="bg-gradient-to-l from-theme-gold/10 to-accent-amber/5 rounded-xl p-4 border border-theme-gold/20 mb-6">
+            <div className="flex justify-between items-center">
+              <span className="text-sm text-theme font-cairo">إجمالي المبلغ</span>
+              <span className="text-2xl font-bold text-theme-gold font-english">EGP {booking.totalPriceEgp.toLocaleString()}</span>
+            </div>
+            {booking.discountAmount > 0 && (
+              <div className="flex justify-between items-center mt-1">
+                <span className="text-xs text-green-400 font-cairo">الخصم</span>
+                <span className="text-xs text-green-400 font-english">{booking.discountAmount.toLocaleString()} EGP</span>
+              </div>
+            )}
+          </div>
+
+          <div className="flex gap-3">
+            <Link href={`/booking/details?id=${booking.id}`}
+              className="flex-1 py-3 rounded-xl border border-theme-gold/30 text-theme-gold text-sm font-cairo font-bold text-center hover:bg-theme-gold/5 transition-all">
+              عرض الحجز
+            </Link>
+            <Link href="/bookings"
+              className="flex-1 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-accent-amber text-dark-900 text-sm font-cairo font-bold text-center hover:opacity-90 transition-all">
+              الذهاب للحجوزات
+            </Link>
+          </div>
+        </motion.div>
       </div>
     </div>
   );

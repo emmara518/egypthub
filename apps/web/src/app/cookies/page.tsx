@@ -2,7 +2,7 @@ import LegalPage from '@/components/LegalPage';
 
 export default function CookiesPage() {
   return (
-    <LegalPage title="Cookie Policy" lastUpdated="June 1, 2026" dir="ltr">
+    <LegalPage title="Cookie Policy" lastUpdated="June 1, 2026">
       <Section title="1. What Are Cookies">
         <p>Cookies are small text files stored on your device when you visit our website. They help us provide a better browsing experience by remembering your preferences, login status, and language settings.</p>
       </Section>

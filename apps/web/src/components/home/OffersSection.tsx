@@ -23,7 +23,7 @@ export default function OffersSection() {
   };
 
   return (
-    <section className="bg-[#080C18] py-12 md:py-20">
+    <section className="bg-theme-bg py-12 md:py-20">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="text-center mb-8 md:mb-12">
           <div className="flex items-center justify-center gap-2 mb-2">
@@ -47,14 +47,14 @@ export default function OffersSection() {
               className={`shrink-0 w-[280px] md:w-[340px] relative rounded-2xl border overflow-hidden flex flex-col transition-all duration-500 hover:shadow-[0_0_35px_rgba(212,162,76,0.12)] glass-card neon-gold ${plan.popular ? 'border-theme-gold/30 bg-[#0F1525]/80 shadow-[0_0_20px_rgba(212,162,76,0.1)]' : 'border-theme-gold/[0.08] bg-[#0F1525]/40 hover:border-theme-gold/25'}`}
             >
               {plan.popular && (
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 bg-gradient-to-r from-theme-gold to-[#C89A3D] text-[#080C18] text-[9px] font-bold font-english px-4 py-1 rounded-full flex items-center gap-1 whitespace-nowrap shadow-[0_0_20px_rgba(212,162,76,0.3)]">
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 bg-gradient-to-r from-theme-gold to-[#C89A3D] text-theme-bg text-[9px] font-bold font-english px-4 py-1 rounded-full flex items-center gap-1 whitespace-nowrap shadow-[0_0_20px_rgba(212,162,76,0.3)]">
                   <Sparkles size={12} /> MOST POPULAR
                 </div>
               )}
               <div className="relative h-[180px]">
                 <Image src={plan.image} alt={plan.name} fill sizes="400px" className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080C18] via-[#080C18]/30 to-transparent" />
-                <span className="absolute top-3 left-3 text-[8px] font-bold font-english tracking-[0.1em] text-theme-gold bg-[#080C18]/70 backdrop-blur-sm px-2.5 py-1 rounded-full border border-theme-gold/20">{plan.tag}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/30 to-transparent" />
+                <span className="absolute top-3 left-3 text-[8px] font-bold font-english tracking-[0.1em] text-theme-gold bg-theme-bg/70 backdrop-blur-sm px-2.5 py-1 rounded-full border border-theme-gold/20">{plan.tag}</span>
                 <div className="absolute bottom-3 left-3 flex items-center gap-1">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
                   <span className="text-[11px] font-bold text-theme-gold font-english">{plan.rating}</span>

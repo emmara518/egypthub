@@ -54,7 +54,7 @@ export default function PackageComparison() {
                       {packages.map(pkg => (
                         <th key={pkg.name} className={`p-4 text-center relative ${pkg.popular ? 'bg-theme-gold/[0.04]' : ''}`}>
                           {pkg.popular && (
-                            <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 bg-theme-gold text-[8px] text-[#080C18] font-bold font-english px-3 py-0.5 rounded-b-full tracking-[0.1em]">MOST POPULAR</div>
+                            <div className="absolute -top-0.5 left-1/2 -translate-x-1/2 bg-theme-gold text-[8px] text-theme-bg font-bold font-english px-3 py-0.5 rounded-b-full tracking-[0.1em]">MOST POPULAR</div>
                           )}
                           <p className="text-sm font-bold font-english text-white">{pkg.name}</p>
                           <p className="text-xl font-bold font-display text-theme-gold mt-1">{pkg.price}</p>

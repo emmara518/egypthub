@@ -13,7 +13,7 @@ export default function Newsletter() {
   };
 
   return (
-    <section className="bg-[#080C18] py-12 md:py-16 border-t border-theme-gold/[0.06] glass-card">
+    <section className="bg-theme-bg py-12 md:py-16 border-t border-theme-gold/[0.06] glass-card">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="max-w-2xl mx-auto text-center">
           <div className="flex items-center justify-center gap-2 mb-2">
@@ -39,7 +39,7 @@ export default function Newsletter() {
                   className="bg-transparent text-sm text-white/70 font-english placeholder:text-white/30 w-full outline-none" aria-label="Email for newsletter" />
               </div>
               <button type="submit" className="gold-btn p-2.5 rounded-xl shrink-0 shadow-[0_4px_12px_rgba(212,162,76,0.2)] hover:shadow-[0_4px_20px_rgba(212,162,76,0.35)] transition-all touch-target" aria-label="Subscribe">
-                <ArrowRight size={16} className="text-[#080C18]" />
+                <ArrowRight size={16} className="text-theme-bg" />
               </button>
             </form>
           )}

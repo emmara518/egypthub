@@ -1,21 +1,46 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Star, Heart } from '@/components/Icons';
+import { useAuthStore } from '@/lib/auth-store';
 
-const recs = [
-  { title: 'Nubian Village Tour', location: 'Aswan', rating: 4.8, price: '$85', image: '/assets/home/nile-sunset.jpg?w=200&q=80', tag: 'CULTURE' },
-  { title: 'White Desert Camping', location: 'Farafra', rating: 4.7, price: '$160', image: '/assets/home/desert-dahab.jpg?w=200&q=80', tag: 'ADVENTURE' },
-  { title: 'Coptic Cairo Walk', location: 'Cairo', rating: 4.6, price: '$65', image: '/assets/home/pyramids.jpg?w=200&q=80', tag: 'HISTORY' },
-];
+interface Recommendation {
+  id: string;
+  slug: string;
+  titleAr: string;
+  titleEn: string | null;
+  category: string;
+  locationCity: string;
+  priceEgp: number;
+  averageRating: number;
+  totalReviews: number;
+  images: string[];
+  durationHours: number | null;
+}
 
 export default function SmartRecommendations() {
-  const [saved, setSaved] = useState<number[]>([]);
+  const [recs, setRecs] = useState<Recommendation[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [saved, setSaved] = useState<string[]>([]);
 
-  const toggleSave = (i: number) => {
-    setSaved(p => p.includes(i) ? p.filter(x => x !== i) : [...p, i]);
+  useEffect(() => {
+    fetch('/api/recommendations')
+      .then((r) => r.json())
+      .then((res) => {
+        setRecs(res.data?.slice(0, 6) || []);
+        setLoading(false);
+      })
+      .catch(() => {
+        setRecs([]);
+        setLoading(false);
+      });
+  }, []);
+
+  const toggleSave = (id: string) => {
+    setSaved((p) => p.includes(id) ? p.filter((x) => x !== id) : [...p, id]);
   };
 
   return (
@@ -30,32 +55,67 @@ export default function SmartRecommendations() {
         </h2>
 
         <div className="flex gap-4 overflow-x-auto scrollbar-hide -mx-5 px-5 md:mx-0 md:px-0 pb-2">
-          {recs.map((r, i) => (
-            <motion.div key={r.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
-               className="shrink-0 w-[260px] md:w-[300px] group relative rounded-xl overflow-hidden border border-theme-gold/[0.06] hover:border-theme-gold/30 hover:shadow-[0_0_25px_rgba(212,162,76,0.1)] transition-all duration-500 glass-card neon-gold"
-            >
-              <div className="relative h-[200px]">
-                <Image src={r.image} alt={r.title} fill sizes="400px" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080C18] via-[#080C18]/30 to-transparent" />
-                <span className="absolute top-3 left-3 text-[8px] font-bold font-english tracking-[0.1em] text-theme-gold bg-[#080C18]/70 backdrop-blur-sm px-2 py-1 rounded-full border border-theme-gold/20">{r.tag}</span>
-                <button onClick={() => toggleSave(i)}
-                  className="absolute top-3 right-3 w-7 h-7 rounded-full bg-[#080C18]/60 backdrop-blur-sm flex items-center justify-center touch-target"
-                  aria-label={saved.includes(i) ? 'Unsave' : 'Save'}>
-                  <Heart size={13} className={saved.includes(i) ? 'text-red-400' : 'text-white/60'} />
-                </button>
-              </div>
-              <div className="p-4">
-                <h3 className="text-sm font-bold font-english text-white">{r.title}</h3>
-                <p className="text-[10px] text-white/50 font-english">{r.location}</p>
-                <div className="flex items-center justify-between mt-2">
-                  <div className="flex items-center gap-0.5">
-                    <Star size={11} />
-                    <span className="text-xs font-bold text-theme-gold font-english">{r.rating}</span>
+          {loading && (
+            <>
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="shrink-0 w-[260px] md:w-[300px] rounded-xl overflow-hidden border border-theme-gold/[0.06]">
+                  <div className="h-[200px] skeleton-gold" />
+                  <div className="p-4 space-y-2">
+                    <div className="h-4 w-3/4 skeleton-gold" />
+                    <div className="h-3 w-1/2 skeleton-gold" />
+                    <div className="flex justify-between mt-2">
+                      <div className="h-4 w-12 skeleton-gold" />
+                      <div className="h-4 w-16 skeleton-gold" />
+                    </div>
                   </div>
-                  <span className="text-sm font-bold font-display text-theme-gold">{r.price}<span className="text-[9px] text-white/30 font-english">/person</span></span>
                 </div>
-              </div>
-            </motion.div>
+              ))}
+            </>
+          )}
+
+          {!loading && recs.length === 0 && (
+            <div className="w-full text-center py-12">
+              <p className="text-white/30 text-sm font-cairo">لا توجد توصيات متاحة حالياً</p>
+            </div>
+          )}
+
+          {!loading && recs.map((r, i) => (
+            <Link key={r.id} href={`/experiences/${r.slug}`}>
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
+                 className="shrink-0 w-[260px] md:w-[300px] group relative rounded-xl overflow-hidden border border-theme-gold/[0.06] hover:border-theme-gold/30 hover:shadow-[0_0_25px_rgba(212,162,76,0.1)] transition-all duration-500 glass-card neon-gold"
+              >
+                <div className="relative h-[200px]">
+                  {r.images[0] ? (
+                    <Image src={r.images[0]} alt={r.titleAr} fill sizes="400px" className="object-cover group-hover:scale-105 transition-transform duration-700" />
+                  ) : (
+                    <div className="w-full h-full bg-theme-surface flex items-center justify-center text-4xl">📍</div>
+                  )}
+                  <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/30 to-transparent" />
+                  <span className="absolute top-3 left-3 text-[8px] font-bold font-english tracking-[0.1em] text-theme-gold bg-theme-bg/70 backdrop-blur-sm px-2 py-1 rounded-full border border-theme-gold/20">
+                    {r.category}
+                  </span>
+                  <button onClick={(e) => { e.preventDefault(); toggleSave(r.id); }}
+                    className="absolute top-3 right-3 w-7 h-7 rounded-full bg-theme-bg/60 backdrop-blur-sm flex items-center justify-center touch-target"
+                    aria-label={saved.includes(r.id) ? 'Unsave' : 'Save'}>
+                    <Heart size={13} className={saved.includes(r.id) ? 'text-red-400' : 'text-white/60'} />
+                  </button>
+                </div>
+                <div className="p-4">
+                  <h3 className="text-sm font-bold font-english text-white">{r.titleAr}</h3>
+                  <p className="text-[10px] text-white/50 font-english">{r.locationCity}</p>
+                  <div className="flex items-center justify-between mt-2">
+                    <div className="flex items-center gap-0.5">
+                      <Star size={11} />
+                      <span className="text-xs font-bold text-theme-gold font-english">{r.averageRating}</span>
+                    </div>
+                    <span className="text-sm font-bold font-display text-theme-gold">
+                      ج.م {r.priceEgp.toLocaleString()}
+                      <span className="text-[9px] text-white/30 font-english">/person</span>
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>

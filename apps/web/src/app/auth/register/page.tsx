@@ -1,11 +1,15 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PyramidIcon } from '@/components/EgyptianIcons';
+import { useAuthStore } from '@/lib/auth-store';
 
 export default function RegisterPage() {
+  const router = useRouter();
+  const { register, isLoading, error: authError, clearError } = useAuthStore();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +17,6 @@ export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -27,15 +30,19 @@ export default function RegisterPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    setIsSubmitting(true);
-    setTimeout(() => setIsSubmitting(false), 1500);
+    clearError();
+    await register(name, email, password);
+    const { isAuthenticated } = useAuthStore.getState();
+    if (isAuthenticated) {
+      router.push('/portal');
+    }
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-[#080C18] pt-24">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-theme-bg">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -138,7 +145,7 @@ export default function RegisterPage() {
                   className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-4 py-3 outline-none transition-all duration-200 focus:border-[#D4A24C]/40 text-white placeholder-white/40 font-cairo ${
                     errors.email ? 'border-red-500' : 'border-[#D4A24C]/[0.08]'
                   }`}
-                  dir="ltr"
+                 
                 />
               </div>
               <AnimatePresence>
@@ -163,7 +170,7 @@ export default function RegisterPage() {
                   className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-10 py-3 outline-none transition-all duration-200 focus:border-[#D4A24C]/40 text-white placeholder-white/40 font-cairo ${
                     errors.password ? 'border-red-500' : 'border-[#D4A24C]/[0.08]'
                   }`}
-                  dir="ltr"
+                 
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-[#D4A24C] transition-colors">
@@ -201,7 +208,7 @@ export default function RegisterPage() {
                   className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-10 py-3 outline-none transition-all duration-200 focus:border-[#D4A24C]/40 text-white placeholder-white/40 font-cairo ${
                     errors.confirmPassword ? 'border-red-500' : 'border-[#D4A24C]/[0.08]'
                   }`}
-                  dir="ltr"
+                 
                 />
                 <button type="button" onClick={() => setShowConfirm(!showConfirm)}
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-[#D4A24C] transition-colors">
@@ -225,16 +232,25 @@ export default function RegisterPage() {
               </AnimatePresence>
             </div>
 
+            <AnimatePresence>
+              {authError && (
+                <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                  className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-cairo text-center">
+                  {authError}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              disabled={isSubmitting}
-              className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#E8C97A] text-[#080C18] font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+              disabled={isLoading}
+              className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#E8C97A] text-theme-bg font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
             >
-              {isSubmitting ? (
+              {isLoading ? (
                 <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                  className="w-4 h-4 border-2 border-[#080C18] border-t-transparent rounded-full" />
+                  className="w-4 h-4 border-2 border-theme-bg border-t-transparent rounded-full" />
               ) : (
                 'إنشاء حساب'
               )}

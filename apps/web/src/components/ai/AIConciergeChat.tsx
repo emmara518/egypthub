@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import type { ChatMessage, TripPlan, Recommendations } from '@/lib/zainab/types';
-import { generateResponse, createSessionMemory } from '@/lib/zainab/conversationEngine';
+import { createSessionMemory } from '@/lib/zainab/conversationEngine';
 import ZainabRecommendations from './ZainabRecommendations';
 import TripPlannerCard from './TripPlannerCard';
 import QuickIntents from './QuickIntents';
@@ -78,8 +78,23 @@ export default function AIConciergeChat() {
 
   useEffect(() => {
     if (messages.length === 0) {
-      const welcome = generateResponse('/start', [], memory);
-      setMessages([createMessage('zainab', welcome.text, { recommendations: welcome.recommendations })]);
+      (async () => {
+        try {
+          const res = await fetch('/api/ai-concierge/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: '/start', history: [] }),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            setMessages([createMessage('zainab', data.text, { recommendations: data.recommendations })]);
+            return;
+          }
+        } catch {}
+        const { generateResponse } = await import('@/lib/zainab/conversationEngine');
+        const welcome = generateResponse('/start', [], memory);
+        setMessages([createMessage('zainab', welcome.text, { recommendations: welcome.recommendations })]);
+      })();
     }
   }, [memory, messages.length]);
 
@@ -97,14 +112,29 @@ export default function AIConciergeChat() {
     setIsTyping(true);
     setShowSuggestions(false);
 
-    await new Promise(r => setTimeout(r, 400 + Math.random() * 600));
+    try {
+      const history = messages.map(m => ({ role: m.role, content: m.content }));
+      const res = await fetch('/api/ai-concierge/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: trimmed, history }),
+      });
 
-    const response = generateResponse(trimmed, messages, memory);
+      if (!res.ok) throw new Error('API error');
 
-    setMessages(prev => [...prev, createMessage('zainab', response.text, {
-      recommendations: response.recommendations,
-      tripPlan: response.tripPlan,
-    })]);
+      const data = await res.json();
+      setMessages(prev => [...prev, createMessage('zainab', data.text, {
+        recommendations: data.recommendations,
+        tripPlan: data.tripPlan,
+      })]);
+    } catch {
+      const { generateResponse } = await import('@/lib/zainab/conversationEngine');
+      const response = generateResponse(trimmed, messages, memory);
+      setMessages(prev => [...prev, createMessage('zainab', response.text, {
+        recommendations: response.recommendations,
+        tripPlan: response.tripPlan,
+      })]);
+    }
 
     setIsTyping(false);
   }, [isTyping, messages, memory]);
@@ -163,7 +193,7 @@ export default function AIConciergeChat() {
           </button>
           {messages.length > 1 && (
             <button
-              onClick={() => { setMessages([createMessage('zainab', generateResponse('/start', [], memory).text, { recommendations: generateResponse('/start', [], memory).recommendations })]); setShowSuggestions(true); }}
+              onClick={async () => { setShowSuggestions(true); try { const r = await fetch('/api/ai-concierge/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: '/start', history: [] }) }); if (r.ok) { const d = await r.json(); setMessages([createMessage('zainab', d.text, { recommendations: d.recommendations })]); return; } } catch {} const { generateResponse: gr } = await import('@/lib/zainab/conversationEngine'); const w = gr('/start', [], memory); setMessages([createMessage('zainab', w.text, { recommendations: w.recommendations })]); }}
               className="text-[10px] text-theme-secondary hover:text-theme-gold transition-colors px-3 py-1 rounded-lg border border-theme-gold/10 font-cairo"
             >
               {t.newChat}

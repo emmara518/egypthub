@@ -197,7 +197,7 @@ export default function ExplorerSidebar({
         <AnimatePresence>
           {section === 'price' && (
             <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} className="overflow-hidden">
-              <div className="flex gap-1 pt-1" dir="ltr">
+              <div className="flex gap-1 pt-1">
                 {[1, 2, 3, 4, 5].map(n => (
                   <button
                     key={n}

@@ -50,9 +50,9 @@ export default function QuickViewModal({ experience, onClose }: Props) {
           >
             <div className="relative h-[240px]">
               <Image src={experience.image.replace('?w=400&q=80', '?w=800&q=90')} alt={experience.title} fill sizes="520px" className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#080C18] via-[#080C18]/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/40 to-transparent" />
               <button onClick={onClose} className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/50 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-black/70 transition-all z-10 touch-target" aria-label="Close"><Close size={16} /></button>
-              <button className="absolute top-3 left-3 text-[8px] font-bold font-english tracking-[0.1em] text-theme-gold bg-[#080C18]/70 backdrop-blur-sm px-2.5 py-1 rounded-full border border-theme-gold/20">{experience.tag}</button>
+              <button className="absolute top-3 left-3 text-[8px] font-bold font-english tracking-[0.1em] text-theme-gold bg-theme-bg/70 backdrop-blur-sm px-2.5 py-1 rounded-full border border-theme-gold/20">{experience.tag}</button>
               <div className="absolute bottom-3 left-4 right-4">
                 <h3 className="text-xl font-bold font-display text-white">{experience.title}</h3>
                 <div className="flex items-center gap-2 mt-1">

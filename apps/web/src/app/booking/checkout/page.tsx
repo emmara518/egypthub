@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { HiCalendar, HiCreditCard, HiChevronLeft, HiChevronRight, HiCheck, HiChevronDown, HiUser, HiPlus, HiMinus, HiTrash, HiHeart } from 'react-icons/hi';
+import { HiCalendar, HiCreditCard, HiChevronLeft, HiChevronRight, HiCheck, HiChevronDown, HiUser, HiPlus, HiMinus, HiTrash, HiHeart, HiChevronRight as HiArrowRight } from 'react-icons/hi';
 
 /* ───── Mock Data ───── */
 const checkoutData = {
@@ -15,6 +15,9 @@ const checkoutData = {
   tax: 670,
   total: 9070,
 };
+
+const BOOKING_REF = 'EH-4521';
+const BOOKING_ID = 'b1';
 
 export default function CheckoutPage() {
   const [step, setStep] = useState(0);
@@ -36,7 +39,7 @@ export default function CheckoutPage() {
 
   if (step === 5) {
     return (
-      <div className="min-h-screen bg-theme-bg pt-24">
+      <div className="min-h-screen bg-theme-bg">
         <div className="max-w-[600px] mx-auto px-4 py-12">
           <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}
             className="rounded-2xl border border-theme-gold/20 bg-theme-card p-8 text-center">
@@ -45,7 +48,7 @@ export default function CheckoutPage() {
               <HiCheck className="text-4xl text-green-400" />
             </motion.div>
             <h1 className="text-2xl font-bold font-playfair text-theme mb-2">تم تأكيد حجزك بنجاح!</h1>
-            <p className="text-theme-secondary font-cairo text-sm mb-2">رقم الحجز: EH-4521</p>
+            <p className="text-theme-secondary font-cairo text-sm mb-2">رقم الحجز: {BOOKING_REF}</p>
             <div className="bg-theme-surface rounded-xl p-4 border border-theme-border text-right mb-6">
               <p className="font-bold text-theme font-cairo mb-1">مغامرة الغوص في البحر الأحمر</p>
               <p className="text-[10px] text-theme-muted font-cairo">15 يناير 2025 • 09:00 صباحاً</p>
@@ -53,7 +56,7 @@ export default function CheckoutPage() {
               <p className="text-xl font-bold text-theme-gold font-english mt-1">EGP 9,070</p>
             </div>
             <div className="flex gap-3">
-              <Link href="/booking/confirmation" className="flex-1 py-3 rounded-xl border border-theme-gold/30 text-theme-gold text-sm font-cairo font-bold text-center hover:bg-theme-gold/5 transition-all">
+              <Link href={`/booking/confirmation?ref=${BOOKING_REF}&id=${BOOKING_ID}`} className="flex-1 py-3 rounded-xl border border-theme-gold/30 text-theme-gold text-sm font-cairo font-bold text-center hover:bg-theme-gold/5 transition-all">
                 عرض التذكرة
               </Link>
               <Link href="/bookings" className="flex-1 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-accent-amber text-dark-900 text-sm font-cairo font-bold text-center hover:opacity-90 transition-all">
@@ -67,7 +70,7 @@ export default function CheckoutPage() {
   }
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronRight className="w-4 h-4" />
@@ -294,6 +297,7 @@ export default function CheckoutPage() {
                     <div className="space-y-3 mb-6">
                       {[
                         { name: 'بطاقة ائتمان', icon: '💳', number: '**** **** **** 4521', holder: 'أحمد محمد', selected: true },
+                        { name: 'PayPal', icon: '🅿️', number: 'paypal@email.com', holder: 'PayPal Account', selected: false },
                         { name: 'محفظة إلكترونية', icon: '📱', number: '0123 4567 8910', holder: 'أحمد محمد', selected: false },
                         { name: 'تحويل بنكي', icon: '🏦', number: 'EGP 9,999', holder: 'حساب التوفير', selected: false },
                       ].map((p, i) => (

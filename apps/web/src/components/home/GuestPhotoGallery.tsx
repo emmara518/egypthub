@@ -30,7 +30,7 @@ export default function GuestPhotoGallery() {
             aria-label={`Photo by ${photo.user}`}
           >
             <Image src={photo.img} alt={photo.user} fill sizes="100px" className="object-cover group-hover:scale-105 transition-transform duration-500" />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#080C18]/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-1.5">
+            <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex flex-col justify-end p-1.5">
               <p className="text-[8px] font-bold text-white font-english truncate">{photo.user}</p>
               <div className="flex items-center gap-0.5"><Star size={7} /><span className="text-[7px] text-theme-gold">{photo.rating}</span></div>
             </div>

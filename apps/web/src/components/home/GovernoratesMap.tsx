@@ -69,7 +69,7 @@ export default function GovernoratesMap({ onSelect }: Props) {
                 <div className={`absolute -bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap transition-all ${
                   isActive ? 'opacity-100' : 'opacity-0'
                 }`}>
-                  <span className="text-[8px] font-bold font-english text-white bg-[#080C18]/80 backdrop-blur-sm px-2 py-0.5 rounded-full border border-theme-gold/20">{g.name}</span>
+                  <span className="text-[8px] font-bold font-english text-white bg-theme-bg/80 backdrop-blur-sm px-2 py-0.5 rounded-full border border-theme-gold/20">{g.name}</span>
                 </div>
               </motion.button>
             );

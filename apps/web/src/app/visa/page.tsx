@@ -37,7 +37,7 @@ export default function VisaPage() {
   const cardClass = "bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5";
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24 pb-12 px-4">
+    <div className="min-h-screen bg-theme-bg pb-12 px-4">
       <div className="max-w-3xl mx-auto">
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-white font-cairo mb-2">مساعد التأشيرات</h1>

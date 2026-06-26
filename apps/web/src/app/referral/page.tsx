@@ -130,7 +130,7 @@ export default function ReferralPage() {
   const totalEarned = referrals.reduce((sum, r) => sum + r.earned, 0);
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24 pb-12 px-4">
+    <div className="min-h-screen bg-theme-bg pb-12 px-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
@@ -178,7 +178,7 @@ export default function ReferralPage() {
 
           <button
             onClick={() => share('copy')}
-            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#B8860B] text-[#080C18] font-bold text-sm mb-4 hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#B8860B] text-theme-bg font-bold text-sm mb-4 hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
           >
             <ShareIcon />
             انسخ رابط الدعوة
@@ -284,7 +284,7 @@ export default function ReferralPage() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.05 }}
-                  className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-[#080C18] border border-white/[0.05]"
+                  className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-theme-bg border border-white/[0.05]"
                 >
                   <span className="text-sm text-white">{ref.name}</span>
                   <span className="text-xs text-[#D4A24C] font-bold">+{ref.earned} XP</span>

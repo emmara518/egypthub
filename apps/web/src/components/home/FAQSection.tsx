@@ -17,7 +17,7 @@ export default function FAQSection() {
   const [openIdx, setOpenIdx] = useState<number | null>(0);
 
   return (
-    <section className="bg-[#080C18] py-8 md:py-14">
+    <section className="bg-theme-bg py-8 md:py-14">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8 md:mb-10">

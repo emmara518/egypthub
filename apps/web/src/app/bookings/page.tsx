@@ -4,10 +4,12 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { MOCK_BOOKINGS as bookingHistory, MOCK_USER } from '@/lib/mock-data';
+import { MOCK_BOOKINGS as bookingHistory } from '@/lib/mock-data';
+import { useAuthStore } from '@/lib/auth-store';
 
 export default function BookingHistoryPage() {
   const [activeTab, setActiveTab] = useState('all');
+  const authUser = useAuthStore((s) => s.user);
 
   const filteredBookings = activeTab === 'all' ? bookingHistory : bookingHistory.filter(b => b.status === activeTab);
 
@@ -28,7 +30,7 @@ export default function BookingHistoryPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24" dir="ltr">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
@@ -47,10 +49,10 @@ export default function BookingHistoryPage() {
                     </div>
                   </div>
                 </div>
-                <h2 className="font-bold text-lg font-playfair text-white">{MOCK_USER.name}</h2>
-                <p className="text-xs text-white/40 font-cairo mb-4">{MOCK_USER.title}</p>
+                <h2 className="font-bold text-lg font-playfair text-white">{authUser?.name || 'مستخدم'}</h2>
+                <p className="text-xs text-white/40 font-cairo mb-4">المسافر</p>
                 <div className="grid grid-cols-3 gap-2">
-                  {[{ val: String(MOCK_USER.stats.trips), label: 'رحلة' }, { val: String(MOCK_USER.stats.reviews), label: 'تقييم' }, { val: String(MOCK_USER.stats.favorites), label: 'مفضلة' }].map(s => (
+                  {[{ val: String(bookingHistory.length), label: 'رحلة' }, { val: '-', label: 'تقييم' }, { val: '-', label: 'مفضلة' }].map(s => (
                     <div key={s.label} className="bg-[#141B2D] rounded-xl p-2 text-center">
                       <p className="text-lg font-bold text-[#D4A24C] font-english">{s.val}</p>
                       <p className="text-[9px] text-white/40 font-cairo">{s.label}</p>
@@ -94,7 +96,7 @@ export default function BookingHistoryPage() {
                 <button className="px-4 py-2 rounded-xl border border-white/10 text-white/50 text-sm font-cairo hover:bg-[#141B2D] transition-all">
                   تصدير PDF
                 </button>
-                <button className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-[#080C18] text-sm font-cairo font-bold transition-all hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)]">
+                <button className="px-4 py-2 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-theme-bg text-sm font-cairo font-bold transition-all hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)]">
                   حجز جديد
                 </button>
               </div>
@@ -107,7 +109,7 @@ export default function BookingHistoryPage() {
                   <div className="flex flex-col md:flex-row">
                     <div className="relative w-full md:w-48 h-48 md:h-auto overflow-hidden">
                       <Image src={booking.image} alt={booking.title} fill className="w-full h-full object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#080C18]/60 to-transparent md:bg-gradient-to-r" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/60 to-transparent md:bg-gradient-to-r" />
                       <div className="absolute top-3 right-3 md:top-auto md:bottom-3 md:right-3">
                         <span className={`px-2.5 py-1 rounded-lg text-[10px] font-bold border ${getStatusBadge(booking.status)}`}>{booking.status}</span>
                       </div>
@@ -163,7 +165,7 @@ export default function BookingHistoryPage() {
                 <svg className="w-16 h-16 mx-auto mb-4 text-white/15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
                 <p className="text-white/50 text-lg font-cairo mb-2">لا توجد حجوزات تطابق بحثك</p>
                 <p className="text-white/30 text-sm font-cairo mb-6">ابدأ رحلتك القادمة اليوم!</p>
-                <Link href="/booking" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-[#080C18] font-bold text-sm font-cairo transition-all hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)]">
+                <Link href="/booking" className="inline-block px-6 py-3 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-theme-bg font-bold text-sm font-cairo transition-all hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)]">
                   احجز الآن
                 </Link>
               </div>

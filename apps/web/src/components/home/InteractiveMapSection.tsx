@@ -94,9 +94,9 @@ export default function InteractiveMapSection() {
     : new Set();
 
   return (
-    <section className="relative bg-[#080C18]">
+    <section className="relative bg-theme-bg">
       {/* ─── Sticky Header ─── */}
-      <div className="sticky top-0 z-40 bg-[#080C18]/95 backdrop-blur-xl border-b border-theme-gold/[0.06]">
+      <div className="sticky top-0 z-40 bg-theme-bg/95 backdrop-blur-xl border-b border-theme-gold/[0.06]">
         <div className="w-full max-w-[1440px] mx-auto px-4 py-3 md:px-8 md:py-4">
           <div className="flex items-center justify-between mb-3">
             <div>
@@ -120,7 +120,7 @@ export default function InteractiveMapSection() {
               <button key={i} onClick={() => setActiveFilter(activeFilter === i ? 0 : i)}
                 className={`shrink-0 px-3 py-1.5 rounded-full text-[10px] md:text-[11px] font-cairo transition-all touch-target ${
                   activeFilter === i
-                    ? 'bg-theme-gold text-[#080C18] font-bold shadow-[0_0_12px_rgba(212,162,76,0.3)]'
+                    ? 'bg-theme-gold text-theme-bg font-bold shadow-[0_0_12px_rgba(212,162,76,0.3)]'
                     : 'bg-white/[0.06] text-white/50 hover:bg-white/[0.1] border border-white/[0.06]'
                 }`}>
                 {filter.label}

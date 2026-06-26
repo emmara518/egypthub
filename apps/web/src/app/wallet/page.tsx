@@ -24,7 +24,7 @@ export default function WalletPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24" dir="ltr">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
@@ -94,7 +94,7 @@ export default function WalletPage() {
                       <p className="text-4xl font-bold text-[#D4A24C] font-english mb-1">EGP {walletBalance.toLocaleString()}</p>
                       <p className="text-xs text-white/30 font-cairo">صالح للاستخدام</p>
                       <div className="flex gap-3 mt-5">
-                        <button className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-[#080C18] text-xs font-bold font-cairo hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)] transition-all">
+                        <button className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-theme-bg text-xs font-bold font-cairo hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)] transition-all">
                           إيداع
                         </button>
                         <button className="px-5 py-2.5 rounded-xl border border-[#D4A24C]/30 text-[#D4A24C] text-xs font-bold font-cairo hover:bg-[#D4A24C]/5 transition-all">

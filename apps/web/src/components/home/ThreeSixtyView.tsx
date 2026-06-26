@@ -72,8 +72,8 @@ export default function ThreeSixtyView() {
                   <Image src={scenes[scene].img} alt={scenes[scene].label} width={1200} height={800} className="h-full w-auto object-cover" />
                   <Image src={scenes[1].img} alt="panorama" width={1200} height={800} className="h-full w-auto object-cover" />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080C18]/40 via-transparent to-[#080C18]/20 pointer-events-none" />
-                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-[#080C18]/70 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/40 via-transparent to-theme-bg/20 pointer-events-none" />
+                <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-theme-bg/70 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
                   <span className="text-[11px] text-white/80 font-english">{scenes[scene].label}</span>
                 </div>
                 <div className="absolute top-1/2 left-2 -translate-y-1/2 text-[10px] text-white/30 font-english">← Drag to explore</div>

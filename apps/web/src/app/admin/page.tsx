@@ -15,7 +15,7 @@ export default function AdminPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8 py-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <h1 className="text-3xl md:text-4xl font-playfair font-bold text-theme mb-2">لوحة الأدمن</h1>

@@ -2,7 +2,7 @@ import LegalPage from '@/components/LegalPage';
 
 export default function TermsPage() {
   return (
-    <LegalPage title="Terms of Service" lastUpdated="June 1, 2026" dir="ltr">
+    <LegalPage title="Terms of Service" lastUpdated="June 1, 2026">
       <Section title="1. Acceptance of Terms">
         <p>By accessing or using EGYPTHUB, you agree to be bound by these Terms of Service. If you do not agree, please do not use our platform.</p>
       </Section>

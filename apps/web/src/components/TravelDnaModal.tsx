@@ -166,7 +166,7 @@ export default function TravelDnaModal({ isOpen, onClose }: Props) {
                           >
                             {isSelected && steps[step].multi && (
                               <div className="absolute top-2 left-2 w-5 h-5 rounded-full bg-theme-gold flex items-center justify-center">
-                                <Check size={10} className="text-[#080C18]" />
+                                <Check size={10} className="text-theme-bg" />
                               </div>
                             )}
                             <span className="text-2xl block mb-2">{opt.icon}</span>

@@ -62,7 +62,7 @@ export default function PassportWidget() {
           <span className="text-xs text-theme-secondary font-cairo">
             {visitedCount}/{totalCount} مدن
           </span>
-          <div className="flex gap-1" dir="ltr">
+          <div className="flex gap-1">
             {recentStamps.map((s) => (
               <span key={s} className="text-xs">📬</span>
             ))}

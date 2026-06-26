@@ -127,7 +127,7 @@ export default function PartnersShowcasePage() {
   const filtered = activeCategory === 'all' ? partners : partners.filter(p => p.category === activeCategory);
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
           <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
@@ -201,7 +201,7 @@ export default function PartnersShowcasePage() {
           <div className="rounded-2xl border border-[#D4A24C]/10 bg-[#141B2D] p-8 max-w-2xl mx-auto">
             <h2 className="text-xl font-bold text-white font-playfair mb-2">هل تريد الشراكة معنا؟</h2>
             <p className="text-sm text-[#5A6478] font-cairo mb-4">انضم إلى شبكة شركائنا واعرض خدماتك لآلاف المسافرين</p>
-            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-[#080C18] text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
+            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
               تواصل معنا
             </button>
           </div>

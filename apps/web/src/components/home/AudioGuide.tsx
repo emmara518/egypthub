@@ -60,7 +60,7 @@ export default function AudioGuide() {
                   aria-label={t.title}
                 >
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-                    playing === i ? 'bg-theme-gold text-[#080C18]' : 'bg-white/[0.06] text-white/60'
+                    playing === i ? 'bg-theme-gold text-theme-bg' : 'bg-white/[0.06] text-white/60'
                   }`}>
                     {playing === i ? (
                       <div className="flex gap-0.5">

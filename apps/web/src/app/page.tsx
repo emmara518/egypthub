@@ -16,24 +16,17 @@ const Newsletter = dynamic(() => import('@/components/home/Newsletter'), { ssr: 
 const GuestPhotoGallery = dynamic(() => import('@/components/home/GuestPhotoGallery'), { ssr: true });
 const GuideProfiles = dynamic(() => import('@/components/home/GuideProfiles'), { ssr: true });
 
-// Dynamic imports for footer and overlay components
-const Footer = dynamic(() => import('@/components/Footer'), { ssr: true });
-const WhatsAppChat = dynamic(() => import('@/components/home/WhatsAppChat'), { ssr: false });
 const AbandonedRecovery = dynamic(() => import('@/components/home/AbandonedRecovery'), { ssr: false });
-const RecentlyViewed = dynamic(() => import('@/components/home/RecentlyViewed'), { ssr: false });
 const BookingTimeline = dynamic(() => import('@/components/home/BookingTimeline'), { ssr: false });
 const SmartRecommendations = dynamic(() => import('@/components/home/SmartRecommendations'), { ssr: false });
-const ActionDrawer = dynamic(() => import('@/components/home/ActionDrawer'), { ssr: false });
 const SessionRecovery = dynamic(() => import('@/components/planning/SessionRecovery'), { ssr: false });
 
-// Static imports for lightweight components
 import BrandMotif from '@/components/BrandMotif';
 import ScrollProgress from '@/components/home/ScrollProgress';
-import BackToTop from '@/components/home/BackToTop';
 import ReferralBanner from '@/components/home/ReferralBanner';
 export default function HomePage() {
   return (
-    <main className="bg-[#080C18] text-white overflow-x-hidden">
+    <div className="overflow-x-hidden">
       <h1 className="sr-only">EGYPTHUB - Egypt Travel Marketplace</h1>
       <a href="#hero" className="skip-link">Skip to main content</a>
       <ScrollProgress />
@@ -62,13 +55,8 @@ export default function HomePage() {
       <BrandMotif variant="gold-line" className="mx-auto max-w-[200px] my-8" />
       <SmartRecommendations />
       <div className="section-fade-in"><Newsletter /></div>
-      <div className="section-fade-in"><Footer /></div>
-      <RecentlyViewed />
-      <ActionDrawer />
-      <WhatsAppChat />
       <AbandonedRecovery />
       <SessionRecovery />
-      <BackToTop />
-    </main>
+    </div>
   );
 }

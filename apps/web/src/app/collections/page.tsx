@@ -34,7 +34,7 @@ export default function CollectionsPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <ArrowRight size={16} />

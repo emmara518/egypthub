@@ -4,9 +4,8 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { usePathname } from 'next/navigation';
-import { t, getDir } from '@/lib/i18n';
+import { t } from '@/lib/i18n';
 import { useLang } from '@/components/LanguageProvider';
-import { PyramidIcon } from './EgyptianIcons';
 import BrandMotif from './BrandMotif';
 import ThemeToggle from './ThemeToggle';
 import NotificationBell from './notifications/NotificationBell';
@@ -52,9 +51,9 @@ const navItems = (l: Locale) => ({
   ] as CatItem[],
 });
 
-const dropdownItem = `block w-full text-right px-4 py-2.5 rounded-xl text-sm font-cairo transition-colors`;
-const dropdownItemAr = `text-gray-800 hover:bg-[#FAEDCD]/40`;
-const dropdownItemEn = `text-gray-800 hover:bg-amber-50`;
+const dropdownItemBase = `block w-full px-4 py-3 rounded-xl text-sm font-cairo transition-colors`;
+const dropdownItemAr = `text-gray-100 hover:bg-white/10`;
+const dropdownItemEn = `text-gray-100 hover:bg-white/10`;
 
 export default function Header() {
   const { locale, toggle: toggleLang, dir } = useLang();
@@ -137,14 +136,14 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.15 }}
-            className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-52 rounded-2xl bg-white shadow-xl border border-theme-gold/20 overflow-hidden z-50`}
+            className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-56 rounded-2xl bg-theme-surface/95 backdrop-blur-xl shadow-xl border border-white/10 overflow-hidden z-50`}
           >
             <div className="p-2">
               {navList.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`${dropdownItem} ${isRtl ? dropdownItemAr : dropdownItemEn} ${isActive(item.href) ? 'text-theme-gold font-semibold !bg-[#FAEDCD]/40' : ''}`}
+                  className={`${dropdownItemBase} ${isRtl ? 'text-right' : 'text-left'} ${isActive(item.href) ? 'text-theme-gold font-semibold bg-theme-gold/10' : 'text-white/80 hover:text-white hover:bg-white/10'}`}
                   onClick={() => setOpenDropdown(null)}
                 >
                   {item.name}
@@ -184,21 +183,16 @@ export default function Header() {
     >
       <div className={`max-w-[1440px] mx-auto px-6 lg:px-8 h-20 flex items-center justify-between`}>
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-3 group shrink-0">
-          <div className="relative">
-            <BrandMotif variant="avatar-ring" size="sm" className="absolute inset-0 opacity-60 group-hover:opacity-100 transition-opacity" />
-            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 relative z-10 ${
-              scrolled ? 'bg-theme-gold/10 border border-theme-gold/30' : 'bg-white/15 backdrop-blur-sm'
-            }`}>
-              <PyramidIcon className="w-6 h-6 text-theme-gold" />
-            </div>
+        <Link href="/" className="flex items-center gap-2.5 group shrink-0">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-theme-gold to-theme-gold/70 flex items-center justify-center shadow-[0_0_12px_rgba(212,162,76,0.15)] group-hover:shadow-[0_0_20px_rgba(212,162,76,0.25)] transition-all duration-300">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L2 22h20L12 2z" fill="#D4A24C" />
+              <path d="M12 8L6 22h12L12 8z" fill="var(--bg)" />
+            </svg>
           </div>
           <div className="flex flex-col">
-            <div className={`flex items-baseline gap-1 ${isRtl ? '' : 'flex-row-reverse'}`}>
-              <span className="text-xl font-bold text-white">{t(locale, 'header.egypt')}</span>
-              <span className="text-xl font-bold text-theme-gold">{t(locale, 'header.hub')}</span>
-            </div>
-            <span className={`text-[10px] tracking-[0.2em] text-white/70 -mt-1 ${isRtl ? 'text-right' : 'text-left'}`}>{t(locale, 'header.subtitle')}</span>
+            <span className="text-[15px] font-bold font-english text-white tracking-wide">EGYPTHUB</span>
+            <span className="text-[7px] tracking-[0.18em] text-theme-gold/70 font-english -mt-0.5">YOUR STORY IN EGYPT</span>
           </div>
         </Link>
 

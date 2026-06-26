@@ -1,19 +1,23 @@
 'use client';
 
 import { useState } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaGoogle, FaFacebook, FaApple } from 'react-icons/fa';
-import { HiEye, HiEyeOff, HiMail, HiLockClosed, HiChevronRight } from 'react-icons/hi';
+import { HiEye, HiEyeOff, HiMail, HiLockClosed } from 'react-icons/hi';
 import { PyramidIcon } from '@/components/EgyptianIcons';
+import { useAuthStore } from '@/lib/auth-store';
 
 export default function LoginPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const { login, isLoading, error: authError, clearError } = useAuthStore();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [remember, setRemember] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const validate = () => {
     const newErrors: Record<string, string> = {};
@@ -25,11 +29,16 @@ export default function LoginPage() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!validate()) return;
-    setIsSubmitting(true);
-    setTimeout(() => setIsSubmitting(false), 1500);
+    clearError();
+    await login(email, password);
+    const { isAuthenticated } = useAuthStore.getState();
+    if (isAuthenticated) {
+      const redirect = searchParams.get('redirect') || '/portal';
+      router.push(redirect);
+    }
   };
 
   const socialButtons = [
@@ -39,7 +48,7 @@ export default function LoginPage() {
   ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-theme-bg pt-24">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-theme-bg">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -98,7 +107,7 @@ export default function LoginPage() {
                   className={`w-full bg-theme-surface border rounded-xl pr-10 pl-4 py-3 outline-none transition-all duration-200 focus:border-theme-gold/40 text-theme placeholder-theme-muted font-cairo ${
                     errors.email ? 'border-error' : 'border-theme-border'
                   }`}
-                  dir="ltr"
+                 
                 />
               </div>
               <AnimatePresence>
@@ -121,7 +130,7 @@ export default function LoginPage() {
                   className={`w-full bg-theme-surface border rounded-xl pr-10 pl-10 py-3 outline-none transition-all duration-200 focus:border-theme-gold/40 text-theme placeholder-theme-muted font-cairo ${
                     errors.password ? 'border-error' : 'border-theme-border'
                   }`}
-                  dir="ltr"
+                 
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-theme-muted hover:text-theme-gold transition-colors">
@@ -153,14 +162,23 @@ export default function LoginPage() {
               </button>
             </div>
 
+            <AnimatePresence>
+              {authError && (
+                <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}
+                  className="p-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-cairo text-center">
+                  {authError}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
             <motion.button
               type="submit"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              disabled={isSubmitting}
+              disabled={isLoading}
               className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-accent-amber text-dark-900 font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
             >
-              {isSubmitting ? (
+              {isLoading ? (
                 <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
                   className="w-4 h-4 border-2 border-dark-900 border-t-transparent rounded-full" />
               ) : (

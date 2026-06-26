@@ -1,158 +1,262 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { useAppStore } from '@/lib/store';
+import { useState, useEffect } from 'react';
+import Link from 'next/link';
+import { motion } from 'framer-motion';
+import { useAuthStore } from '@/lib/auth-store';
+import { HiStar, HiSparkles, HiArrowUp, HiClock, HiCheck, HiChevronLeft, HiGift } from 'react-icons/hi';
 
-interface Reward {
-  name: string;
-  cost: number;
-  desc: string;
+interface LoyaltyData {
+  xp: number;
+  level: number;
+  title: string;
+  tier: { name: string; color: string };
+  nextTier: { name: string; xpNeeded: number } | null;
+  progress: number;
+  recentActivity: { action: string; date: string }[];
+  rewards: { id: number; title: string; xpCost: number; icon: string }[];
 }
 
-const REWARDS: Reward[] = [
-  { name: 'خصم 10%', cost: 500, desc: 'خصم 10% على رحلتك القادمة' },
-  { name: 'دليل مجاني', cost: 1000, desc: 'دليل سياحي مجاني لأشهر المعالم' },
-  { name: 'VIP Experience', cost: 2000, desc: 'تجربة VIP كاملة مع مرشد خاص' },
-];
+function SkeletonCard() {
+  return (
+    <div className="rounded-2xl border border-theme-gold/10 bg-theme-card p-5 animate-pulse">
+      <div className="h-4 w-24 bg-theme-surface rounded mb-3" />
+      <div className="h-8 w-32 bg-theme-surface rounded mb-2" />
+      <div className="h-3 w-20 bg-theme-surface rounded" />
+    </div>
+  );
+}
 
-const TIERS = [
-  { name: 'برونزي', minXp: 0, color: 'from-amber-700/30 to-amber-700/10' },
-  { name: 'فضي', minXp: 500, color: 'from-slate-300/30 to-slate-300/10' },
-  { name: 'ذهبي', minXp: 1500, color: 'from-yellow-500/30 to-yellow-500/10' },
-  { name: 'بلاتيني', minXp: 3000, color: 'from-cyan-300/30 to-cyan-300/10' },
-];
+function StatSkeleton() {
+  return (
+    <div className="rounded-2xl border border-theme-gold/10 bg-theme-card p-4 animate-pulse">
+      <div className="h-3 w-16 bg-theme-surface rounded mb-2" />
+      <div className="h-7 w-20 bg-theme-surface rounded" />
+    </div>
+  );
+}
 
 export default function LoyaltyPage() {
-  const gamification = useAppStore((s) => s.gamification);
-  const addXp = useAppStore((s) => s.addXp);
-  const xp = gamification.xp;
-  const [confirmReward, setConfirmReward] = useState<Reward | null>(null);
-  const [claimed, setClaimed] = useState<string[]>([]);
+  const { isAuthenticated, isLoading: authLoading, user } = useAuthStore();
+  const [data, setData] = useState<LoyaltyData | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  const tier = useMemo(() => {
-    let current = TIERS[0];
-    for (const t of TIERS) {
-      if (xp >= t.minXp) current = t;
+  const fetchLoyalty = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      const res = await fetch('/api/loyalty');
+      if (!res.ok) throw new Error('فشل في تحميل بيانات الولاء');
+      const json = await res.json();
+      setData(json);
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'حدث خطأ');
+    } finally {
+      setLoading(false);
     }
-    return current;
-  }, [xp]);
-
-  const nextTier = useMemo(() => {
-    const idx = TIERS.findIndex((t) => t.name === tier.name);
-    return idx < TIERS.length - 1 ? TIERS[idx + 1] : null;
-  }, [tier]);
-
-  const progressToNext = nextTier ? Math.min(100, ((xp - tier.minXp) / (nextTier.minXp - tier.minXp)) * 100) : 100;
-
-  const thisMonthPoints = useMemo(() => {
-    const monthAgo = Date.now() - 30 * 86400000;
-    return gamification.achievements.filter((a) => a.unlocked && a.unlockedAt && new Date(a.unlockedAt).getTime() > monthAgo).length * 50;
-  }, [gamification.achievements]);
-
-  const pointsHistory = useMemo(() => {
-    return gamification.achievements
-      .filter((a) => a.unlocked)
-      .slice(-10)
-      .map((a) => ({ name: a.name, points: 50, date: a.unlockedAt || '' }));
-  }, [gamification.achievements]);
-
-  const handleRedeem = (reward: Reward) => {
-    setClaimed((prev) => [...prev, reward.name]);
-    addXp(-reward.cost);
-    setConfirmReward(null);
   };
 
-  const cardClass = "bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5";
+  useEffect(() => {
+    if (isAuthenticated) fetchLoyalty();
+    else setLoading(false);
+  }, [isAuthenticated]);
 
-  return (
-    <div className="min-h-screen bg-[#080C18] pt-24 pb-12 px-4">
-      <div className="max-w-2xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-white font-cairo mb-2">برنامج الولاء</h1>
-          <p className="text-sm text-white/60 font-cairo">اجمع النقاط واستبدلها بمكافآت حصرية</p>
-        </motion.div>
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-theme-bg flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-theme-gold border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
+  }
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className={`${cardClass} mb-4`}>
-          <div className="flex items-center justify-between mb-4">
-            <div>
-              <p className="text-xs text-white/50 font-cairo">رصيد النقاط</p>
-              <p className="text-3xl font-bold text-theme-gold font-english">{xp}</p>
-            </div>
-            <div className={`px-4 py-2 rounded-xl bg-gradient-to-br ${tier.color} border border-theme-gold/20`}>
-              <p className="text-sm font-bold text-white font-cairo">{tier.name}</p>
-            </div>
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-theme-bg flex items-center justify-center px-4 pt-24">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center max-w-md">
+          <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-theme-gold/10 border border-theme-gold/20 flex items-center justify-center">
+            <HiStar className="w-10 h-10 text-theme-gold" />
           </div>
-          {nextTier && (
-            <div>
-              <div className="flex items-center justify-between mb-1">
-                <span className="text-xs text-white/50 font-cairo">التقدم إلى {nextTier.name}</span>
-                <span className="text-xs text-theme-gold font-english">{xp - tier.minXp} / {nextTier.minXp - tier.minXp}</span>
-              </div>
-              <div className="h-2 rounded-full bg-white/10 overflow-hidden">
-                <motion.div initial={{ width: 0 }} animate={{ width: `${progressToNext}%` }} className="h-full rounded-full bg-gradient-gold" />
-              </div>
-            </div>
-          )}
-          <p className="text-xs text-white/40 mt-3 font-cairo">النقاط المكتسبة هذا الشهر: {thisMonthPoints}</p>
+          <h1 className="text-2xl font-bold font-playfair text-theme mb-2">برنامج الولاء</h1>
+          <p className="text-theme-secondary font-cairo mb-6">سجل الدخول لترى نقاطك ومكافآتك الحصرية</p>
+          <Link href="/login"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold font-cairo transition-all">
+            تسجيل الدخول
+          </Link>
         </motion.div>
+      </div>
+    );
+  }
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className={`${cardClass} mb-4`}>
-          <h2 className="text-sm font-bold text-theme-gold font-cairo mb-3">المكافآت</h2>
-          <div className="grid grid-cols-1 gap-3">
-            {REWARDS.map((reward) => (
-              <div key={reward.name} className="flex items-center justify-between px-4 py-3 rounded-xl bg-white/5">
-                <div>
-                  <p className="text-sm text-white font-cairo">{reward.name}</p>
-                  <p className="text-xs text-white/50 font-cairo">{reward.desc}</p>
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-theme-bg pt-28 pb-16">
+        <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
+          <div className="mb-8">
+            <div className="h-4 w-20 bg-theme-surface rounded animate-pulse mb-2" />
+            <div className="h-9 w-64 bg-theme-surface rounded animate-pulse" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+            <SkeletonCard />
+            <SkeletonCard />
+            <SkeletonCard />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            <StatSkeleton />
+            <StatSkeleton />
+          </div>
+          <div className="rounded-2xl border border-theme-gold/10 bg-theme-card p-5 animate-pulse">
+            <div className="h-5 w-32 bg-theme-surface rounded mb-4" />
+            {[1, 2, 3].map(i => (
+              <div key={i} className="flex items-center gap-3 mb-3">
+                <div className="w-9 h-9 rounded-lg bg-theme-surface" />
+                <div className="flex-1">
+                  <div className="h-3 w-40 bg-theme-surface rounded mb-1" />
+                  <div className="h-2 w-20 bg-theme-surface rounded" />
                 </div>
-                <button
-                  onClick={() => setConfirmReward(reward)}
-                  disabled={xp < reward.cost || claimed.includes(reward.name)}
-                  className="px-3 py-1.5 rounded-lg bg-theme-gold/10 border border-theme-gold/30 text-theme-gold text-xs font-cairo disabled:opacity-30 disabled:cursor-not-allowed hover:bg-theme-gold/20 transition-colors"
-                >
-                  {claimed.includes(reward.name) ? 'تم الاستبدال' : `${reward.cost} نقطة`}
-                </button>
               </div>
             ))}
           </div>
-        </motion.div>
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className={cardClass}>
-          <h2 className="text-sm font-bold text-theme-gold font-cairo mb-3">سجل النقاط</h2>
-          {pointsHistory.length === 0 ? (
-            <p className="text-sm text-white/40 font-cairo text-center py-4">لا يوجد سجل بعد</p>
-          ) : (
-            <div className="space-y-2">
-              {pointsHistory.map((h, i) => (
-                <div key={i} className="flex items-center justify-between px-3 py-2 rounded-xl bg-white/5">
-                  <div>
-                    <span className="text-sm text-white font-cairo">{h.name}</span>
-                    <span className="text-[10px] text-white/40 font-cairo mr-2">{new Date(h.date).toLocaleDateString('ar-EG')}</span>
-                  </div>
-                  <span className="text-xs text-green-400">+{h.points} XP</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </motion.div>
+        </div>
       </div>
+    );
+  }
 
-      <AnimatePresence>
-        {confirmReward && (
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-            <motion.div initial={{ scale: 0.9 }} animate={{ scale: 1 }} exit={{ scale: 0.9 }} className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-6 max-w-sm w-full">
-              <h3 className="text-lg font-bold text-white font-cairo mb-2">تأكيد استبدال النقاط</h3>
-              <p className="text-sm text-white/70 font-cairo mb-1">هل تريد استبدال {confirmReward.cost} نقطة بـ</p>
-              <p className="text-lg text-theme-gold font-cairo font-bold mb-4">{confirmReward.name}</p>
-              <div className="flex gap-2">
-                <button onClick={() => handleRedeem(confirmReward)} className="flex-1 px-4 py-2.5 rounded-xl bg-gradient-gold text-[#0A0E17] font-cairo font-bold text-sm">تأكيد</button>
-                <button onClick={() => setConfirmReward(null)} className="px-4 py-2.5 rounded-xl border border-white/20 text-white/80 font-cairo text-sm">إلغاء</button>
-              </div>
-            </motion.div>
+  if (error) {
+    return (
+      <div className="min-h-screen bg-theme-bg flex items-center justify-center px-4 pt-24">
+        <div className="text-center">
+          <HiSparkles className="w-12 h-12 mx-auto mb-4 text-theme-gold/50" />
+          <p className="text-theme-secondary font-cairo mb-4">{error}</p>
+          <button onClick={fetchLoyalty}
+            className="px-6 py-3 rounded-xl bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold font-cairo transition-all">
+            إعادة المحاولة
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data) return null;
+
+  const recentActivity = data.recentActivity || [];
+  const rewards = data.rewards || [];
+
+  return (
+    <div className="min-h-screen bg-theme-bg pt-28 pb-16">
+      <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
+        <Link href="/"
+          className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
+          <HiChevronLeft className="w-4 h-4" />
+          العودة للرئيسية
+        </Link>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-theme-gold/30 text-theme-gold text-xs font-semibold mb-3">
+            <HiStar className="w-3.5 h-3.5" />برنامج الولاء
+          </span>
+          <h1 className="text-3xl md:text-4xl font-bold font-playfair text-theme">
+            {user?.name || 'المسافر'}
+          </h1>
+          <p className="text-theme-secondary font-cairo mt-1">امنح نقاطاً واستبدلها بمكافآت حصرية</p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
+            className="rounded-2xl border border-theme-gold/20 bg-gradient-to-l from-theme-gold/10 to-transparent p-5">
+            <p className="text-xs text-theme-muted font-cairo mb-1">نقاط الخبرة</p>
+            <p className="text-2xl font-bold text-theme-gold font-english">{data.xp.toLocaleString()} XP</p>
+            <p className="text-xs text-theme-muted font-cairo mt-1">المستوى {data.level} &middot; {data.title}</p>
           </motion.div>
-        )}
-      </AnimatePresence>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
+            className="rounded-2xl border border-theme-gold/20 bg-theme-card p-5">
+            <p className="text-xs text-theme-muted font-cairo mb-1">الدرجة الحالية</p>
+            <div className="flex items-center gap-2">
+              <span className="w-3 h-3 rounded-full" style={{ backgroundColor: data.tier.color }} />
+              <p className="text-xl font-bold text-theme font-english">{data.tier.name}</p>
+            </div>
+            {data.nextTier && (
+              <p className="text-xs text-theme-muted font-cairo mt-1">
+                {data.nextTier.xpNeeded.toLocaleString()} XP للوصول إلى {data.nextTier.name}
+              </p>
+            )}
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
+            className="rounded-2xl border border-theme-gold/20 bg-theme-card p-5">
+            <div className="flex items-center justify-between mb-2">
+              <p className="text-xs text-theme-muted font-cairo">التقدم</p>
+              <span className="text-xs text-theme-gold font-english">{data.progress}%</span>
+            </div>
+            <div className="w-full h-2 bg-theme-surface rounded-full overflow-hidden">
+              <motion.div initial={{ width: 0 }} animate={{ width: `${data.progress}%` }}
+                transition={{ duration: 1, ease: 'easeOut' }}
+                className="h-full rounded-full"
+                style={{ background: 'linear-gradient(90deg, #D4A24C, #E8C97A, #D4A24C)', boxShadow: '0 0 8px rgba(212,162,76,0.4)' }} />
+            </div>
+          </motion.div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
+            className="lg:col-span-2 space-y-6">
+            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <HiClock className="text-theme-gold text-lg" />
+                <h2 className="text-lg font-bold font-playfair text-theme">النشاط الأخير</h2>
+              </div>
+              {recentActivity.length === 0 ? (
+                <p className="text-theme-muted text-sm font-cairo">لا يوجد نشاط حتى الآن</p>
+              ) : (
+                <div className="space-y-3">
+                  {recentActivity.map((item, i) => (
+                    <div key={i} className="flex items-center gap-3 p-3 rounded-xl bg-theme-surface border border-theme-border">
+                      <div className="w-9 h-9 rounded-lg bg-theme-gold/10 flex items-center justify-center">
+                        <HiArrowUp className="text-theme-gold text-sm" />
+                      </div>
+                      <div>
+                        <p className="text-sm text-theme font-cairo">{item.action}</p>
+                        <p className="text-xs text-theme-muted font-cairo">{item.date}</p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
+            className="space-y-4">
+            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
+              <div className="flex items-center gap-2 mb-4">
+                <HiGift className="text-theme-gold text-lg" />
+                <h2 className="text-lg font-bold font-playfair text-theme">المكافآت</h2>
+              </div>
+              <div className="space-y-3">
+                {rewards.length === 0 ? (
+                  <p className="text-theme-muted text-sm font-cairo">لا توجد مكافآت متاحة حالياً</p>
+                ) : (
+                  rewards.map((reward, i) => (
+                    <div key={reward.id} className="flex items-center gap-3 p-3 rounded-xl bg-theme-surface border border-theme-border">
+                      <div className="w-10 h-10 rounded-xl bg-theme-gold/10 flex items-center justify-center text-xl shrink-0">
+                        {reward.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm text-theme font-cairo truncate">{reward.title}</p>
+                        <p className="text-xs text-theme-gold font-english">{reward.xpCost} XP</p>
+                      </div>
+                      <button className="px-3 py-1.5 rounded-lg bg-theme-gold text-dark-900 text-xs font-bold font-cairo hover:bg-theme-gold/80 transition-all shrink-0">
+                        استبدل
+                      </button>
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
     </div>
   );
 }

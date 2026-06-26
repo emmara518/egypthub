@@ -126,7 +126,7 @@ export default function TravelDnaPage() {
 
   if (travelDna.completed && !showResults) {
     return (
-      <div className="min-h-screen bg-[#080C18] pt-24">
+      <div className="min-h-screen bg-theme-bg">
         <div className="max-w-2xl mx-auto px-4 py-16">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -135,7 +135,7 @@ export default function TravelDnaPage() {
           >
             <div className="relative w-24 h-24 mx-auto mb-6">
               <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-gold to-accent-amber animate-glow-pulse" />
-              <div className="absolute inset-1 rounded-full bg-[#080C18] flex items-center justify-center">
+              <div className="absolute inset-1 rounded-full bg-theme-bg flex items-center justify-center">
                 <span className="text-4xl">🧬</span>
               </div>
             </div>
@@ -207,7 +207,7 @@ export default function TravelDnaPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-3xl mx-auto px-4 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-8">
           <ArrowRight size={16} />

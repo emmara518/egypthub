@@ -20,7 +20,7 @@ export default function PaymentSelectionPage() {
   const [cardHolder, setCardHolder] = useState('');
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24" dir="ltr">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronRight className="w-4 h-4" />
@@ -87,7 +87,7 @@ export default function PaymentSelectionPage() {
                               placeholder={field.placeholder}
                               maxLength={field.maxLength}
                               className="w-full bg-theme-surface border rounded-xl px-4 py-3 outline-none transition-all duration-200 focus:border-theme-gold/40 text-theme placeholder-theme-muted font-cairo ${field.label.includes('CVV') ? 'font-english' : ''}"
-                              dir="ltr"
+                             
                             />
                             {field.label.includes('CVV') && (
                               <button className="absolute left-3 top-1/2 -translate-y-1/2 text-theme-muted hover:text-theme-gold transition-colors">

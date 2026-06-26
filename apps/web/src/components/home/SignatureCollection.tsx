@@ -27,7 +27,7 @@ const bottomNav = [
 
 export default function SignatureCollection() {
   return (
-    <section className="bg-[#080C18] overflow-hidden">
+    <section className="bg-theme-bg overflow-hidden">
       <div className="py-12 md:py-20 lg:py-24 glass-card">
         <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
           <div className="lg:flex lg:gap-8 xl:gap-12">
@@ -52,7 +52,7 @@ export default function SignatureCollection() {
                 className="relative rounded-2xl overflow-hidden aspect-[16/9] group cursor-pointer border border-theme-gold/[0.1] hover:border-theme-gold/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,162,76,0.15)]"
               >
                 <Image src="/assets/home/luxor-temple.jpg?w=900&q=80" alt="Luxury Collection" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080C18]/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/60 to-transparent" />
                 <div className="absolute bottom-4 left-4 right-4">
                   <p className="text-[10px] font-bold font-english tracking-[0.15em] text-theme-gold mb-1">FEATURED</p>
                   <h3 className="text-lg font-bold font-display text-white">Private Villa Retreat</h3>
@@ -88,7 +88,7 @@ export default function SignatureCollection() {
                       <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-theme-gold to-[#C89A3D] flex items-center justify-center">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
                           <path d="M12 2L2 22h20L12 2z" fill="#D4A24C" />
-                          <path d="M12 8L6 22h12L12 8z" fill="#080C18" />
+                          <path d="M12 8L6 22h12L12 8z" fill="var(--bg)" />
                         </svg>
                       </div>
                       <span className="text-xs font-bold font-english text-white">EGYPTHUB</span>
@@ -111,7 +111,7 @@ export default function SignatureCollection() {
                       {destinations.map((d) => (
                         <div key={d.name} className="flex-1 rounded-lg overflow-hidden relative aspect-[3/4] neon-gold">
                           <Image src={d.img} alt={d.name} fill sizes="80px" className="object-cover" />
-                          <div className="absolute inset-0 bg-gradient-to-t from-[#080C18]/70 to-transparent" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/70 to-transparent" />
                           <p className="absolute bottom-1.5 left-2 text-[9px] font-bold font-english text-white">{d.name}</p>
                         </div>
                       ))}
@@ -153,7 +153,7 @@ export default function SignatureCollection() {
         </div>
       </div>
 
-      <div className="bg-[#080C18] py-6 md:py-8 border-t border-white/[0.04]">
+      <div className="bg-theme-bg py-6 md:py-8 border-t border-white/[0.04]">
         <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
           <p className="text-center text-[9px] md:text-[10px] text-white/30 font-english tracking-[0.25em] mb-4">AS FEATURED IN</p>
           <PartnerLogos />

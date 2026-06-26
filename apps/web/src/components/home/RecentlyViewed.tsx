@@ -55,7 +55,7 @@ export default function RecentlyViewed() {
               title={item.title}
             >
               <Image src={item.image} alt={item.title} fill sizes="40px" className="object-cover" />
-              <div className="absolute inset-0 bg-[#080C18]/0 group-hover:bg-[#080C18]/40 transition-all" />
+              <div className="absolute inset-0 bg-theme-bg/0 group-hover:bg-theme-bg/40 transition-all" />
               <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all">
                 <span className="text-[6px] text-white font-english text-center px-0.5 leading-tight">VIEW</span>
               </div>

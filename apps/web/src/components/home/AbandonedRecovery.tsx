@@ -23,7 +23,7 @@ export default function AbandonedRecovery() {
         >
           <div className="bg-[#0F1525] border border-theme-gold/20 rounded-xl p-3 shadow-[0_12px_40px_rgba(0,0,0,0.6)] relative">
             <button onClick={() => setVisible(false)}
-              className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-[#080C18] border border-theme-gold/20 flex items-center justify-center text-white/50 hover:text-white transition-all touch-target"
+              className="absolute -top-2 -right-2 w-5 h-5 rounded-full bg-theme-bg border border-theme-gold/20 flex items-center justify-center text-white/50 hover:text-white transition-all touch-target"
               aria-label="Dismiss"
             >
               <Close size={10} />

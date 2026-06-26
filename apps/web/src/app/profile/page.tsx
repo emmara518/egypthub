@@ -131,7 +131,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#080C18] pt-24">
+    <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
         <div className="flex gap-6">
           <motion.aside
@@ -152,7 +152,7 @@ export default function ProfilePage() {
                     </div>
                   </div>
                   <button className="absolute -bottom-1 -left-1 w-7 h-7 rounded-full bg-[#D4A24C] flex items-center justify-center">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#080C18" strokeWidth="2.5">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                       <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
                       <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
                     </svg>
@@ -167,7 +167,7 @@ export default function ProfilePage() {
                     { val: String(user.stats.destinations), label: 'وجهة', icon: 'destinations' },
                     { val: String(user.stats.reviews), label: 'تجربة', icon: 'experiences' },
                   ].map((s) => (
-                    <div key={s.label} className="bg-[#080C18] rounded-xl p-2 text-center">
+                    <div key={s.label} className="bg-theme-bg rounded-xl p-2 text-center">
                       <p className="text-[10px] text-[#D4A24C] mb-1 flex justify-center">
                         <StatIcon type={s.icon} />
                       </p>
@@ -374,7 +374,7 @@ export default function ProfilePage() {
                         <h3 className="font-bold text-white text-sm mb-3">{section.title}</h3>
                         <div className="space-y-2">
                           {section.items.map((item, ii) => (
-                            <div key={ii} className="flex items-center justify-between p-3 rounded-xl bg-[#080C18] border border-white/[0.05]">
+                            <div key={ii} className="flex items-center justify-between p-3 rounded-xl bg-theme-bg border border-white/[0.05]">
                               <span className="text-sm text-white/80">{item.label}</span>
                               {item.hasToggle ? (
                                 <Toggle

@@ -129,7 +129,7 @@ export default function PartnersPage() {
   }, [displayed, selectedCity]);
 
   return (
-    <div className="min-h-screen bg-theme-bg pt-24 pb-16">
+    <div className="min-h-screen bg-theme-bg pb-16">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-8">
           <div className="flex items-center gap-2 text-theme-muted text-sm font-cairo mb-2">

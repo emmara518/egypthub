@@ -7,29 +7,67 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Role {
+  TRAVELER
+  AMBASSADOR
+  PARTNER
+  ADMIN
+  TOURIST
+  PROVIDER
+  GUIDE
+}
+
+enum ExperienceCategory {
+  HISTORICAL
+  WATER_SPORTS
+  ADVENTURE
+  NILE
+  WELLNESS
+  CULTURE
+  FOOD
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  REFUNDED
+}
+
+enum PaymentStatus {
+  UNPAID
+  PAID
+  REFUNDED
+  PARTIALLY_REFUNDED
+}
+
 model User {
   id            String   @id @default(cuid())
   email         String   @unique
   passwordHash  String
   name          String
   phone         String?
-  role          Role     @default(TRAVELER)
+  role          Role     @default(TOURIST)
   avatarUrl     String?
   emailVerified Boolean  @default(false)
+  preferredLanguage String @default("ar")
+  loyaltyXp     Int      @default(0)
+  loyaltyLevel  String   @default("explorer")
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
-  ambassador Ambassador?
-  partner    Partner?
-  leads      Lead[]       @relation("LeadOwner")
-  referrals  Referral[]   @relation("Referrer")
-}
-
-enum Role {
-  TRAVELER
-  AMBASSADOR
-  PARTNER
-  ADMIN
+  ambassador     Ambassador?
+  partner        Partner?
+  provider       Provider?
+  leads          Lead[]        @relation("LeadOwner")
+  referrals      Referral[]    @relation("Referrer")
+  bookings       Booking[]
+  reviews        Review[]
+  wishlists      Wishlist[]
+  notifications  Notification[]
+  guideExperiences Experience[] @relation("GuideExperiences")
+  stories        Story[]       @relation("StoryAuthor")
 }
 
 model Ambassador {
@@ -124,4 +162,238 @@ model Commission {
   ambassador     Ambassador @relation(fields: [ambassadorId], references: [id])
   leadId         String?
   lead           Lead?      @relation(fields: [leadId], references: [id])
+}
+
+model Experience {
+  id              String              @id @default(cuid())
+  slug            String              @unique
+  titleAr         String
+  titleEn         String?
+  descriptionAr   String
+  descriptionEn   String?
+  category        ExperienceCategory  @default(HISTORICAL)
+  locationCity    String
+  locationLat     Float?
+  locationLng     Float?
+  durationHours   Float?
+  maxParticipants Int?
+  priceEgp        Float
+  priceUsd        Float?
+  images          String[]
+  included        String[]
+  excluded        String[]
+  providerId      String
+  provider        Provider            @relation(fields: [providerId], references: [id])
+  guideId         String?
+  guide           User?               @relation("GuideExperiences", fields: [guideId], references: [id])
+  isActive        Boolean             @default(true)
+  isVerified      Boolean             @default(false)
+  averageRating   Float               @default(0)
+  totalReviews    Int                 @default(0)
+  createdAt       DateTime            @default(now())
+  updatedAt       DateTime            @updatedAt
+
+  bookings     Booking[]
+  reviews      Review[]
+  availability ProviderAvailability[]
+  @@index([slug])
+  @@index([category])
+  @@index([providerId])
+  @@index([locationCity])
+}
+
+model Provider {
+  id            String   @id @default(cuid())
+  userId        String   @unique
+  user          User     @relation(fields: [userId], references: [id])
+  businessNameAr String
+  businessNameEn String?
+  category      String?
+  descriptionAr String?
+  descriptionEn String?
+  locationCity  String?
+  locationAddress String?
+  locationLat   Float?
+  locationLng   Float?
+  phone         String?
+  email         String?
+  website       String?
+  socialLinks   Json?
+  images        String[]
+  isVerified    Boolean  @default(false)
+  isActive      Boolean  @default(true)
+  commissionRate Float   @default(0.15)
+  averageRating Float    @default(0)
+  totalReviews  Int      @default(0)
+  createdAt     DateTime @default(now())
+
+  experiences Experience[]
+  bookings    Booking[]
+  reviews     Review[]
+  @@index([category])
+}
+
+model Booking {
+  id              String        @id @default(cuid())
+  bookingReference String       @unique
+  userId          String
+  user            User          @relation(fields: [userId], references: [id])
+  experienceId    String
+  experience      Experience    @relation(fields: [experienceId], references: [id])
+  providerId      String
+  provider        Provider      @relation(fields: [providerId], references: [id])
+  bookingDate     DateTime
+  bookingTime     String?
+  participants    Int           @default(1)
+  totalPriceEgp   Float
+  totalPriceUsd   Float?
+  currency        String        @default("egp")
+  status          BookingStatus @default(PENDING)
+  paymentStatus   PaymentStatus @default(UNPAID)
+  paymentMethod   String?
+  offerCode       String?
+  discountAmount  Float         @default(0)
+  notes           String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  reviews Review?
+  @@index([userId])
+  @@index([experienceId])
+  @@index([providerId])
+  @@index([status])
+  @@index([bookingReference])
+}
+
+model Review {
+  id              String   @id @default(cuid())
+  bookingId       String   @unique
+  booking         Booking  @relation(fields: [bookingId], references: [id])
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
+  experienceId    String
+  experience      Experience @relation(fields: [experienceId], references: [id])
+  providerId      String
+  provider        Provider @relation(fields: [providerId], references: [id])
+  rating          Int
+  title           String?
+  body            String?
+  images          String[]
+  isVerified      Boolean  @default(false)
+  providerResponse String?
+  createdAt       DateTime @default(now())
+
+  @@index([experienceId])
+  @@index([providerId])
+  @@index([userId])
+}
+
+model Wishlist {
+  id        String @id @default(cuid())
+  userId    String
+  user      User   @relation(fields: [userId], references: [id])
+  itemType  String
+  itemId    String
+  createdAt DateTime @default(now())
+
+  @@unique([userId, itemType, itemId])
+  @@index([userId])
+}
+
+model Story {
+  id            String    @id @default(cuid())
+  slug          String    @unique
+  titleAr       String
+  titleEn       String?
+  bodyAr        String
+  bodyEn        String?
+  category      String?
+  coverImage    String?
+  authorId      String
+  author        User      @relation("StoryAuthor", fields: [authorId], references: [id])
+  readTimeMinutes Int?
+  isFeatured    Boolean   @default(false)
+  isPublished   Boolean   @default(false)
+  publishedAt   DateTime?
+  createdAt     DateTime  @default(now())
+
+  @@index([slug])
+  @@index([authorId])
+  @@index([isPublished])
+}
+
+model PushSubscription {
+  id           String   @id @default(cuid())
+  userId       String
+  subscription Json
+  createdAt    DateTime @default(now())
+
+  @@index([userId])
+}
+
+model Notification {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      String
+  titleAr   String?
+  titleEn   String?
+  bodyAr    String?
+  bodyEn    String?
+  isRead    Boolean  @default(false)
+  actionUrl String?
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([isRead])
+}
+
+model Offer {
+  id                String   @id @default(cuid())
+  code              String   @unique
+  titleAr           String?
+  titleEn           String?
+  descriptionAr     String?
+  descriptionEn     String?
+  discountType      String
+  discountValue     Float
+  minBookingValue   Float    @default(0)
+  maxUses           Int?
+  usedCount         Int      @default(0)
+  validFrom         DateTime
+  validUntil        DateTime
+  isActive          Boolean  @default(true)
+  applicableTo      String   @default("all")
+  createdAt         DateTime @default(now())
+
+  @@index([code])
+  @@index([isActive])
+}
+
+model ProviderAvailability {
+  id              String   @id @default(cuid())
+  experienceId    String
+  experience      Experience @relation(fields: [experienceId], references: [id])
+  date            DateTime
+  maxParticipants Int      @default(10)
+  bookedCount     Int      @default(0)
+  timeSlots       Json?
+  isAvailable     Boolean  @default(true)
+  createdAt       DateTime @default(now())
+
+  @@unique([experienceId, date])
+  @@index([experienceId])
+  @@index([date])
+}
+
+model EventLog {
+  id        String   @id @default(cuid())
+  event     String
+  page      String?
+  userId    String?
+  metadata  Json?
+  timestamp DateTime @default(now())
+
+  @@index([event])
+  @@index([timestamp])
 }

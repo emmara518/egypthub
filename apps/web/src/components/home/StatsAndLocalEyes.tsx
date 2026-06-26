@@ -60,7 +60,7 @@ function CountUp({ value, suffix = '', decimals = 0 }: { value: number; suffix?:
 
 export default function StatsAndLocalEyes() {
   return (
-    <section className="bg-[#080C18] py-12 md:py-20 lg:py-24">
+    <section className="bg-theme-bg py-12 md:py-20 lg:py-24">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="mb-8 md:mb-12">
           <div className="flex items-center gap-2 mb-2">
@@ -79,7 +79,7 @@ export default function StatsAndLocalEyes() {
               className="shrink-0 flex flex-col items-center gap-2 group touch-target"
             >
               <div className="stories-ring w-16 h-16 md:w-20 md:h-20 rounded-full p-[2px]">
-                <div className="w-full h-full rounded-full p-[3px] bg-[#080C18]">
+                <div className="w-full h-full rounded-full p-[3px] bg-theme-bg">
                   <div className="w-full h-full rounded-full overflow-hidden relative">
                     <Image src={expert.img} alt={expert.name} fill sizes="80px" className="object-cover" />
                   </div>
@@ -100,9 +100,9 @@ export default function StatsAndLocalEyes() {
             >
               <div className="relative aspect-[3/4] rounded-xl overflow-hidden mb-3 border border-theme-gold/[0.08] group-hover:border-theme-gold/30 transition-all duration-500">
                 <Image src={card.img} alt={card.title} fill sizes="(max-width: 768px) 220px, 20vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080C18]/70 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/70 via-transparent to-transparent" />
                 <div className="absolute top-3 left-3">
-                  <span className="text-[8px] md:text-[9px] font-bold font-english tracking-[0.15em] text-theme-gold bg-[#080C18]/60 backdrop-blur-sm px-2 py-1 rounded-full border border-theme-gold/20">{card.category}</span>
+                  <span className="text-[8px] md:text-[9px] font-bold font-english tracking-[0.15em] text-theme-gold bg-theme-bg/60 backdrop-blur-sm px-2 py-1 rounded-full border border-theme-gold/20">{card.category}</span>
                 </div>
                 <div className="absolute bottom-3 left-3 right-3">
                   <h3 className="text-sm font-bold font-english text-white mb-0.5">{card.title}</h3>

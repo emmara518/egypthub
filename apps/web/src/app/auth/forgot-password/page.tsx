@@ -35,7 +35,7 @@ export default function ForgotPasswordPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-[#080C18] pt-24">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12 bg-theme-bg">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -109,7 +109,7 @@ export default function ForgotPasswordPage() {
                     className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-4 py-3 outline-none transition-all duration-200 focus:border-[#D4A24C]/40 text-white placeholder-white/40 font-cairo ${
                       error ? 'border-red-500' : 'border-[#D4A24C]/[0.08]'
                     }`}
-                    dir="ltr"
+                   
                   />
                 </div>
                 {error && (
@@ -123,11 +123,11 @@ export default function ForgotPasswordPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
-                className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#E8C97A] text-[#080C18] font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+                className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#E8C97A] text-theme-bg font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                    className="w-4 h-4 border-2 border-[#080C18] border-t-transparent rounded-full" />
+                    className="w-4 h-4 border-2 border-theme-bg border-t-transparent rounded-full" />
                 ) : (
                   <>
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">

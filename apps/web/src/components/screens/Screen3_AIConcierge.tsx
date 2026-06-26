@@ -60,7 +60,7 @@ export default function Screen3_AIConcierge() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic" dir="ltr">
+    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Left Panel - Intro ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0">
