@@ -29,8 +29,8 @@ describe('destinations mock data', () => {
 
   it('all destinations have valid image URLs', () => {
     for (const d of destinations) {
-      expect(d.image).toMatch(/^https:\/\/images\.unsplash\.com/);
-      expect(d.heroImage).toMatch(/^https:\/\/images\.unsplash\.com/);
+      expect(d.image).toMatch(/^\/images\//);
+      expect(d.heroImage).toMatch(/^\/images\//);
     }
   });
 });
@@ -80,7 +80,7 @@ describe('experiences mock data', () => {
   it('all experiences have valid gallery images', () => {
     for (const e of experiences) {
       for (const img of e.gallery) {
-        expect(img).toMatch(/^https:\/\/images\.unsplash\.com/);
+        expect(img).toMatch(/^\/images\//);
       }
     }
   });

@@ -38,7 +38,7 @@ export default function BudgetPlannerPage() {
     const misc = Math.round(ESTIMATES.misc.base * duration * m);
     const total = flights + accommodation + food + activities + misc;
     return { flights, accommodation, food, activities, misc, total };
-  }, [duration, people, style, selectedStyle.multiplier]);
+  }, [duration, people, selectedStyle.multiplier]);
 
   const handleSubmit = () => {
     setTravelDna({ tripDuration: duration.toString(), budget: style });

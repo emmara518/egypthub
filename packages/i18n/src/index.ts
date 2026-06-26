@@ -20,6 +20,7 @@ const translationsAr = {
     search: 'دوّر', dashboard: 'لوحة التحكم', profile: 'البروفايل',
     bookings: 'حجوزاتي', favorites: 'المفضلة', wallet: 'المحفظة',
     ai: 'الذكاء الاصطناعي', more: 'المزيد',
+    close_search: 'إغلاق البحث', open_search: 'فتح البحث',
   },
   hero: {
     title: 'مصر على مزاجك',
@@ -71,6 +72,7 @@ const translationsEn = {
     search: 'Search', dashboard: 'Dashboard', profile: 'Profile',
     bookings: 'My Bookings', favorites: 'Favorites', wallet: 'Wallet',
     ai: 'AI', more: 'More',
+    close_search: 'Close search', open_search: 'Open search',
   },
   hero: {
     title: 'Egypt Your Way',

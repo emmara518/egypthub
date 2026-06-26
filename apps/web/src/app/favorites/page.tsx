@@ -18,21 +18,22 @@ export default function FavoritesPage() {
   const [showCollectionModal, setShowCollectionModal] = useState<string | null>(null);
   const { collections, addToCollection } = useAppStore();
 
-  const favoriteDestinations = destinations.filter(d => d.slug === 'sharm-el-sheikh' || d.slug === 'cairo' || d.slug === 'luxor');
-  const favoriteExperiences = experiences.filter(e => e.slug === 'pyramids-private-tour' || e.slug === 'red-sea-diving-adventure' || e.slug === 'luxor-temple-tour');
-  const favoriteStories = stories?.filter(s => s.slug === 'bedouin-night-under-stars' || s.slug === 'diving-with-turtles') || [];
-
-  const groupedByCategory = useMemo(() => ({
-    destinations: favoriteDestinations.filter((d) =>
-      d.name.toLowerCase().includes(searchQuery.toLowerCase())
-    ),
-    experiences: favoriteExperiences.filter((e) =>
-      e.name.toLowerCase().includes(searchQuery.toLowerCase())
-    ),
-    stories: favoriteStories.filter((s) =>
-      s.title?.toLowerCase().includes(searchQuery.toLowerCase())
-    ),
-  }), [searchQuery]);
+  const groupedByCategory = useMemo(() => {
+    const favoriteDestinations = destinations.filter(d => d.slug === 'sharm-el-sheikh' || d.slug === 'cairo' || d.slug === 'luxor');
+    const favoriteExperiences = experiences.filter(e => e.slug === 'pyramids-private-tour' || e.slug === 'red-sea-diving-adventure' || e.slug === 'luxor-temple-tour');
+    const favoriteStories = stories?.filter(s => s.slug === 'bedouin-night-under-stars' || s.slug === 'diving-with-turtles') || [];
+    return {
+      destinations: favoriteDestinations.filter((d) =>
+        d.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+      experiences: favoriteExperiences.filter((e) =>
+        e.name.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+      stories: favoriteStories.filter((s) =>
+        s.title?.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    };
+  }, [searchQuery]);
 
   const collectionNames = Object.keys(collections);
 

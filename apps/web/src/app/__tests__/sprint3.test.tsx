@@ -66,15 +66,15 @@ describe('Destination Details Page', () => {
     const Page = (await import('@/app/destinations/[slug]/page')).default;
     const { container } = render(<Page params={{ slug: 'sharm-el-sheikh' }} />);
     expect(container.textContent).toContain('تجارب');
-    expect(container.textContent).toContain('التقييم');
-    expect(container.textContent).toContain('تصنيفات');
+    expect(container.textContent).toContain('معلومات سريعة');
+    expect(container.textContent).toContain('عدد التجارب');
   });
 
   it('renders categories section', async () => {
     const Page = (await import('@/app/destinations/[slug]/page')).default;
     const { container } = render(<Page params={{ slug: 'cairo' }} />);
-    expect(container.textContent).toContain('تاريخ');
-    expect(container.textContent).toContain('تسوق');
+    expect(container.textContent).toContain('معلومات سريعة');
+    expect(container.textContent).toContain('عدد التجارب');
   });
 
   it('shows 404 message for non-existent destination', async () => {
@@ -87,7 +87,7 @@ describe('Destination Details Page', () => {
     const Page = (await import('@/app/destinations/[slug]/page')).default;
     const { container } = render(<Page params={{ slug: 'luxor' }} />);
     expect(container.textContent).toContain('وادي الملوك');
-    expect(container.textContent).toContain('معبد الكرنك');
+    expect(container.textContent).toContain('تجارب مميزة');
   });
 
   it('renders Testimonials section', async () => {

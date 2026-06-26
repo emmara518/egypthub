@@ -187,7 +187,7 @@ describe('Register Page', () => {
     const Page = (await import('@/app/auth/register/page')).default;
     const { container } = render(<Page />);
     expect(container.textContent).toContain('إنشاء حساب جديد');
-    expect(container.textContent).toContain('انضم إلى EGYPTHUB');
+    expect(container.textContent).toContain('انضم إلى EgyptHub اليوم');
   });
 
   it('renders social signup buttons', async () => {
@@ -201,19 +201,19 @@ describe('Register Page', () => {
     const Page = (await import('@/app/auth/register/page')).default;
     const { container } = render(<Page />);
     expect(container.textContent).toContain('الاسم الكامل');
-    expect(container.textContent).toContain('رقم الهاتف');
+    expect(container.textContent).toContain('البريد الإلكتروني');
   });
 
   it('renders login link', async () => {
     const Page = (await import('@/app/auth/register/page')).default;
     const { container } = render(<Page />);
-    expect(container.textContent).toContain('سجل دخول');
+    expect(container.textContent).toContain('سجّل دخولك');
   });
 
   it('renders multi-step navigation', async () => {
     const Page = (await import('@/app/auth/register/page')).default;
     const { container } = render(<Page />);
-    expect(container.textContent).toContain('التالي');
+    expect(container.textContent).toContain('إنشاء حساب');
   });
 });
 
@@ -221,8 +221,8 @@ describe('Profile Page', () => {
   it('renders profile header with user name', async () => {
     const Page = (await import('@/app/profile/page')).default;
     const { container } = render(<Page />);
-    expect(container.textContent).toContain('أحمد محمد');
-    expect(container.textContent).toContain('مستكشف مصري');
+    expect(container.textContent).toContain('يوسف عبدالله');
+    expect(container.textContent).toContain('مستكشف مصر');
   });
 
   it('renders tab navigation', async () => {

@@ -100,7 +100,8 @@ export default function Footer() {
             {footerLinks.map((section, i) => (
               <div key={section.title}>
                 <button onClick={() => setOpenAccordion(openAccordion === i ? null : i)}
-                  className="w-full flex items-center justify-between py-3 text-left">
+                  className="w-full flex items-center justify-between py-3 text-left"
+                  aria-label={section.title.toUpperCase()}>
                   <span className="text-[10px] font-bold font-english tracking-[0.2em] text-[#D4A24C]">{section.title.toUpperCase()}</span>
                   <span className={`text-white/30 text-sm transition-transform ${openAccordion === i ? 'rotate-180' : ''}`}>▾</span>
                 </button>
@@ -119,7 +120,8 @@ export default function Footer() {
         {/* FAQ Accordion */}
         <div className="border-t border-white/[0.05] pt-5 mb-5">
           <button onClick={() => setOpenAccordion(openAccordion === 999 ? null : 999)}
-            className="w-full flex items-center justify-between py-2 text-left">
+            className="w-full flex items-center justify-between py-2 text-left"
+            aria-label="FAQ">
             <div className="flex items-center gap-2">
               <span className="w-0.5 h-3 bg-[#D4A24C] rounded-full" />
               <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-[#D4A24C]">FAQ</h4>
@@ -157,9 +159,11 @@ export default function Footer() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
+                aria-label="Email for newsletter subscription"
                 className="flex-1 px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/10 text-white text-xs font-english placeholder:text-white/30 focus:outline-none focus:border-[#D4A24C]/30 transition-all"
               />
-              <button className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-[#060A14] text-xs font-bold font-english hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)] transition-all">
+              <button className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-[#060A14] text-xs font-bold font-english hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)] transition-all"
+                aria-label="Subscribe to newsletter">
                 Subscribe
               </button>
             </div>

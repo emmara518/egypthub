@@ -123,7 +123,7 @@ export default function Header() {
       onMouseEnter={() => handleDropdown(name)}
       onMouseLeave={handleDropdownLazy}
     >
-      <button className={dropdownBtnClass(name)}>
+      <button className={dropdownBtnClass(name)} aria-label={t(locale, name === 'explore' ? 'nav.explore' : name === 'ai' ? 'nav.ai' : 'nav.more' as any)}>
         {t(locale, name === 'explore' ? 'nav.explore' : name === 'ai' ? 'nav.ai' : 'nav.more' as any)}
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
           className={`w-4 h-4 transition-transform duration-200 ${openDropdown === name ? (isRtl ? '-rotate-90' : 'rotate-180') : ''}`}>
@@ -164,6 +164,7 @@ export default function Header() {
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder={t(locale, 'nav.search')}
+        aria-label={t(locale, 'nav.search')}
         className={`bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-theme-gold/40 transition-all w-40 lg:w-56 ${isRtl ? 'pr-4 pl-9' : 'pl-4 pr-9'}`}
         dir={isRtl ? 'rtl' : 'ltr'}
       />
@@ -216,19 +217,20 @@ export default function Header() {
             <div className="flex items-center gap-2">
               {searchInput}
               <button onClick={() => { setSearchOpen(false); setSearchQuery(''); }}
-                className="p-2 text-white/60 hover:text-white transition-colors">
+                className="p-2 text-white/60 hover:text-white transition-colors" aria-label={t(locale, 'nav.close_search')}>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
               </button>
             </div>
           ) : (
             <button onClick={() => setSearchOpen(true)}
-              className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-all">
+              className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-all" aria-label={t(locale, 'nav.open_search')}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </button>
           )}
 
           <button onClick={toggleLang}
-            className="px-3 py-1.5 rounded-lg border border-white/20 text-xs font-medium text-white/80 hover:bg-white/10 transition-all font-cairo">
+            className="px-3 py-1.5 rounded-lg border border-white/20 text-xs font-medium text-white/80 hover:bg-white/10 transition-all font-cairo"
+            aria-label={t(locale, 'common.lang_label')}>
             {t(locale, 'common.lang_label')}
           </button>
 
@@ -248,7 +250,8 @@ export default function Header() {
         {/* Mobile: Search + Lang + Hamburger */}
         <div className="flex lg:hidden items-center gap-2">
           <button onClick={toggleLang}
-            className="px-2 py-1 rounded-lg border border-white/20 text-[10px] font-medium text-white/70 hover:bg-white/10 transition-all font-cairo">
+            className="px-2 py-1 rounded-lg border border-white/20 text-[10px] font-medium text-white/70 hover:bg-white/10 transition-all font-cairo"
+            aria-label={t(locale, 'common.lang_label')}>
             {t(locale, 'common.lang_label')}
           </button>
           <button onClick={() => setMobileOpen(!mobileOpen)}

@@ -39,7 +39,7 @@ export default function TranslatorPage() {
 
   const currentPhrases = useMemo(() => {
     return phrases[activeCategory] || [];
-  }, [activeCategory]);
+  }, [activeCategory, phrases]);
 
   const filteredPhrases = useMemo(() => {
     if (!input.trim()) return currentPhrases;
