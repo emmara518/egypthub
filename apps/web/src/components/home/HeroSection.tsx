@@ -294,15 +294,27 @@ export default function HeroSection() {
             EGYPTHUB
           </span>
         </div>
-        {/* Holographic platform */}
-        <div className="absolute bottom-[3%] left-1/2 -translate-x-1/2" style={{ width: 'clamp(240px, 26vw, 380px)', height: 'clamp(72px, 8vw, 114px)' }}>
-          <div className="holo-ring-a" style={{ animationDuration: '8s' }}>
-            <div className="holo-orbit-dot" style={{ position: 'absolute', top: '-1.5px', left: '50%', transform: 'translateX(-50%)' }} />
-            <div className="holo-ring-b" style={{ animationDuration: '12s' }}>
-              <div className="holo-ring-c" style={{ animationDuration: '6s' }} />
+        {/* 3D Orbital Platform */}
+        <div className="absolute bottom-[3%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(240px, 26vw, 380px)', height: 'clamp(72px, 8vw, 114px)' }}>
+          <div className="orbit-energy-base" />
+          <div className="orbit-glow-ring" style={{ inset: -4 }} />
+          <div className="orbit-ring-a">
+            <div className="orbit-particle-a" />
+            <div className="orbit-particle-a-2" />
+            <div className="orbit-ring-b">
+              <div className="orbit-particle-b" />
+              <div className="orbit-particle-b-2" />
+              <div className="orbit-ring-c">
+                <div className="orbit-particle-c" />
+                <div className="orbit-particle-c-2" />
+              </div>
             </div>
           </div>
-          <div className="absolute inset-0 holo-energy-base rounded-full" />
+          <div className="energy-p1" />
+          <div className="energy-p2" />
+          <div className="energy-p3" />
+          <div className="energy-p4" />
+          <div className="energy-p5" />
         </div>
         <div className="absolute bottom-[15%] left-1/2 -translate-x-1/2 w-[clamp(220px,24vw,380px)] h-[clamp(220px,24vw,380px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[clamp(144px,18vw,240px)] h-[clamp(14px,2vw,24px)] rounded-full opacity-[0.15]" style={{ background: 'radial-gradient(ellipse, #D4A24C 0%, transparent 70%)' }} />
@@ -320,15 +332,22 @@ export default function HeroSection() {
               EGYPTHUB
             </span>
           </div>
-          {/* Holographic platform */}
-          <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2" style={{ width: 'clamp(228px, 50vw, 336px)', height: 'clamp(66px, 16vw, 108px)' }}>
-            <div className="holo-ring-a" style={{ animationDuration: '8s' }}>
-              <div className="holo-orbit-dot" style={{ position: 'absolute', top: '-1.5px', left: '50%', transform: 'translateX(-50%)' }} />
-              <div className="holo-ring-b" style={{ animationDuration: '12s' }}>
-                <div className="holo-ring-c" style={{ animationDuration: '6s' }} />
+          {/* 3D Orbital Platform */}
+          <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 orbit-shell" style={{ width: 'clamp(228px, 50vw, 336px)', height: 'clamp(66px, 16vw, 108px)' }}>
+            <div className="orbit-energy-base" />
+            <div className="orbit-glow-ring" style={{ inset: -3 }} />
+            <div className="orbit-ring-a">
+              <div className="orbit-particle-a" />
+              <div className="orbit-ring-b">
+                <div className="orbit-particle-b" />
+                <div className="orbit-ring-c">
+                  <div className="orbit-particle-c" />
+                </div>
               </div>
             </div>
-            <div className="absolute inset-0 holo-energy-base rounded-full" />
+            <div className="energy-p1" />
+            <div className="energy-p3" />
+            <div className="energy-p5" />
           </div>
           <div className="absolute bottom-[12%] left-1/2 -translate-x-1/2 w-[clamp(168px, 41vw, 264px)] h-[clamp(168px, 41vw, 264px)] rounded-full opacity-[0.08]" style={{ background: 'radial-gradient(circle, #D4A24C 0%, transparent 70%)' }} />
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.5 }}
