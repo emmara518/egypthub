@@ -1,5 +1,9 @@
 {
-  "rootDirectory": "apps/web",
-  "framework": "nextjs",
-  "installCommand": "npm install --legacy-peer-deps"
+  "experimentalServices": {
+    "web": {
+      "root": "apps/web",
+      "routePrefix": "/",
+      "framework": "nextjs"
+    }
+  }
 }
