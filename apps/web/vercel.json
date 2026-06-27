@@ -1,6 +1,4 @@
 {
   "framework": "nextjs",
-  "buildCommand": "pnpm next build",
-  "outputDirectory": ".next",
-  "installCommand": "pnpm install"
+  "nodeVersion": "20.x"
 }
