@@ -65,7 +65,7 @@ export default function InsightsPage() {
             <motion.div key={i} variants={item} className={`bg-gradient-to-br ${c.color} border border-theme-gold/20 rounded-2xl p-5`}>
               <div className="flex items-start gap-3">
                 <div className="w-10 h-10 rounded-xl bg-theme-gold/10 flex items-center justify-center shrink-0">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={c.icon} /></svg>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={c.icon} /></svg>
                 </div>
                 <div>
                   <p className="text-xs text-white/60 font-cairo mb-1">{c.title}</p>
@@ -76,13 +76,13 @@ export default function InsightsPage() {
           ))}
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mt-6 bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="mt-6 bg-theme-surface border border-theme-gold/20 rounded-2xl p-5">
           <h2 className="text-sm font-bold text-theme-gold font-cairo mb-3">تصنيفك بين المستخدمين</h2>
           <div className="flex items-center gap-4">
             <div className="relative w-24 h-24">
               <svg className="w-full h-full -rotate-90" viewBox="0 0 36 36">
                 <circle cx="18" cy="18" r="16" fill="none" stroke="#ffffff10" strokeWidth="3" />
-                <circle cx="18" cy="18" r="16" fill="none" stroke="#D4A24C" strokeWidth="3" strokeDasharray={`${100 - percentile} ${percentile}`} strokeLinecap="round" />
+                <circle cx="18" cy="18" r="16" fill="none" stroke="var(--gold)" strokeWidth="3" strokeDasharray={`${100 - percentile} ${percentile}`} strokeLinecap="round" />
               </svg>
               <div className="absolute inset-0 flex items-center justify-center">
                 <span className="text-lg font-bold text-white font-english">%{percentile}</span>

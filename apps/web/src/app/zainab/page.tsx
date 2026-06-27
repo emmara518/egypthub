@@ -22,7 +22,7 @@ export default function ZainabPage() {
           </Link>
         </div>
 
-        <div className="rounded-2xl border border-theme-gold/20 bg-theme-card overflow-hidden" style={{ height: 'calc(100vh - 160px)' }}>
+        <div className="rounded-2xl border border-theme-gold/20 bg-theme-card overflow-hidden shadow-gold-border" style={{ height: 'calc(100vh - 160px)' }}>
           <AIConciergeChat />
         </div>
       </div>

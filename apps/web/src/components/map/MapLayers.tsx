@@ -222,7 +222,7 @@ export default function MapLayers({ parentRef }: MapLayersProps) {
                       exit={{ opacity: 0, y: 4 }}
                       className="absolute left-1/2 -translate-x-1/2 top-4 whitespace-nowrap z-10"
                     >
-                      <div className="bg-[#0F1525]/95 backdrop-blur-xl rounded-lg border px-2.5 py-1.5 shadow-xl" style={{ borderColor: `${layer.color}40` }}>
+                      <div className="bg-theme-surface/95 backdrop-blur-xl rounded-lg border px-2.5 py-1.5 shadow-xl" style={{ borderColor: `${layer.color}40` }}>
                         <p className="text-[10px] font-bold text-white font-cairo leading-tight">{point.name}</p>
                         <p className="text-[8px] text-white/50 font-english leading-tight mt-0.5">{point.desc}</p>
                       </div>

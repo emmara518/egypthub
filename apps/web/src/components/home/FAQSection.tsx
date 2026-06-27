@@ -35,7 +35,7 @@ export default function FAQSection() {
           <div className="space-y-2 glass-card">
             {faqs.map((faq, i) => (
               <motion.div key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.04 }}
-                className="rounded-xl border border-theme-gold/[0.06] bg-[#0F1525]/40 overflow-hidden hover:border-theme-gold/15 transition-all"
+                className="rounded-xl border border-theme-gold/[0.06] bg-theme-surface/40 overflow-hidden hover:border-theme-gold/15 transition-all"
               >
                 <button onClick={() => setOpenIdx(openIdx === i ? null : i)}
                   className="w-full flex items-center justify-between px-4 md:px-5 py-3.5 text-left touch-target ripple-modern"

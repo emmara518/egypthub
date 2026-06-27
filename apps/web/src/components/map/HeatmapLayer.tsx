@@ -48,7 +48,7 @@ export default function HeatmapLayer() {
           className={`flex items-center gap-2 px-3 py-2 rounded-xl text-[11px] font-english font-bold transition-all border ${
             enabled
               ? 'bg-theme-gold/10 border-theme-gold/25 text-theme-gold shadow-[0_0_10px_rgba(212,162,76,0.1)]'
-              : 'bg-[#0a1020]/80 backdrop-blur-sm border-theme-gold/[0.06] text-white/50 hover:text-white/70'
+              : 'bg-theme-bg/80 backdrop-blur-sm border-theme-gold/[0.06] text-white/50 hover:text-white/70'
           }`}
         >
           <span className={`w-1.5 h-1.5 rounded-full transition-all ${enabled ? 'bg-theme-gold' : 'bg-white/20'}`} />
@@ -84,7 +84,7 @@ export default function HeatmapLayer() {
               );
             })}
 
-            <div className="absolute bottom-14 left-3 z-20 bg-[#0F1525]/90 backdrop-blur-md rounded-xl border border-theme-gold/20 p-3 shadow-xl">
+            <div className="absolute bottom-14 left-3 z-20 bg-theme-surface/90 backdrop-blur-md rounded-xl border border-theme-gold/20 p-3 shadow-xl">
               <p className="text-[10px] font-bold text-white font-english mb-2">نشاط الوجهات</p>
               <div className="flex flex-col gap-1">
                 {[

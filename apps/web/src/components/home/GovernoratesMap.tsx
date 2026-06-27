@@ -37,7 +37,7 @@ export default function GovernoratesMap({ onSelect }: Props) {
       <div className="absolute inset-0 flex items-center justify-center">
         <div className="relative w-[280px] h-[380px] md:w-[320px] md:h-[440px]">
           <svg viewBox="0 0 320 440" className="w-full h-full opacity-[0.04]">
-            <path d="M160 20L280 120L290 300L200 420L120 420L30 300L40 120Z" fill="#D4A24C" />
+            <path d="M160 20L280 120L290 300L200 420L120 420L30 300L40 120Z" fill="var(--gold)" />
           </svg>
 
           {governorates.map((g) => {
@@ -80,7 +80,7 @@ export default function GovernoratesMap({ onSelect }: Props) {
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-[#0F1525]/95 backdrop-blur-xl rounded-xl border border-theme-gold/20 p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] w-[200px]"
+              className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-theme-surface/95 backdrop-blur-xl rounded-xl border border-theme-gold/20 p-3 shadow-[0_8px_32px_rgba(0,0,0,0.5)] w-[200px]"
             >
               {(() => {
                 const g = governorates.find(g => g.name === selected)!;

@@ -81,7 +81,7 @@ export default function ClickHeatmap() {
                 style={{ left: c.x - 6, top: c.y - 6, opacity: Math.min(1, 0.15 + i * 0.001) }}
               />
             ))}
-            <div className="absolute top-4 right-4 w-72 bg-[#0F1525]/95 border border-theme-gold/20 rounded-2xl p-4 pointer-events-auto">
+            <div className="absolute top-4 right-4 w-72 bg-theme-surface/95 border border-theme-gold/20 rounded-2xl p-4 pointer-events-auto">
               <div className="flex items-center justify-between mb-3">
                 <h3 className="text-sm font-bold text-white font-cairo">النقرات</h3>
                 <button onClick={clearAll} className="text-xs text-red-400 font-cairo">مسح</button>

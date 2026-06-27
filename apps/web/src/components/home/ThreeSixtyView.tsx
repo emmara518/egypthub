@@ -55,7 +55,7 @@ export default function ThreeSixtyView() {
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
-              className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[700px] w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+              className="bg-theme-surface border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[700px] w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between px-4 py-3 border-b border-white/[0.06]">

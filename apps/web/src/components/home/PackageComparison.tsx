@@ -35,7 +35,7 @@ export default function PackageComparison() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[750px] w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+              className="bg-theme-surface border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[750px] w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.06]">

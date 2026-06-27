@@ -11,7 +11,7 @@ const availablePromos = [
     discount: 20,
     expiry: '31 ديسمبر 2025',
     terms: 'صالح على جميع التجارب. الحد الأدنى للحجز EGP 500',
-    color: 'from-[#D4A24C] to-[#C89A3D]',
+    color: 'from-theme-gold to-theme-gold',
   },
   {
     id: 2,
@@ -73,17 +73,17 @@ export default function PromoCodesPage() {
   return (
     <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[800px] mx-auto px-4 lg:px-6 py-8">
-        <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
+        <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
           العودة للرئيسية
         </Link>
 
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white font-playfair">العروض والكوبونات</h1>
-          <p className="text-[#5A6478] font-cairo mt-1">استخدم كود الخصم واحصل على عروض حصرية</p>
+          <p className="text-theme-muted font-cairo mt-1">استخدم كود الخصم واحصل على عروض حصرية</p>
         </div>
 
-        <div className="rounded-2xl border border-[#D4A24C]/20 bg-[#141B2D] p-6 mb-8">
+        <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6 mb-8">
           <h2 className="text-lg font-bold text-white font-cairo mb-4">أدخل كود الخصم</h2>
           <div className="flex gap-3">
             <input
@@ -91,11 +91,11 @@ export default function PromoCodesPage() {
               value={promoInput}
               onChange={e => { setPromoInput(e.target.value); setError(''); }}
               placeholder="مثال: EGYPT2024"
-              className="flex-1 bg-[#0F1420] rounded-xl px-4 py-3 text-sm border border-[#1E2A3D] focus:border-[#D4A24C]/40 outline-none font-english placeholder:text-[#5A6478] text-white uppercase tracking-wider"
+              className="flex-1 bg-theme-surface rounded-xl px-4 py-3 text-sm border border-theme-border focus:border-theme-gold/40 outline-none font-english placeholder:text-theme-muted text-white uppercase tracking-wider"
             />
             <motion.button whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
               onClick={handleApply}
-              className="px-6 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg text-sm font-cairo font-bold shrink-0">
+              className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold shrink-0">
               تطبيق
             </motion.button>
           </div>
@@ -122,7 +122,7 @@ export default function PromoCodesPage() {
           {availablePromos.map((promo, idx) => (
             <motion.div key={promo.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-              className="rounded-2xl border border-[#D4A24C]/10 bg-[#141B2D] overflow-hidden hover:border-[#D4A24C]/20 transition-all">
+              className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden hover:border-theme-gold/20 transition-all">
               <div className="flex flex-col sm:flex-row">
                 <div className={`relative w-full sm:w-36 h-24 sm:h-auto shrink-0 bg-gradient-to-l ${promo.color} flex items-center justify-center`}>
                   <div className="text-center">
@@ -133,7 +133,7 @@ export default function PromoCodesPage() {
                 <div className="flex-1 p-5">
                   <div className="flex items-start justify-between mb-3">
                     <div>
-                      <span className="px-3 py-1 rounded-lg bg-[#0F1420] text-white text-sm font-english font-bold tracking-wider border border-[#1E2A3D]">
+                      <span className="px-3 py-1 rounded-lg bg-theme-surface text-white text-sm font-english font-bold tracking-wider border border-theme-border">
                         {promo.code}
                       </span>
                     </div>
@@ -142,7 +142,7 @@ export default function PromoCodesPage() {
                       className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-cairo transition-all ${
                         copiedId === promo.id
                           ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20'
-                          : 'bg-[#D4A24C]/10 text-[#D4A24C] border border-[#D4A24C]/20 hover:bg-[#D4A24C]/20'
+                          : 'bg-theme-gold/10 text-theme-gold border border-theme-gold/20 hover:bg-theme-gold/20'
                       }`}>
                       {copiedId === promo.id ? (
                         <>
@@ -161,8 +161,8 @@ export default function PromoCodesPage() {
                       )}
                     </motion.button>
                   </div>
-                  <p className="text-xs text-[#8B95A5] font-cairo mb-2">{promo.terms}</p>
-                  <div className="flex items-center gap-1 text-[10px] text-[#5A6478] font-cairo">
+                  <p className="text-xs text-theme-secondary font-cairo mb-2">{promo.terms}</p>
+                  <div className="flex items-center gap-1 text-[10px] text-theme-muted font-cairo">
                     <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
@@ -174,12 +174,12 @@ export default function PromoCodesPage() {
           ))}
         </div>
 
-        <div className="mt-8 rounded-2xl border border-[#1E2A3D] bg-[#0F1420] p-6 text-center">
-          <svg className="w-10 h-10 text-[#D4A24C] mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <div className="mt-8 rounded-2xl border border-theme-border bg-theme-surface p-6 text-center">
+          <svg className="w-10 h-10 text-theme-gold mx-auto mb-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
           </svg>
           <h3 className="text-sm font-bold text-white font-cairo mb-1">فعّل الإشعارات</h3>
-          <p className="text-xs text-[#5A6478] font-cairo">احصل على أحدث العروض والكوبونات مباشرة</p>
+          <p className="text-xs text-theme-muted font-cairo">احصل على أحدث العروض والكوبونات مباشرة</p>
         </div>
       </div>
     </div>

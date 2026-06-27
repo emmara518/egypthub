@@ -44,7 +44,7 @@ export default function SmartRecommendations() {
   };
 
   return (
-    <section className="bg-[#0a1020]/40 py-10 md:py-16 border-t border-theme-gold/[0.04]">
+    <section className="bg-theme-bg/40 py-10 md:py-16 border-t border-theme-gold/[0.04]">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="flex items-center gap-2 mb-2">
           <span className="w-0.5 h-3 bg-theme-gold rounded-full shrink-0" />

@@ -21,7 +21,7 @@ const paymentMethods = [
 
 export default function TrustBadges() {
   return (
-    <section className="bg-[#0F1525]/30 py-12 md:py-16 border-t border-white/[0.04] glass-card neon-gold">
+    <section className="bg-theme-surface/30 py-12 md:py-16 border-t border-white/[0.04] glass-card neon-gold">
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8">
         <div className="lg:flex lg:items-start lg:gap-16">
           <div className="lg:flex-1 mb-10 lg:mb-0">

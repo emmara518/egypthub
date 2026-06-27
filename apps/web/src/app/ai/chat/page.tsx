@@ -97,7 +97,7 @@ export default function AIChatPage() {
 
   return (
     <div className="min-h-screen bg-theme-bg flex flex-col">
-      <div className="max-w-[1200px] mx-auto w-full px-4 lg:px-6 py-4 flex items-center justify-between border-b border-theme-border">
+      <div className="max-w-[1200px] mx-auto w-full px-4 lg:px-6 py-4 flex items-center justify-between border-b border-theme-gold/10">
         <div className="flex items-center gap-3">
           <Link href="/ai" className="text-theme-gold hover:text-theme-gold/80 transition-colors">
             <HiChevronLeft className="w-5 h-5" />
@@ -110,7 +110,7 @@ export default function AIChatPage() {
             <p className="text-[10px] text-green-400 font-cairo">متصلة الآن</p>
           </div>
         </div>
-        <button onClick={newChat} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-theme-surface border border-theme-border text-theme-muted hover:text-theme-gold hover:border-theme-gold/20 transition-all text-xs font-cairo">
+        <button onClick={newChat} className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-theme-surface border border-theme-gold/10 text-theme-muted hover:text-theme-gold hover:border-theme-gold/20 transition-all text-xs font-cairo">
           <HiPlus className="w-3.5 h-3.5" />
           محادثة جديدة
         </button>
@@ -129,7 +129,7 @@ export default function AIChatPage() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full max-w-md">
               {suggestions.map((s) => (
                 <button key={s} onClick={() => { setInput(s); inputRef.current?.focus(); }}
-                  className="text-right p-3 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 hover:bg-theme-elevated transition-all text-xs text-theme-secondary font-cairo">
+                  className="text-right p-3 rounded-xl bg-theme-surface border border-theme-gold/10 hover:border-theme-gold/20 hover:bg-theme-elevated transition-all text-xs text-theme-secondary font-cairo">
                   {s}
                 </button>
               ))}
@@ -144,7 +144,7 @@ export default function AIChatPage() {
                   <div className={`max-w-[85%] md:max-w-[70%] rounded-2xl px-4 py-3 ${
                     msg.role === 'zainab'
                       ? 'bg-theme-gold/10 border border-theme-gold/20 rounded-tl-sm'
-                      : 'bg-theme-elevated border border-theme-border rounded-tr-sm'
+                      : 'bg-theme-elevated border border-theme-gold/10 rounded-tr-sm'
                   }`}>
                     <p className="text-sm leading-relaxed text-theme font-cairo whitespace-pre-line">{msg.content}</p>
                     <p className="text-[9px] text-theme-muted mt-1 text-left font-cairo">
@@ -170,18 +170,18 @@ export default function AIChatPage() {
         )}
       </div>
 
-      <div className="border-t border-theme-border bg-theme-bg px-4 lg:px-6 py-3">
+      <div className="border-t border-theme-gold/10 bg-theme-bg px-4 lg:px-6 py-3">
         <div className="max-w-[800px] mx-auto w-full flex items-center gap-2">
           <button onClick={toggleVoice}
             className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all flex-shrink-0 ${
-              isListening ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-theme-surface border border-theme-border text-theme-muted hover:text-theme-gold'
+              isListening ? 'bg-red-500/20 text-red-400 border border-red-500/30' : 'bg-theme-surface border border-theme-gold/10 text-theme-muted hover:text-theme-gold'
             }`}>
             <HiMicrophone className={`w-4 h-4 ${isListening ? 'animate-pulse' : ''}`} />
           </button>
 
           <input ref={inputRef} value={input} onChange={(e) => setInput(e.target.value)} onKeyDown={handleKeyDown}
             placeholder="اكتب رسالتك..."
-            className="flex-1 bg-theme-surface border border-theme-border rounded-xl px-4 py-2.5 text-sm text-theme placeholder-theme-muted font-cairo outline-none focus:border-theme-gold/40 transition-all" />
+            className="flex-1 bg-theme-surface border border-theme-gold/10 rounded-xl px-4 py-2.5 text-sm text-theme placeholder-theme-muted font-cairo outline-none focus:border-theme-gold/40 transition-all" />
 
           <button onClick={handleSend} disabled={!input.trim() || isTyping}
             className="w-10 h-10 rounded-xl bg-theme-gold flex items-center justify-center disabled:opacity-40 transition-all flex-shrink-0">

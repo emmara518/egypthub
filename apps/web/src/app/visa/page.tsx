@@ -34,7 +34,7 @@ const FEES = [
 ];
 
 export default function VisaPage() {
-  const cardClass = "bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5";
+  const cardClass = "bg-theme-surface border border-theme-gold/20 rounded-2xl p-5";
 
   return (
     <div className="min-h-screen bg-theme-bg pb-12 px-4">
@@ -47,7 +47,7 @@ export default function VisaPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
           {VISA_TYPES.map((v) => (
             <div key={v.name} className={cardClass + " text-center"}>
-              <svg className="mx-auto mb-3" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
+              <svg className="mx-auto mb-3" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={v.icon} /></svg>
               <h3 className="text-sm font-bold text-white font-cairo mb-1">{v.name}</h3>
               <p className="text-xs text-white/60 font-cairo mb-2">{v.desc}</p>
               <p className="text-[10px] text-white/40 font-cairo">{v.period}</p>
@@ -110,7 +110,7 @@ export default function VisaPage() {
             href="https://visa2egypt.gov.eg"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block px-8 py-3 rounded-xl bg-gradient-gold text-[#0A0E17] font-cairo font-bold text-sm hover:brightness-110 transition-all"
+            className="inline-block px-8 py-3 rounded-xl bg-gradient-gold text-dark-900 font-cairo font-bold text-sm hover:brightness-110 transition-all"
           >
             قدم الآن — Visa2Egypt
           </a>

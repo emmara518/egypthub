@@ -319,24 +319,24 @@ export default function PortalPage() {
                     <IconUser />
                   </div>
                 </div>
-                <div className="absolute -bottom-0.5 -left-0.5 w-4 h-4 rounded-full bg-[#10B981] border-2 border-[#0C1120]" />
+                <div className="absolute -bottom-0.5 -left-0.5 w-4 h-4 rounded-full bg-success border-2 border-theme-bg" />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="font-bold text-sm truncate">{user.name}</p>
                 <p className="text-[10px] text-theme-gold font-english">عضو منذ {user.memberSince}</p>
               </div>
             </div>
-            <div className="bg-[#0F1420] rounded-xl p-3 border border-theme-border">
+            <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-[10px] text-theme-secondary">{user.title}</span>
                 <span className="text-[10px] text-theme-gold font-english">{user.xp} XP</span>
               </div>
-              <div className="w-full h-1.5 bg-[#1A2235] rounded-full overflow-hidden">
+              <div className="w-full h-1.5 bg-theme-elevated rounded-full overflow-hidden">
                 <motion.div
                   initial={{ width: 0 }}
                   animate={{ width: `${Math.min((user.xp / 3000) * 100, 100)}%` }}
                   transition={{ duration: 1, ease: 'easeOut' }}
-                  className="h-full bg-gradient-to-l from-theme-gold to-[#E8C97A] rounded-full"
+                  className="h-full bg-gradient-to-l from-theme-gold to-theme-gold rounded-full"
                 />
               </div>
             </div>
@@ -362,8 +362,8 @@ export default function PortalPage() {
                   }}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-[#D4A24C]/10 text-theme-gold font-medium border border-theme-gold/20'
-                      : 'text-theme-secondary hover:text-white hover:bg-[#1A2235]'
+                      ? 'bg-theme-gold/10 text-theme-gold font-medium border border-theme-gold/20'
+                      : 'text-theme-secondary hover:text-white hover:bg-theme-elevated'
                   }`}
                 >
                   <IconComp />
@@ -371,7 +371,7 @@ export default function PortalPage() {
                   {isActive && (
                     <motion.div
                       layoutId="activeIndicator"
-                      className="mr-auto w-1.5 h-1.5 rounded-full bg-[#D4A24C]"
+                      className="mr-auto w-1.5 h-1.5 rounded-full bg-theme-gold"
                     />
                   )}
                 </motion.button>
@@ -420,7 +420,7 @@ export default function PortalPage() {
                   <input
                     type="text"
                     placeholder="بحث..."
-                    className="w-64 px-4 py-2.5 rounded-xl bg-[#0F1420] border border-theme-border text-sm text-white placeholder-[#5A6478] focus:outline-none focus:border-theme-gold/50 transition-colors"
+                    className="w-64 px-4 py-2.5 rounded-xl bg-theme-surface border border-theme-border text-sm text-white placeholder-[#5A6478] focus:outline-none focus:border-theme-gold/50 transition-colors"
                   />
                   <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-theme-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
@@ -445,7 +445,7 @@ export default function PortalPage() {
                     className="bg-theme-bg rounded-2xl border border-theme-border p-5 hover:border-theme-gold/30 transition-all duration-300 group"
                   >
                     <div className="flex items-center justify-between mb-3">
-                      <div className="w-10 h-10 rounded-xl bg-[#D4A24C]/10 flex items-center justify-center text-theme-gold group-hover:bg-[#D4A24C]/20 transition-colors">
+                      <div className="w-10 h-10 rounded-xl bg-theme-gold/10 flex items-center justify-center text-theme-gold group-hover:bg-theme-gold/20 transition-colors">
                         <StatIcon />
                       </div>
                       <IconChevronLeft />
@@ -467,7 +467,7 @@ export default function PortalPage() {
               >
                 <div className="flex items-center justify-between mb-5">
                   <h2 className="font-bold text-lg">الحجوزات الأخيرة</h2>
-                  <Link href="#" className="text-xs text-theme-gold hover:text-[#E8C97A] transition-colors flex items-center gap-1">
+                  <Link href="#" className="text-xs text-theme-gold hover:text-theme-gold transition-colors flex items-center gap-1">
                     عرض الكل
                     <IconChevronLeft />
                   </Link>
@@ -480,7 +480,7 @@ export default function PortalPage() {
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: 0.4 + i * 0.1 }}
                       whileHover={{ x: -4 }}
-                      className="flex items-center gap-4 p-3 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all cursor-pointer group"
+                      className="flex items-center gap-4 p-3 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-all cursor-pointer group"
                     >
                       <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 relative">
                         <Image src={booking.img} alt={booking.title} fill className="object-cover group-hover:scale-110 transition-transform duration-500" />
@@ -496,8 +496,8 @@ export default function PortalPage() {
                         <span
                           className={`px-2.5 py-1 rounded-lg text-[10px] font-bold ${
                             booking.statusType === 'confirmed'
-                              ? 'bg-[#10B981]/15 text-[#10B981]'
-                              : 'bg-[#D4A24C]/15 text-theme-gold'
+                              ? 'bg-success/15 text-success'
+                              : 'bg-theme-gold/15 text-theme-gold'
                           }`}
                         >
                           {booking.status}
@@ -518,14 +518,14 @@ export default function PortalPage() {
               >
                 <div className="flex items-center justify-between mb-5">
                   <h2 className="font-bold text-lg">الرحلات القادمة</h2>
-                  <Link href="#" className="text-xs text-theme-gold hover:text-[#E8C97A] transition-colors flex items-center gap-1">
+                  <Link href="#" className="text-xs text-theme-gold hover:text-theme-gold transition-colors flex items-center gap-1">
                     عرض الكل
                     <IconChevronLeft />
                   </Link>
                 </div>
                 <div className="relative">
                   {/* Timeline Line */}
-                  <div className="absolute right-[18px] top-0 bottom-0 w-px bg-[#1E2A3D]" />
+                  <div className="absolute right-[18px] top-0 bottom-0 w-px bg-theme-border" />
 
                   <div className="space-y-4">
                     {upcomingTrips.map((trip, i) => (
@@ -539,21 +539,21 @@ export default function PortalPage() {
                         {/* Timeline Dot */}
                         <div className={`relative z-10 w-9 h-9 rounded-full shrink-0 flex items-center justify-center ${
                           i === 0
-                            ? 'bg-[#D4A24C]/20 border-2 border-theme-gold'
-                            : 'bg-[#1A2235] border-2 border-theme-border'
+                            ? 'bg-theme-gold/20 border-2 border-theme-gold'
+                            : 'bg-theme-elevated border-2 border-theme-border'
                         }`}>
                           {i === 0 && (
                             <motion.div
                               animate={{ scale: [1, 1.3, 1] }}
                               transition={{ duration: 2, repeat: Infinity }}
-                              className="absolute inset-0 rounded-full bg-[#D4A24C]/10"
+                              className="absolute inset-0 rounded-full bg-theme-gold/10"
                             />
                           )}
                           <span className="text-xs font-bold font-english text-theme-gold">{i + 1}</span>
                         </div>
 
                         {/* Trip Card */}
-                        <div className="flex-1 flex items-center gap-3 p-3 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all cursor-pointer">
+                        <div className="flex-1 flex items-center gap-3 p-3 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-all cursor-pointer">
                           <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
                             <Image src={trip.img} alt={trip.title} fill className="object-cover" />
                           </div>
@@ -596,9 +596,9 @@ export default function PortalPage() {
                     >
                       <Link
                         href={action.href}
-                        className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-theme-bg border border-theme-border hover:border-theme-gold/30 hover:bg-[#0F1420] transition-all duration-300 group"
+                        className="flex flex-col items-center gap-3 p-5 rounded-2xl bg-theme-bg border border-theme-border hover:border-theme-gold/30 hover:bg-theme-surface transition-all duration-300 group"
                       >
-                        <div className="w-14 h-14 rounded-2xl bg-[#D4A24C]/10 flex items-center justify-center text-theme-gold group-hover:bg-[#D4A24C]/20 group-hover:scale-110 transition-all duration-300">
+                        <div className="w-14 h-14 rounded-2xl bg-theme-gold/10 flex items-center justify-center text-theme-gold group-hover:bg-theme-gold/20 group-hover:scale-110 transition-all duration-300">
                           <ActionIcon />
                         </div>
                         <span className="text-sm font-medium text-center group-hover:text-theme-gold transition-colors">{action.label}</span>
@@ -632,7 +632,7 @@ export default function PortalPage() {
                   {isActive && (
                     <motion.div
                       layoutId="mobileIndicator"
-                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#D4A24C]"
+                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-theme-gold"
                     />
                   )}
                 </div>

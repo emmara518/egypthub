@@ -143,12 +143,12 @@ export default function FavoritesPage() {
                       className="rounded-xl border border-white/[0.06] bg-theme-surface hover:border-theme-gold/20 transition-all overflow-hidden flex">
                       <div className="relative w-28 shrink-0 overflow-hidden">
                         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${dest.image})` }} />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-theme-surface" />
                       </div>
                       <div className="flex-1 p-4 flex items-center justify-between">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 mb-1">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--gold)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             <span className="text-[10px] text-white/40 font-cairo">{dest.region}</span>
                           </div>
                           <h3 className="font-bold text-white font-cairo mb-0.5">{dest.name}</h3>
@@ -156,7 +156,7 @@ export default function FavoritesPage() {
                         </div>
                         <div className="flex items-center gap-2 shrink-0 mr-4">
                           <div className="flex items-center gap-1">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
                             <span className="text-xs text-white/60 font-english">{dest.rating}</span>
                           </div>
                           <button className="w-8 h-8 rounded-lg bg-red-500/10 flex items-center justify-center hover:bg-red-500/20 transition-all" aria-label="إزالة من المفضلة">
@@ -183,12 +183,12 @@ export default function FavoritesPage() {
                       className="rounded-xl border border-white/[0.06] bg-theme-surface hover:border-theme-gold/20 transition-all overflow-hidden flex">
                       <div className="relative w-28 shrink-0 overflow-hidden">
                         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${exp.image})` }} />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-theme-surface" />
                       </div>
                       <div className="flex-1 p-4 flex items-center justify-between">
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5 mb-1">
-                            <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--gold)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                             <span className="text-[10px] text-white/40 font-cairo">{exp.location}</span>
                           </div>
                           <h3 className="font-bold text-white text-sm font-cairo mb-0.5">{exp.name}</h3>
@@ -225,7 +225,7 @@ export default function FavoritesPage() {
                       className="rounded-xl border border-white/[0.06] bg-theme-surface hover:border-theme-gold/20 transition-all overflow-hidden flex">
                       <div className="relative w-28 shrink-0 overflow-hidden">
                         <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${story.image})` }} />
-                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#0F1525]" />
+                        <div className="absolute inset-0 bg-gradient-to-r from-transparent to-theme-surface" />
                       </div>
                       <div className="flex-1 p-4 flex items-center justify-between">
                         <div className="flex-1 min-w-0">

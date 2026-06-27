@@ -84,10 +84,10 @@ export default function AIPlannerPage() {
           {steps.map((s, i) => (
             <div key={s} className="flex items-center gap-2 flex-1">
               <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold font-cairo transition-all ${
-                i <= step ? 'bg-theme-gold text-dark-900' : 'bg-theme-surface border border-theme-border text-theme-muted'
+                i <= step ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-surface border border-theme-gold/10 text-theme-muted'
               }`}>{i + 1}</div>
               <span className={`text-xs font-cairo ${i <= step ? 'text-theme-gold' : 'text-theme-muted'} hidden sm:block`}>{s}</span>
-              {i < steps.length - 1 && <div className={`h-px flex-1 ${i < step ? 'bg-theme-gold' : 'bg-theme-border'}`} />}
+              {i < steps.length - 1 && <div className={`h-px flex-1 ${i < step ? 'bg-theme-gold' : 'bg-theme-gold/10'}`} />}
             </div>
           ))}
         </div>
@@ -102,7 +102,7 @@ export default function AIPlannerPage() {
                   {cities.map((city) => (
                     <button key={city.name} onClick={() => setSelectedCity(city.name)}
                       className={`p-4 rounded-2xl border text-right transition-all ${
-                        selectedCity === city.name ? 'border-theme-gold bg-theme-gold/10' : 'border-theme-border bg-theme-card hover:border-theme-gold/20'
+                        selectedCity === city.name ? 'border-theme-gold bg-theme-gold/10 shadow-gold-border' : 'border-theme-gold/10 bg-theme-card hover:border-theme-gold/20 hover:shadow-gold-border'
                       }`}>
                       <h3 className="font-bold text-sm text-theme font-cairo">{city.name}</h3>
                       <p className="text-[10px] text-theme-muted font-cairo">{city.desc}</p>
@@ -120,7 +120,7 @@ export default function AIPlannerPage() {
                   {[1, 2, 3, 4, 5, 7, 10, 14].map((n) => (
                     <button key={n} onClick={() => setDays(n)}
                       className={`w-16 h-16 rounded-2xl font-bold text-sm transition-all ${
-                        days === n ? 'bg-theme-gold text-dark-900' : 'bg-theme-card border border-theme-border text-theme hover:border-theme-gold/20'
+                        days === n ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-card border border-theme-gold/10 text-theme hover:border-theme-gold/20'
                       }`}>
                       {n}
                     </button>
@@ -137,7 +137,7 @@ export default function AIPlannerPage() {
                   {[1, 2, 3, 4, 5, 6, 7, 8, 10, 15, 20].map((n) => (
                     <button key={n} onClick={() => setTravelers(n)}
                       className={`w-16 h-16 rounded-2xl font-bold text-sm transition-all ${
-                        travelers === n ? 'bg-theme-gold text-dark-900' : 'bg-theme-card border border-theme-border text-theme hover:border-theme-gold/20'
+                        travelers === n ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-card border border-theme-gold/10 text-theme hover:border-theme-gold/20'
                       }`}>
                       {n}
                     </button>
@@ -154,7 +154,7 @@ export default function AIPlannerPage() {
                   {budgets.map((b) => (
                     <button key={b} onClick={() => setBudget(b)}
                       className={`p-5 rounded-2xl border text-right transition-all ${
-                        budget === b ? 'border-theme-gold bg-theme-gold/10' : 'border-theme-border bg-theme-card hover:border-theme-gold/20'
+                        budget === b ? 'border-theme-gold bg-theme-gold/10 shadow-gold-border' : 'border-theme-gold/10 bg-theme-card hover:border-theme-gold/20 hover:shadow-gold-border'
                       }`}>
                       <HiCurrencyDollar className={`w-5 h-5 mb-2 ${budget === b ? 'text-theme-gold' : 'text-theme-muted'}`} />
                       <h3 className="font-bold text-sm text-theme font-cairo">{b}</h3>
@@ -172,7 +172,7 @@ export default function AIPlannerPage() {
                   {interests.map((interest) => (
                     <button key={interest.label} onClick={() => toggleInterest(interest.label)}
                       className={`p-5 rounded-2xl border text-center transition-all ${
-                        selectedInterests.includes(interest.label) ? 'border-theme-gold bg-theme-gold/10' : 'border-theme-border bg-theme-card hover:border-theme-gold/20'
+                        selectedInterests.includes(interest.label) ? 'border-theme-gold bg-theme-gold/10 shadow-gold-border' : 'border-theme-gold/10 bg-theme-card hover:border-theme-gold/20 hover:shadow-gold-border'
                       }`}>
                       <span className="text-3xl mb-2 block">{interest.emoji}</span>
                       <p className="text-xs font-bold text-theme font-cairo">{interest.label}</p>
@@ -187,7 +187,7 @@ export default function AIPlannerPage() {
         <div className="flex gap-3 mt-8">
           {step > 0 && (
             <button onClick={() => setStep(step - 1)}
-              className="px-6 py-3 rounded-xl bg-theme-surface border border-theme-border text-theme font-cairo text-sm hover:border-theme-gold/20 transition-all font-bold">
+              className="px-6 py-3 rounded-xl bg-theme-surface border border-theme-gold/10 text-theme font-cairo text-sm hover:border-theme-gold/20 transition-all font-bold">
               السابق
             </button>
           )}

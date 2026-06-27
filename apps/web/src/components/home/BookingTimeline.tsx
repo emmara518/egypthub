@@ -10,7 +10,7 @@ const steps = [
 
 export default function BookingTimeline() {
   return (
-    <div className="flex items-center justify-center gap-0 md:gap-2 px-4 py-3 bg-[#0F1525]/60 backdrop-blur-sm border-y border-theme-gold/[0.06]">
+    <div className="flex items-center justify-center gap-0 md:gap-2 px-4 py-3 bg-theme-surface/60 backdrop-blur-sm border-y border-theme-gold/[0.06]">
       {steps.map((s, i) => (
         <div key={s.num} className="flex items-center gap-0 md:gap-2">
           <div className="flex items-center gap-1.5 md:gap-2">

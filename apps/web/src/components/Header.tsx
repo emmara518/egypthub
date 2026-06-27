@@ -15,6 +15,8 @@ type Locale = 'ar' | 'en';
 interface NavItem { name: string; href: string; }
 interface CatItem extends NavItem { icon: string; }
 
+const dropdownItemBase = `block w-full px-4 py-3 rounded-xl text-sm font-cairo transition-colors`;
+
 const navItems = (l: Locale) => ({
   explore: [
     { name: t(l, 'categories.restaurants'), href: '/category/restaurants' },
@@ -26,7 +28,7 @@ const navItems = (l: Locale) => ({
   ] as NavItem[],
   ai: [
     { name: t(l, 'ai.zainab'), href: '/zainab' },
-    { name: t(l, 'ai.advanced'), href: '/ai-concierge' },
+    { name: t(l, 'ai.advanced'), href: '/ai' },
     { name: t(l, 'ai.budget'), href: '/budget-planner' },
     { name: t(l, 'ai.translator'), href: '/translator' },
     { name: t(l, 'ai.safety'), href: '/safety' },
@@ -50,10 +52,6 @@ const navItems = (l: Locale) => ({
     { name: t(l, 'categories.transport'), href: '/category/transport', icon: '🚗' },
   ] as CatItem[],
 });
-
-const dropdownItemBase = `block w-full px-4 py-3 rounded-xl text-sm font-cairo transition-colors`;
-const dropdownItemAr = `text-gray-100 hover:bg-white/10`;
-const dropdownItemEn = `text-gray-100 hover:bg-white/10`;
 
 export default function Header() {
   const { locale, toggle: toggleLang, dir } = useLang();
@@ -102,8 +100,8 @@ export default function Header() {
     const active = isActive(href);
     return `px-4 py-2 rounded-lg text-sm font-medium font-cairo transition-all duration-200 ${
       active
-        ? 'text-theme-gold bg-theme-gold/10'
-        : 'text-white/80 hover:text-white hover:bg-white/10'
+        ? 'text-theme-gold bg-theme-gold/10 shadow-gold-border'
+        : 'text-white/80 hover:text-theme-gold hover:bg-theme-gold/5'
     }`;
   };
 
@@ -111,8 +109,8 @@ export default function Header() {
     const active = isActive(items[name as keyof typeof items]?.[0]?.href || '');
     return `flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium font-cairo transition-all duration-200 ${
       active
-        ? 'text-theme-gold bg-theme-gold/10'
-        : 'text-white/80 hover:text-white hover:bg-white/10'
+        ? 'text-theme-gold bg-theme-gold/10 shadow-gold-border'
+        : 'text-white/80 hover:text-theme-gold hover:bg-theme-gold/5'
     }`;
   };
 
@@ -136,18 +134,21 @@ export default function Header() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 8 }}
             transition={{ duration: 0.15 }}
-            className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-56 rounded-2xl bg-theme-surface/95 backdrop-blur-xl shadow-xl border border-white/10 overflow-hidden z-50`}
+            className={`absolute top-full ${isRtl ? 'right-0' : 'left-0'} mt-2 w-56 rounded-2xl bg-theme-surface shadow-gold-glow border border-theme-gold/20 overflow-hidden z-50`}
           >
+            <div className="h-0.5 bg-gradient-to-r from-transparent via-theme-gold to-transparent" />
             <div className="p-2">
-              {navList.map((item) => (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={`${dropdownItemBase} ${isRtl ? 'text-right' : 'text-left'} ${isActive(item.href) ? 'text-theme-gold font-semibold bg-theme-gold/10' : 'text-white/80 hover:text-white hover:bg-white/10'}`}
-                  onClick={() => setOpenDropdown(null)}
-                >
-                  {item.name}
-                </Link>
+              {navList.map((item, i) => (
+                <div key={item.href}>
+                  <Link
+                    href={item.href}
+                    className={`${dropdownItemBase} ${isRtl ? 'text-right' : 'text-left'} ${isActive(item.href) ? 'text-theme-gold font-semibold bg-theme-gold/10 border-r-2 border-theme-gold' : 'text-white/80 hover:text-theme-gold hover:bg-theme-gold/5'}`}
+                    onClick={() => setOpenDropdown(null)}
+                  >
+                    {item.name}
+                  </Link>
+                  {i < navList.length - 1 && <div className="mx-3 my-0.5 h-px bg-gradient-to-r from-transparent via-theme-gold/10 to-transparent" />}
+                </div>
               ))}
             </div>
           </motion.div>
@@ -164,7 +165,7 @@ export default function Header() {
         onChange={(e) => setSearchQuery(e.target.value)}
         placeholder={t(locale, 'nav.search')}
         aria-label={t(locale, 'nav.search')}
-        className={`bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-theme-gold/40 transition-all w-40 lg:w-56 ${isRtl ? 'pr-4 pl-9' : 'pl-4 pr-9'}`}
+        className={`bg-white/10 border border-white/20 rounded-xl px-4 py-2 text-sm text-white placeholder-white/40 outline-none focus:border-theme-gold/40 focus:shadow-gold-border transition-all w-40 lg:w-56 ${isRtl ? 'pr-4 pl-9' : 'pl-4 pr-9'}`}
         dir={isRtl ? 'rtl' : 'ltr'}
       />
       <svg className={`absolute top-1/2 -translate-y-1/2 w-4 h-4 text-white/40 ${isRtl ? 'left-3' : 'right-3'}`} fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
@@ -177,16 +178,16 @@ export default function Header() {
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'bg-theme-bg/95 backdrop-blur-lg shadow-md border-b border-theme-gold/20'
+          ? 'bg-theme-bg/95 backdrop-blur-lg shadow-gold-border border-b border-theme-gold/20'
           : 'bg-transparent'
       }`}
     >
       <div className={`max-w-[1440px] mx-auto px-6 lg:px-8 h-20 flex items-center justify-between`}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-theme-gold to-theme-gold/70 flex items-center justify-center shadow-[0_0_12px_rgba(212,162,76,0.15)] group-hover:shadow-[0_0_20px_rgba(212,162,76,0.25)] transition-all duration-300">
+          <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-theme-gold to-theme-gold/70 flex items-center justify-center shadow-gold-glow transition-all duration-300">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-              <path d="M12 2L2 22h20L12 2z" fill="#D4A24C" />
+              <path d="M12 2L2 22h20L12 2z" fill="var(--gold)" />
               <path d="M12 8L6 22h12L12 8z" fill="var(--bg)" />
             </svg>
           </div>
@@ -217,13 +218,13 @@ export default function Header() {
             </div>
           ) : (
             <button onClick={() => setSearchOpen(true)}
-              className="p-2 rounded-lg text-white/60 hover:text-white hover:bg-white/10 transition-all" aria-label={t(locale, 'nav.open_search')}>
+              className="p-2 rounded-lg text-white/60 hover:text-theme-gold hover:bg-theme-gold/5 transition-all" aria-label={t(locale, 'nav.open_search')}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </button>
           )}
 
           <button onClick={toggleLang}
-            className="px-3 py-1.5 rounded-lg border border-white/20 text-xs font-medium text-white/80 hover:bg-white/10 transition-all font-cairo"
+            className="px-3 py-1.5 rounded-lg border border-theme-gold/30 text-xs font-medium text-theme-gold/80 hover:bg-theme-gold/10 hover:text-theme-gold transition-all font-cairo"
             aria-label={t(locale, 'common.lang_label')}>
             {t(locale, 'common.lang_label')}
           </button>
@@ -232,11 +233,11 @@ export default function Header() {
           <ThemeToggle />
 
           <Link href="/auth/login"
-            className="px-5 py-2 rounded-xl border border-white/30 text-white/90 hover:bg-white/10 transition-all duration-200 font-cairo text-sm font-medium">
+            className="px-5 py-2 rounded-xl border border-theme-gold/30 text-theme-gold/90 hover:bg-theme-gold/10 hover:text-theme-gold transition-all duration-200 font-cairo text-sm font-medium">
             {t(locale, 'header.login_btn')}
           </Link>
           <Link href="/auth/register"
-            className="px-5 py-2 rounded-xl bg-gradient-gold text-[#0A0E17] hover:brightness-110 transition-all duration-200 font-cairo text-sm font-bold">
+            className="px-5 py-2 rounded-xl bg-gradient-gold text-dark-900 hover:shadow-gold-glow transition-all duration-200 font-cairo text-sm font-bold">
             {t(locale, 'header.register_btn')}
           </Link>
         </div>
@@ -244,12 +245,12 @@ export default function Header() {
         {/* Mobile: Search + Lang + Hamburger */}
         <div className="flex lg:hidden items-center gap-2">
           <button onClick={toggleLang}
-            className="px-2 py-1 rounded-lg border border-white/20 text-[10px] font-medium text-white/70 hover:bg-white/10 transition-all font-cairo"
+            className="px-2 py-1 rounded-lg border border-theme-gold/30 text-[10px] font-medium text-theme-gold/80 hover:bg-theme-gold/10 transition-all font-cairo"
             aria-label={t(locale, 'common.lang_label')}>
             {t(locale, 'common.lang_label')}
           </button>
           <button onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded-lg text-white transition-colors"
+            className="p-2 rounded-lg text-white hover:text-theme-gold transition-colors"
             aria-label={t(locale, 'nav.more')}>
             {mobileOpen ? (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -265,14 +266,15 @@ export default function Header() {
         {mobileOpen && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             className="fixed inset-0 z-40 lg:hidden">
-            <div className="absolute inset-0 bg-black/60" onClick={() => setMobileOpen(false)} />
+            <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={() => setMobileOpen(false)} />
             <motion.div
               initial={{ x: isRtl ? '100%' : '-100%' }}
               animate={{ x: 0 }}
               exit={{ x: isRtl ? '100%' : '-100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className={`absolute top-0 ${isRtl ? 'left-0' : 'right-0'} bottom-0 w-full max-w-sm bg-theme-surface border-${isRtl ? 'l' : 'r'} border-theme-gold/20 overflow-y-auto`}
+              className={`absolute top-0 ${isRtl ? 'left-0' : 'right-0'} bottom-0 w-full max-w-sm bg-theme-surface border-${isRtl ? 'l' : 'r'} border-theme-gold/20 overflow-y-auto shadow-gold-glow`}
             >
+              <div className="h-1 bg-gradient-to-r from-transparent via-theme-gold to-transparent" />
               <div className="p-6">
                 {/* Mobile Header */}
                 <div className={`flex items-center justify-between mb-6 ${isRtl ? '' : 'flex-row-reverse'}`}>
@@ -283,12 +285,12 @@ export default function Header() {
                         <span className="text-lg font-bold text-white">{t(locale, 'header.egypt')}</span>
                         <span className="text-lg font-bold text-theme-gold">{t(locale, 'header.hub')}</span>
                       </div>
-                      <span className={`text-[9px] tracking-[0.2em] text-white/40 ${isRtl ? 'text-right' : 'text-left'} block`}>{t(locale, 'header.subtitle')}</span>
+                      <span className={`text-[9px] tracking-[0.2em] text-theme-gold/50 ${isRtl ? 'text-right' : 'text-left'} block`}>{t(locale, 'header.subtitle')}</span>
                     </div>
                   </div>
                   <motion.button whileTap={{ rotate: 180, scale: 0.9 }}
                     onClick={() => setMobileOpen(false)}
-                    className="p-2 text-white/60 hover:text-white transition-colors"
+                    className="p-2 text-white/60 hover:text-theme-gold transition-colors"
                     aria-label="Close">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
                   </motion.button>
@@ -321,8 +323,8 @@ export default function Header() {
                       <Link href={item.href}
                         className={`block px-4 py-3 rounded-xl font-cairo font-medium transition-all duration-200 ${
                           isActive(item.href)
-                            ? 'text-theme-gold bg-theme-gold/10 border-l-2 border-theme-gold'
-                            : 'text-white/80 hover:text-white hover:bg-white/10'
+                            ? 'text-theme-gold bg-theme-gold/10 border-r-2 border-theme-gold shadow-gold-border'
+                            : 'text-white/80 hover:text-theme-gold hover:bg-theme-gold/5'
                         }`}
                         onClick={() => setMobileOpen(false)}>
                         {item.name}
@@ -339,7 +341,7 @@ export default function Header() {
                   <div className="space-y-1">
                     {aiItems.map((item) => (
                       <Link key={item.href} href={item.href}
-                        className={`block px-4 py-2.5 rounded-xl text-sm text-white/70 hover:text-white hover:bg-white/10 font-cairo transition-colors ${isRtl ? 'text-right' : 'text-left'}`}
+                        className={`block px-4 py-2.5 rounded-xl text-sm text-white/70 hover:text-theme-gold hover:bg-theme-gold/5 font-cairo transition-colors ${isRtl ? 'text-right' : 'text-left'}`}
                         onClick={() => setMobileOpen(false)}>
                         {item.name}
                       </Link>
@@ -355,7 +357,7 @@ export default function Header() {
                   <div className="grid grid-cols-2 gap-2">
                     {items.mobileCats.map((cat) => (
                       <Link key={cat.href} href={cat.href}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl bg-white/5 hover:bg-white/10 transition-colors ${isRtl ? '' : 'flex-row-reverse'}`}
+                        className={`flex items-center gap-3 px-4 py-3 rounded-xl border border-theme-gold/10 bg-white/5 hover:bg-theme-gold/5 hover:border-theme-gold/20 transition-all ${isRtl ? '' : 'flex-row-reverse'}`}
                         onClick={() => setMobileOpen(false)}>
                         <span className="text-lg">{cat.icon}</span>
                         <span className="text-sm text-white/80 font-cairo">{cat.name}</span>
@@ -367,12 +369,12 @@ export default function Header() {
                 {/* Auth Buttons */}
                 <div className="space-y-3">
                   <Link href="/auth/login"
-                    className="block w-full text-center px-5 py-3 rounded-xl border-2 border-theme-gold/30 text-theme-gold font-cairo font-bold transition-colors hover:bg-theme-gold/10"
+                    className="block w-full text-center px-5 py-3 rounded-xl border-2 border-theme-gold/40 text-theme-gold font-cairo font-bold transition-all hover:bg-theme-gold/10"
                     onClick={() => setMobileOpen(false)}>
                     {t(locale, 'header.login_btn')}
                   </Link>
                   <Link href="/auth/register"
-                    className="block w-full text-center px-5 py-3 rounded-xl bg-gradient-gold text-[#0A0E17] font-cairo font-bold"
+                    className="block w-full text-center px-5 py-3 rounded-xl bg-gradient-gold text-dark-900 font-cairo font-bold shadow-gold-glow"
                     onClick={() => setMobileOpen(false)}>
                     {t(locale, 'header.register_btn')}
                   </Link>

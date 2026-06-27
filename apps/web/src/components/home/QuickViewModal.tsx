@@ -45,7 +45,7 @@ export default function QuickViewModal({ experience, onClose }: Props) {
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[520px] w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+            className="bg-theme-surface border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[520px] w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
             onClick={e => e.stopPropagation()}
           >
             <div className="relative h-[240px]">

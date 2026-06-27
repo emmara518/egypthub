@@ -132,7 +132,7 @@ export default function InteractiveMapSection() {
 
       {/* ─── Map Area ─── */}
       <div className="relative" style={{ minHeight: 'clamp(350px, 50vh, 550px)' }}>
-        <div className="relative w-full h-full min-h-[350px] bg-[#0a1020] overflow-hidden"
+        <div className="relative w-full h-full min-h-[350px] bg-theme-bg overflow-hidden"
           style={{ transform: `scale(${zoom})`, transformOrigin: 'center center', transition: 'transform 0.3s ease' }}>
 
           {/* Background Map Image */}
@@ -227,7 +227,7 @@ export default function InteractiveMapSection() {
                 exit={{ opacity: 0, y: 20, scale: 0.95 }}
                 className="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:bottom-4 md:w-[280px] z-30"
               >
-                <div className="bg-[#0F1525]/95 backdrop-blur-xl rounded-2xl border border-theme-gold/20 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.6)]">
+                <div className="bg-theme-surface/95 backdrop-blur-xl rounded-2xl border border-theme-gold/20 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.6)]">
                   {/* Header */}
                   <div className="relative px-4 pt-4 pb-3" style={{ background: `linear-gradient(135deg, ${getTagColor(selected.tag)}15, transparent)` }}>
                     <button onClick={() => setSelectedLocation(null)}
@@ -272,11 +272,11 @@ export default function InteractiveMapSection() {
           {/* Zoom Controls */}
           <div className="absolute bottom-4 right-4 z-20 flex flex-col gap-1.5 lg:flex">
             <button aria-label="Zoom in" onClick={() => setZoom(prev => Math.min(prev + 0.15, 1.8))}
-              className="w-8 h-8 rounded-lg bg-[#0F1525]/80 backdrop-blur-sm border border-theme-gold/10 flex items-center justify-center text-white/50 hover:text-theme-gold transition-all touch-target text-sm">
+              className="w-8 h-8 rounded-lg bg-theme-surface/80 backdrop-blur-sm border border-theme-gold/10 flex items-center justify-center text-white/50 hover:text-theme-gold transition-all touch-target text-sm">
               +
             </button>
             <button aria-label="Zoom out" onClick={() => setZoom(prev => Math.max(prev - 0.15, 0.6))}
-              className="w-8 h-8 rounded-lg bg-[#0F1525]/80 backdrop-blur-sm border border-theme-gold/10 flex items-center justify-center text-white/50 hover:text-theme-gold transition-all touch-target text-sm">
+              className="w-8 h-8 rounded-lg bg-theme-surface/80 backdrop-blur-sm border border-theme-gold/10 flex items-center justify-center text-white/50 hover:text-theme-gold transition-all touch-target text-sm">
               −
             </button>
           </div>
@@ -284,7 +284,7 @@ export default function InteractiveMapSection() {
       </div>
 
       {/* ─── Live Strip ─── */}
-      <div className="bg-[#0F1525]/40 border-t border-theme-gold/[0.06] px-4 py-3">
+      <div className="bg-theme-surface/40 border-t border-theme-gold/[0.06] px-4 py-3">
         <div className="flex gap-4 overflow-x-auto scrollbar-hide">
           {[
             { icon: '🤿', text: 'Ras Mohammed — perfect visibility' },

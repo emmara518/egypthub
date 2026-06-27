@@ -36,15 +36,15 @@ export default function SocialLoginPage() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md"
       >
-        <div className="rounded-2xl border border-[#D4A24C]/20 bg-[#0F1525] p-8">
+        <div className="rounded-2xl border border-theme-gold/20 bg-theme-surface p-8">
           <div className="text-center mb-8">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4A24C]/10 mb-4"
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-theme-gold/10 mb-4"
             >
-              <PyramidIcon className="w-8 h-8 text-[#D4A24C]" />
+              <PyramidIcon className="w-8 h-8 text-theme-gold" />
             </motion.div>
             <h1 className="text-2xl font-bold font-playfair text-white">مرحباً بيك في EgyptHub</h1>
             <p className="text-white/60 mt-1 text-sm font-cairo">سجّل دخولك عشان تكمل رحلتك</p>
@@ -106,8 +106,8 @@ export default function SocialLoginPage() {
                   value={email}
                   onChange={(e) => { setEmail(e.target.value); if (errors.email) setErrors(prev => ({ ...prev, email: '' })); }}
                   placeholder="example@email.com"
-                  className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-4 py-3 outline-none transition-all duration-200 focus:border-[#D4A24C]/40 text-white placeholder-white/40 font-cairo ${
-                    errors.email ? 'border-red-500' : 'border-[#D4A24C]/[0.08]'
+                  className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-4 py-3 outline-none transition-all duration-200 focus:border-theme-gold/40 text-white placeholder-white/40 font-cairo ${
+                    errors.email ? 'border-red-500' : 'border-theme-gold/[0.08]'
                   }`}
                  
                 />
@@ -131,13 +131,13 @@ export default function SocialLoginPage() {
                   value={password}
                   onChange={(e) => { setPassword(e.target.value); if (errors.password) setErrors(prev => ({ ...prev, password: '' })); }}
                   placeholder="••••••••"
-                  className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-10 py-3 outline-none transition-all duration-200 focus:border-[#D4A24C]/40 text-white placeholder-white/40 font-cairo ${
-                    errors.password ? 'border-red-500' : 'border-[#D4A24C]/[0.08]'
+                  className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-10 py-3 outline-none transition-all duration-200 focus:border-theme-gold/40 text-white placeholder-white/40 font-cairo ${
+                    errors.password ? 'border-red-500' : 'border-theme-gold/[0.08]'
                   }`}
                  
                 />
                 <button type="button" onClick={() => setShowPassword(!showPassword)}
-                  className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-[#D4A24C] transition-colors">
+                  className="absolute left-3 top-1/2 -translate-y-1/2 text-white/40 hover:text-theme-gold transition-colors">
                   {showPassword ? (
                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M3.98 8.223A10.477 10.477 0 001.934 12C3.226 16.338 7.244 19.5 12 19.5c.993 0 1.953-.138 2.863-.395M6.228 6.228A10.45 10.45 0 0112 4.5c4.756 0 8.773 3.162 10.065 7.498a10.523 10.523 0 01-4.293 5.774M6.228 6.228L3 3m3.228 3.228l3.65 3.65m7.894 7.894L21 21m-3.228-3.228l-3.65-3.65m0 0a3 3 0 10-4.243-4.243m4.242 4.242L9.88 9.88" />
@@ -159,7 +159,7 @@ export default function SocialLoginPage() {
             </div>
 
             <div className="flex items-center justify-end">
-              <Link href="/auth/forgot-password" className="text-xs text-[#D4A24C] hover:text-[#D4A24C]/80 font-cairo transition-colors">
+              <Link href="/auth/forgot-password" className="text-xs text-theme-gold hover:text-theme-gold/80 font-cairo transition-colors">
                 نسيت كلمة المرور؟
               </Link>
             </div>
@@ -169,7 +169,7 @@ export default function SocialLoginPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               disabled={isSubmitting}
-              className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#E8C97A] text-theme-bg font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+              className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
             >
               {isSubmitting ? (
                 <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
@@ -182,16 +182,16 @@ export default function SocialLoginPage() {
 
           <p className="text-center text-sm text-white/60 mt-6 font-cairo">
             ليس لديك حساب؟{' '}
-            <Link href="/auth/register" className="text-[#D4A24C] font-semibold hover:text-[#D4A24C]/80 transition-colors">
+            <Link href="/auth/register" className="text-theme-gold font-semibold hover:text-theme-gold/80 transition-colors">
               سجّل الآن
             </Link>
           </p>
 
           <p className="text-center text-[10px] text-white/30 mt-4 font-cairo leading-relaxed">
             بتسجيل أنت توافق على{' '}
-            <Link href="/terms" className="text-[#D4A24C]/70 hover:text-[#D4A24C] transition-colors">شروط الخدمة</Link>
+            <Link href="/terms" className="text-theme-gold/70 hover:text-theme-gold transition-colors">شروط الخدمة</Link>
             {' '}و{' '}
-            <Link href="/privacy" className="text-[#D4A24C]/70 hover:text-[#D4A24C] transition-colors">سياسة الخصوصية</Link>
+            <Link href="/privacy" className="text-theme-gold/70 hover:text-theme-gold transition-colors">سياسة الخصوصية</Link>
           </p>
         </div>
       </motion.div>

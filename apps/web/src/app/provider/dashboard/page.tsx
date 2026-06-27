@@ -60,9 +60,9 @@ const menuItems: { id: MenuItem; label: string }[] = [
 ];
 
 const statusColors: Record<string, string> = {
-  CONFIRMED: 'bg-[#10B981]/15 text-[#10B981]',
-  PENDING: 'bg-[#D4A24C]/15 text-theme-gold',
-  CANCELLED: 'bg-[#EF4444]/15 text-[#EF4444]',
+  CONFIRMED: 'bg-success/15 text-success',
+  PENDING: 'bg-theme-gold/15 text-theme-gold',
+  CANCELLED: 'bg-error/15 text-error',
   COMPLETED: 'bg-[#3B82F6]/15 text-[#3B82F6]',
 };
 
@@ -90,7 +90,7 @@ function StatCard({ value, label, icon }: { value: string | number; label: strin
       className="bg-theme-bg rounded-2xl border border-theme-border p-5 hover:border-theme-gold/30 transition-all duration-300"
     >
       <div className="flex items-center justify-between mb-3">
-        <div className="w-10 h-10 rounded-xl bg-[#D4A24C]/10 flex items-center justify-center text-theme-gold">
+        <div className="w-10 h-10 rounded-xl bg-theme-gold/10 flex items-center justify-center text-theme-gold">
           {icon}
         </div>
       </div>
@@ -220,7 +220,7 @@ export default function ProviderDashboardPage() {
                   </div>
                 </div>
                 {profile.isVerified && (
-                  <div className="absolute -bottom-0.5 -left-0.5 w-4 h-4 rounded-full bg-[#10B981] border-2 border-[#0C1120] flex items-center justify-center">
+                  <div className="absolute -bottom-0.5 -left-0.5 w-4 h-4 rounded-full bg-success border-2 border-theme-bg flex items-center justify-center">
                     <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3"><polyline points="20 6 9 17 4 12" /></svg>
                   </div>
                 )}
@@ -253,13 +253,13 @@ export default function ProviderDashboardPage() {
                   onClick={() => setActiveMenu(item.id)}
                   className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm transition-all duration-200 ${
                     isActive
-                      ? 'bg-[#D4A24C]/10 text-theme-gold font-medium border border-theme-gold/20'
-                      : 'text-theme-secondary hover:text-white hover:bg-[#1A2235]'
+                      ? 'bg-theme-gold/10 text-theme-gold font-medium border border-theme-gold/20'
+                      : 'text-theme-secondary hover:text-white hover:bg-theme-elevated'
                   }`}
                 >
                   <span>{item.label}</span>
                   {isActive && (
-                    <motion.div layoutId="activeIndicator" className="mr-auto w-1.5 h-1.5 rounded-full bg-[#D4A24C]" />
+                    <motion.div layoutId="activeIndicator" className="mr-auto w-1.5 h-1.5 rounded-full bg-theme-gold" />
                   )}
                 </motion.button>
               );
@@ -312,7 +312,7 @@ export default function ProviderDashboardPage() {
                 <h2 className="text-lg font-bold">التجارب</h2>
                 <Link
                   href="/provider/experiences/new"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D4A24C] text-dark-900 text-sm font-bold transition-all hover:bg-[#D4A24C]/90"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-theme-gold text-dark-900 text-sm font-bold transition-all hover:bg-theme-gold/90"
                 >
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
                   إضافة تجربة جديدة
@@ -327,7 +327,7 @@ export default function ProviderDashboardPage() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.05 }}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-all"
                     >
                       <div className="w-16 h-16 rounded-xl overflow-hidden shrink-0 bg-gradient-to-br from-theme-gold/10 to-[#0F1420]">
                         {exp.images?.[0] ? (
@@ -348,15 +348,15 @@ export default function ProviderDashboardPage() {
                           disabled={togglingId === exp.id}
                           className={`px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all ${
                             exp.isActive
-                              ? 'bg-[#10B981]/15 text-[#10B981] hover:bg-[#10B981]/25'
-                              : 'bg-[#EF4444]/15 text-[#EF4444] hover:bg-[#EF4444]/25'
+                              ? 'bg-success/15 text-success hover:bg-success/25'
+                              : 'bg-error/15 text-error hover:bg-error/25'
                           }`}
                         >
                           {togglingId === exp.id ? '...' : exp.isActive ? 'نشط' : 'غير نشط'}
                         </button>
                         <Link
                           href={`/provider/experiences/${exp.id}/edit`}
-                          className="px-3 py-1.5 rounded-lg bg-[#D4A24C]/10 text-theme-gold text-[10px] font-bold hover:bg-[#D4A24C]/20 transition-all"
+                          className="px-3 py-1.5 rounded-lg bg-theme-gold/10 text-theme-gold text-[10px] font-bold hover:bg-theme-gold/20 transition-all"
                         >
                           تعديل
                         </Link>
@@ -367,7 +367,7 @@ export default function ProviderDashboardPage() {
               ) : (
                 <div className="text-center py-12 rounded-2xl border border-theme-border bg-theme-bg">
                   <p className="text-theme-secondary text-sm font-cairo mb-4">لا توجد تجارب بعد</p>
-                  <Link href="/provider/experiences/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-[#D4A24C] text-dark-900 text-sm font-bold transition-all hover:bg-[#D4A24C]/90">
+                  <Link href="/provider/experiences/new" className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-theme-gold text-dark-900 text-sm font-bold transition-all hover:bg-theme-gold/90">
                     إضافة تجربة جديدة
                   </Link>
                 </div>
@@ -385,7 +385,7 @@ export default function ProviderDashboardPage() {
                       initial={{ opacity: 0, x: 20 }}
                       animate={{ opacity: 1, x: 0 }}
                       transition={{ delay: i * 0.04 }}
-                      className="flex items-center gap-4 p-4 rounded-xl bg-[#0F1420] border border-theme-border hover:border-theme-gold/20 transition-all"
+                      className="flex items-center gap-4 p-4 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-all"
                     >
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-bold truncate">{booking.experience?.titleAr || booking.bookingReference}</p>
@@ -395,7 +395,7 @@ export default function ProviderDashboardPage() {
                       </div>
                       <div className="text-left">
                         <p className="text-sm font-bold font-english text-theme-gold">{booking.totalPriceEgp.toLocaleString()} ج.م</p>
-                        <span className={`inline-block px-2.5 py-1 rounded-lg text-[10px] font-bold mt-1 ${statusColors[booking.status] || 'bg-[#5A6478]/15 text-theme-muted'}`}>
+                        <span className={`inline-block px-2.5 py-1 rounded-lg text-[10px] font-bold mt-1 ${statusColors[booking.status] || 'bg-theme-muted/15 text-theme-muted'}`}>
                           {statusLabels[booking.status] || booking.status}
                         </span>
                       </div>
@@ -425,7 +425,7 @@ export default function ProviderDashboardPage() {
                 className={`flex flex-col items-center gap-1 px-3 py-2 rounded-xl transition-all ${isActive ? 'text-theme-gold' : 'text-theme-muted'}`}
               >
                 <span className="text-[9px]">{item.label}</span>
-                {isActive && <motion.div layoutId="mobileIndicator" className="w-1 h-1 rounded-full bg-[#D4A24C]" />}
+                {isActive && <motion.div layoutId="mobileIndicator" className="w-1 h-1 rounded-full bg-theme-gold" />}
               </motion.button>
             );
           })}

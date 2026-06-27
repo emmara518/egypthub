@@ -42,7 +42,7 @@ export default function SessionRecovery() {
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
         className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-md"
       >
-        <div className="mx-4 rounded-2xl bg-[#141B2D] border border-theme-gold/20 shadow-elevation-lg overflow-hidden">
+        <div className="mx-4 rounded-2xl bg-theme-card border border-theme-gold/20 shadow-elevation-lg overflow-hidden">
           <div className="p-4">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
@@ -87,7 +87,7 @@ export default function SessionRecovery() {
               </button>
               <button
                 onClick={dismissAll}
-                className="flex-1 py-2 rounded-xl bg-gradient-gold text-[#0A0E17] text-sm font-bold font-cairo hover:brightness-110 transition-all"
+                className="flex-1 py-2 rounded-xl bg-gradient-gold text-dark-900 text-sm font-bold font-cairo hover:brightness-110 transition-all"
               >
                 {incompleteDrafts.length > 1 ? 'تجاهل الكل' : 'تجاهل'}
               </button>

@@ -65,12 +65,12 @@ export default function Screen4_TravelerPortal() {
   ];
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic">
+    <div className="min-h-screen bg-theme-bg text-white font-arabic">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Sidebar ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0">
           <div className="sticky top-8 space-y-4">
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-5">
               <span className="text-[10px] font-english text-theme-gold font-bold block mb-2">المرحلة 5</span>
               <h1 className="text-xl font-bold mb-1">منصة المستخدم</h1>
               <p className="text-theme-gold text-sm font-english font-semibold mb-3">Traveler Portal</p>
@@ -82,17 +82,17 @@ export default function Screen4_TravelerPortal() {
                   <span className="text-2xl">🧭</span>
                 </div>
               </div>
-              <p className="text-[#8B95A5] text-xs leading-relaxed text-center">
+              <p className="text-theme-secondary text-xs leading-relaxed text-center">
                 بوابة شخصية متكاملة — نظم كل رحلاتك وحجوزاتك واستكشافاتك في مكان واحد.
               </p>
             </div>
 
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-4">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-4">
               <div className="space-y-0.5">
                 {sidebarLinks.map(link => (
                   <button key={link.id} onClick={() => setActiveTab(link.id)}
                     className={`w-full text-right px-3 py-2 rounded-lg text-sm transition-all ${
-                      activeTab === link.id ? 'bg-theme-gold/10 text-theme-gold font-medium' : 'text-[#8B95A5] hover:text-white hover:bg-[#1A2235]'
+                      activeTab === link.id ? 'bg-theme-gold/10 text-theme-gold font-medium' : 'text-theme-secondary hover:text-white hover:bg-theme-elevated'
                     }`}>
                     {link.label}
                   </button>
@@ -107,7 +107,7 @@ export default function Screen4_TravelerPortal() {
 
           {/* 01 - Profile */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">01</span>
               <h3 className="font-bold text-sm">الملف الشخصي</h3>
@@ -115,21 +115,21 @@ export default function Screen4_TravelerPortal() {
             <div className="text-center">
               <div className="relative w-20 h-20 mx-auto mb-3">
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-theme-gold to-accent-orange p-[2px]">
-                  <div className="w-full h-full rounded-full bg-[#1A2235] flex items-center justify-center">
+                  <div className="w-full h-full rounded-full bg-theme-elevated flex items-center justify-center">
                     <HiUser className="text-3xl text-theme-gold" />
                   </div>
                 </div>
                 <button className="absolute -bottom-1 -left-1 w-7 h-7 rounded-full bg-theme-gold flex items-center justify-center">
-                  <HiPencil className="text-[#0A0E17] text-xs" />
+                  <HiPencil className="text-dark-900 text-xs" />
                 </button>
               </div>
               <h4 className="font-bold text-lg">أحمد محمد</h4>
-              <p className="text-[10px] text-[#5A6478] mb-4">مستكشف مصري</p>
+              <p className="text-[10px] text-theme-muted mb-4">مستكشف مصري</p>
               <div className="grid grid-cols-3 gap-2">
                 {[{ val: '24', label: 'رحلة' }, { val: '14', label: 'تقييم' }, { val: '8', label: 'مفضلة' }].map(s => (
-                  <div key={s.label} className="bg-[#0F1420] rounded-xl p-2.5 text-center">
+                  <div key={s.label} className="bg-theme-surface rounded-xl p-2.5 text-center">
                     <p className="text-lg font-bold text-theme-gold font-english">{s.val}</p>
-                    <p className="text-[9px] text-[#5A6478]">{s.label}</p>
+                    <p className="text-[9px] text-theme-muted">{s.label}</p>
                   </div>
                 ))}
               </div>
@@ -138,20 +138,20 @@ export default function Screen4_TravelerPortal() {
 
           {/* 02 - Reservations */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">02</span>
               <h3 className="font-bold text-sm">الحجوزات</h3>
             </div>
             <div className="space-y-2">
               {reservations.map((r, i) => (
-                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-theme-gold/20 transition-colors cursor-pointer">
+                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-colors cursor-pointer">
                     <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
                       <Image src={r.img} alt={r.title} fill className="object-cover" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <p className="text-xs font-bold truncate">{r.title}</p>
-                    <p className="text-[10px] text-[#5A6478] flex items-center gap-1">
+                    <p className="text-[10px] text-theme-muted flex items-center gap-1">
                       <HiCalendar className="text-[9px]" />{r.date}
                     </p>
                   </div>
@@ -163,7 +163,7 @@ export default function Screen4_TravelerPortal() {
 
           {/* 03 - Favorites */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">03</span>
               <h3 className="font-bold text-sm">المفضلة</h3>
@@ -174,7 +174,7 @@ export default function Screen4_TravelerPortal() {
                   <div className="aspect-[4/3] relative">
                     <Image src={f.img} alt={f.title} fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                   </div>
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17]/90 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/90 to-transparent" />
                   <div className="absolute bottom-2 right-2">
                     <p className="text-[10px] font-bold">{f.title}</p>
                   </div>
@@ -188,18 +188,18 @@ export default function Screen4_TravelerPortal() {
 
           {/* 04 - Notifications */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">04</span>
               <h3 className="font-bold text-sm">الإشعارات</h3>
             </div>
             <div className="space-y-2">
               {notifications.map((n, i) => (
-                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D]">
+                <div key={i} className="flex items-start gap-3 p-3 rounded-xl bg-theme-surface border border-theme-border">
                   <div className={`w-2 h-2 rounded-full mt-1.5 shrink-0 ${n.type === 'success' ? 'bg-green-400' : n.type === 'offer' ? 'bg-theme-gold' : 'bg-blue-400'}`} />
                   <div>
                     <p className="text-xs">{n.text}</p>
-                    <p className="text-[9px] text-[#5A6478] mt-1">{n.time}</p>
+                    <p className="text-[9px] text-theme-muted mt-1">{n.time}</p>
                   </div>
                 </div>
               ))}
@@ -208,51 +208,51 @@ export default function Screen4_TravelerPortal() {
 
           {/* 05 - Wishlist / Upcoming Trip */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="bg-[#141B2D] rounded-2xl border border-theme-gold/25 p-5 xl:col-span-1">
+            className="bg-theme-card rounded-2xl border border-theme-gold/25 p-5 xl:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">05</span>
               <h3 className="font-bold text-sm">رحلات القائمة</h3>
             </div>
             <div className="relative rounded-xl overflow-hidden mb-4">
               <Image src="/images/activities/desert-safari.svg" alt="رحلة سفاري" fill className="object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-theme-bg to-transparent" />
               <div className="absolute bottom-3 right-3">
                 <p className="text-sm font-bold">رحلة سفاري في الصحراء</p>
               </div>
             </div>
             <div className="grid grid-cols-3 gap-2 mb-4">
               {[{ val: '02', label: 'يوم' }, { val: '14', label: 'ساعة' }, { val: '45', label: 'دقيقة' }].map(t => (
-                <div key={t.label} className="bg-[#0F1420] rounded-xl p-3 text-center border border-theme-gold/15">
+                <div key={t.label} className="bg-theme-surface rounded-xl p-3 text-center border border-theme-gold/15">
                   <p className="text-xl font-bold text-theme-gold font-english">{t.val}</p>
-                  <p className="text-[9px] text-[#5A6478]">{t.label}</p>
+                  <p className="text-[9px] text-theme-muted">{t.label}</p>
                 </div>
               ))}
             </div>
             <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-              className="w-full py-2.5 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-[#0A0E17] font-bold text-sm">
+              className="w-full py-2.5 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-dark-900 font-bold text-sm">
               تسجيل الحضور
             </motion.button>
           </motion.div>
 
           {/* 06 - Reviews */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">06</span>
               <h3 className="font-bold text-sm">المراجعات والتقييمات</h3>
             </div>
             <div className="space-y-3">
               {[{ title: 'رحلة سفاري رائعة', stars: 5, text: 'تجربة لا تنسى في صحراء مصر' }, { title: 'معبد الأقصر مذهل', stars: 4, text: 'جولة تاريخية ممتعة جداً' }].map((r, i) => (
-                <div key={i} className="p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D]">
+                <div key={i} className="p-3 rounded-xl bg-theme-surface border border-theme-border">
                   <div className="flex items-center justify-between mb-2">
                     <p className="text-xs font-bold">{r.title}</p>
                     <div className="flex gap-0.5">
                       {Array.from({ length: 5 }).map((_, s) => (
-                        <HiStar key={s} className={`text-xs ${s < r.stars ? 'text-theme-gold' : 'text-[#1A2235]'}`} />
+                        <HiStar key={s} className={`text-xs ${s < r.stars ? 'text-theme-gold' : 'text-theme-elevated'}`} />
                       ))}
                     </div>
                   </div>
-                  <p className="text-[10px] text-[#8B95A5]">{r.text}</p>
+                  <p className="text-[10px] text-theme-secondary">{r.text}</p>
                 </div>
               ))}
             </div>
@@ -260,21 +260,21 @@ export default function Screen4_TravelerPortal() {
 
           {/* 07 - Wallet */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">07</span>
               <h3 className="font-bold text-sm">المحفظة والأداءات</h3>
             </div>
             <div className="bg-gradient-to-l from-theme-gold/10 to-accent-orange/5 rounded-xl p-4 border border-theme-gold/15 mb-4">
-              <p className="text-[10px] text-[#8B95A5] mb-1">الرصيد الحالي</p>
+              <p className="text-[10px] text-theme-secondary mb-1">الرصيد الحالي</p>
               <p className="text-2xl font-bold text-theme-gold font-english">ج.م 2,750.00</p>
             </div>
             <div className="space-y-2">
               {transactions.map((t, i) => (
-                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-[#0F1420]">
+                <div key={i} className="flex items-center justify-between p-2.5 rounded-lg bg-theme-surface">
                   <div>
                     <p className="text-xs">{t.title}</p>
-                    <p className="text-[9px] text-[#5A6478]">{t.date}</p>
+                    <p className="text-[9px] text-theme-muted">{t.date}</p>
                   </div>
                   <span className={`text-sm font-bold font-english ${t.amount.startsWith('+') ? 'text-green-400' : 'text-red-400'}`}>{t.amount}</span>
                 </div>
@@ -284,19 +284,19 @@ export default function Screen4_TravelerPortal() {
 
           {/* 08 - Linked Accounts */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">08</span>
               <h3 className="font-bold text-sm">ربط الحسابات</h3>
             </div>
             <div className="space-y-2">
               {socialAccounts.map((acc, i) => (
-                <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D]">
+                <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-theme-surface border border-theme-border">
                   <div className="flex items-center gap-3">
                     <acc.icon className="text-lg" style={{ color: acc.color }} />
                     <span className="text-xs font-english">{acc.name}</span>
                   </div>
-                  <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold ${acc.connected ? 'bg-green-500/15 text-green-400' : 'bg-[#1A2235] text-[#5A6478]'}`}>
+                  <span className={`px-2 py-0.5 rounded-md text-[9px] font-bold ${acc.connected ? 'bg-green-500/15 text-green-400' : 'bg-theme-elevated text-theme-muted'}`}>
                     {acc.connected ? 'متصل' : 'ربط'}
                   </span>
                 </div>
@@ -306,7 +306,7 @@ export default function Screen4_TravelerPortal() {
 
           {/* 09 - Badges */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">09</span>
               <h3 className="font-bold text-sm">الإنجازات والجوائز</h3>
@@ -317,13 +317,13 @@ export default function Screen4_TravelerPortal() {
                 <HiStar className="text-3xl text-theme-gold" />
               </motion.div>
               <h4 className="font-bold text-theme-gold">مستكشف مصر</h4>
-              <p className="text-[10px] text-[#5A6478]">المستوى الذهبي</p>
+              <p className="text-[10px] text-theme-muted">المستوى الذهبي</p>
             </div>
             <div className="grid grid-cols-3 gap-2">
               {[{ icon: HiBadgeCheck, label: '10 رحلات' }, { icon: HiShieldCheck, label: 'مسافر VIP' }, { icon: HiGift, label: '5 مكافآت' }].map((b, i) => (
-                <div key={i} className="bg-[#0F1420] rounded-xl p-2.5 text-center">
+                <div key={i} className="bg-theme-surface rounded-xl p-2.5 text-center">
                   <b.icon className="text-xl text-theme-gold mx-auto mb-1" />
-                  <p className="text-[9px] text-[#8B95A5]">{b.label}</p>
+                  <p className="text-[9px] text-theme-secondary">{b.label}</p>
                 </div>
               ))}
             </div>
@@ -331,7 +331,7 @@ export default function Screen4_TravelerPortal() {
 
           {/* 10 - Community Photos */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">10</span>
               <h3 className="font-bold text-sm">صور بين المستخدمين</h3>
@@ -346,19 +346,19 @@ export default function Screen4_TravelerPortal() {
             <div className="flex items-center justify-center gap-4 text-center">
               <div>
                 <p className="text-sm font-bold text-theme-gold font-english">500+</p>
-                <p className="text-[9px] text-[#5A6478]">صورة</p>
+                <p className="text-[9px] text-theme-muted">صورة</p>
               </div>
-              <div className="w-px h-6 bg-[#1E2A3D]" />
+              <div className="w-px h-6 bg-theme-border" />
               <div>
                 <p className="text-sm font-bold text-theme-gold font-english">15K+</p>
-                <p className="text-[9px] text-[#5A6478]">إعجاب</p>
+                <p className="text-[9px] text-theme-muted">إعجاب</p>
               </div>
             </div>
           </motion.div>
 
           {/* 11 - Partners */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">11</span>
               <h3 className="font-bold text-sm">الشركاء المميزين</h3>
@@ -366,10 +366,10 @@ export default function Screen4_TravelerPortal() {
             <div className="flex items-center justify-around">
               {partners.map((p, i) => (
                 <motion.div key={i} whileHover={{ scale: 1.1 }} className="text-center cursor-pointer">
-                  <div className="w-14 h-14 rounded-xl bg-[#0F1420] border border-[#1E2A3D] flex items-center justify-center mb-1">
+                  <div className="w-14 h-14 rounded-xl bg-theme-surface border border-theme-border flex items-center justify-center mb-1">
                     <span className="text-lg font-english font-bold text-theme-gold">{p.initial}</span>
                   </div>
-                  <p className="text-[9px] text-[#8B95A5]">{p.name}</p>
+                  <p className="text-[9px] text-theme-secondary">{p.name}</p>
                 </motion.div>
               ))}
             </div>
@@ -377,7 +377,7 @@ export default function Screen4_TravelerPortal() {
 
           {/* 12 - Offers */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">12</span>
               <h3 className="font-bold text-sm">العروض والخصومات</h3>
@@ -385,7 +385,7 @@ export default function Screen4_TravelerPortal() {
             <div className="space-y-3">
               <div className="relative rounded-xl overflow-hidden group cursor-pointer">
                 <Image src="/images/destinations/luxor.svg" alt="عرض" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-theme-bg to-transparent" />
                 <div className="absolute top-2 right-2 px-2 py-1 rounded-lg bg-red-500 text-[10px] font-bold">20%</div>
                 <div className="absolute bottom-2 right-2">
                   <p className="text-xs font-bold">عروض الصيف</p>
@@ -393,7 +393,7 @@ export default function Screen4_TravelerPortal() {
               </div>
               <div className="relative rounded-xl overflow-hidden group cursor-pointer">
                 <Image src="/images/activities/desert-safari.svg" alt="عرض" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-theme-bg to-transparent" />
                 <div className="absolute bottom-2 right-2">
                   <p className="text-xs font-bold">عروض الشتاء</p>
                 </div>
@@ -403,23 +403,23 @@ export default function Screen4_TravelerPortal() {
 
           {/* Footer - spans full width */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-            className="xl:col-span-3 lg:col-span-2 bg-[#0F1420] rounded-2xl border border-[#1E2A3D] p-6">
+            className="xl:col-span-3 lg:col-span-2 bg-theme-surface rounded-2xl border border-theme-border p-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-theme-gold to-accent-orange flex items-center justify-center">
-                  <span className="text-[#0A0E17] font-bold text-lg">م</span>
+                  <span className="text-dark-900 font-bold text-lg">م</span>
                 </div>
                 <div>
                   <p className="font-bold font-english">EGYPTHUB</p>
-                  <p className="text-[10px] text-[#5A6478]">منصة السياحة المصرية</p>
+                  <p className="text-[10px] text-theme-muted">منصة السياحة المصرية</p>
                 </div>
               </div>
               <div className="flex gap-4">
                 {['الرئيسية', 'الوجهات', 'التجارب', 'المجتمع', 'الدعم'].map(l => (
-                  <span key={l} className="text-xs text-[#8B95A5] hover:text-theme-gold cursor-pointer transition-colors">{l}</span>
+                  <span key={l} className="text-xs text-theme-secondary hover:text-theme-gold cursor-pointer transition-colors">{l}</span>
                 ))}
               </div>
-              <p className="text-[10px] text-[#5A6478]">© 2025 EgyptHub</p>
+              <p className="text-[10px] text-theme-muted">© 2025 EgyptHub</p>
             </div>
           </motion.div>
         </div>

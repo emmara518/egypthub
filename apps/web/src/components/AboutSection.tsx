@@ -89,7 +89,7 @@ export default function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <a href="#about-more" className="inline-flex items-center gap-2 bg-theme-gold hover:bg-theme-gold/80 text-[#0A0E17] px-8 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+              <a href="#about-more" className="inline-flex items-center gap-2 bg-theme-gold hover:bg-theme-gold/80 text-dark-900 px-8 py-3 rounded-xl font-bold transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
                 اعرف أكتر
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
               </a>

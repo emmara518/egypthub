@@ -49,7 +49,7 @@ export default function AIMapSection() {
             <p className="text-theme-secondary font-cairo mb-8 max-w-md mx-auto">
               أخبرنا باهتماماتك وسيبني ذكاؤنا الاصطناعي رحلة مخصصة لك في جميع أنحاء مصر.
             </p>
-            <button className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-[#0A0E17] font-bold transition-all duration-200 font-cairo">
+            <button className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold transition-all duration-200 font-cairo">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z" />
               </svg>

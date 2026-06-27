@@ -41,15 +41,15 @@ export default function ForgotPasswordPage() {
         animate={{ opacity: 1, y: 0 }}
         className="w-full max-w-md"
       >
-        <div className="rounded-2xl border border-[#D4A24C]/20 bg-[#0F1525] p-8">
+        <div className="rounded-2xl border border-theme-gold/20 bg-theme-surface p-8">
           <div className="text-center mb-8">
             <motion.div
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ duration: 0.4, delay: 0.2 }}
-              className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#D4A24C]/10 mb-4"
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-theme-gold/10 mb-4"
             >
-              <PyramidIcon className="w-8 h-8 text-[#D4A24C]" />
+              <PyramidIcon className="w-8 h-8 text-theme-gold" />
             </motion.div>
             <h1 className="text-2xl font-bold font-playfair text-white">نسيت كلمة المرور؟</h1>
             <p className="text-white/60 mt-1 text-sm font-cairo">
@@ -69,23 +69,23 @@ export default function ForgotPasswordPage() {
               <motion.div
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ duration: 2, repeat: Infinity }}
-                className="w-20 h-20 mx-auto rounded-full bg-[#D4A24C]/15 flex items-center justify-center"
+                className="w-20 h-20 mx-auto rounded-full bg-theme-gold/15 flex items-center justify-center"
               >
-                <svg className="w-10 h-10 text-[#D4A24C]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
+                <svg className="w-10 h-10 text-theme-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                 </svg>
               </motion.div>
 
-              <div className="bg-white/[0.04] rounded-xl p-4 border border-[#D4A24C]/[0.08]">
+              <div className="bg-white/[0.04] rounded-xl p-4 border border-theme-gold/[0.08]">
                 <p className="text-sm text-white/60 font-cairo">
                   تم إرسال رمز إعادة تعيين كلمة المرور إلى{' '}
-                  <span className="text-[#D4A24C] font-medium">{email}</span>
+                  <span className="text-theme-gold font-medium">{email}</span>
                 </p>
               </div>
 
               <Link
                 href="/auth/social-login"
-                className="inline-flex items-center gap-2 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors font-cairo text-sm"
+                className="inline-flex items-center gap-2 text-theme-gold hover:text-theme-gold/80 transition-colors font-cairo text-sm"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -106,8 +106,8 @@ export default function ForgotPasswordPage() {
                     value={email}
                     onChange={(e) => { setEmail(e.target.value); if (error) setError(''); }}
                     placeholder="example@email.com"
-                    className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-4 py-3 outline-none transition-all duration-200 focus:border-[#D4A24C]/40 text-white placeholder-white/40 font-cairo ${
-                      error ? 'border-red-500' : 'border-[#D4A24C]/[0.08]'
+                    className={`w-full bg-white/[0.04] border rounded-xl pr-10 pl-4 py-3 outline-none transition-all duration-200 focus:border-theme-gold/40 text-white placeholder-white/40 font-cairo ${
+                      error ? 'border-red-500' : 'border-theme-gold/[0.08]'
                     }`}
                    
                   />
@@ -123,7 +123,7 @@ export default function ForgotPasswordPage() {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 disabled={isSubmitting}
-                className="w-full py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#E8C97A] text-theme-bg font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
+                className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg font-bold text-sm font-cairo transition-all flex items-center justify-center gap-2 disabled:opacity-70"
               >
                 {isSubmitting ? (
                   <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
@@ -142,7 +142,7 @@ export default function ForgotPasswordPage() {
 
           {!isSent && (
             <p className="text-center text-sm text-white/60 mt-6 font-cairo">
-              <Link href="/auth/social-login" className="inline-flex items-center gap-2 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors font-semibold">
+              <Link href="/auth/social-login" className="inline-flex items-center gap-2 text-theme-gold hover:text-theme-gold/80 transition-colors font-semibold">
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
                 </svg>

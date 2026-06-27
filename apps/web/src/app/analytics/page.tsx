@@ -46,7 +46,7 @@ export default function AnalyticsPage() {
     }));
   }, [funnelEvents]);
 
-  const cardClass = "bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5";
+  const cardClass = "bg-theme-card border border-theme-gold/20 rounded-2xl p-5 shadow-gold-border";
 
   return (
     <div className="min-h-screen bg-theme-bg pb-12 px-4">

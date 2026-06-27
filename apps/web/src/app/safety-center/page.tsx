@@ -52,7 +52,7 @@ export default function SafetyCenterPage() {
     }
   };
 
-  const cardClass = "bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5";
+  const cardClass = "bg-theme-surface border border-theme-gold/20 rounded-2xl p-5";
 
   return (
     <div className="min-h-screen bg-theme-bg pb-12 px-4">
@@ -69,7 +69,7 @@ export default function SafetyCenterPage() {
               href={`tel:${e.number}`}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="bg-[#0F1525] border border-red-500/20 rounded-2xl p-4 text-center hover:border-red-500/40 transition-colors"
+              className="bg-theme-surface border border-red-500/20 rounded-2xl p-4 text-center hover:border-red-500/40 transition-colors"
             >
               <svg className="mx-auto mb-2" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={e.icon} /></svg>
               <p className="text-sm text-white font-cairo">{e.name}</p>

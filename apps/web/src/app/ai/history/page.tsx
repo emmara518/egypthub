@@ -38,7 +38,7 @@ export default function AIHistoryPage() {
           {([{ key: 'trips', label: 'الرحلات' }, { key: 'plans', label: 'الخطط المحفوظة' }] as const).map((tab) => (
             <button key={tab.key} onClick={() => setActiveTab(tab.key)}
               className={`px-5 py-2.5 rounded-xl text-sm font-bold font-cairo transition-all ${
-                activeTab === tab.key ? 'bg-theme-gold text-dark-900' : 'bg-theme-surface border border-theme-border text-theme-secondary hover:text-theme'
+                activeTab === tab.key ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-surface border border-theme-gold/10 text-theme-secondary hover:text-theme'
               }`}>
               {tab.label}
             </button>
@@ -49,7 +49,7 @@ export default function AIHistoryPage() {
           <div className="space-y-3">
             {trips.map((trip, i) => (
               <motion.div key={trip.title} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                className="rounded-2xl border border-theme-border bg-theme-card p-4 hover:border-theme-gold/20 transition-all">
+                className="rounded-2xl border border-theme-gold/10 bg-theme-card p-4 hover:border-theme-gold/20 hover:shadow-gold-border transition-all">
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="font-bold text-sm text-theme font-cairo">{trip.title}</h3>
@@ -67,7 +67,7 @@ export default function AIHistoryPage() {
                   <Link href="/ai/chat" className="px-4 py-1.5 rounded-lg bg-theme-gold/10 text-theme-gold border border-theme-gold/20 text-[10px] font-bold font-cairo hover:bg-theme-gold/20 transition-all">
                     استئناف المحادثة
                   </Link>
-                  <button className="px-4 py-1.5 rounded-lg bg-theme-surface border border-theme-border text-theme-muted text-[10px] font-cairo hover:text-red-400 transition-all">
+                  <button className="px-4 py-1.5 rounded-lg bg-theme-surface border border-theme-gold/10 text-theme-muted text-[10px] font-cairo hover:text-red-400 transition-all">
                     حذف
                   </button>
                 </div>
@@ -86,7 +86,7 @@ export default function AIHistoryPage() {
           <div className="space-y-3">
             {savedPlans.map((plan, i) => (
               <motion.div key={plan.title} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-                className="rounded-2xl border border-theme-border bg-theme-card p-4 hover:border-theme-gold/20 transition-all">
+                className="rounded-2xl border border-theme-gold/10 bg-theme-card p-4 hover:border-theme-gold/20 hover:shadow-gold-border transition-all">
                 <div className="flex items-start justify-between">
                   <div>
                     <h3 className="font-bold text-sm text-theme font-cairo">{plan.title}</h3>
@@ -98,7 +98,7 @@ export default function AIHistoryPage() {
                   <Link href="/ai/planner" className="px-4 py-1.5 rounded-lg bg-theme-gold/10 text-theme-gold border border-theme-gold/20 text-[10px] font-bold font-cairo hover:bg-theme-gold/20 transition-all">
                     تعديل الخطة
                   </Link>
-                  <Link href="/ai/chat" className="px-4 py-1.5 rounded-lg bg-theme-surface border border-theme-border text-theme-muted text-[10px] font-cairo hover:text-theme transition-all">
+                  <Link href="/ai/chat" className="px-4 py-1.5 rounded-lg bg-theme-surface border border-theme-gold/10 text-theme-muted text-[10px] font-cairo hover:text-theme transition-all">
                     اسأل زينب
                   </Link>
                 </div>

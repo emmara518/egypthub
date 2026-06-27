@@ -55,7 +55,7 @@ export default function ReviewsSection() {
         <div className="hidden md:grid md:grid-cols-4 md:gap-4">
           {reviews.map((review, i) => (
             <motion.div key={review.name} initial={{ opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
-              className="bg-[#0F1525]/50 rounded-xl border border-theme-gold/[0.08] hover:border-theme-gold/25 p-4 md:p-5 hover:shadow-[0_0_30px_rgba(212,162,76,0.12)] transition-all duration-500 glass-card neon-gold"
+              className="bg-theme-surface/50 rounded-xl border border-theme-gold/[0.08] hover:border-theme-gold/25 p-4 md:p-5 hover:shadow-[0_0_30px_rgba(212,162,76,0.12)] transition-all duration-500 glass-card neon-gold"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-full overflow-hidden relative shrink-0">
@@ -80,7 +80,7 @@ export default function ReviewsSection() {
         <div aria-live="polite" className="md:hidden relative">
           <AnimatePresence mode="wait">
             <motion.div key={activeIdx} initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -30 }} transition={{ duration: 0.3 }}
-              className="bg-[#0F1525]/50 rounded-xl border border-theme-gold/[0.08] p-4 glass-card neon-gold"
+              className="bg-theme-surface/50 rounded-xl border border-theme-gold/[0.08] p-4 glass-card neon-gold"
             >
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-9 h-9 rounded-full overflow-hidden relative shrink-0">

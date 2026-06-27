@@ -115,7 +115,7 @@ const partners = [
 
 function StarIcon({ filled }: { filled: boolean }) {
   return (
-    <svg className={`w-3 h-3 ${filled ? 'text-[#D4A24C]' : 'text-[#1E2A3D]'}`} fill="currentColor" viewBox="0 0 20 20">
+    <svg className={`w-3 h-3 ${filled ? 'text-theme-gold' : 'text-theme-border'}`} fill="currentColor" viewBox="0 0 20 20">
       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
     </svg>
   );
@@ -129,14 +129,14 @@ export default function PartnersShowcasePage() {
   return (
     <div className="min-h-screen bg-theme-bg">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
-        <Link href="/" className="inline-flex items-center gap-1 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm font-cairo mb-6">
+        <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <svg className="w-4 h-4 rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
           العودة للرئيسية
         </Link>
 
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-white font-playfair">شركاؤنا</h1>
-          <p className="text-[#5A6478] font-cairo mt-1">شركاؤنا المميزون لتجربة سياحية لا تُنسى</p>
+          <p className="text-theme-muted font-cairo mt-1">شركاؤنا المميزون لتجربة سياحية لا تُنسى</p>
         </div>
 
         <div className="flex gap-2 mb-8 overflow-x-auto pb-2">
@@ -144,8 +144,8 @@ export default function PartnersShowcasePage() {
             <button key={cat.id} onClick={() => setActiveCategory(cat.id)}
               className={`flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-cairo whitespace-nowrap transition-all ${
                 activeCategory === cat.id
-                  ? 'bg-[#D4A24C]/10 text-[#D4A24C] border border-[#D4A24C]/20 font-medium'
-                  : 'bg-[#141B2D] text-[#8B95A5] border border-[#1E2A3D] hover:text-white hover:border-[#D4A24C]/10'
+                  ? 'bg-theme-gold/10 text-theme-gold border border-theme-gold/20 font-medium'
+                  : 'bg-theme-card text-theme-secondary border border-theme-border hover:text-white hover:border-theme-gold/10'
               }`}>
               {cat.id !== 'all' && categoryIcons[cat.id]}
               {cat.label}
@@ -157,11 +157,11 @@ export default function PartnersShowcasePage() {
           {filtered.map((partner, idx) => (
             <motion.div key={partner.id} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-              className="rounded-2xl border border-[#D4A24C]/10 bg-[#141B2D] overflow-hidden hover:border-[#D4A24C]/25 transition-all group">
+              className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden hover:border-theme-gold/25 transition-all group">
               <div className="relative h-40 overflow-hidden">
                 <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                   style={{ backgroundImage: `url(${partner.logo})` }} />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#141B2D] to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-theme-card to-transparent" />
                 <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold font-cairo backdrop-blur-sm ${
                   partner.category === 'hotel' ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30' :
                   partner.category === 'restaurant' ? 'bg-orange-500/20 text-orange-400 border border-orange-500/30' :
@@ -171,16 +171,16 @@ export default function PartnersShowcasePage() {
                 </span>
               </div>
               <div className="p-5">
-                <h3 className="text-lg font-bold text-white font-cairo mb-1 group-hover:text-[#D4A24C] transition-colors">{partner.name}</h3>
-                <p className="text-xs text-[#5A6478] font-cairo mb-3">{partner.desc}</p>
+                <h3 className="text-lg font-bold text-white font-cairo mb-1 group-hover:text-theme-gold transition-colors">{partner.name}</h3>
+                <p className="text-xs text-theme-muted font-cairo mb-3">{partner.desc}</p>
 
                 <div className="flex items-center gap-1 mb-3">
                   {[1, 2, 3, 4, 5].map(s => <StarIcon key={s} filled={s <= Math.floor(partner.rating)} />)}
                   <span className="text-xs text-white font-english mr-1">{partner.rating}</span>
                 </div>
 
-                <div className="flex items-center gap-1 text-xs text-[#8B95A5] font-cairo">
-                  <svg className="w-3.5 h-3.5 text-[#D4A24C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="flex items-center gap-1 text-xs text-theme-secondary font-cairo">
+                  <svg className="w-3.5 h-3.5 text-theme-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
@@ -198,10 +198,10 @@ export default function PartnersShowcasePage() {
         )}
 
         <div className="mt-16 text-center">
-          <div className="rounded-2xl border border-[#D4A24C]/10 bg-[#141B2D] p-8 max-w-2xl mx-auto">
+          <div className="rounded-2xl border border-theme-gold/10 bg-theme-card p-8 max-w-2xl mx-auto">
             <h2 className="text-xl font-bold text-white font-playfair mb-2">هل تريد الشراكة معنا؟</h2>
-            <p className="text-sm text-[#5A6478] font-cairo mb-4">انضم إلى شبكة شركائنا واعرض خدماتك لآلاف المسافرين</p>
-            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
+            <p className="text-sm text-theme-muted font-cairo mb-4">انضم إلى شبكة شركائنا واعرض خدماتك لآلاف المسافرين</p>
+            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
               تواصل معنا
             </button>
           </div>

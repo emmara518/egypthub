@@ -113,7 +113,7 @@ export default function AIVoicePage() {
               <motion.div key={i} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
                 className={`rounded-2xl px-4 py-3 ${
                   i % 2 === 0
-                    ? 'bg-theme-card border border-theme-border mr-12'
+                    ? 'bg-theme-card border border-theme-gold/10 mr-12'
                     : 'bg-theme-gold/10 border border-theme-gold/20 ml-12'
                 }`}>
                 <div className="flex items-center gap-2 mb-1">

@@ -60,12 +60,12 @@ export default function Screen3_AIConcierge() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic">
+    <div className="min-h-screen bg-theme-bg text-white font-arabic">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Left Panel - Intro ─── */}
         <motion.aside initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} className="w-64 shrink-0">
           <div className="sticky top-8 space-y-4">
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-5">
               <span className="text-[10px] font-english text-theme-gold font-bold block mb-2">المرحلة 4</span>
               <h1 className="text-2xl font-bold mb-1">AI Concierge</h1>
               <p className="text-theme-gold text-lg font-bold mb-3">(زينب)</p>
@@ -78,17 +78,17 @@ export default function Screen3_AIConcierge() {
                   </div>
                 </div>
                 <motion.div animate={{ scale: [1, 1.15, 1] }} transition={{ duration: 2, repeat: Infinity }} className="absolute -bottom-1 -right-1 w-8 h-8 rounded-full bg-theme-gold flex items-center justify-center">
-                  <HiChat className="text-[#0A0E17] text-sm" />
+                  <HiChat className="text-dark-900 text-sm" />
                 </motion.div>
               </div>
 
-              <p className="text-[#8B95A5] text-xs leading-relaxed text-center mb-4">
+              <p className="text-theme-secondary text-xs leading-relaxed text-center mb-4">
                 تجربة الذكاء الاصطناعي الشخصية المتكاملة — مساعدتك الذكية في رحلتك في مصر
               </p>
 
               <div className="space-y-2">
                 {['محادثة ذكية', 'مخططة رحلات', 'توصيات مخصصة', 'اقتراحات فورية', 'مساعد صوتي'].map((f, i) => (
-                  <div key={i} className="flex items-center gap-2 text-xs text-[#8B95A5]">
+                  <div key={i} className="flex items-center gap-2 text-xs text-theme-secondary">
                     <div className="w-1.5 h-1.5 rounded-full bg-theme-gold" />
                     {f}
                   </div>
@@ -103,8 +103,8 @@ export default function Screen3_AIConcierge() {
 
           {/* 01 - Smart Chat */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.05 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] overflow-hidden flex flex-col xl:row-span-2">
-            <div className="p-4 border-b border-[#1E2A3D] flex items-center gap-3">
+            className="bg-theme-card rounded-2xl border border-theme-border overflow-hidden flex flex-col xl:row-span-2">
+            <div className="p-4 border-b border-theme-border flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-gradient-to-br from-theme-gold to-accent-orange overflow-hidden relative">
                 <Image src="/images/destinations/cairo.svg" alt="زينب" fill className="object-cover" />
               </div>
@@ -121,10 +121,10 @@ export default function Screen3_AIConcierge() {
                   <div className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${
                     msg.sender === 'zainab'
                       ? 'bg-theme-gold/10 border border-theme-gold/20 rounded-tl-sm'
-                      : 'bg-[#1A2235] rounded-tr-sm'
+                      : 'bg-theme-elevated rounded-tr-sm'
                   }`}>
                     <p className="text-xs leading-relaxed">{msg.text}</p>
-                    <p className="text-[9px] text-[#5A6478] mt-1 text-left font-english">{msg.time}</p>
+                    <p className="text-[9px] text-theme-muted mt-1 text-left font-english">{msg.time}</p>
                   </div>
                 </motion.div>
               ))}
@@ -143,14 +143,14 @@ export default function Screen3_AIConcierge() {
               </AnimatePresence>
             </div>
 
-            <div className="p-3 border-t border-[#1E2A3D]">
+            <div className="p-3 border-t border-theme-border">
               <div className="flex gap-2">
                 <input value={chatInput} onChange={e => setChatInput(e.target.value)}
                   placeholder="اكتب رسالتك..."
-                  className="flex-1 bg-[#0F1420] rounded-xl px-4 py-2.5 text-sm border border-[#1E2A3D] focus:border-theme-gold/40 outline-none transition-colors placeholder:text-[#5A6478]" />
+                  className="flex-1 bg-theme-surface rounded-xl px-4 py-2.5 text-sm border border-theme-border focus:border-theme-gold/40 outline-none transition-colors placeholder:text-theme-muted" />
                 <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}
                   className="w-10 h-10 rounded-xl bg-gradient-to-br from-theme-gold to-accent-orange flex items-center justify-center">
-                  <HiPaperAirplane className="text-[#0A0E17] rotate-180" />
+                  <HiPaperAirplane className="text-dark-900 rotate-180" />
                 </motion.button>
               </div>
             </div>
@@ -158,40 +158,40 @@ export default function Screen3_AIConcierge() {
 
           {/* 02 - Planner */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">02</span>
               <h3 className="font-bold text-sm">مخطط الرحلة (Planner)</h3>
             </div>
             <div className="space-y-3">
-              <div className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D]">
-                <p className="text-[10px] text-[#5A6478] mb-1">الوجهة</p>
+              <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+                <p className="text-[10px] text-theme-muted mb-1">الوجهة</p>
                 <div className="flex items-center gap-2">
                   <HiLocationMarker className="text-theme-gold" />
                   <span className="text-sm">الأقصر — أسوان</span>
                 </div>
               </div>
               <div className="grid grid-cols-2 gap-3">
-                <div className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D]">
-                  <p className="text-[10px] text-[#5A6478] mb-1">تاريخ البداية</p>
+                <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+                  <p className="text-[10px] text-theme-muted mb-1">تاريخ البداية</p>
                   <div className="flex items-center gap-1">
                     <HiCalendar className="text-theme-gold text-sm" />
                     <span className="text-xs font-english">15 يناير</span>
                   </div>
                 </div>
-                <div className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D]">
-                  <p className="text-[10px] text-[#5A6478] mb-1">المدة</p>
+                <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+                  <p className="text-[10px] text-theme-muted mb-1">المدة</p>
                   <div className="flex items-center gap-1">
                     <HiClock className="text-theme-gold text-sm" />
                     <span className="text-xs">5 أيام</span>
                   </div>
                 </div>
               </div>
-              <div className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D]">
-                <p className="text-[10px] text-[#5A6478] mb-1">نوع الرحلة</p>
+              <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
+                <p className="text-[10px] text-theme-muted mb-1">نوع الرحلة</p>
                 <div className="flex gap-2">
                   {['ثقافية', 'مغامرة', 'استرخاء'].map((t, i) => (
-                    <span key={t} className={`px-3 py-1 rounded-lg text-[10px] font-bold ${i === 0 ? 'bg-theme-gold/15 text-theme-gold border border-theme-gold/25' : 'bg-[#1A2235] text-[#5A6478]'}`}>{t}</span>
+                    <span key={t} className={`px-3 py-1 rounded-lg text-[10px] font-bold ${i === 0 ? 'bg-theme-gold/15 text-theme-gold border border-theme-gold/25' : 'bg-theme-elevated text-theme-muted'}`}>{t}</span>
                   ))}
                 </div>
               </div>
@@ -200,14 +200,14 @@ export default function Screen3_AIConcierge() {
 
           {/* 03 - Itinerary */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">03</span>
               <h3 className="font-bold text-sm">تفاصيل المخطط (Itinerary)</h3>
             </div>
             <div className="space-y-3">
               {itinerary.map((day, i) => (
-                <motion.div key={i} whileHover={{ x: -3 }} className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D] hover:border-theme-gold/20 transition-colors cursor-pointer">
+                <motion.div key={i} whileHover={{ x: -3 }} className="bg-theme-surface rounded-xl p-3 border border-theme-border hover:border-theme-gold/20 transition-colors cursor-pointer">
                   <div className="flex gap-3">
                     <div className="w-14 h-14 rounded-lg overflow-hidden shrink-0 relative">
                       <Image src={day.img} alt={day.day} fill className="object-cover" />
@@ -215,10 +215,10 @@ export default function Screen3_AIConcierge() {
                     <div className="flex-1 min-w-0">
                       <p className="text-xs font-bold text-theme-gold mb-1">{day.day}</p>
                       {day.items.slice(0, 2).map((item, j) => (
-                        <p key={j} className="text-[10px] text-[#8B95A5]">• {item}</p>
+                        <p key={j} className="text-[10px] text-theme-secondary">• {item}</p>
                       ))}
                       {day.items.length > 2 && (
-                        <p className="text-[10px] text-[#5A6478]">+{day.items.length - 2} أنشطة أخرى</p>
+                        <p className="text-[10px] text-theme-muted">+{day.items.length - 2} أنشطة أخرى</p>
                       )}
                     </div>
                   </div>
@@ -229,24 +229,24 @@ export default function Screen3_AIConcierge() {
 
           {/* 04 - Recommendations */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">04</span>
               <h3 className="font-bold text-sm">التوصيات الذكية</h3>
             </div>
             <div className="space-y-2">
               {recommendations.map((rec, i) => (
-                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2 rounded-xl hover:bg-[#0F1420] transition-colors cursor-pointer">
+                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2 rounded-xl hover:bg-theme-surface transition-colors cursor-pointer">
                   <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
                     <Image src={rec.img} alt={rec.title} fill className="object-cover" />
                   </div>
                   <div className="flex-1">
                     <p className="text-xs font-bold">{rec.title}</p>
-                    <p className="text-[10px] text-[#5A6478]">{rec.cat}</p>
+                    <p className="text-[10px] text-theme-muted">{rec.cat}</p>
                   </div>
                   <div className="flex items-center gap-1">
                     <HiStar className="text-theme-gold text-xs" />
-                    <span className="text-[10px] text-[#8B95A5] font-english">{rec.rating}</span>
+                    <span className="text-[10px] text-theme-secondary font-english">{rec.rating}</span>
                   </div>
                 </motion.div>
               ))}
@@ -255,18 +255,18 @@ export default function Screen3_AIConcierge() {
 
           {/* 05 - Smart Search */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">05</span>
               <h3 className="font-bold text-sm">البحث الذكي</h3>
             </div>
             <div className="relative mb-4">
-              <HiSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-[#5A6478]" />
-              <input placeholder="ابحث عن أماكن، تجارب..." className="w-full bg-[#0F1420] rounded-xl pr-10 pl-4 py-2.5 text-sm border border-[#1E2A3D] focus:border-theme-gold/40 outline-none placeholder:text-[#5A6478]" />
+              <HiSearch className="absolute right-3 top-1/2 -translate-y-1/2 text-theme-muted" />
+              <input placeholder="ابحث عن أماكن، تجارب..." className="w-full bg-theme-surface rounded-xl pr-10 pl-4 py-2.5 text-sm border border-theme-border focus:border-theme-gold/40 outline-none placeholder:text-theme-muted" />
             </div>
             <div className="space-y-2">
               {[{ title: 'أفضل مطاعم القاهرة', img: '/images/destinations/cairo.svg' }, { title: 'رحلات البحر الأحمر', img: '/images/activities/diving.svg' }].map((r, i) => (
-                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-[#0F1420] border border-[#1E2A3D] cursor-pointer hover:border-theme-gold/20 transition-colors">
+                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center gap-3 p-2.5 rounded-xl bg-theme-surface border border-theme-border cursor-pointer hover:border-theme-gold/20 transition-colors">
                   <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 relative">
                     <Image src={r.img} alt={r.title} fill className="object-cover" />
                   </div>
@@ -278,7 +278,7 @@ export default function Screen3_AIConcierge() {
 
           {/* 06 - Smart Actions */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">06</span>
               <h3 className="font-bold text-sm">الإجراءات السريعة (Smart Actions)</h3>
@@ -286,9 +286,9 @@ export default function Screen3_AIConcierge() {
             <div className="grid grid-cols-3 gap-2">
               {smartActions.map((a, i) => (
                 <motion.button key={i} whileHover={{ scale: 1.05, y: -2 }} whileTap={{ scale: 0.95 }}
-                  className="flex flex-col items-center gap-2 p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-theme-gold/30 transition-all">
+                  className="flex flex-col items-center gap-2 p-3 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/30 transition-all">
                   <a.icon className="text-xl text-theme-gold" />
-                  <span className="text-[10px] text-[#8B95A5]">{a.label}</span>
+                  <span className="text-[10px] text-theme-secondary">{a.label}</span>
                 </motion.button>
               ))}
             </div>
@@ -296,7 +296,7 @@ export default function Screen3_AIConcierge() {
 
           {/* 07 - Voice Assistant */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5 flex flex-col items-center justify-center min-h-[280px]">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5 flex flex-col items-center justify-center min-h-[280px]">
             <div className="flex items-center gap-2 self-start mb-6">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">07</span>
               <h3 className="font-bold text-sm">المساعد الصوتي</h3>
@@ -317,22 +317,22 @@ export default function Screen3_AIConcierge() {
                 className={`w-24 h-24 rounded-full flex items-center justify-center transition-all duration-500 ${
                   isListening
                     ? 'bg-gradient-to-br from-theme-gold to-accent-orange shadow-[0_0_40px_rgba(212,162,76,0.4)]'
-                    : 'bg-[#1A2235] border-2 border-theme-gold/30 hover:border-theme-gold/60'
+                    : 'bg-theme-elevated border-2 border-theme-gold/30 hover:border-theme-gold/60'
                 }`}
               >
-                <HiMicrophone className={`text-3xl ${isListening ? 'text-[#0A0E17]' : 'text-theme-gold'}`} />
+                <HiMicrophone className={`text-3xl ${isListening ? 'text-dark-900' : 'text-theme-gold'}`} />
               </motion.button>
             </div>
             <motion.p animate={isListening ? { opacity: [1, 0.5, 1] } : { opacity: 1 }}
               transition={{ duration: 1.5, repeat: isListening ? Infinity : 0 }}
-              className="mt-6 text-sm text-[#8B95A5]">
+              className="mt-6 text-sm text-theme-secondary">
               {isListening ? 'أنا أسمعك...' : 'اضغط للتحدث'}
             </motion.p>
           </motion.div>
 
           {/* 08 - Instant Suggestions */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">08</span>
               <h3 className="font-bold text-sm">اقتراحات فورية</h3>
@@ -340,9 +340,9 @@ export default function Screen3_AIConcierge() {
             <div className="space-y-2">
               {['أفضل وقت لزيارة الأهرامات؟', 'مطاعم قريبة من الفندق', 'أسعار الدخول للمعابد', 'نصائح السفر في الشتاء'].map((s, i) => (
                 <motion.button key={i} whileHover={{ x: -3 }}
-                  className="w-full text-right p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D] text-xs text-[#8B95A5] hover:text-theme-gold hover:border-theme-gold/20 transition-all flex items-center justify-between">
+                  className="w-full text-right p-3 rounded-xl bg-theme-surface border border-theme-border text-xs text-theme-secondary hover:text-theme-gold hover:border-theme-gold/20 transition-all flex items-center justify-between">
                   <span>{s}</span>
-                  <HiChevronLeft className="text-[#5A6478]" />
+                  <HiChevronLeft className="text-theme-muted" />
                 </motion.button>
               ))}
             </div>
@@ -350,22 +350,22 @@ export default function Screen3_AIConcierge() {
 
           {/* 09 - Chat History */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.45 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">09</span>
               <h3 className="font-bold text-sm">سجل المحادثات</h3>
             </div>
             <div className="space-y-2">
               {chatHistory.map((ch, i) => (
-                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center justify-between p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D] hover:border-theme-gold/20 transition-colors cursor-pointer">
+                <motion.div key={i} whileHover={{ x: -3 }} className="flex items-center justify-between p-3 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-colors cursor-pointer">
                   <div className="flex items-center gap-3">
                     <HiChat className="text-theme-gold" />
                     <div>
                       <p className="text-xs font-medium">{ch.title}</p>
-                      <p className="text-[10px] text-[#5A6478]">{ch.date} • {ch.msgs} رسالة</p>
+                      <p className="text-[10px] text-theme-muted">{ch.date} • {ch.msgs} رسالة</p>
                     </div>
                   </div>
-                  <HiTrash className="text-[#5A6478] hover:text-red-400 transition-colors" />
+                  <HiTrash className="text-theme-muted hover:text-red-400 transition-colors" />
                 </motion.div>
               ))}
               <button className="w-full py-2.5 text-center text-[10px] text-theme-gold bg-theme-gold/5 rounded-xl hover:bg-theme-gold/10 transition-colors">
@@ -376,7 +376,7 @@ export default function Screen3_AIConcierge() {
 
           {/* 10 - Zainab Profile */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">10</span>
               <h3 className="font-bold text-sm">الملف الشخصي لزينب</h3>
@@ -390,17 +390,17 @@ export default function Screen3_AIConcierge() {
                 </div>
               </div>
               <h4 className="font-bold text-lg text-theme-gold">زينب</h4>
-              <p className="text-[10px] text-[#5A6478] mb-4">مساعدتك الذكية</p>
+              <p className="text-[10px] text-theme-muted mb-4">مساعدتك الذكية</p>
               <div className="grid grid-cols-3 gap-2 mb-4">
                 {[{ val: '500K+', label: 'محادثة' }, { val: '4.5', label: 'تقييم' }, { val: '24/7', label: 'متاحة' }].map(s => (
-                  <div key={s.label} className="bg-[#0F1420] rounded-xl p-2.5">
+                  <div key={s.label} className="bg-theme-surface rounded-xl p-2.5">
                     <p className="text-sm font-bold text-theme-gold font-english">{s.val}</p>
-                    <p className="text-[9px] text-[#5A6478]">{s.label}</p>
+                    <p className="text-[9px] text-theme-muted">{s.label}</p>
                   </div>
                 ))}
               </div>
               <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                className="w-full py-2.5 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-[#0A0E17] font-bold text-sm">
+                className="w-full py-2.5 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-dark-900 font-bold text-sm">
                 حفظ على الأمان
               </motion.button>
             </div>
@@ -408,19 +408,19 @@ export default function Screen3_AIConcierge() {
 
           {/* 11 - Notifications */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.55 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">11</span>
               <h3 className="font-bold text-sm">إشعارات وتنبيهات</h3>
             </div>
             <div className="space-y-2">
               {['إشعارات مخصصة', 'تحديثات الرحلة', 'عروض جديدة', 'تنبيهات الطقس'].map((n, i) => (
-                <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-[#0F1420] border border-[#1E2A3D]">
+                <div key={i} className="flex items-center justify-between p-3 rounded-xl bg-theme-surface border border-theme-border">
                   <div className="flex items-center gap-2">
                     <HiBell className="text-theme-gold text-sm" />
                     <span className="text-xs">{n}</span>
                   </div>
-                  <div className={`w-8 h-4 rounded-full relative cursor-pointer transition-colors ${i < 2 ? 'bg-theme-gold' : 'bg-[#1A2235]'}`}>
+                  <div className={`w-8 h-4 rounded-full relative cursor-pointer transition-colors ${i < 2 ? 'bg-theme-gold' : 'bg-theme-elevated'}`}>
                     <div className={`absolute top-0.5 w-3 h-3 rounded-full bg-white shadow-sm transition-all ${i < 2 ? 'right-0.5' : 'left-0.5'}`} />
                   </div>
                 </div>
@@ -430,13 +430,13 @@ export default function Screen3_AIConcierge() {
 
           {/* 12 - Rating */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-            className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            className="bg-theme-card rounded-2xl border border-theme-border p-5">
             <div className="flex items-center gap-2 mb-4">
               <span className="text-[10px] font-english text-theme-gold font-bold px-2 py-0.5 rounded-md bg-theme-gold/10">12</span>
               <h3 className="font-bold text-sm">تقييم تجربة زينب</h3>
             </div>
             <div className="text-center">
-              <p className="text-sm text-[#8B95A5] mb-4">كيف كانت تجربتك مع زينب؟</p>
+              <p className="text-sm text-theme-secondary mb-4">كيف كانت تجربتك مع زينب؟</p>
               <div className="flex items-center justify-center gap-2 mb-6">
                 {[1, 2, 3, 4, 5].map(star => (
                   <motion.button key={star} whileHover={{ scale: 1.2 }} whileTap={{ scale: 0.9 }}
@@ -444,7 +444,7 @@ export default function Screen3_AIConcierge() {
                     onMouseLeave={() => setHoverRating(0)}
                     onClick={() => setRating(star)}>
                     <HiStar className={`text-3xl transition-colors ${
-                      star <= (hoverRating || rating) ? 'text-theme-gold' : 'text-[#1A2235]'
+                      star <= (hoverRating || rating) ? 'text-theme-gold' : 'text-theme-elevated'
                     }`} />
                   </motion.button>
                 ))}
@@ -452,9 +452,9 @@ export default function Screen3_AIConcierge() {
               {rating > 0 && (
                 <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
                   <textarea placeholder="اكتب تعليقك..." rows={3}
-                    className="w-full bg-[#0F1420] rounded-xl px-4 py-3 text-sm border border-[#1E2A3D] focus:border-theme-gold/40 outline-none resize-none placeholder:text-[#5A6478] mb-3" />
+                    className="w-full bg-theme-surface rounded-xl px-4 py-3 text-sm border border-theme-border focus:border-theme-gold/40 outline-none resize-none placeholder:text-theme-muted mb-3" />
                   <motion.button whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.97 }}
-                    className="w-full py-2.5 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-[#0A0E17] font-bold text-sm">
+                    className="w-full py-2.5 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-dark-900 font-bold text-sm">
                     إرسال التقييم
                   </motion.button>
                 </motion.div>

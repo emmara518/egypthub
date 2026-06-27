@@ -79,16 +79,16 @@ export default function AboutEgyptPage() {
         <div className="absolute inset-0 bg-theme-bg/30" />
         <div className="relative h-full flex items-center justify-center text-center px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="text-[#D4A24C] text-sm font-cairo font-bold tracking-wider mb-4 block">مصر — أم الدنيا</span>
+            <span className="text-theme-gold text-sm font-cairo font-bold tracking-wider mb-4 block">مصر — أم الدنيا</span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-playfair mb-4 leading-tight">
               اكتشف سحر<br />
-              <span className="text-[#D4A24C]">أقدم حضارة في العالم</span>
+              <span className="text-theme-gold">أقدم حضارة في العالم</span>
             </h1>
             <p className="text-lg text-white/70 font-cairo max-w-2xl mx-auto mb-8">
               من أهرامات الجيزة إلى شواطئ البحر الأحمر، مصر تقدم تجربة سياحية لا تُنسى
             </p>
             <Link href="/experiences"
-              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/30 transition-all">
+              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/30 transition-all">
               ابدأ رحلتك
             </Link>
           </motion.div>
@@ -100,9 +100,9 @@ export default function AboutEgyptPage() {
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">
           {stats.map((stat, idx) => (
-            <div key={stat.label} className="text-center p-6 rounded-2xl border border-[#D4A24C]/10 bg-[#141B2D]">
-              <span className="text-3xl font-bold text-[#D4A24C] font-english block mb-1">{stat.val}</span>
-              <span className="text-sm text-[#8B95A5] font-cairo">{stat.label}</span>
+            <div key={stat.label} className="text-center p-6 rounded-2xl border border-theme-gold/10 bg-theme-card">
+              <span className="text-3xl font-bold text-theme-gold font-english block mb-1">{stat.val}</span>
+              <span className="text-sm text-theme-secondary font-cairo">{stat.label}</span>
             </div>
           ))}
         </motion.div>
@@ -122,15 +122,15 @@ export default function AboutEgyptPage() {
               </div>
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-[#D4A24C]/10 border border-[#D4A24C]/20 flex items-center justify-center text-[#D4A24C]">
+                  <div className="w-12 h-12 rounded-xl bg-theme-gold/10 border border-theme-gold/20 flex items-center justify-center text-theme-gold">
                     {section.icon}
                   </div>
                   <h2 className="text-2xl font-bold text-white font-playfair">{section.title}</h2>
                 </div>
-                <p className="text-sm text-[#8B95A5] font-cairo leading-relaxed mb-6">{section.desc}</p>
+                <p className="text-sm text-theme-secondary font-cairo leading-relaxed mb-6">{section.desc}</p>
                 <div className="flex flex-wrap gap-2">
                   {section.highlights.map(h => (
-                    <span key={h} className="px-3 py-1.5 rounded-full bg-[#D4A24C]/10 text-[#D4A24C] text-xs font-cairo border border-[#D4A24C]/20">
+                    <span key={h} className="px-3 py-1.5 rounded-full bg-theme-gold/10 text-theme-gold text-xs font-cairo border border-theme-gold/20">
                       {h}
                     </span>
                   ))}
@@ -147,15 +147,15 @@ export default function AboutEgyptPage() {
             {relatedExperiences.map((exp, idx) => (
               <motion.div key={exp.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ delay: idx * 0.05 }}
-                className="rounded-2xl border border-[#D4A24C]/10 bg-[#141B2D] overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
+                className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                 <div className="relative h-40 overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
                     style={{ backgroundImage: `url(${exp.image})` }} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#141B2D] to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-theme-card to-transparent" />
                 </div>
                 <div className="p-4">
-                  <h3 className="font-bold text-white text-sm font-cairo mb-1 group-hover:text-[#D4A24C] transition-colors">{exp.name}</h3>
-                  <span className="text-sm font-bold text-[#D4A24C] font-english">{exp.price}</span>
+                  <h3 className="font-bold text-white text-sm font-cairo mb-1 group-hover:text-theme-gold transition-colors">{exp.name}</h3>
+                  <span className="text-sm font-bold text-theme-gold font-english">{exp.price}</span>
                 </div>
               </motion.div>
             ))}
@@ -164,16 +164,16 @@ export default function AboutEgyptPage() {
 
         {/* CTA */}
         <div className="mt-16 text-center">
-          <div className="rounded-2xl border border-[#D4A24C]/20 bg-gradient-to-l from-[#D4A24C]/5 to-[#C89A3D]/5 p-8">
+          <div className="rounded-2xl border border-theme-gold/20 bg-gradient-to-l from-theme-gold/5 to-theme-gold/5 p-8">
             <h2 className="text-xl font-bold text-white font-playfair mb-2">جاهز لاكتشاف مصر؟</h2>
-            <p className="text-sm text-[#5A6478] font-cairo mb-6">ابدأ رحلتك مع EgyptHub واكتشف أجمل الوجهات</p>
+            <p className="text-sm text-theme-muted font-cairo mb-6">ابدأ رحلتك مع EgyptHub واكتشف أجمل الوجهات</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/experiences"
-                className="px-6 py-3 rounded-xl bg-gradient-to-l from-[#D4A24C] to-[#C89A3D] text-theme-bg text-sm font-cairo font-bold">
+                className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold">
                 استكشف التجارب
               </Link>
               <Link href="/booking-history"
-                className="px-6 py-3 rounded-xl border border-[#D4A24C]/30 text-[#D4A24C] text-sm font-cairo font-bold hover:bg-[#D4A24C]/5 transition-all">
+                className="px-6 py-3 rounded-xl border border-theme-gold/30 text-theme-gold text-sm font-cairo font-bold hover:bg-theme-gold/5 transition-all">
                 سجل الحجوزات
               </Link>
             </div>

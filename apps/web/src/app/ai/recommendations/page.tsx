@@ -43,7 +43,7 @@ export default function AIRecommendationsPage() {
           {categories.map((cat) => (
             <button key={cat} onClick={() => setActiveCat(cat)}
               className={`px-4 py-2 rounded-full text-xs font-bold font-cairo whitespace-nowrap transition-all ${
-                activeCat === cat ? 'bg-theme-gold text-dark-900' : 'bg-theme-card border border-theme-border text-theme-secondary hover:border-theme-gold/20'
+                activeCat === cat ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-card border border-theme-gold/10 text-theme-secondary hover:border-theme-gold/20'
               }`}>
               {cat}
             </button>
@@ -53,7 +53,7 @@ export default function AIRecommendationsPage() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filtered.map((item, i) => (
             <motion.div key={item.title} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-              className="rounded-2xl border border-theme-border bg-theme-card overflow-hidden group hover:border-theme-gold/20 transition-all">
+              className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden group hover:border-theme-gold/20 hover:shadow-gold-border transition-all">
               <div className="relative h-40 bg-theme-surface flex items-center justify-center">
                 <span className="text-5xl opacity-20">{item.title[0]}</span>
                 <button onClick={() => toggleFav(item.title)}

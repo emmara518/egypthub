@@ -296,7 +296,7 @@ export default function TravelDnaPage() {
           <button
             onClick={nextStep}
             disabled={!canProceed()}
-            className="px-8 py-3 rounded-xl bg-gradient-gold text-[#0A0E17] font-bold font-cairo disabled:opacity-40 hover:brightness-110 transition-all"
+            className="px-8 py-3 rounded-xl bg-gradient-gold text-dark-900 font-bold font-cairo disabled:opacity-40 hover:brightness-110 transition-all"
           >
             {isLastStep ? 'عرض نتيجتي' : 'التالي'}
           </button>

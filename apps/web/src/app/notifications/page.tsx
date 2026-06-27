@@ -41,7 +41,7 @@ function getNotificationIcon(message: string) {
   }
   if (message.includes('عرض') || message.includes('خصم') || message.includes('العيد')) {
     return (
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
         <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
       </svg>
     );
@@ -55,7 +55,7 @@ function getNotificationIcon(message: string) {
     );
   }
   return (
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2">
       <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
       <path d="M13.73 21a2 2 0 01-3.46 0" />
     </svg>
@@ -64,7 +64,7 @@ function getNotificationIcon(message: string) {
 
 function EmptyStateIcon() {
   return (
-    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1" className="mx-auto mb-4 opacity-30">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1" className="mx-auto mb-4 opacity-30">
       <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" />
       <path d="M13.73 21a2 2 0 01-3.46 0" />
       <line x1="1" y1="1" x2="23" y2="23" />
@@ -96,7 +96,7 @@ export default function NotificationsPage() {
     <div className="min-h-screen bg-theme-bg">
       <div className="max-w-3xl mx-auto px-4 lg:px-6 py-8">
         {/* Back Link */}
-        <Link href="/" className="inline-flex items-center gap-1.5 text-[#D4A24C] hover:text-[#D4A24C]/80 transition-colors text-sm mb-6">
+        <Link href="/" className="inline-flex items-center gap-1.5 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm mb-6">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <polyline points="9 18 15 12 9 6" />
           </svg>
@@ -114,7 +114,7 @@ export default function NotificationsPage() {
           {unreadCount > 0 && (
             <button
               onClick={markAllRead}
-              className="px-4 py-2 rounded-xl border border-[#D4A24C]/20 text-[#D4A24C] text-sm hover:bg-[#D4A24C]/10 transition-all flex items-center gap-2"
+              className="px-4 py-2 rounded-xl border border-theme-gold/20 text-theme-gold text-sm hover:bg-theme-gold/10 transition-all flex items-center gap-2"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <polyline points="20 6 9 17 4 12" />
@@ -132,8 +132,8 @@ export default function NotificationsPage() {
               onClick={() => setFilter(f)}
               className={`px-4 py-2 rounded-xl text-sm transition-all ${
                 filter === f
-                  ? 'bg-[#D4A24C]/10 text-[#D4A24C] border border-[#D4A24C]/20'
-                  : 'text-white/60 hover:text-white bg-[#0F1525] border border-white/[0.08]'
+                  ? 'bg-theme-gold/10 text-theme-gold border border-theme-gold/20'
+                  : 'text-white/60 hover:text-white bg-theme-surface border border-white/[0.08]'
               }`}
             >
               {f === 'all' ? 'الكل' : 'غير مقروء'}
@@ -177,9 +177,9 @@ export default function NotificationsPage() {
                           onClick={() => markRead(n.id)}
                           className={`p-4 rounded-xl border cursor-pointer transition-all ${
                             n.read
-                              ? 'border-white/[0.05] bg-[#0F1525]/50'
-                              : 'border-[#D4A24C]/15 bg-[#D4A24C]/[0.03]'
-                          } hover:border-[#D4A24C]/30`}
+                              ? 'border-white/[0.05] bg-theme-surface/50'
+                              : 'border-theme-gold/15 bg-theme-gold/[0.03]'
+                          } hover:border-theme-gold/30`}
                         >
                           <div className="flex items-start gap-3">
                             <div className="w-10 h-10 rounded-xl bg-theme-bg border border-white/[0.05] flex items-center justify-center shrink-0">
@@ -197,7 +197,7 @@ export default function NotificationsPage() {
                               <div className="shrink-0 mt-2">
                                 <button
                                   onClick={(e) => { e.stopPropagation(); markRead(n.id); }}
-                                  className="w-7 h-7 rounded-full bg-[#D4A24C]/10 flex items-center justify-center text-[#D4A24C] hover:bg-[#D4A24C]/20 transition-all"
+                                  className="w-7 h-7 rounded-full bg-theme-gold/10 flex items-center justify-center text-theme-gold hover:bg-theme-gold/20 transition-all"
                                 >
                                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                     <polyline points="20 6 9 17 4 12" />

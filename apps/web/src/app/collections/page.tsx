@@ -60,7 +60,7 @@ export default function CollectionsPage() {
           <button
             onClick={createCollection}
             disabled={!newName.trim()}
-            className="px-5 py-3 rounded-xl bg-gradient-gold text-[#0A0E17] font-bold font-cairo text-sm disabled:opacity-40 hover:brightness-110 transition-all flex items-center gap-2"
+            className="px-5 py-3 rounded-xl bg-gradient-gold text-dark-900 font-bold font-cairo text-sm disabled:opacity-40 hover:brightness-110 transition-all flex items-center gap-2"
           >
             <Plus size={16} />
             إضافة
@@ -124,7 +124,7 @@ export default function CollectionsPage() {
                         <div className="flex gap-2 mt-2">
                           <button
                             onClick={() => saveNote(name)}
-                            className="px-3 py-1.5 rounded-lg bg-gradient-gold text-[#0A0E17] text-xs font-bold font-cairo"
+                            className="px-3 py-1.5 rounded-lg bg-gradient-gold text-dark-900 text-xs font-bold font-cairo"
                           >
                             حفظ
                           </button>

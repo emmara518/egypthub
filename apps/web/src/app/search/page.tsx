@@ -168,12 +168,12 @@ function SearchContent() {
                           className="group block rounded-2xl overflow-hidden border border-white/[0.06] bg-theme-surface transition-all hover:-translate-y-1 hover:border-theme-gold/20">
                           <div className="p-3">
                             <div className="flex items-center gap-1 mb-1">
-                              <svg width="10" height="10" viewBox="0 0 24 24" fill="#D4A24C"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+                              <svg width="10" height="10" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
                               <span className="text-theme-gold text-xs font-bold font-english">{exp.averageRating}</span>
                             </div>
                             <h3 className="font-bold text-sm text-white font-cairo group-hover:text-theme-gold transition-colors">{exp.titleAr}</h3>
                             <p className="text-white/30 text-[10px] font-cairo mt-1 flex items-center gap-1">
-                              <svg width="8" height="8" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                              <svg width="8" height="8" viewBox="0 0 24 24" fill="var(--gold)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                               {exp.locationCity}
                             </p>
                             <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/[0.06]">
@@ -190,7 +190,7 @@ function SearchContent() {
               {filteredProviders.length > 0 && (
                 <div>
                   <div className="flex items-center gap-2 mb-4">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="#D4A24C"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="var(--gold)"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                     <h2 className="text-lg font-bold font-playfair text-white">المزودون ({filteredProviders.length})</h2>
                   </div>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -201,7 +201,7 @@ function SearchContent() {
                           <div className="p-3">
                             <h3 className="font-bold text-sm text-white font-cairo group-hover:text-theme-gold transition-colors">{prov.businessNameAr}</h3>
                             <p className="text-white/30 text-[10px] font-cairo mt-1 flex items-center gap-1">
-                              <svg width="8" height="8" viewBox="0 0 24 24" fill="#D4A24C"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                              <svg width="8" height="8" viewBox="0 0 24 24" fill="var(--gold)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                               {prov.locationCity}
                             </p>
                             <div className="flex items-center justify-between mt-2 pt-2 border-t border-white/[0.06]">

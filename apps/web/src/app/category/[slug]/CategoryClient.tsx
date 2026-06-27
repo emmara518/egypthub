@@ -54,7 +54,7 @@ export default function CategoryClient({ slug }: { slug: string }) {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {businesses.map((biz) => (
                 <motion.div key={biz.id} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                  className="rounded-2xl border border-theme-gold/15 bg-theme-card overflow-hidden hover:border-theme-gold/30 transition-all group">
+                  className="rounded-2xl border border-theme-gold/15 bg-theme-card overflow-hidden hover:border-theme-gold/30 hover:shadow-gold-border transition-all group shadow-gold-border">
                   <div className="relative h-48 overflow-hidden">
                     <img src={biz.image} alt={biz.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                     {biz.featured && (
@@ -77,7 +77,7 @@ export default function CategoryClient({ slug }: { slug: string }) {
                         <span key={tag} className="px-2 py-0.5 rounded-md bg-theme-gold/10 text-theme-gold text-[10px] font-cairo">{tag}</span>
                       ))}
                     </div>
-                    <div className="flex items-center justify-between pt-3 border-t border-theme-border">
+                    <div className="flex items-center justify-between pt-3 border-t border-theme-gold/10">
                       <div className="flex items-center gap-2 text-theme-muted text-xs">
                         <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
                           <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"/>

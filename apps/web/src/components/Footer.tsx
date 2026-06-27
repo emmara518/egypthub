@@ -46,14 +46,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#060A14]">
-      <div className="border-t border-[#D4A24C]/20" />
+      <div className="border-t border-theme-gold/20" />
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8 py-10 md:py-14">
 
         {/* Logo Section */}
         <div className="flex flex-col md:flex-row items-start gap-10 mb-10">
           <div className="shrink-0">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#D4A24C] to-[#C89A3D] flex items-center justify-center shadow-[0_4px_20px_rgba(212,162,76,0.3)]">
+              <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center shadow-[0_4px_20px_rgba(212,162,76,0.3)]">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2L2 22h20L12 2z" fill="white" />
                   <path d="M12 8L6 22h12L12 8z" fill="#060A14" />
@@ -61,7 +61,7 @@ export default function Footer() {
               </div>
               <div>
                 <span className="text-xl font-bold font-english text-white tracking-wide">EGYPTHUB</span>
-                <p className="text-[10px] text-[#D4A24C]/70 font-english tracking-[0.18em] -mt-0.5">YOUR STORY IN EGYPT</p>
+                <p className="text-[10px] text-theme-gold/70 font-english tracking-[0.18em] -mt-0.5">YOUR STORY IN EGYPT</p>
               </div>
             </div>
             <p className="text-sm text-white/40 font-english leading-relaxed max-w-xs mb-5">
@@ -76,7 +76,7 @@ export default function Footer() {
                 { name: 'LinkedIn', href: 'https://linkedin.com/company/egypthub', path: 'M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z' },
               ].map((s) => (
                 <a key={s.name} href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.name}
-                  className="w-9 h-9 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-[#D4A24C] hover:border-[#D4A24C]/30 hover:bg-[#D4A24C]/5 transition-all">
+                  className="w-9 h-9 rounded-lg border border-white/10 bg-white/[0.03] flex items-center justify-center text-white/30 hover:text-theme-gold hover:border-theme-gold/30 hover:bg-theme-gold/5 transition-all">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d={s.path} /></svg>
                 </a>
               ))}
@@ -86,10 +86,10 @@ export default function Footer() {
           <div className="flex-1 hidden md:grid md:grid-cols-4 gap-8">
             {footerLinks.map((section) => (
               <div key={section.title} className="border border-white/[0.05] rounded-xl p-5 bg-white/[0.02]">
-                <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-[#D4A24C] mb-4">{section.title.toUpperCase()}</h4>
+                <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-theme-gold mb-4">{section.title.toUpperCase()}</h4>
                 <ul className="space-y-2.5">
                   {section.links.map((link) => (
-                    <li key={link.href}><Link href={link.href} className="text-[11px] text-white/40 hover:text-[#D4A24C]/80 font-english transition-colors">{link.label}</Link></li>
+                    <li key={link.href}><Link href={link.href} className="text-[11px] text-white/40 hover:text-theme-gold/80 font-english transition-colors">{link.label}</Link></li>
                   ))}
                 </ul>
               </div>
@@ -102,13 +102,13 @@ export default function Footer() {
                 <button onClick={() => setOpenAccordion(openAccordion === i ? null : i)}
                   className="w-full flex items-center justify-between py-3 text-left"
                   aria-label={section.title.toUpperCase()}>
-                  <span className="text-[10px] font-bold font-english tracking-[0.2em] text-[#D4A24C]">{section.title.toUpperCase()}</span>
+                  <span className="text-[10px] font-bold font-english tracking-[0.2em] text-theme-gold">{section.title.toUpperCase()}</span>
                   <span className={`text-white/30 text-sm transition-transform ${openAccordion === i ? 'rotate-180' : ''}`}>▾</span>
                 </button>
                 {openAccordion === i && (
                       <ul className="pb-3 space-y-2">
                         {section.links.map((link) => (
-                          <li key={link.href}><Link href={link.href} className="text-[11px] text-white/40 hover:text-[#D4A24C]/80 font-english pl-2 block py-1">{link.label}</Link></li>
+                          <li key={link.href}><Link href={link.href} className="text-[11px] text-white/40 hover:text-theme-gold/80 font-english pl-2 block py-1">{link.label}</Link></li>
                         ))}
                       </ul>
                     )}
@@ -123,10 +123,10 @@ export default function Footer() {
             className="w-full flex items-center justify-between py-2 text-left"
             aria-label="FAQ">
             <div className="flex items-center gap-2">
-              <span className="w-0.5 h-3 bg-[#D4A24C] rounded-full" />
-              <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-[#D4A24C]">FAQ</h4>
+              <span className="w-0.5 h-3 bg-theme-gold rounded-full" />
+              <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-theme-gold">FAQ</h4>
             </div>
-            <span className={`text-[#D4A24C] text-xs transition-transform ${openAccordion === 999 ? 'rotate-180' : ''}`}>▾</span>
+            <span className={`text-theme-gold text-xs transition-transform ${openAccordion === 999 ? 'rotate-180' : ''}`}>▾</span>
           </button>
           {openAccordion === 999 && (
             <div className="grid md:grid-cols-2 gap-2 mt-3">
@@ -151,7 +151,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 border-t border-white/[0.05] pt-8">
           {/* Newsletter */}
           <div className="border border-white/[0.06] rounded-xl p-6 bg-white/[0.02]">
-            <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-[#D4A24C] mb-2">NEWSLETTER</h4>
+            <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-theme-gold mb-2">NEWSLETTER</h4>
             <p className="text-xs text-white/40 font-english mb-4">Subscribe for exclusive deals, travel tips, and Egyptian inspiration.</p>
             <div className="flex gap-2">
               <input
@@ -160,9 +160,9 @@ export default function Footer() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 aria-label="Email for newsletter subscription"
-                className="flex-1 px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/10 text-white text-xs font-english placeholder:text-white/30 focus:outline-none focus:border-[#D4A24C]/30 transition-all"
+                className="flex-1 px-4 py-2.5 rounded-lg bg-white/[0.04] border border-white/10 text-white text-xs font-english placeholder:text-white/30 focus:outline-none focus:border-theme-gold/30 transition-all"
               />
-              <button className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-[#D4A24C] to-[#C89A3D] text-[#060A14] text-xs font-bold font-english hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)] transition-all"
+              <button className="px-5 py-2.5 rounded-lg bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-xs font-bold font-english hover:shadow-[0_4px_15px_rgba(212,162,76,0.3)] transition-all"
                 aria-label="Subscribe to newsletter">
                 Subscribe
               </button>
@@ -171,17 +171,17 @@ export default function Footer() {
 
           {/* Payment Methods */}
           <div className="border border-white/[0.06] rounded-xl p-6 bg-white/[0.02]">
-            <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-[#D4A24C] mb-2">ACCEPTED PAYMENTS</h4>
+            <h4 className="text-[10px] font-bold font-english tracking-[0.2em] text-theme-gold mb-2">ACCEPTED PAYMENTS</h4>
             <p className="text-xs text-white/40 font-english mb-4">Secure payments powered by industry-leading encryption.</p>
             <div className="flex flex-wrap gap-3">
               {/* Visa */}
               <div className="w-[60px] h-[38px] rounded-lg bg-white flex items-center justify-center hover:shadow-[0_2px_8px_rgba(212,162,76,0.2)] transition-all" title="Visa">
                 <svg width="48" height="16" viewBox="0 0 48 16" fill="none">
-                  <path d="M19.1 11.2l1.8-10.4h2.9l-1.8 10.4h-2.9z" fill="#D4A24C"/>
-                  <path d="M31.7 1c-.6-.2-1.5-.4-2.6-.4-2.9 0-4.9 1.5-4.9 3.7 0 1.6 1.5 2.5 2.6 3 1.2.6 1.6 1 1.6 1.5 0 .8-1 1.2-1.9 1.2-1.2 0-1.9-.2-2.9-.6l-.4-.2-.4 2.6c.7.3 2 .5 3.3.5 3.1 0 5.1-1.5 5.1-3.8 0-1.3-.8-2.3-2.5-3.1-1-.5-1.7-.9-1.7-1.4 0-.5.6-1 1.8-1 1 0 1.8.2 2.4.4l.3.1.6-2.6z" fill="#D4A24C"/>
-                  <path d="M37.2 1.1h-2.3c-.7 0-1.3.2-1.6.9l-4.5 8.7h3l.7-1.8h3.9l.4 1.8h2.7l-2.3-8.6zm-3.6 5.5l1.1-2.9 1.1 2.9h-2.2z" fill="#D4A24C"/>
-                  <path d="M15.3 1.1l-2.8 7.4-.3-1.5c-.5-1.7-2.1-3.6-3.9-4.5l2.5 8.9h3l4.5-10.3h-3z" fill="#D4A24C"/>
-                  <path d="M10.5 1.1H4.2l-.1.3c5.1 1.3 8.5 4.4 9.9 8.3l-1.5-7.2c-.2-.9-.8-1.3-1.6-1.4z" fill="#D4A24C"/>
+                  <path d="M19.1 11.2l1.8-10.4h2.9l-1.8 10.4h-2.9z" fill="var(--gold)"/>
+                  <path d="M31.7 1c-.6-.2-1.5-.4-2.6-.4-2.9 0-4.9 1.5-4.9 3.7 0 1.6 1.5 2.5 2.6 3 1.2.6 1.6 1 1.6 1.5 0 .8-1 1.2-1.9 1.2-1.2 0-1.9-.2-2.9-.6l-.4-.2-.4 2.6c.7.3 2 .5 3.3.5 3.1 0 5.1-1.5 5.1-3.8 0-1.3-.8-2.3-2.5-3.1-1-.5-1.7-.9-1.7-1.4 0-.5.6-1 1.8-1 1 0 1.8.2 2.4.4l.3.1.6-2.6z" fill="var(--gold)"/>
+                  <path d="M37.2 1.1h-2.3c-.7 0-1.3.2-1.6.9l-4.5 8.7h3l.7-1.8h3.9l.4 1.8h2.7l-2.3-8.6zm-3.6 5.5l1.1-2.9 1.1 2.9h-2.2z" fill="var(--gold)"/>
+                  <path d="M15.3 1.1l-2.8 7.4-.3-1.5c-.5-1.7-2.1-3.6-3.9-4.5l2.5 8.9h3l4.5-10.3h-3z" fill="var(--gold)"/>
+                  <path d="M10.5 1.1H4.2l-.1.3c5.1 1.3 8.5 4.4 9.9 8.3l-1.5-7.2c-.2-.9-.8-1.3-1.6-1.4z" fill="var(--gold)"/>
                 </svg>
               </div>
               {/* Mastercard */}
@@ -197,7 +197,7 @@ export default function Footer() {
                 <span className="text-white text-[8px] font-bold font-english tracking-wider">AMEX</span>
               </div>
               {/* Fawry */}
-              <div className="w-[60px] h-[38px] rounded-lg bg-[#2B2B2B] flex items-center justify-center hover:shadow-[0_2px_8px_rgba(212,162,76,0.2)] transition-all" title="Fawry">
+              <div className="w-[60px] h-[38px] rounded-lg bg-gray-800 flex items-center justify-center hover:shadow-[0_2px_8px_rgba(212,162,76,0.2)] transition-all" title="Fawry">
                 <span className="text-[#FF6B00] text-[9px] font-bold font-english">fawry</span>
               </div>
               {/* Vodafone Cash */}

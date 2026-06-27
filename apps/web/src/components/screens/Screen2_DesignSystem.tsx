@@ -12,7 +12,7 @@ import Image from 'next/image';
 
 /* ───── Section wrapper ───── */
 const Section = ({ id, num, title, children }: { id: string; num: string; title: string; children: React.ReactNode }) => (
-  <div id={id} className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-6 scroll-mt-24">
+  <div id={id} className="bg-theme-card rounded-2xl border border-theme-border p-6 scroll-mt-24">
     <div className="flex items-center gap-3 mb-5">
       <span className="text-[10px] font-english font-bold px-2 py-1 rounded-md bg-theme-gold/10 text-theme-gold">{num}</span>
       <h3 className="font-bold text-white">{title}</h3>
@@ -24,9 +24,9 @@ const Section = ({ id, num, title, children }: { id: string; num: string; title:
 /* ───── Color Swatch ───── */
 const ColorSwatch = ({ color, label, hex }: { color: string; label: string; hex: string }) => (
   <motion.div whileHover={{ scale: 1.05 }} className="text-center group cursor-pointer">
-    <div className="w-full aspect-square rounded-xl border border-[#1E2A3D] group-hover:border-theme-gold/30 transition-all shadow-lg mb-2" style={{ backgroundColor: color }} />
-    <p className="text-xs text-[#8B95A5] font-medium">{label}</p>
-    <p className="text-[10px] text-[#5A6478] font-english font-mono">{hex}</p>
+    <div className="w-full aspect-square rounded-xl border border-theme-border group-hover:border-theme-gold/30 transition-all shadow-lg mb-2" style={{ backgroundColor: color }} />
+    <p className="text-xs text-theme-secondary font-medium">{label}</p>
+    <p className="text-[10px] text-theme-muted font-english font-mono">{hex}</p>
   </motion.div>
 );
 
@@ -63,7 +63,7 @@ export default function Screen2_DesignSystem() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic">
+    <div className="min-h-screen bg-theme-bg text-white font-arabic">
       <div className="max-w-[1500px] mx-auto px-6 py-8 flex gap-6">
         {/* ─── Sidebar ─── */}
         <motion.aside
@@ -73,17 +73,17 @@ export default function Screen2_DesignSystem() {
         >
           <div className="sticky top-8 space-y-4">
             {/* Header */}
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-5">
               <span className="text-[10px] font-english text-theme-gold font-bold block mb-1">المرحلة 1</span>
               <h1 className="text-xl font-bold mb-1">نظام التصميم</h1>
               <p className="text-theme-gold text-sm font-english font-semibold mb-3">Design System</p>
-              <p className="text-[#8B95A5] text-xs leading-relaxed">
+              <p className="text-theme-secondary text-xs leading-relaxed">
                 بناء النظام البصري والهوية التصميمية والألوان والخطوط لمنصة السياحة المصرية.
               </p>
             </div>
 
             {/* Nav */}
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-4">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-4">
               <h3 className="text-xs font-bold text-theme-gold mb-3">مكونات المنصة</h3>
               <div className="space-y-0.5">
                 {sidebarItems.map((item, i) => (
@@ -93,7 +93,7 @@ export default function Screen2_DesignSystem() {
                     className={`w-full text-right px-3 py-2 rounded-lg text-sm transition-all ${
                       activeSection === i
                         ? 'bg-theme-gold/10 text-theme-gold font-medium'
-                        : 'text-[#8B95A5] hover:text-white hover:bg-[#1A2235]'
+                        : 'text-theme-secondary hover:text-white hover:bg-theme-elevated'
                     }`}
                   >
                     {item}
@@ -103,13 +103,13 @@ export default function Screen2_DesignSystem() {
             </div>
 
             {/* Logo */}
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-4 flex items-center gap-3">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-4 flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-theme-gold to-accent-orange flex items-center justify-center">
-                <span className="text-[#0A0E17] font-bold text-lg">م</span>
+                <span className="text-dark-900 font-bold text-lg">م</span>
               </div>
               <div>
                 <p className="font-bold text-sm">EGYPTHUB</p>
-                <p className="text-[10px] text-[#5A6478]">القيم المصرية</p>
+                <p className="text-[10px] text-theme-muted">القيم المصرية</p>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function Screen2_DesignSystem() {
             <Section id="colors" num="01" title="الألوان (Colors)">
               <div className="space-y-4">
                 <div>
-                  <p className="text-[10px] text-[#5A6478] mb-2 font-english">Primary</p>
+                  <p className="text-[10px] text-theme-muted mb-2 font-english">Primary</p>
                   <div className="grid grid-cols-5 gap-2">
                     <ColorSwatch color="#0D3B66" label="500" hex="#0D3B66" />
                     <ColorSwatch color="#0A2F52" label="600" hex="#0A2F52" />
@@ -133,7 +133,7 @@ export default function Screen2_DesignSystem() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-[10px] text-[#5A6478] mb-2 font-english">Secondary</p>
+                  <p className="text-[10px] text-theme-muted mb-2 font-english">Secondary</p>
                   <div className="grid grid-cols-4 gap-2">
                     <ColorSwatch color="#E9C46A" label="400" hex="#E9C46A" />
                     <ColorSwatch color="#D4A843" label="500" hex="#D4A843" />
@@ -142,7 +142,7 @@ export default function Screen2_DesignSystem() {
                   </div>
                 </div>
                 <div>
-                  <p className="text-[10px] text-[#5A6478] mb-2 font-english">Accent</p>
+                  <p className="text-[10px] text-theme-muted mb-2 font-english">Accent</p>
                   <div className="grid grid-cols-4 gap-2">
                     <ColorSwatch color="#F4A261" label="400" hex="#F4A261" />
                     <ColorSwatch color="#E2843F" label="500" hex="#E2843F" />
@@ -156,26 +156,26 @@ export default function Screen2_DesignSystem() {
             {/* 02 - Typography */}
             <Section id="typography" num="02" title="الخطوط (Typography)">
               <div className="space-y-5">
-                <div className="border-b border-[#1E2A3D] pb-4">
-                  <p className="text-[10px] text-[#5A6478] font-english mb-1">العناوين الرئيسية</p>
+                <div className="border-b border-theme-border pb-4">
+                  <p className="text-[10px] text-theme-muted font-english mb-1">العناوين الرئيسية</p>
                   <p className="text-4xl font-display font-bold text-white">Aa</p>
-                  <p className="text-[10px] text-[#5A6478] font-english mt-1">Playfair Display</p>
+                  <p className="text-[10px] text-theme-muted font-english mt-1">Playfair Display</p>
                 </div>
-                <div className="border-b border-[#1E2A3D] pb-4">
-                  <p className="text-[10px] text-[#5A6478] mb-1">المحتوى العربي</p>
+                <div className="border-b border-theme-border pb-4">
+                  <p className="text-[10px] text-theme-muted mb-1">المحتوى العربي</p>
                   <p className="text-3xl font-arabic font-bold text-theme-gold">Aa</p>
-                  <p className="text-[10px] text-[#5A6478] font-english mt-1">Cairo</p>
+                  <p className="text-[10px] text-theme-muted font-english mt-1">Cairo</p>
                 </div>
                 <div>
-                  <p className="text-[10px] text-[#5A6478] font-english mb-1">English Content</p>
+                  <p className="text-[10px] text-theme-muted font-english mb-1">English Content</p>
                   <p className="text-2xl font-english font-semibold text-white">Aa</p>
-                  <p className="text-[10px] text-[#5A6478] font-english mt-1">Poppins</p>
+                  <p className="text-[10px] text-theme-muted font-english mt-1">Poppins</p>
                 </div>
                 <div className="pt-2 space-y-2">
-                  <p className="text-xs text-[#5A6478]">أحجام الخطوط المعتمدة</p>
+                  <p className="text-xs text-theme-muted">أحجام الخطوط المعتمدة</p>
                   <div className="flex flex-wrap gap-2">
                     {['xs', 'sm', 'base', 'lg', 'xl', '2xl', '3xl'].map(s => (
-                      <span key={s} className="px-2 py-1 rounded bg-[#0F1420] text-[10px] text-[#8B95A5] font-english">{s}</span>
+                      <span key={s} className="px-2 py-1 rounded bg-theme-surface text-[10px] text-theme-secondary font-english">{s}</span>
                     ))}
                   </div>
                 </div>
@@ -187,7 +187,7 @@ export default function Screen2_DesignSystem() {
               <div className="space-y-3">
                 {spacingScale.map(val => (
                   <div key={val} className="flex items-center gap-3">
-                    <span className="text-[10px] text-[#5A6478] font-english w-8 text-left">{val}</span>
+                    <span className="text-[10px] text-theme-muted font-english w-8 text-left">{val}</span>
                     <motion.div
                       initial={{ width: 0 }}
                       animate={{ width: Math.min(val * 2, 256) }}
@@ -205,10 +205,10 @@ export default function Screen2_DesignSystem() {
                 {radiusValues.map(r => (
                   <motion.div key={r} whileHover={{ scale: 1.1 }} className="text-center">
                     <div
-                      className="w-full aspect-square bg-[#1A2235] border border-theme-gold/20 mb-2"
+                      className="w-full aspect-square bg-theme-elevated border border-theme-gold/20 mb-2"
                       style={{ borderRadius: r === '999' ? '999px' : `${r}px` }}
                     />
-                    <span className="text-[10px] text-[#5A6478] font-english">{r}px</span>
+                    <span className="text-[10px] text-theme-muted font-english">{r}px</span>
                   </motion.div>
                 ))}
               </div>
@@ -217,13 +217,13 @@ export default function Screen2_DesignSystem() {
             {/* 05 - Shadows & Effects */}
             <Section id="shadows" num="05" title="الظلال والتأثيرات">
               <div className="space-y-4">
-                <p className="text-[10px] text-[#5A6478] font-english">Shadows</p>
+                <p className="text-[10px] text-theme-muted font-english">Shadows</p>
                 <div className="grid grid-cols-5 gap-3">
                   {[0, 1, 2, 3, 4].map(i => (
                     <motion.div
                       key={i}
                       whileHover={{ y: -3 }}
-                      className="aspect-square rounded-xl bg-[#1A2235]"
+                      className="aspect-square rounded-xl bg-theme-elevated"
                       style={{
                         boxShadow: i === 0 ? 'none' :
                           `0 ${i * 4}px ${i * 8}px rgba(0,0,0,${0.1 + i * 0.1})`
@@ -231,13 +231,13 @@ export default function Screen2_DesignSystem() {
                     />
                   ))}
                 </div>
-                <p className="text-[10px] text-[#5A6478] font-english mt-4">Glow</p>
+                <p className="text-[10px] text-theme-muted font-english mt-4">Glow</p>
                 <div className="grid grid-cols-5 gap-3">
                   {[0, 1, 2, 3, 4].map(i => (
                     <motion.div
                       key={i}
                       whileHover={{ scale: 1.1 }}
-                      className="aspect-square rounded-full bg-[#1A2235]"
+                      className="aspect-square rounded-full bg-theme-elevated"
                       style={{
                         boxShadow: i === 0 ? 'none' :
                           `0 0 ${i * 10}px rgba(212,162,76,${i * 0.1})`
@@ -252,19 +252,19 @@ export default function Screen2_DesignSystem() {
             <Section id="buttons" num="06" title="الأزرار (Buttons)">
               <div className="space-y-4">
                 <div>
-                  <p className="text-[10px] text-[#5A6478] mb-2 font-english">Primary</p>
+                  <p className="text-[10px] text-theme-muted mb-2 font-english">Primary</p>
                   <motion.button
                     whileHover={{ scale: 1.03, boxShadow: '0 8px 24px rgba(212,162,76,0.3)' }}
                     whileTap={{ scale: 0.97 }}
                     onHoverStart={() => setBtnHover('primary')}
                     onHoverEnd={() => setBtnHover(null)}
-                    className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-[#0A0E17] font-bold text-sm transition-all"
+                    className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-accent-orange text-dark-900 font-bold text-sm transition-all"
                   >
                     استكشف المزيد
                   </motion.button>
                 </div>
                 <div>
-                  <p className="text-[10px] text-[#5A6478] mb-2 font-english">Secondary</p>
+                  <p className="text-[10px] text-theme-muted mb-2 font-english">Secondary</p>
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
@@ -274,11 +274,11 @@ export default function Screen2_DesignSystem() {
                   </motion.button>
                 </div>
                 <div>
-                  <p className="text-[10px] text-[#5A6478] mb-2 font-english">Ghost</p>
+                  <p className="text-[10px] text-theme-muted mb-2 font-english">Ghost</p>
                   <motion.button
                     whileHover={{ scale: 1.03 }}
                     whileTap={{ scale: 0.97 }}
-                    className="w-full py-3 rounded-xl text-[#8B95A5] font-medium text-sm hover:text-white hover:bg-[#1A2235] transition-all"
+                    className="w-full py-3 rounded-xl text-theme-secondary font-medium text-sm hover:text-white hover:bg-theme-elevated transition-all"
                   >
                     المزيد
                   </motion.button>
@@ -292,17 +292,17 @@ export default function Screen2_DesignSystem() {
                 <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
                   {/* Card Large */}
                   <motion.div whileHover={{ y: -6 }} className="col-span-1">
-                    <p className="text-[10px] text-[#5A6478] font-english mb-2">Card / Large</p>
-                    <div className="rounded-2xl overflow-hidden border border-[#1E2A3D] bg-[#0F1420] group cursor-pointer hover:border-theme-gold/30 transition-all">
+                    <p className="text-[10px] text-theme-muted font-english mb-2">Card / Large</p>
+                    <div className="rounded-2xl overflow-hidden border border-theme-border bg-theme-surface group cursor-pointer hover:border-theme-gold/30 transition-all">
                       <div className="h-36 overflow-hidden relative">
                         <Image src="/images/destinations/cairo.svg" alt="أهرامات" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                       </div>
                       <div className="p-3">
                         <h4 className="font-bold text-sm mb-1">أهرامات الجيزة</h4>
-                        <p className="text-[10px] text-[#5A6478] mb-2">عجائب الدنيا السبع</p>
+                        <p className="text-[10px] text-theme-muted mb-2">عجائب الدنيا السبع</p>
                         <div className="flex items-center gap-1">
                           <HiStar className="text-theme-gold text-xs" />
-                          <span className="text-[10px] text-[#8B95A5] font-english">4.9</span>
+                          <span className="text-[10px] text-theme-secondary font-english">4.9</span>
                         </div>
                       </div>
                     </div>
@@ -310,35 +310,35 @@ export default function Screen2_DesignSystem() {
 
                   {/* Card Medium */}
                   <motion.div whileHover={{ y: -6 }} className="col-span-1">
-                    <p className="text-[10px] text-[#5A6478] font-english mb-2">Card / Medium</p>
-                    <div className="rounded-2xl overflow-hidden border border-[#1E2A3D] bg-[#0F1420] group cursor-pointer hover:border-theme-gold/30 transition-all">
+                    <p className="text-[10px] text-theme-muted font-english mb-2">Card / Medium</p>
+                    <div className="rounded-2xl overflow-hidden border border-theme-border bg-theme-surface group cursor-pointer hover:border-theme-gold/30 transition-all">
                       <div className="h-28 overflow-hidden relative">
                         <Image src="/images/destinations/cairo.svg" alt="القاهرة" fill className="object-cover group-hover:scale-110 transition-transform duration-700" />
                       </div>
                       <div className="p-3">
                         <h4 className="font-bold text-xs">Hidden Cairo</h4>
-                        <p className="text-[10px] text-[#5A6478]">شوارع القاهرة القديمة</p>
+                        <p className="text-[10px] text-theme-muted">شوارع القاهرة القديمة</p>
                       </div>
                     </div>
                   </motion.div>
 
                   {/* Card Small */}
                   <motion.div whileHover={{ y: -6 }} className="col-span-1">
-                    <p className="text-[10px] text-[#5A6478] font-english mb-2">Card / Small</p>
-                    <div className="rounded-xl overflow-hidden border border-[#1E2A3D] bg-[#0F1420] p-3 group cursor-pointer hover:border-theme-gold/30 transition-all flex gap-3 items-center">
+                    <p className="text-[10px] text-theme-muted font-english mb-2">Card / Small</p>
+                    <div className="rounded-xl overflow-hidden border border-theme-border bg-theme-surface p-3 group cursor-pointer hover:border-theme-gold/30 transition-all flex gap-3 items-center">
                       <div className="w-12 h-12 rounded-lg overflow-hidden shrink-0 relative">
                         <Image src="/images/destinations/luxor.svg" alt="النيل" fill className="object-cover" />
                       </div>
                       <div>
                         <h4 className="font-bold text-xs">Nile Cruise</h4>
-                        <p className="text-[10px] text-[#5A6478]">رحلة نيلية</p>
+                        <p className="text-[10px] text-theme-muted">رحلة نيلية</p>
                       </div>
                     </div>
                   </motion.div>
 
                   {/* Glass Card */}
                   <motion.div whileHover={{ y: -6 }} className="col-span-1">
-                    <p className="text-[10px] text-[#5A6478] font-english mb-2">Glass Card</p>
+                    <p className="text-[10px] text-theme-muted font-english mb-2">Glass Card</p>
                     <div className="rounded-2xl overflow-hidden border border-theme-gold/15 bg-theme-gold/5 backdrop-blur-xl p-4 group cursor-pointer hover:border-theme-gold/30 transition-all">
                       <div className="flex items-center gap-3 mb-3">
                         <div className="w-10 h-10 rounded-xl bg-theme-gold/10 flex items-center justify-center">
@@ -346,10 +346,10 @@ export default function Screen2_DesignSystem() {
                         </div>
                         <div>
                           <h4 className="font-bold text-xs">مميز</h4>
-                          <p className="text-[10px] text-[#5A6478]">Details</p>
+                          <p className="text-[10px] text-theme-muted">Details</p>
                         </div>
                       </div>
-                      <p className="text-[10px] text-[#8B95A5]">بطاقة شفافة بتأثير الزجاج</p>
+                      <p className="text-[10px] text-theme-secondary">بطاقة شفافة بتأثير الزجاج</p>
                     </div>
                   </motion.div>
                 </div>
@@ -360,26 +360,26 @@ export default function Screen2_DesignSystem() {
             <Section id="navigation" num="08" title="شريط التنقل (Navigation)">
               <div className="space-y-4">
                 {/* Desktop Nav */}
-                <div className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D]">
+                <div className="bg-theme-surface rounded-xl p-3 border border-theme-border">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-6 h-6 rounded bg-gradient-to-br from-theme-gold to-accent-orange flex items-center justify-center">
-                        <span className="text-[#0A0E17] font-bold text-[8px]">م</span>
+                        <span className="text-dark-900 font-bold text-[8px]">م</span>
                       </div>
                       <span className="text-[10px] font-bold font-english">EGYPTHUB</span>
                     </div>
                     <div className="flex gap-3">
                       {['الرئيسية', 'الوجهات', 'التجارب', 'المجتمع'].map(l => (
-                        <span key={l} className="text-[8px] text-[#8B95A5] hover:text-theme-gold cursor-pointer transition-colors">{l}</span>
+                        <span key={l} className="text-[8px] text-theme-secondary hover:text-theme-gold cursor-pointer transition-colors">{l}</span>
                       ))}
                     </div>
                   </div>
                 </div>
                 {/* Mobile Bottom Nav */}
-                <p className="text-[10px] text-[#5A6478] font-english">Mobile Bottom Nav</p>
-                <div className="bg-[#0F1420] rounded-xl p-3 border border-[#1E2A3D] flex items-center justify-around">
+                <p className="text-[10px] text-theme-muted font-english">Mobile Bottom Nav</p>
+                <div className="bg-theme-surface rounded-xl p-3 border border-theme-border flex items-center justify-around">
                   {[HiHome, HiSearch, HiHeart, HiUser, HiCog].map((Icon, i) => (
-                    <motion.button key={i} whileHover={{ scale: 1.2 }} className={`p-2 rounded-lg transition-colors ${i === 0 ? 'text-theme-gold' : 'text-[#5A6478] hover:text-theme-gold'}`}>
+                    <motion.button key={i} whileHover={{ scale: 1.2 }} className={`p-2 rounded-lg transition-colors ${i === 0 ? 'text-theme-gold' : 'text-theme-muted hover:text-theme-gold'}`}>
                       <Icon className="text-lg" />
                     </motion.button>
                   ))}
@@ -392,10 +392,10 @@ export default function Screen2_DesignSystem() {
               <div className="space-y-4">
                 {Object.entries(iconCategories).map(([cat, icons]) => (
                   <div key={cat}>
-                    <p className="text-[10px] text-[#5A6478] font-english mb-2">{cat}</p>
+                    <p className="text-[10px] text-theme-muted font-english mb-2">{cat}</p>
                     <div className="grid grid-cols-6 gap-2">
                       {icons.map((Icon, i) => (
-                        <motion.div key={i} whileHover={{ scale: 1.2, color: '#E9C46A' }} className="aspect-square rounded-lg bg-[#0F1420] flex items-center justify-center text-[#8B95A5] hover:text-theme-gold cursor-pointer transition-colors">
+                        <motion.div key={i} whileHover={{ scale: 1.2, color: '#E9C46A' }} className="aspect-square rounded-lg bg-theme-surface flex items-center justify-center text-theme-secondary hover:text-theme-gold cursor-pointer transition-colors">
                           <Icon className="text-base" />
                         </motion.div>
                       ))}
@@ -414,8 +414,8 @@ export default function Screen2_DesignSystem() {
                   { label: 'Gallery / 1:1', img: '/images/destinations/sharm-el-sheikh.svg', ratio: 'aspect-square' },
                 ].map(item => (
                   <div key={item.label}>
-                    <p className="text-[10px] text-[#5A6478] font-english mb-1">{item.label}</p>
-                    <div className={`${item.ratio} rounded-xl overflow-hidden border border-[#1E2A3D] relative`}>
+                    <p className="text-[10px] text-theme-muted font-english mb-1">{item.label}</p>
+                    <div className={`${item.ratio} rounded-xl overflow-hidden border border-theme-border relative`}>
                       <Image src={item.img} alt={item.label} fill className="object-cover" />
                     </div>
                   </div>
@@ -435,10 +435,10 @@ export default function Screen2_DesignSystem() {
                     <span className="text-lg">{d.icon}</span>
                     <div className="flex-1">
                       <div className="flex items-center justify-between mb-1">
-                        <span className="text-xs text-[#8B95A5] font-english">{d.label}</span>
-                        <span className="text-[10px] text-[#5A6478] font-english">{d.bp}</span>
+                        <span className="text-xs text-theme-secondary font-english">{d.label}</span>
+                        <span className="text-[10px] text-theme-muted font-english">{d.bp}</span>
                       </div>
-                      <div className="h-3 bg-[#0F1420] rounded-full overflow-hidden">
+                      <div className="h-3 bg-theme-surface rounded-full overflow-hidden">
                         <motion.div
                           initial={{ width: 0 }}
                           animate={{ width: d.w }}
@@ -449,9 +449,9 @@ export default function Screen2_DesignSystem() {
                     </div>
                   </div>
                 ))}
-                <div className="mt-3 p-3 rounded-lg bg-[#0F1420]">
-                  <p className="text-[10px] text-[#5A6478] font-english mb-1">Container Width</p>
-                  <p className="text-xs text-[#8B95A5] font-english">Max: 1440px | Padding: 16-24px</p>
+                <div className="mt-3 p-3 rounded-lg bg-theme-surface">
+                  <p className="text-[10px] text-theme-muted font-english mb-1">Container Width</p>
+                  <p className="text-xs text-theme-secondary font-english">Max: 1440px | Padding: 16-24px</p>
                 </div>
               </div>
             </Section>
@@ -459,7 +459,7 @@ export default function Screen2_DesignSystem() {
             {/* 12 - Image Styles */}
             <Section id="imagery2" num="12" title="صياغة وتقليب (Imagery)">
               <div className="space-y-3">
-                <p className="text-[10px] text-[#5A6478] font-english mb-2">Style</p>
+                <p className="text-[10px] text-theme-muted font-english mb-2">Style</p>
                 <div className="grid grid-cols-2 gap-3">
                   {[
                     { img: '/images/activities/desert-safari.svg', label: 'معالجة دافئة' },
@@ -468,10 +468,10 @@ export default function Screen2_DesignSystem() {
                     { img: '/images/destinations/sharm-el-sheikh.svg', label: 'درامي' },
                   ].map(item => (
                     <motion.div key={item.label} whileHover={{ scale: 1.03 }} className="cursor-pointer">
-                      <div className="aspect-[4/3] rounded-xl overflow-hidden border border-[#1E2A3D] mb-1 relative">
+                      <div className="aspect-[4/3] rounded-xl overflow-hidden border border-theme-border mb-1 relative">
                         <Image src={item.img} alt={item.label} fill className="object-cover" />
                       </div>
-                      <p className="text-[10px] text-[#8B95A5] text-center">{item.label}</p>
+                      <p className="text-[10px] text-theme-secondary text-center">{item.label}</p>
                     </motion.div>
                   ))}
                 </div>
@@ -483,7 +483,7 @@ export default function Screen2_DesignSystem() {
               <div className="space-y-4">
                 {[12, 6, 4, 3, 2, 1].map(cols => (
                   <div key={cols}>
-                    <p className="text-[10px] text-[#5A6478] font-english mb-1">{12 / cols} col</p>
+                    <p className="text-[10px] text-theme-muted font-english mb-1">{12 / cols} col</p>
                     <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${cols}, 1fr)` }}>
                       {Array.from({ length: cols }).map((_, i) => (
                         <motion.div
@@ -505,14 +505,14 @@ export default function Screen2_DesignSystem() {
               <div className="space-y-4">
                 {/* Button States */}
                 <div>
-                  <p className="text-[10px] text-[#5A6478] font-english mb-2">Button States</p>
+                  <p className="text-[10px] text-theme-muted font-english mb-2">Button States</p>
                   <div className="grid grid-cols-3 gap-2">
                     {[
-                      { label: 'Default', cls: 'bg-theme-gold text-[#0A0E17]' },
-                      { label: 'Hover', cls: 'bg-[#D4A843] text-[#0A0E17] shadow-golden' },
-                      { label: 'Active', cls: 'bg-[#B88D2F] text-[#0A0E17] scale-95' },
-                      { label: 'Disabled', cls: 'bg-[#1A2235] text-[#5A6478] cursor-not-allowed' },
-                      { label: 'Focus', cls: 'bg-theme-gold text-[#0A0E17] ring-2 ring-[#E9C46A]/50 ring-offset-2 ring-offset-[#141B2D]' },
+                      { label: 'Default', cls: 'bg-theme-gold text-dark-900' },
+                      { label: 'Hover', cls: 'bg-[#D4A843] text-dark-900 shadow-golden' },
+                      { label: 'Active', cls: 'bg-[#B88D2F] text-dark-900 scale-95' },
+                      { label: 'Disabled', cls: 'bg-theme-elevated text-theme-muted cursor-not-allowed' },
+                      { label: 'Focus', cls: 'bg-theme-gold text-dark-900 ring-2 ring-[#E9C46A]/50 ring-offset-2 ring-offset-[#141B2D]' },
                       { label: 'Error', cls: 'bg-red-500/20 text-red-400 border border-red-500/30' },
                     ].map(s => (
                       <div key={s.label} className="text-center">
@@ -524,14 +524,14 @@ export default function Screen2_DesignSystem() {
 
                 {/* Toggles */}
                 <div>
-                  <p className="text-[10px] text-[#5A6478] font-english mb-2">Toggles</p>
+                  <p className="text-[10px] text-theme-muted font-english mb-2">Toggles</p>
                   <div className="space-y-2">
                     {Object.entries(toggles).map(([key, val]) => (
                       <div key={key} className="flex items-center justify-between">
-                        <span className="text-xs text-[#8B95A5]">{key === 't1' ? 'إشعارات' : key === 't2' ? 'الوضع الداكن' : 'الصوت'}</span>
+                        <span className="text-xs text-theme-secondary">{key === 't1' ? 'إشعارات' : key === 't2' ? 'الوضع الداكن' : 'الصوت'}</span>
                         <button
                           onClick={() => setToggles(p => ({ ...p, [key]: !p[key as keyof typeof p] }))}
-                          className={`w-10 h-5 rounded-full transition-colors duration-300 relative ${val ? 'bg-theme-gold' : 'bg-[#1A2235]'}`}
+                          className={`w-10 h-5 rounded-full transition-colors duration-300 relative ${val ? 'bg-theme-gold' : 'bg-theme-elevated'}`}
                         >
                           <motion.div
                             animate={{ x: val ? -18 : 0 }}
@@ -545,16 +545,16 @@ export default function Screen2_DesignSystem() {
 
                 {/* Checkboxes */}
                 <div>
-                  <p className="text-[10px] text-[#5A6478] font-english mb-2">Checkbox / Radio</p>
+                  <p className="text-[10px] text-theme-muted font-english mb-2">Checkbox / Radio</p>
                   <div className="flex gap-4">
                     <div className="w-5 h-5 rounded border-2 border-theme-gold bg-theme-gold flex items-center justify-center">
-                      <span className="text-[#0A0E17] text-xs">✓</span>
+                      <span className="text-dark-900 text-xs">✓</span>
                     </div>
-                    <div className="w-5 h-5 rounded border-2 border-[#1E2A3D]" />
+                    <div className="w-5 h-5 rounded border-2 border-theme-border" />
                     <div className="w-5 h-5 rounded-full border-2 border-theme-gold flex items-center justify-center">
                       <div className="w-2.5 h-2.5 rounded-full bg-theme-gold" />
                     </div>
-                    <div className="w-5 h-5 rounded-full border-2 border-[#1E2A3D]" />
+                    <div className="w-5 h-5 rounded-full border-2 border-theme-border" />
                   </div>
                 </div>
               </div>

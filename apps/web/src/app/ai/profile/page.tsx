@@ -39,7 +39,7 @@ export default function AIProfilePage() {
               {LANGUAGES.map((l) => (
                 <button key={l} onClick={() => setLang(l)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold font-cairo transition-all ${
-                    lang === l ? 'bg-theme-gold text-dark-900' : 'bg-theme-surface border border-theme-border text-theme-secondary hover:border-theme-gold/20'
+                    lang === l ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-surface border border-theme-gold/10 text-theme-secondary hover:border-theme-gold/20'
                   }`}>{l}</button>
               ))}
             </div>
@@ -51,7 +51,7 @@ export default function AIProfilePage() {
               {TRIP_TYPES.map((t) => (
                 <button key={t} onClick={() => setTripTypes(toggleArray(tripTypes, t))}
                   className={`px-4 py-2 rounded-xl text-xs font-bold font-cairo transition-all ${
-                    tripTypes.includes(t) ? 'bg-theme-gold text-dark-900' : 'bg-theme-surface border border-theme-border text-theme-secondary hover:border-theme-gold/20'
+                    tripTypes.includes(t) ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-surface border border-theme-gold/10 text-theme-secondary hover:border-theme-gold/20'
                   }`}>{t}</button>
               ))}
             </div>
@@ -63,7 +63,7 @@ export default function AIProfilePage() {
               {BUDGETS.map((b) => (
                 <button key={b} onClick={() => setBudget(b)}
                   className={`px-4 py-2 rounded-xl text-xs font-bold font-cairo transition-all ${
-                    budget === b ? 'bg-theme-gold text-dark-900' : 'bg-theme-surface border border-theme-border text-theme-secondary hover:border-theme-gold/20'
+                    budget === b ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-surface border border-theme-gold/10 text-theme-secondary hover:border-theme-gold/20'
                   }`}>{b}</button>
               ))}
             </div>
@@ -75,7 +75,7 @@ export default function AIProfilePage() {
               {FOODS.map((f) => (
                 <button key={f} onClick={() => setFoods(toggleArray(foods, f))}
                   className={`px-4 py-2 rounded-xl text-xs font-bold font-cairo transition-all ${
-                    foods.includes(f) ? 'bg-theme-gold text-dark-900' : 'bg-theme-surface border border-theme-border text-theme-secondary hover:border-theme-gold/20'
+                    foods.includes(f) ? 'bg-theme-gold text-dark-900 shadow-gold-glow' : 'bg-theme-surface border border-theme-gold/10 text-theme-secondary hover:border-theme-gold/20'
                   }`}>{f}</button>
               ))}
             </div>

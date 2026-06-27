@@ -77,7 +77,7 @@ export default function DestinationsPage() {
                 className="w-full h-14 pl-5 pr-12 rounded-xl bg-theme-card border border-theme text-theme placeholder:text-theme-muted focus:outline-none focus:border-theme-gold transition-all duration-200 font-cairo"
               />
             </div>
-            <button className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-[#0A0E17] font-bold transition-all duration-200 font-cairo">
+            <button className="inline-flex items-center justify-center gap-2 h-14 px-8 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold transition-all duration-200 font-cairo">
               <HiAdjustments className="w-5 h-5" />
               تصفية
             </button>
@@ -95,7 +95,7 @@ export default function DestinationsPage() {
                 onClick={() => setActiveRegion(region.slug)}
                 className={`px-4 py-2 rounded-full text-sm font-cairo font-medium transition-all duration-200 ${
                   activeRegion === region.slug
-                    ? 'bg-theme-gold text-[#0A0E17]'
+                    ? 'bg-theme-gold text-dark-900'
                     : 'bg-theme-card border border-theme text-theme/70 hover:text-theme-gold hover:border-theme-gold/40'
                 }`}
               >
@@ -175,7 +175,7 @@ export default function DestinationsPage() {
               <p className="text-theme-secondary text-lg font-cairo">لا توجد وجهات تطابق بحثك</p>
               <button
                 onClick={() => { setSearchQuery(''); setActiveRegion('all'); }}
-                className="mt-4 px-6 py-2.5 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-[#0A0E17] font-bold transition-all duration-200 font-cairo"
+                className="mt-4 px-6 py-2.5 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold transition-all duration-200 font-cairo"
               >
                 إعادة ضبط
               </button>

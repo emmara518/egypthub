@@ -29,7 +29,7 @@ export default function AIConciergeWidget() {
                     <path d="M12 6v6l4 2" />
                   </svg>
                 </div>
-                <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-amber flex items-center justify-center text-xs font-bold text-[#0A0E17]">
+                <div className="absolute -top-1 -right-1 w-8 h-8 rounded-full bg-accent-amber flex items-center justify-center text-xs font-bold text-dark-900">
                   AI
                 </div>
               </div>
@@ -47,7 +47,7 @@ export default function AIConciergeWidget() {
               <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
                 <Link
                   href="/ai-concierge"
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-[#0A0E17] font-bold transition-all duration-200 font-cairo"
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold transition-all duration-200 font-cairo"
                 >
                   تحدث مع زينب
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

@@ -24,7 +24,7 @@ export default function PriceAlert() {
         className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg border border-theme-gold/20 text-theme-gold text-[10px] font-bold font-english hover:bg-theme-gold/10 transition-all touch-target"
         aria-label="Set price alert"
       >
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
         <span>Price Alert</span>
       </button>
 
@@ -41,7 +41,7 @@ export default function PriceAlert() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-[#0F1525] border border-theme-gold/20 rounded-xl p-5 max-w-[360px] w-full shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
+              className="bg-theme-surface border border-theme-gold/20 rounded-xl p-5 max-w-[360px] w-full shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">

@@ -78,7 +78,7 @@ export default function WeatherPage() {
     return info[city] || '';
   }, [city]);
 
-  const cardClass = "bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5";
+  const cardClass = "bg-theme-surface border border-theme-gold/20 rounded-2xl p-5";
 
   return (
     <div className="min-h-screen bg-theme-bg pb-12 px-4">
@@ -89,7 +89,7 @@ export default function WeatherPage() {
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-6">
-          <select value={city} onChange={(e) => setCity(e.target.value)} className="w-full bg-[#0F1525] border border-theme-gold/20 rounded-xl px-4 py-3 text-sm text-white font-cairo outline-none focus:border-theme-gold/40">
+          <select value={city} onChange={(e) => setCity(e.target.value)} className="w-full bg-theme-surface border border-theme-gold/20 rounded-xl px-4 py-3 text-sm text-white font-cairo outline-none focus:border-theme-gold/40">
             {CITIES.map((c) => <option key={c.name} value={c.name}>{c.name}</option>)}
           </select>
         </motion.div>
@@ -105,7 +105,7 @@ export default function WeatherPage() {
                 <span className="text-[10px] text-white/40 font-cairo">الرياح: {today.wind} كم/س</span>
               </div>
             </div>
-            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={today.icon} /></svg>
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"><path d={today.icon} /></svg>
           </div>
         </motion.div>
 
@@ -141,7 +141,7 @@ export default function WeatherPage() {
             <div className="space-y-2">
               {(PACKING[city] || []).map((item, i) => (
                 <div key={i} className="flex items-center gap-3 px-3 py-2 rounded-xl bg-white/5">
-                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" /><polyline points="22 4 12 14.01 9 11.01" /></svg>
                   <span className="text-sm text-white font-cairo">{item}</span>
                 </div>
               ))}

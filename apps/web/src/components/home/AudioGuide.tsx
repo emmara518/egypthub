@@ -31,7 +31,7 @@ export default function AudioGuide() {
         className="flex items-center gap-2 px-3 py-2 rounded-full border border-theme-gold/20 text-theme-gold text-xs font-bold font-english hover:bg-theme-gold/10 transition-all touch-target"
         aria-label="Audio guide"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
         <span>Audio Guide</span>
       </button>
 
@@ -41,11 +41,11 @@ export default function AudioGuide() {
             initial={{ opacity: 0, y: -8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            className="absolute top-full mt-2 right-0 z-50 bg-[#0F1525] border border-theme-gold/20 rounded-xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] w-[280px]"
+            className="absolute top-full mt-2 right-0 z-50 bg-theme-surface border border-theme-gold/20 rounded-xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] w-[280px]"
           >
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                 <span className="text-[10px] font-bold font-english tracking-[0.15em] text-theme-gold">EGYPTIAN AUDIO GUIDE</span>
               </div>
               <button onClick={() => setOpen(false)} className="w-6 h-6 rounded-lg bg-white/[0.04] flex items-center justify-center text-white/60 hover:bg-white/[0.08] transition-all touch-target" aria-label="Close"><Close size={12} /></button>

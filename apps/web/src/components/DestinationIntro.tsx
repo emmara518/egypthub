@@ -79,7 +79,7 @@ export default function DestinationIntro() {
                   <h3 className="text-3xl font-bold text-white mb-2">{dest.name}</h3>
                   <p className="text-white/80 font-medium">{dest.desc}</p>
                 </div>
-                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-theme-gold group-hover:text-[#0A0E17] transition-colors duration-300">
+                <div className="w-12 h-12 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-theme-gold group-hover:text-dark-900 transition-colors duration-300">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                 </div>
               </div>

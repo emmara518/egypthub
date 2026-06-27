@@ -11,7 +11,7 @@ const benefits = [
 
 export default function BenefitsRow() {
   return (
-    <section className="py-16 bg-gradient-to-b from-[#0F1525]/30 to-transparent border-y border-white/[0.03]">
+    <section className="py-16 bg-gradient-to-b from-theme-surface/30 to-transparent border-y border-white/[0.03]">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-5 gap-8">
           {benefits.map((item, i) => (

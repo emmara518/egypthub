@@ -69,15 +69,15 @@ export default function TranslatorPage() {
           <p className="text-theme-secondary font-cairo">ترجمة فورية للعبارات المصرية — بالعربي والإنجليزية والكتابة بالعربي</p>
         </motion.div>
 
-        <div className="rounded-2xl border border-theme-gold/20 bg-theme-card overflow-hidden mb-6">
+        <div className="rounded-2xl border border-theme-gold/20 bg-theme-card overflow-hidden mb-6 shadow-gold-border">
           <div className="p-6">
             <div className="flex items-center justify-between mb-4">
               <span className="text-sm font-bold font-cairo text-theme">
                 {direction === 'ar-to-en' ? 'عربي ← إنجليزي' : 'إنجليزي ← عربي'}
               </span>
               <button onClick={toggleDirection}
-                className="w-10 h-10 rounded-xl bg-theme-gold/10 border border-theme-gold/20 flex items-center justify-center hover:bg-theme-gold/20 transition-colors">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                className="w-10 h-10 rounded-xl bg-theme-gold/10 border border-theme-gold/20 flex items-center justify-center hover:bg-theme-gold/20 transition-colors text-theme-gold">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 16l-4-4 4-4" /><path d="M3 12h18" />
                 </svg>
               </button>
@@ -122,9 +122,9 @@ export default function TranslatorPage() {
                       <button onClick={() => handleCopy(direction === 'ar-to-en' ? phrase.english : phrase.arabic, `${activeCategory}-${i}`)}
                         className="p-2 rounded-lg opacity-0 group-hover:opacity-100 hover:bg-theme-gold/10 transition-all">
                         {copied === `${activeCategory}-${i}` ? (
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" strokeWidth="2"><path d="M20 6L9 17l-5-5" /></svg>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-green-400"><path d="M20 6L9 17l-5-5" /></svg>
                         ) : (
-                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></svg>
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="text-theme-gold"><rect x="9" y="9" width="13" height="13" rx="2" /><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" /></svg>
                         )}
                       </button>
                     </div>
@@ -135,7 +135,7 @@ export default function TranslatorPage() {
           </AnimatePresence>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-8 rounded-2xl border border-theme-gold/20 bg-theme-card p-5">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-8 rounded-2xl border border-theme-gold/20 bg-theme-card p-5 shadow-gold-border">
           <div className="flex items-center gap-2 mb-3">
             <span className="text-lg">💡</span>
             <h3 className="font-bold font-cairo text-theme">نصيحة للمسافر</h3>

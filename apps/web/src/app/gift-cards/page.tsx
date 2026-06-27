@@ -61,10 +61,10 @@ export default function GiftCardsPage() {
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="bg-theme-surface border border-theme-gold/20 rounded-2xl p-5">
             <h2 className="text-sm font-bold text-theme-gold font-cairo mb-4">معاينة البطاقة</h2>
             <div className="aspect-[3/2] rounded-2xl bg-gradient-to-br from-amber-900/40 to-amber-700/20 border border-theme-gold/30 p-5 flex flex-col items-center justify-center text-center">
-              <svg className="mb-3" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5">
+              <svg className="mb-3" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5">
                 <path d={currentDesign?.svg || DESIGNS[0].svg} />
               </svg>
               <p className="text-2xl font-bold text-theme-gold font-english mb-1">{displayAmount.toLocaleString()} EGP</p>
@@ -73,12 +73,12 @@ export default function GiftCardsPage() {
             </div>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5 space-y-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }} className="bg-theme-surface border border-theme-gold/20 rounded-2xl p-5 space-y-4">
             <div>
               <p className="text-xs text-white/50 font-cairo mb-2">اختر التصميم</p>
               <div className="flex gap-2">
                 {DESIGNS.map((d) => (
-                  <button key={d.id} onClick={() => setDesign(d.id)} className={`px-3 py-1.5 rounded-lg text-xs font-cairo transition-colors ${design === d.id ? 'bg-theme-gold text-[#0A0E17]' : 'bg-white/10 text-white/80'}`}>{d.name}</button>
+                  <button key={d.id} onClick={() => setDesign(d.id)} className={`px-3 py-1.5 rounded-lg text-xs font-cairo transition-colors ${design === d.id ? 'bg-theme-gold text-dark-900' : 'bg-white/10 text-white/80'}`}>{d.name}</button>
                 ))}
               </div>
             </div>
@@ -87,7 +87,7 @@ export default function GiftCardsPage() {
               <p className="text-xs text-white/50 font-cairo mb-2">المبلغ</p>
               <div className="flex flex-wrap gap-2 mb-2">
                 {AMOUNTS.map((a) => (
-                  <button key={a} onClick={() => { setAmount(a); setCustom(''); }} className={`px-3 py-1.5 rounded-lg text-xs font-english transition-colors ${amount === a && !custom ? 'bg-theme-gold text-[#0A0E17]' : 'bg-white/10 text-white/80'}`}>{a.toLocaleString()} ج.م</button>
+                  <button key={a} onClick={() => { setAmount(a); setCustom(''); }} className={`px-3 py-1.5 rounded-lg text-xs font-english transition-colors ${amount === a && !custom ? 'bg-theme-gold text-dark-900' : 'bg-white/10 text-white/80'}`}>{a.toLocaleString()} ج.م</button>
                 ))}
               </div>
               <input type="number" value={custom} onChange={(e) => { setCustom(e.target.value); }} placeholder="مبلغ مخصص" className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white font-english outline-none focus:border-theme-gold/30" />
@@ -100,14 +100,14 @@ export default function GiftCardsPage() {
               <textarea value={message} onChange={(e) => setMessage(e.target.value)} placeholder="رسالة (اختياري)" rows={2} className="w-full bg-white/5 border border-white/10 rounded-lg px-3 py-2 text-sm text-white font-cairo outline-none focus:border-theme-gold/30 resize-none" />
             </div>
 
-            <button onClick={handleSend} disabled={!recipient && !email} className="w-full px-4 py-3 rounded-xl bg-gradient-gold text-[#0A0E17] font-cairo font-bold text-sm disabled:opacity-40">
+            <button onClick={handleSend} disabled={!recipient && !email} className="w-full px-4 py-3 rounded-xl bg-gradient-gold text-dark-900 font-cairo font-bold text-sm disabled:opacity-40">
               أرسل كهدية
             </button>
           </motion.div>
         </div>
 
         {purchases.length > 0 && (
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mt-6 bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5">
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="mt-6 bg-theme-surface border border-theme-gold/20 rounded-2xl p-5">
             <h2 className="text-sm font-bold text-theme-gold font-cairo mb-3">سجل البطاقات المرسلة</h2>
             <div className="space-y-2">
               {purchases.slice(-5).reverse().map((p, i) => (

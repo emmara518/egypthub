@@ -42,7 +42,7 @@ export default function AIHomePage() {
           {quickActions.map((action, i) => (
             <motion.div key={action.label} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}>
               <Link href={action.href} className="block group">
-                <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-5 hover:border-theme-gold/40 transition-all hover:-translate-y-1">
+                <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-5 hover:border-theme-gold/40 hover:shadow-gold-glow transition-all hover:-translate-y-1">
                   <div className="flex items-center gap-4">
                     <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${action.color} flex items-center justify-center`}>
                       <action.icon className="w-6 h-6 text-white" />
@@ -59,7 +59,7 @@ export default function AIHomePage() {
         </div>
 
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
-          className="rounded-2xl border border-theme-gold/20 bg-theme-card overflow-hidden">
+          className="rounded-2xl border border-theme-gold/20 bg-theme-card overflow-hidden shadow-gold-border">
           <div className="p-5 border-b border-theme-gold/10">
             <div className="flex items-center justify-between">
               <h2 className="font-bold text-sm text-theme font-cairo">ابدأ محادثة مع زينب</h2>
@@ -76,7 +76,7 @@ export default function AIHomePage() {
                 'إيه أحسن أنشطة ممكن أعملها في دهب؟',
               ].map((s, i) => (
                 <Link key={i} href={`/ai/chat?q=${encodeURIComponent(s)}`}
-                  className="block p-3 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 hover:bg-theme-elevated transition-all text-right">
+                  className="block p-3 rounded-xl bg-theme-surface border border-theme-gold/10 hover:border-theme-gold/20 hover:bg-theme-elevated transition-all text-right">
                   <p className="text-sm text-theme-secondary font-cairo">{s}</p>
                 </Link>
               ))}
@@ -99,7 +99,7 @@ export default function AIHomePage() {
             { icon: HiSparkles, label: 'فاخرة', href: '/ai/planner?type=luxury' },
           ].map((item) => (
             <Link key={item.label} href={item.href}
-              className="flex flex-col items-center gap-2 p-4 rounded-xl bg-theme-surface border border-theme-border hover:border-theme-gold/20 transition-all text-center">
+              className="flex flex-col items-center gap-2 p-4 rounded-xl bg-theme-surface border border-theme-gold/10 hover:border-theme-gold/20 hover:shadow-gold-border transition-all text-center">
               <item.icon className="w-5 h-5 text-theme-gold" />
               <span className="text-xs text-theme-secondary font-cairo">{item.label}</span>
             </Link>

@@ -70,7 +70,7 @@ export default function SignatureCollection() {
             {/* Right: Mobile App Mockup */}
             <div className="lg:w-[45%] flex items-center justify-center">
               <div className="relative w-full max-w-[300px]">
-                <div className="relative rounded-[2.5rem] border-[3px] border-theme-gold/15 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] shadow-[0_0_30px_-10px_rgba(212,162,76,0.1)] bg-[#0F1525]">
+                <div className="relative rounded-[2.5rem] border-[3px] border-theme-gold/15 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] shadow-[0_0_30px_-10px_rgba(212,162,76,0.1)] bg-theme-surface">
                   <div className="flex items-center justify-between px-6 pt-3 pb-1">
                     <span className="text-[10px] text-white/60 font-english">9:41</span>
                     <div className="flex items-center gap-1">
@@ -85,9 +85,9 @@ export default function SignatureCollection() {
 
                   <div className="px-5 pb-6">
                     <div className="flex items-center gap-2 mb-4">
-                      <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-theme-gold to-[#C89A3D] flex items-center justify-center">
+                      <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center">
                         <svg width="12" height="12" viewBox="0 0 24 24" fill="none">
-                          <path d="M12 2L2 22h20L12 2z" fill="#D4A24C" />
+                          <path d="M12 2L2 22h20L12 2z" fill="var(--gold)" />
                           <path d="M12 8L6 22h12L12 8z" fill="var(--bg)" />
                         </svg>
                       </div>

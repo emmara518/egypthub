@@ -101,11 +101,11 @@ export default function NearbyLocations() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5"
+        className="bg-theme-surface border border-theme-gold/20 rounded-2xl p-5"
       >
         <div className="flex items-center gap-3 mb-4">
           <div className="w-10 h-10 rounded-xl bg-theme-gold/10 flex items-center justify-center">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
           </div>
           <h3 className="text-sm font-bold text-white font-cairo">الأماكن القريبة منك</h3>
         </div>
@@ -114,7 +114,7 @@ export default function NearbyLocations() {
           <button
             onClick={getLocation}
             disabled={loading}
-            className="w-full px-4 py-3 rounded-xl bg-gradient-gold text-[#0A0E17] font-cairo font-bold text-sm flex items-center justify-center gap-2 disabled:opacity-50"
+            className="w-full px-4 py-3 rounded-xl bg-gradient-gold text-dark-900 font-cairo font-bold text-sm flex items-center justify-center gap-2 disabled:opacity-50"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="10" r="3" /><path d="M12 21.7C17.3 17 20 13 20 10a8 8 0 1 0-16 0c0 3 2.7 6.3 8 11.7z" /></svg>
             {loading ? 'جاري التحديد...' : 'حدد موقعك'}
@@ -160,7 +160,7 @@ export default function NearbyLocations() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5"
+          className="bg-theme-surface border border-theme-gold/20 rounded-2xl p-5"
         >
           <h3 className="text-sm font-bold text-white font-cairo mb-3">أقرب اليك — تجارب مميزة</h3>
           <div className="space-y-2">

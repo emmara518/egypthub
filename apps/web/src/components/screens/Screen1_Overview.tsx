@@ -99,12 +99,12 @@ export default function Screen1_Overview() {
   const [activeToolbar, setActiveToolbar] = useState(0);
 
   return (
-    <div className="min-h-screen bg-[#0A0E17] text-white font-arabic">
+    <div className="min-h-screen bg-theme-bg text-white font-arabic">
       {/* ─── Top Toolbar ─── */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="sticky top-0 z-30 bg-[#0F1420]/90 backdrop-blur-xl border-b border-[#1E2A3D]"
+        className="sticky top-0 z-30 bg-theme-surface/90 backdrop-blur-xl border-b border-theme-border"
       >
         <div className="max-w-[1400px] mx-auto px-6 py-3 flex items-center gap-1 overflow-x-auto scrollbar-hide">
           {toolbarItems.map((item, i) => {
@@ -116,7 +116,7 @@ export default function Screen1_Overview() {
                 className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium whitespace-nowrap transition-all duration-300 ${
                   activeToolbar === i
                     ? 'bg-theme-gold/15 text-theme-gold border border-theme-gold/30'
-                    : 'text-[#8B95A5] hover:text-white hover:bg-[#1A2235]'
+                    : 'text-theme-secondary hover:text-white hover:bg-theme-elevated'
                 }`}
               >
                 <Icon className="text-base" />
@@ -137,17 +137,17 @@ export default function Screen1_Overview() {
         >
           <div className="sticky top-24 space-y-6">
             {/* Header */}
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-6">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-6">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-theme-gold to-accent-orange flex items-center justify-center">
-                  <HiCube className="text-2xl text-[#0A0E17]" />
+                  <HiCube className="text-2xl text-dark-900" />
                 </div>
                 <div>
                   <h2 className="font-bold text-lg">ملف تحليل شامل</h2>
-                  <p className="text-[#8B95A5] text-xs">التحليل الكامل</p>
+                  <p className="text-theme-secondary text-xs">التحليل الكامل</p>
                 </div>
               </div>
-              <p className="text-[#8B95A5] text-sm leading-relaxed mb-4">
+              <p className="text-theme-secondary text-sm leading-relaxed mb-4">
                 تحليل المرجع ومكونات التصميم وعناصره الأساسية لمنصة مصر هب السياحية.
               </p>
               <div className="flex gap-2">
@@ -157,7 +157,7 @@ export default function Screen1_Overview() {
             </div>
 
             {/* Color Analysis */}
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-5">
               <h3 className="text-sm font-bold mb-4 text-theme-gold">تحليل الألوان</h3>
               <div className="flex items-center justify-center gap-3 mb-4">
                 {colorCircles.map((c, i) => (
@@ -167,25 +167,25 @@ export default function Screen1_Overview() {
                     className="text-center"
                   >
                     <div
-                      className="w-10 h-10 rounded-full border-2 border-[#1E2A3D] shadow-lg mx-auto mb-1"
+                      className="w-10 h-10 rounded-full border-2 border-theme-border shadow-lg mx-auto mb-1"
                       style={{ backgroundColor: c.color }}
                     />
-                    <span className="text-[10px] text-[#5A6478] font-english">{c.label}</span>
+                    <span className="text-[10px] text-theme-muted font-english">{c.label}</span>
                   </motion.div>
                 ))}
               </div>
               <div className="grid grid-cols-2 gap-2">
-                <div className="text-center p-2 rounded-lg bg-[#0F1420]">
-                  <span className="text-[10px] text-[#5A6478] font-english block">Playfair Display</span>
+                <div className="text-center p-2 rounded-lg bg-theme-surface">
+                  <span className="text-[10px] text-theme-muted font-english block">Playfair Display</span>
                 </div>
-                <div className="text-center p-2 rounded-lg bg-[#0F1420]">
-                  <span className="text-[10px] text-[#5A6478] font-english block">Poppins</span>
+                <div className="text-center p-2 rounded-lg bg-theme-surface">
+                  <span className="text-[10px] text-theme-muted font-english block">Poppins</span>
                 </div>
               </div>
             </div>
 
             {/* Stage Navigator */}
-            <div className="bg-[#141B2D] rounded-2xl border border-[#1E2A3D] p-5">
+            <div className="bg-theme-card rounded-2xl border border-theme-border p-5">
               <h3 className="text-sm font-bold mb-3 text-theme-gold">المراحل</h3>
               <div className="space-y-1">
                 {stages.map((s, i) => (
@@ -195,11 +195,11 @@ export default function Screen1_Overview() {
                     className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-xl text-right text-sm transition-all duration-300 ${
                       activeStage === i
                         ? 'bg-theme-gold/10 text-theme-gold border border-theme-gold/25'
-                        : 'text-[#8B95A5] hover:text-white hover:bg-[#1A2235]'
+                        : 'text-theme-secondary hover:text-white hover:bg-theme-elevated'
                     }`}
                   >
                     <span className={`w-6 h-6 rounded-lg text-xs font-bold flex items-center justify-center font-english ${
-                      activeStage === i ? 'bg-theme-gold text-[#0A0E17]' : 'bg-[#1A2235] text-[#5A6478]'
+                      activeStage === i ? 'bg-theme-gold text-dark-900' : 'bg-theme-elevated text-theme-muted'
                     }`}>
                       {s.id}
                     </span>
@@ -228,8 +228,8 @@ export default function Screen1_Overview() {
                   whileHover={{ scale: 1.005 }}
                   className={`rounded-2xl border p-5 cursor-pointer transition-all duration-500 ${
                     activeStage === idx
-                      ? 'bg-[#141B2D] border-theme-gold/30 shadow-[0_0_30px_rgba(212,162,76,0.08)]'
-                      : 'bg-[#0F1420] border-[#1E2A3D] hover:border-[#1E2A3D]/80'
+                      ? 'bg-theme-card border-theme-gold/30 shadow-[0_0_30px_rgba(212,162,76,0.08)]'
+                      : 'bg-theme-surface border-theme-border hover:border-theme-border/80'
                   }`}
                 >
                   {/* Stage Header */}
@@ -237,34 +237,34 @@ export default function Screen1_Overview() {
                     <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-colors duration-300 ${
                       activeStage === idx
                         ? 'bg-gradient-to-br from-theme-gold to-accent-orange'
-                        : 'bg-[#1A2235]'
+                        : 'bg-theme-elevated'
                     }`}>
-                      <stage.icon className={`text-xl ${activeStage === idx ? 'text-[#0A0E17]' : 'text-[#5A6478]'}`} />
+                      <stage.icon className={`text-xl ${activeStage === idx ? 'text-dark-900' : 'text-theme-muted'}`} />
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3">
                         <span className={`text-[10px] font-english font-bold px-2 py-0.5 rounded-md ${
                           activeStage === idx
                             ? 'bg-theme-gold/15 text-theme-gold'
-                            : 'bg-[#1A2235] text-[#5A6478]'
+                            : 'bg-theme-elevated text-theme-muted'
                         }`}>
                           المرحلة {stage.id}
                         </span>
                         <h3 className={`font-bold transition-colors ${
-                          activeStage === idx ? 'text-white' : 'text-[#8B95A5]'
+                          activeStage === idx ? 'text-white' : 'text-theme-secondary'
                         }`}>
                           {stage.title}
                         </h3>
-                        <span className="text-[#5A6478] text-xs font-english">{stage.titleEn}</span>
+                        <span className="text-theme-muted text-xs font-english">{stage.titleEn}</span>
                       </div>
                       <p className={`text-xs mt-1 transition-colors ${
-                        activeStage === idx ? 'text-[#8B95A5]' : 'text-[#5A6478]'
+                        activeStage === idx ? 'text-theme-secondary' : 'text-theme-muted'
                       }`}>
                         {stage.desc}
                       </p>
                     </div>
                     <div className={`text-xs font-english px-3 py-1 rounded-lg ${
-                      activeStage === idx ? 'bg-theme-gold/10 text-theme-gold' : 'bg-[#1A2235] text-[#5A6478]'
+                      activeStage === idx ? 'bg-theme-gold/10 text-theme-gold' : 'bg-theme-elevated text-theme-muted'
                     }`}>
                       {stage.screens.length} شاشات
                     </div>
@@ -291,15 +291,15 @@ export default function Screen1_Overview() {
                               className="shrink-0 group"
                             >
                               {/* Phone Frame */}
-                              <div className="w-[120px] rounded-2xl overflow-hidden border border-[#1E2A3D] group-hover:border-theme-gold/40 transition-all duration-300 bg-[#0A0E17]">
+                              <div className="w-[120px] rounded-2xl overflow-hidden border border-theme-border group-hover:border-theme-gold/40 transition-all duration-300 bg-theme-bg">
                                 {/* Status bar */}
-                                <div className="h-4 bg-[#0F1420] flex items-center justify-between px-2">
+                                <div className="h-4 bg-theme-surface flex items-center justify-between px-2">
                                   <div className="flex gap-0.5">
-                                    <div className="w-1 h-1 rounded-full bg-[#5A6478]" />
-                                    <div className="w-1 h-1 rounded-full bg-[#5A6478]" />
-                                    <div className="w-1 h-1 rounded-full bg-[#5A6478]" />
+                                    <div className="w-1 h-1 rounded-full bg-theme-muted" />
+                                    <div className="w-1 h-1 rounded-full bg-theme-muted" />
+                                    <div className="w-1 h-1 rounded-full bg-theme-muted" />
                                   </div>
-                                  <div className="w-4 h-1 rounded-full bg-[#5A6478]" />
+                                  <div className="w-4 h-1 rounded-full bg-theme-muted" />
                                 </div>
                                 {/* Screen content */}
                                 <div className="relative h-[180px] overflow-hidden">
@@ -308,13 +308,13 @@ export default function Screen1_Overview() {
                                     alt={screen.name}
                                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                   />
-                                  <div className="absolute inset-0 bg-gradient-to-t from-[#0A0E17] via-transparent to-transparent" />
+                                  <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-transparent to-transparent" />
                                   {/* Gold accent line at bottom */}
                                   <div className="absolute bottom-0 inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-[#E9C46A] to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                 </div>
                                 {/* Label */}
-                                <div className="p-2 bg-[#0F1420]">
-                                  <p className="text-[10px] text-center text-[#8B95A5] group-hover:text-theme-gold transition-colors truncate">
+                                <div className="p-2 bg-theme-surface">
+                                  <p className="text-[10px] text-center text-theme-secondary group-hover:text-theme-gold transition-colors truncate">
                                     {screen.name}
                                   </p>
                                 </div>
@@ -331,7 +331,7 @@ export default function Screen1_Overview() {
                 {idx < stages.length - 1 && (
                   <div className="flex justify-start pr-[72px]">
                     <div className={`w-0.5 h-6 transition-colors duration-500 ${
-                      activeStage > idx ? 'bg-theme-gold/40' : 'bg-[#1E2A3D]'
+                      activeStage > idx ? 'bg-theme-gold/40' : 'bg-theme-border'
                     }`} />
                   </div>
                 )}

@@ -108,7 +108,7 @@ export default function OfferSection() {
         <div className="text-center mt-10">
           <Link
             href="/offers"
-            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-[#0A0E17] font-bold transition-all duration-200"
+            className="inline-flex items-center gap-2 px-8 py-3.5 rounded-md bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold transition-all duration-200"
           >
             عرض الكل
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">

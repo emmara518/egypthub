@@ -76,7 +76,7 @@ export default function SafetyPage() {
             const colors = STATUS_COLORS[section.status];
             return (
               <motion.div key={section.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: si * 0.1 }}
-                className={`rounded-2xl border ${colors.border} ${colors.bg} overflow-hidden`}>
+                className={`rounded-2xl border ${colors.border} ${colors.bg} overflow-hidden shadow-gold-border`}>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-6">
                     <span className="text-3xl">{section.icon}</span>
@@ -106,7 +106,7 @@ export default function SafetyPage() {
         </div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
-          className="mt-10 rounded-2xl border border-theme-gold/20 bg-gradient-to-l from-theme-gold/5 to-transparent p-6 text-center">
+          className="mt-10 rounded-2xl border border-theme-gold/20 bg-gradient-to-l from-theme-gold/5 to-transparent p-6 text-center shadow-gold-border">
           <span className="text-4xl block mb-3">🇪🇬</span>
           <h3 className="text-lg font-bold font-cairo text-theme mb-2">مصر في انتظارك!</h3>
           <p className="text-sm text-theme-secondary font-cairo max-w-lg mx-auto mb-4">

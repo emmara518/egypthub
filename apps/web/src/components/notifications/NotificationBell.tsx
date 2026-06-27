@@ -54,7 +54,7 @@ export default function NotificationBell() {
           <motion.span
             animate={pulse ? { scale: [1, 1.3, 1] } : {}}
             transition={{ duration: 0.5 }}
-            className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 rounded-full bg-theme-gold text-[#0A0E17] text-[9px] font-bold flex items-center justify-center font-english"
+            className="absolute -top-0.5 -right-0.5 w-4.5 h-4.5 rounded-full bg-theme-gold text-dark-900 text-[9px] font-bold flex items-center justify-center font-english"
             style={{ minWidth: '18px', minHeight: '18px', fontSize: '9px', lineHeight: '1' }}
           >
             {unreadCount > 9 ? '9+' : unreadCount}
@@ -69,7 +69,7 @@ export default function NotificationBell() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 8, scale: 0.96 }}
             transition={{ duration: 0.15 }}
-            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 rounded-2xl bg-[#141B2D] border border-theme-gold/20 shadow-elevation-lg overflow-hidden z-50"
+            className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-80 rounded-2xl bg-theme-card border border-theme-gold/20 shadow-elevation-lg overflow-hidden z-50"
           >
             <div className="p-4 border-b border-white/5">
               <div className="flex items-center justify-between">

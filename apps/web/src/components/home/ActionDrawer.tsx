@@ -60,7 +60,7 @@ function CurrencyModal({ onClose }: { onClose: () => void }) {
           {Object.keys(rates).map(c => <option key={c}>{c} {flags[c]}</option>)}
         </select>
       </div>
-      <div className="flex items-center justify-center"><div className="w-8 h-8 rounded-full bg-theme-gold/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
+      <div className="flex items-center justify-center"><div className="w-8 h-8 rounded-full bg-theme-gold/10 flex items-center justify-center"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div></div>
       <div className="flex items-center gap-2">
         <div className="flex-1 bg-white/[0.04] border border-white/10 rounded-xl px-4 py-3 text-sm text-white font-english">{(amt * rates[to] / rates[from]).toFixed(2)}</div>
         <select value={to} onChange={e => setTo(e.target.value)} className="bg-white/[0.04] border border-white/10 rounded-xl px-3 py-3 text-sm text-white font-english outline-none">
@@ -159,7 +159,7 @@ export default function ActionDrawer() {
             animate={{ y: 0 }}
             exit={{ y: '100%' }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="fixed bottom-0 left-0 right-0 z-[85] bg-[#0F1525]/95 backdrop-blur-2xl rounded-t-3xl border-t border-theme-gold/20 shadow-[0_-20px_60px_rgba(0,0,0,0.5)]"
+            className="fixed bottom-0 left-0 right-0 z-[85] bg-theme-surface/95 backdrop-blur-2xl rounded-t-3xl border-t border-theme-gold/20 shadow-[0_-20px_60px_rgba(0,0,0,0.5)]"
           >
             <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-white/[0.06]">
               <div className="flex items-center gap-2">
@@ -193,9 +193,9 @@ export default function ActionDrawer() {
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 40 }}
-            className="fixed bottom-0 left-0 right-0 z-[85] bg-[#0F1525]/95 backdrop-blur-2xl rounded-t-3xl border-t border-theme-gold/20 shadow-[0_-20px_60px_rgba(0,0,0,0.5)] max-h-[70vh] overflow-y-auto scrollbar-hide"
+            className="fixed bottom-0 left-0 right-0 z-[85] bg-theme-surface/95 backdrop-blur-2xl rounded-t-3xl border-t border-theme-gold/20 shadow-[0_-20px_60px_rgba(0,0,0,0.5)] max-h-[70vh] overflow-y-auto scrollbar-hide"
           >
-            <div className="flex items-center justify-between px-5 pt-4 pb-2 border-b border-white/[0.06] sticky top-0 bg-[#0F1525]/95 backdrop-blur-xl z-10">
+            <div className="flex items-center justify-between px-5 pt-4 pb-2 border-b border-white/[0.06] sticky top-0 bg-theme-surface/95 backdrop-blur-xl z-10">
               <button onClick={() => setActiveModal(null)} className="flex items-center gap-1.5 text-white/40 hover:text-white/70 text-xs font-english transition-all touch-target">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg> Back
               </button>

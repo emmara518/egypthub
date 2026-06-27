@@ -21,7 +21,7 @@ export default function ShareTrip() {
         className="flex items-center gap-2 px-3 py-2 rounded-lg border border-theme-gold/20 text-theme-gold text-[11px] font-bold font-english hover:bg-theme-gold/10 transition-all touch-target"
         aria-label="Share trip"
       >
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.59 13.51l6.83 3.98M15.41 6.51l-6.82 3.98"/></svg>
         <span>Share</span>
       </button>
 
@@ -38,7 +38,7 @@ export default function ShareTrip() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-[#0F1525] border border-theme-gold/20 rounded-xl p-5 max-w-[360px] w-full shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
+              className="bg-theme-surface border border-theme-gold/20 rounded-xl p-5 max-w-[360px] w-full shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">

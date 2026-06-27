@@ -19,7 +19,7 @@ export default function GuideProfiles() {
       <div className="grid md:grid-cols-3 gap-3">
         {guides.map((g, i) => (
           <motion.div key={g.name} initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.05 }}
-            className="flex items-center gap-3 p-3 rounded-xl border border-theme-gold/[0.06] hover:border-theme-gold/20 bg-[#0a1020]/40 hover:bg-[#0a1020]/60 transition-all cursor-pointer"
+            className="flex items-center gap-3 p-3 rounded-xl border border-theme-gold/[0.06] hover:border-theme-gold/20 bg-theme-bg/40 hover:bg-theme-bg/60 transition-all cursor-pointer"
           >
             <div className="w-11 h-11 rounded-full overflow-hidden relative bg-theme-gold/10 border border-theme-gold/20 shrink-0">
               <div className="w-full h-full bg-gradient-to-br from-theme-gold/20 to-transparent" />

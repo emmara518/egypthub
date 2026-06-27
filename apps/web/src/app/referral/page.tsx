@@ -24,7 +24,7 @@ function generateReferralCode(): string {
 const SHARE_BASE = typeof window !== 'undefined' ? window.location.origin : 'https://egypthub.com';
 
 const StarIcon = () => (
-  <svg width="48" height="48" viewBox="0 0 24 24" fill="#D4A24C" stroke="#D4A24C" strokeWidth="1">
+  <svg width="48" height="48" viewBox="0 0 24 24" fill="var(--gold)" stroke="var(--gold)" strokeWidth="1">
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
   </svg>
 );
@@ -65,7 +65,7 @@ const ShareIcon = () => (
 );
 
 const UsersIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5">
     <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
     <circle cx="9" cy="7" r="4" />
     <path d="M23 21v-2a4 4 0 00-3-3.87" />
@@ -74,15 +74,15 @@ const UsersIcon = () => (
 );
 
 const CashIcon = () => (
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1.5">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5">
     <line x1="12" y1="1" x2="12" y2="23" />
     <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6" />
   </svg>
 );
 
 const StepIcon = ({ step }: { step: number }) => (
-  <div className="w-10 h-10 rounded-full bg-[#D4A24C]/10 border border-[#D4A24C]/20 flex items-center justify-center shrink-0">
-    <span className="text-sm font-bold text-[#D4A24C]">{step}</span>
+  <div className="w-10 h-10 rounded-full bg-theme-gold/10 border border-theme-gold/20 flex items-center justify-center shrink-0">
+    <span className="text-sm font-bold text-theme-gold">{step}</span>
   </div>
 );
 
@@ -151,14 +151,14 @@ export default function ReferralPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
-          className="bg-[#0F1525] border border-[#D4A24C]/[0.08] rounded-2xl p-6 mb-4"
+          className="bg-theme-surface border border-theme-gold/[0.08] rounded-2xl p-6 mb-4"
         >
           <p className="text-xs text-white/50 mb-3 text-center">كود الدعوة الخاص بك</p>
           <div className="flex items-center justify-center gap-3 mb-5">
-            <span className="text-2xl font-bold tracking-widest text-[#D4A24C]">{refCode}</span>
+            <span className="text-2xl font-bold tracking-widest text-theme-gold">{refCode}</span>
             <button
               onClick={copyCode}
-              className="px-4 py-2 rounded-xl bg-[#D4A24C]/10 border border-[#D4A24C]/30 text-[#D4A24C] text-xs font-bold hover:bg-[#D4A24C]/20 transition-colors flex items-center gap-2"
+              className="px-4 py-2 rounded-xl bg-theme-gold/10 border border-theme-gold/30 text-theme-gold text-xs font-bold hover:bg-theme-gold/20 transition-colors flex items-center gap-2"
             >
               {copied ? (
                 <>
@@ -178,7 +178,7 @@ export default function ReferralPage() {
 
           <button
             onClick={() => share('copy')}
-            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-[#D4A24C] to-[#B8860B] text-theme-bg font-bold text-sm mb-4 hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
+            className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg font-bold text-sm mb-4 hover:opacity-90 transition-opacity flex items-center justify-center gap-2"
           >
             <ShareIcon />
             انسخ رابط الدعوة
@@ -216,18 +216,18 @@ export default function ReferralPage() {
           transition={{ delay: 0.2 }}
           className="grid grid-cols-2 gap-3 mb-4"
         >
-          <div className="bg-[#0F1525] border border-[#D4A24C]/[0.08] rounded-2xl p-5 text-center">
+          <div className="bg-theme-surface border border-theme-gold/[0.08] rounded-2xl p-5 text-center">
             <div className="flex justify-center mb-2">
               <UsersIcon />
             </div>
             <p className="text-2xl font-bold text-white">{referrals.length}</p>
             <p className="text-xs text-white/50 mt-1">أصدقاء مدعوين</p>
           </div>
-          <div className="bg-[#0F1525] border border-[#D4A24C]/[0.08] rounded-2xl p-5 text-center">
+          <div className="bg-theme-surface border border-theme-gold/[0.08] rounded-2xl p-5 text-center">
             <div className="flex justify-center mb-2">
               <CashIcon />
             </div>
-            <p className="text-2xl font-bold text-[#D4A24C]">{totalEarned} XP</p>
+            <p className="text-2xl font-bold text-theme-gold">{totalEarned} XP</p>
             <p className="text-xs text-white/50 mt-1">نقاط مكتسبة</p>
           </div>
         </motion.div>
@@ -237,9 +237,9 @@ export default function ReferralPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="bg-[#0F1525] border border-[#D4A24C]/[0.08] rounded-2xl p-6 mb-4"
+          className="bg-theme-surface border border-theme-gold/[0.08] rounded-2xl p-6 mb-4"
         >
-          <h2 className="text-sm font-bold text-[#D4A24C] mb-4">كيف يعمل؟</h2>
+          <h2 className="text-sm font-bold text-theme-gold mb-4">كيف يعمل؟</h2>
           <div className="space-y-4">
             {[
               { title: 'شارك الكود', desc: 'أرسل كود الدعوة الخاص بك لأصدقائك' },
@@ -262,12 +262,12 @@ export default function ReferralPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="bg-[#0F1525] border border-[#D4A24C]/[0.08] rounded-2xl p-5"
+          className="bg-theme-surface border border-theme-gold/[0.08] rounded-2xl p-5"
         >
-          <h2 className="text-sm font-bold text-[#D4A24C] mb-3">الأصدقاء المدعوين</h2>
+          <h2 className="text-sm font-bold text-theme-gold mb-3">الأصدقاء المدعوين</h2>
           {referrals.length === 0 ? (
             <div className="text-center py-8">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="1" className="mx-auto mb-3 opacity-30">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1" className="mx-auto mb-3 opacity-30">
                 <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" />
                 <circle cx="9" cy="7" r="4" />
                 <path d="M23 21v-2a4 4 0 00-3-3.87" />
@@ -287,7 +287,7 @@ export default function ReferralPage() {
                   className="flex items-center justify-between px-3 py-2.5 rounded-xl bg-theme-bg border border-white/[0.05]"
                 >
                   <span className="text-sm text-white">{ref.name}</span>
-                  <span className="text-xs text-[#D4A24C] font-bold">+{ref.earned} XP</span>
+                  <span className="text-xs text-theme-gold font-bold">+{ref.earned} XP</span>
                 </motion.div>
               ))}
             </div>

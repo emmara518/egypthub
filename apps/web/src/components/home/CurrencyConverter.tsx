@@ -50,7 +50,7 @@ export default function CurrencyConverter() {
             initial={{ opacity: 0, y: -8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            className="absolute top-full mt-2 right-0 z-50 bg-[#0F1525] border border-theme-gold/20 rounded-xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] w-[240px]"
+            className="absolute top-full mt-2 right-0 z-50 bg-theme-surface border border-theme-gold/20 rounded-xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] w-[240px]"
           >
             <p className="text-[10px] font-bold font-english tracking-[0.15em] text-theme-gold mb-3">CONVERTER</p>
 
@@ -69,7 +69,7 @@ export default function CurrencyConverter() {
 
             <div className="flex items-center justify-center mb-3">
               <div className="w-7 h-7 rounded-full bg-theme-gold/10 flex items-center justify-center">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </div>
             </div>
 

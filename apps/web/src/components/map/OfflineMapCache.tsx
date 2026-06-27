@@ -78,11 +78,11 @@ export default function OfflineMapCache() {
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      className="bg-[#0F1525] border border-theme-gold/20 rounded-2xl p-5"
+      className="bg-theme-surface border border-theme-gold/20 rounded-2xl p-5"
     >
       <div className="flex items-center gap-3 mb-3">
         <div className="w-10 h-10 rounded-xl bg-theme-gold/10 flex items-center justify-center">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D4A24C" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" /><circle cx="12" cy="10" r="3" /></svg>
         </div>
         <div>
           <h3 className="text-sm font-bold text-white font-cairo">الخرائط للاستخدام بدون نت</h3>
@@ -123,7 +123,7 @@ export default function OfflineMapCache() {
           className={`w-full px-4 py-2.5 rounded-xl font-cairo font-bold text-sm transition-all ${
             status === 'ready'
               ? 'border border-red-400/30 text-red-400 hover:bg-red-500/10'
-              : 'bg-gradient-gold text-[#0A0E17] hover:brightness-110'
+              : 'bg-gradient-gold text-dark-900 hover:brightness-110'
           }`}
         >
           {status === 'ready' ? 'حذف الخريطة المحملة' : 'تحميل الخريطة للاستخدام بدون نت'}

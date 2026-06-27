@@ -44,10 +44,10 @@ export default function OffersSection() {
         <div className="flex gap-4 overflow-x-auto scrollbar-hide -mx-5 px-5 md:mx-0 md:px-0 pb-2">
           {plans.map((plan, i) => (
             <motion.div key={plan.name} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-              className={`shrink-0 w-[280px] md:w-[340px] relative rounded-2xl border overflow-hidden flex flex-col transition-all duration-500 hover:shadow-[0_0_35px_rgba(212,162,76,0.12)] glass-card neon-gold ${plan.popular ? 'border-theme-gold/30 bg-[#0F1525]/80 shadow-[0_0_20px_rgba(212,162,76,0.1)]' : 'border-theme-gold/[0.08] bg-[#0F1525]/40 hover:border-theme-gold/25'}`}
+              className={`shrink-0 w-[280px] md:w-[340px] relative rounded-2xl border overflow-hidden flex flex-col transition-all duration-500 hover:shadow-[0_0_35px_rgba(212,162,76,0.12)] glass-card neon-gold ${plan.popular ? 'border-theme-gold/30 bg-theme-surface/80 shadow-[0_0_20px_rgba(212,162,76,0.1)]' : 'border-theme-gold/[0.08] bg-theme-surface/40 hover:border-theme-gold/25'}`}
             >
               {plan.popular && (
-                <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 bg-gradient-to-r from-theme-gold to-[#C89A3D] text-theme-bg text-[9px] font-bold font-english px-4 py-1 rounded-full flex items-center gap-1 whitespace-nowrap shadow-[0_0_20px_rgba(212,162,76,0.3)]">
+                <div className="absolute top-3 left-1/2 -translate-x-1/2 z-10 bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-[9px] font-bold font-english px-4 py-1 rounded-full flex items-center gap-1 whitespace-nowrap shadow-[0_0_20px_rgba(212,162,76,0.3)]">
                   <Sparkles size={12} /> MOST POPULAR
                 </div>
               )}
@@ -56,7 +56,7 @@ export default function OffersSection() {
                 <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/30 to-transparent" />
                 <span className="absolute top-3 left-3 text-[8px] font-bold font-english tracking-[0.1em] text-theme-gold bg-theme-bg/70 backdrop-blur-sm px-2.5 py-1 rounded-full border border-theme-gold/20">{plan.tag}</span>
                 <div className="absolute bottom-3 left-3 flex items-center gap-1">
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="#D4A24C"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="var(--gold)"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"/></svg>
                   <span className="text-[11px] font-bold text-theme-gold font-english">{plan.rating}</span>
                   <span className="text-[9px] text-white/40 font-english">({plan.reviews.toLocaleString()})</span>
                 </div>

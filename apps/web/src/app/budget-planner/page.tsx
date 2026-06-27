@@ -69,7 +69,7 @@ export default function BudgetPlannerPage() {
 
         <div className="grid md:grid-cols-2 gap-6">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
-            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
+            <div className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6 shadow-gold-border">
               <h2 className="text-lg font-bold text-theme font-cairo mb-5">تفاصيل الرحلة</h2>
 
               <div className="space-y-5">
@@ -129,7 +129,7 @@ export default function BudgetPlannerPage() {
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }}>
             <AnimatePresence mode="wait">
               {showBreakdown ? (
-                <motion.div key="breakdown" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
+                <motion.div key="breakdown" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="rounded-2xl border border-theme-gold/20 bg-theme-card p-6 shadow-gold-border">
                   <h2 className="text-lg font-bold text-theme font-cairo mb-5">تقسيم الميزانية</h2>
 
                   <div className="relative mb-6">
@@ -187,7 +187,7 @@ export default function BudgetPlannerPage() {
           </motion.div>
         </div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-10 rounded-2xl border border-theme-gold/20 bg-theme-card p-6">
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="mt-10 rounded-2xl border border-theme-gold/20 bg-theme-card p-6 shadow-gold-border">
           <h3 className="text-lg font-bold text-theme font-cairo mb-4">💡 نصائح لتوفير المال في مصر</h3>
           <div className="grid md:grid-cols-3 gap-4">
             {[

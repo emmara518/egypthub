@@ -88,7 +88,7 @@ export default function BookingCalendar({ onSelect }: Props) {
             initial={{ opacity: 0, y: -8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            className="absolute top-full mt-2 left-0 z-50 bg-[#0F1525] border border-theme-gold/20 rounded-xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] w-[300px]"
+            className="absolute top-full mt-2 left-0 z-50 bg-theme-surface border border-theme-gold/20 rounded-xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] w-[300px]"
           >
             <div className="flex items-center justify-between mb-4">
               <button onClick={prev} className="w-7 h-7 rounded-lg bg-white/[0.04] flex items-center justify-center text-white/60 hover:bg-white/[0.08] transition-all touch-target" aria-label="Previous month"><ChevronLeft size={14} /></button>

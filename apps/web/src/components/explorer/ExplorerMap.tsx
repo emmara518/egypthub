@@ -236,16 +236,16 @@ export default function ExplorerMap({
                 r={isSelected ? RADIUS.city + 5 : isHovered ? RADIUS.city + 3 : RADIUS.city}
                 fill={COLOR.city}
                 opacity={isHighlighted ? 1 : 0.9}
-                stroke="#D4A24C"
+                stroke="var(--gold)"
                 strokeWidth={isSelected ? 2.5 : 1}
                 filter={isSelected || isHovered ? 'url(#glowStrong)' : 'url(#glow)'}
               />
-              <circle cx={x} cy={y} r={RADIUS.city + 8} fill="none" stroke="#D4A24C" strokeWidth={0.5} opacity={0.3}>
+              <circle cx={x} cy={y} r={RADIUS.city + 8} fill="none" stroke="var(--gold)" strokeWidth={0.5} opacity={0.3}>
                 <animate attributeName="r" values={`${RADIUS.city + 6};${RADIUS.city + 14};${RADIUS.city + 6}`} dur="2s" repeatCount="indefinite" />
                 <animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite" />
               </circle>
               {count > 0 && (
-                <circle cx={x + RADIUS.city + 4} cy={y - RADIUS.city - 4} r="7" fill="#D4A24C" stroke="#1a1a2e" strokeWidth="1.5">
+                <circle cx={x + RADIUS.city + 4} cy={y - RADIUS.city - 4} r="7" fill="var(--gold)" stroke="#1a1a2e" strokeWidth="1.5">
                   <animate attributeName="r" values="7;8;7" dur="3s" repeatCount="indefinite" />
                 </circle>
               )}

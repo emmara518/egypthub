@@ -104,7 +104,7 @@ export default function RoutePlannerPage() {
 
         <div className="flex flex-col lg:flex-row gap-8">
           <div className="flex-1 min-w-0">
-            <div className="rounded-2xl border border-theme-gold/20 bg-[#0F1525]/80 p-5">
+            <div className="rounded-2xl border border-theme-gold/20 bg-theme-surface/80 p-5">
               <h2 className="text-sm font-bold text-white font-cairo mb-4">اختر مدنك</h2>
 
               {loading && (
@@ -125,7 +125,7 @@ export default function RoutePlannerPage() {
                     <select
                       value={departure}
                       onChange={(e) => setDeparture(e.target.value)}
-                      className="w-full bg-[#1A2235]/80 border border-theme-gold/15 rounded-xl px-4 py-2.5 text-white text-sm font-cairo focus:outline-none focus:border-theme-gold/40 transition-colors appearance-none"
+                      className="w-full bg-theme-elevated/80 border border-theme-gold/15 rounded-xl px-4 py-2.5 text-white text-sm font-cairo focus:outline-none focus:border-theme-gold/40 transition-colors appearance-none"
                     >
                       <option value="">اختر مدينة المغادرة</option>
                       {cities.map((c) => (
@@ -139,7 +139,7 @@ export default function RoutePlannerPage() {
                     <select
                       value={destination}
                       onChange={(e) => setDestination(e.target.value)}
-                      className="w-full bg-[#1A2235]/80 border border-theme-gold/15 rounded-xl px-4 py-2.5 text-white text-sm font-cairo focus:outline-none focus:border-theme-gold/40 transition-colors appearance-none"
+                      className="w-full bg-theme-elevated/80 border border-theme-gold/15 rounded-xl px-4 py-2.5 text-white text-sm font-cairo focus:outline-none focus:border-theme-gold/40 transition-colors appearance-none"
                     >
                       <option value="">اختر الوجهة</option>
                       {availableCities.map((c) => (
@@ -175,7 +175,7 @@ export default function RoutePlannerPage() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="rounded-2xl border border-theme-gold/20 bg-[#0F1525]/80 p-5 mt-4"
+                className="rounded-2xl border border-theme-gold/20 bg-theme-surface/80 p-5 mt-4"
               >
                 <h3 className="text-sm font-bold text-white font-cairo mb-3 flex items-center gap-2">
                   <Location size={14} />
@@ -201,7 +201,7 @@ export default function RoutePlannerPage() {
                       <Link
                         key={exp.id}
                         href={`/experiences/${exp.slug}`}
-                        className="flex items-center gap-3 bg-[#1A2235]/60 rounded-xl border border-theme-gold/10 p-3 hover:bg-[#1A2235]/90 transition-colors group"
+                        className="flex items-center gap-3 bg-theme-elevated/60 rounded-xl border border-theme-gold/10 p-3 hover:bg-theme-elevated/90 transition-colors group"
                       >
                         <div className="w-10 h-10 rounded-lg overflow-hidden shrink-0 bg-theme-surface">
                           {exp.images[0] ? (
@@ -233,10 +233,10 @@ export default function RoutePlannerPage() {
 
           <div className="lg:w-80 shrink-0">
             <div className="sticky top-28 space-y-4">
-              <div className="rounded-2xl border border-theme-gold/20 bg-[#0F1525]/80 p-5 text-center">
+              <div className="rounded-2xl border border-theme-gold/20 bg-theme-surface/80 p-5 text-center">
                 <div className="relative w-24 h-24 mx-auto mb-3">
                   <div className="w-full h-full rounded-full bg-gradient-to-br from-theme-gold to-accent-amber p-[2px]">
-                    <div className="w-full h-full rounded-full bg-[#0F1525] flex items-center justify-center">
+                    <div className="w-full h-full rounded-full bg-theme-surface flex items-center justify-center">
                       <span className="text-3xl">🗺️</span>
                     </div>
                   </div>

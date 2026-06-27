@@ -110,7 +110,7 @@ export default function TravelDnaModal({ isOpen, onClose }: Props) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-[#0F1525] border border-theme-gold/20 shadow-[0_32px_64px_rgba(0,0,0,0.6)] p-6 md:p-8"
+            className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-3xl bg-theme-surface border border-theme-gold/20 shadow-[0_32px_64px_rgba(0,0,0,0.6)] p-6 md:p-8"
           >
             <button onClick={onClose} className="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/5 border border-theme-gold/10 flex items-center justify-center text-white/50 hover:text-white transition-all touch-target">
               <Close size={16} />
