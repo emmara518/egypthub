@@ -7,6 +7,20 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['framer-motion'],
   },
+  async redirects() {
+    return [
+      {
+        source: '/ai-concierge',
+        destination: '/ai',
+        permanent: true,
+      },
+      {
+        source: '/ai-concierge/:path*',
+        destination: '/ai/:path*',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
