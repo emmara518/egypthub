@@ -3,7 +3,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { useAuthStore } from '@/lib/auth-store';
 
 interface ProviderProfile {
   id: string;
@@ -101,7 +100,6 @@ function StatCard({ value, label, icon }: { value: string | number; label: strin
 }
 
 export default function ProviderDashboardPage() {
-  const { user, isAuthenticated, isLoading: authLoading, checkAuth } = useAuthStore();
   const [profile, setProfile] = useState<ProviderProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -109,15 +107,6 @@ export default function ProviderDashboardPage() {
   const [togglingId, setTogglingId] = useState<string | null>(null);
 
   useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
-
-  useEffect(() => {
-    if (authLoading) return;
-    if (!isAuthenticated) {
-      setLoading(false);
-      return;
-    }
     (async () => {
       setLoading(true);
       setError(null);
@@ -137,7 +126,7 @@ export default function ProviderDashboardPage() {
         setLoading(false);
       }
     })();
-  }, [authLoading, isAuthenticated]);
+  }, []);
 
   const toggleStatus = async (id: string, current: boolean) => {
     setTogglingId(id);
@@ -164,20 +153,7 @@ export default function ProviderDashboardPage() {
     }
   };
 
-  if (authLoading || loading) return <Spinner />;
-
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-theme-bg flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-playfair font-bold text-theme mb-4">يرجى تسجيل الدخول</h1>
-          <Link href="/auth/login" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-theme-gold text-dark-900 font-bold font-cairo text-sm transition-all hover:bg-theme-gold/90">
-            تسجيل الدخول
-          </Link>
-        </div>
-      </div>
-    );
-  }
+  if (loading) return <Spinner />;
 
   if (!profile) {
     return (

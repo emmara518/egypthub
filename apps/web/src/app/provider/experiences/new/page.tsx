@@ -44,16 +44,11 @@ const initialForm: FormState = {
 };
 
 export default function NewExperiencePage() {
-  const { user, isAuthenticated, isLoading: authLoading, checkAuth } = useAuthStore();
   const [form, setForm] = useState<FormState>(initialForm);
   const [errors, setErrors] = useState<Partial<Record<keyof FormState, string>>>({});
   const [submitting, setSubmitting] = useState(false);
   const [apiError, setApiError] = useState<string | null>(null);
   const [success, setSuccess] = useState<{ slug: string } | null>(null);
-
-  useEffect(() => {
-    checkAuth();
-  }, [checkAuth]);
 
   const setField = <K extends keyof FormState>(key: K, value: FormState[K]) => {
     setForm((prev) => ({ ...prev, [key]: value }));
@@ -105,28 +100,6 @@ export default function NewExperiencePage() {
       setSubmitting(false);
     }
   };
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen bg-theme-bg flex items-center justify-center">
-        <motion.div animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-8 h-8 border-2 border-theme-gold border-t-transparent rounded-full" />
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-theme-bg flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-2xl font-playfair font-bold text-theme mb-4">يرجى تسجيل الدخول</h1>
-          <Link href="/auth/login" className="px-6 py-3 rounded-xl bg-theme-gold text-dark-900 font-bold font-cairo text-sm transition-all hover:bg-theme-gold/90">
-            تسجيل الدخول
-          </Link>
-        </div>
-      </div>
-    );
-  }
 
   if (success) {
     return (

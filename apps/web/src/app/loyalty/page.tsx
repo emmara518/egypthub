@@ -1,9 +1,8 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { useAuthStore } from '@/lib/auth-store';
+import Link from 'next/link';
 import { HiStar, HiSparkles, HiArrowUp, HiClock, HiCheck, HiChevronLeft, HiGift } from 'react-icons/hi';
 
 interface LoyaltyData {
@@ -37,7 +36,6 @@ function StatSkeleton() {
 }
 
 export default function LoyaltyPage() {
-  const { isAuthenticated, isLoading: authLoading, user } = useAuthStore();
   const [data, setData] = useState<LoyaltyData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -58,35 +56,8 @@ export default function LoyaltyPage() {
   };
 
   useEffect(() => {
-    if (isAuthenticated) fetchLoyalty();
-    else setLoading(false);
-  }, [isAuthenticated]);
-
-  if (authLoading) {
-    return (
-      <div className="min-h-screen bg-theme-bg flex items-center justify-center">
-        <div className="w-8 h-8 border-2 border-theme-gold border-t-transparent rounded-full animate-spin" />
-      </div>
-    );
-  }
-
-  if (!isAuthenticated) {
-    return (
-      <div className="min-h-screen bg-theme-bg flex items-center justify-center px-4 pt-24">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center max-w-md">
-          <div className="w-20 h-20 mx-auto mb-4 rounded-2xl bg-theme-gold/10 border border-theme-gold/20 flex items-center justify-center">
-            <HiStar className="w-10 h-10 text-theme-gold" />
-          </div>
-          <h1 className="text-2xl font-bold font-playfair text-theme mb-2">برنامج الولاء</h1>
-          <p className="text-theme-secondary font-cairo mb-6">سجل الدخول لترى نقاطك ومكافآتك الحصرية</p>
-          <Link href="/login"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-theme-gold hover:bg-theme-gold/80 text-dark-900 font-bold font-cairo transition-all">
-            تسجيل الدخول
-          </Link>
-        </motion.div>
-      </div>
-    );
-  }
+    fetchLoyalty();
+  }, []);
 
   if (loading) {
     return (
@@ -156,7 +127,7 @@ export default function LoyaltyPage() {
             <HiStar className="w-3.5 h-3.5" />برنامج الولاء
           </span>
           <h1 className="text-3xl md:text-4xl font-bold font-playfair text-theme">
-            {user?.name || 'المسافر'}
+            المسافر
           </h1>
           <p className="text-theme-secondary font-cairo mt-1">امنح نقاطاً واستبدلها بمكافآت حصرية</p>
         </motion.div>
