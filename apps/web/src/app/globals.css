@@ -1462,14 +1462,27 @@ body::before {
 
 /* =Design System Enforcement Utilities */
 
-/* Container — all pages */
+/* Container — all pages (mobile-first, full-width up to 480px) */
 .container-mobile {
-  width: calc(100% - 24px);
+  width: 100%;
   max-width: 480px;
+  padding-inline: 16px;
   margin-inline: auto;
 }
 .container-full {
   width: 100%;
+}
+.container-desktop {
+  width: 100%;
+  max-width: 480px;
+  padding-inline: 16px;
+  margin-inline: auto;
+}
+@media (min-width: 768px) {
+  .container-desktop {
+    max-width: 1440px;
+    padding-inline: 32px;
+  }
 }
 
 /* Elevation utilities */
@@ -1530,12 +1543,19 @@ body::before {
 .gap-card { margin-bottom: 16px; }
 .gap-element { margin-bottom: 8px; }
 
-/* Vertical rhythm for sections (use on every top-level section) */
+/* Vertical rhythm for sections */
 .section-block {
-  width: calc(100% - 24px);
+  width: 100%;
   max-width: 480px;
+  padding-inline: 16px;
   margin-inline: auto;
   margin-bottom: 64px;
+}
+@media (min-width: 768px) {
+  .section-block {
+    max-width: 1440px;
+    padding-inline: 32px;
+  }
 }
 
 /* =Cubic bezier defaults */

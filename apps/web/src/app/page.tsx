@@ -34,25 +34,27 @@ export default function HomePage() {
       <BookingTimeline />
       <div className="section-fade-in"><section id="hero"><HeroSection /></section></div>
       <div className="section-fade-in"><section id="map"><InteractiveMapSection /></section></div>
-      <BrandMotif variant="gold-line" className="mx-auto max-w-[200px] gap-subsection" />
+      <BrandMotif variant="gold-line" className="container-mobile flex justify-center" />
       <div className="section-fade-in">
         <section id="experiences-stories" className="relative">
-          <div className="relative z-10 section-block"><ExperiencesSection /></div>
+          <div className="relative z-10"><ExperiencesSection /></div>
           <div className="relative z-10 -mt-16 md:-mt-24"><StoriesSection /></div>
         </section>
       </div>
-      <div className="section-fade-in section-block"><section id="signature"><SignatureCollection /></section></div>
-      <BrandMotif variant="gold-line" className="mx-auto max-w-[200px] gap-subsection" />
-      <div className="section-fade-in section-block"><section id="offers"><OffersSection /></section></div>
-      <div className="section-fade-in section-block"><section id="stats"><StatsAndLocalEyes /></section></div>
-      <div className="section-fade-in section-block"><section id="reviews">
-        <ReviewsSection />
+      <div className="section-fade-in"><section id="signature"><SignatureCollection /></section></div>
+      <BrandMotif variant="gold-line" className="container-mobile flex justify-center" />
+      <div className="section-fade-in"><section id="offers"><OffersSection /></section></div>
+      <div className="section-fade-in"><section id="stats"><StatsAndLocalEyes /></section></div>
+      <div className="section-fade-in"><section id="reviews">
+        <div className="container-mobile">
+          <ReviewsSection />
+        </div>
         <GuestPhotoGallery />
         <GuideProfiles />
       </section></div>
-      <BrandMotif variant="gold-line" className="mx-auto max-w-[200px] gap-subsection" />
-      <div className="section-block"><SmartRecommendations /></div>
-      <div className="section-fade-in section-block"><Newsletter /></div>
+      <BrandMotif variant="gold-line" className="container-mobile flex justify-center" />
+      <div className="container-mobile"><SmartRecommendations /></div>
+      <div className="section-fade-in container-mobile"><Newsletter /></div>
       <AbandonedRecovery />
       <SessionRecovery />
     </div>

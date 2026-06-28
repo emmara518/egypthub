@@ -53,7 +53,7 @@ export default function HeroSection() {
   const resetMagnet = () => setMagnetPos({ x: 0, y: 0 });
 
   return (
-    <section className="relative w-full min-h-screen overflow-hidden bg-theme-bg">
+    <section className="relative w-full min-h-[100dvh] overflow-x-hidden bg-theme-bg">
       {/* Background — simplified, no parallax */}
       <div className="absolute inset-0">
         <Image src="/assets/back_ground.webp" alt="" fill sizes="100vw" className="object-cover object-center" priority />
@@ -64,7 +64,7 @@ export default function HeroSection() {
       <div className="lg:hidden absolute bottom-0 left-0 right-0 h-[35vh] z-10 pointer-events-none bg-gradient-to-t from-theme-bg via-theme-bg/60 to-transparent" />
 
       {/* Fog Layer */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none opacity-30">
+      <div className="absolute inset-0 pointer-events-none opacity-30">
         <motion.div 
           animate={{ x: [0, -30, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'easeInOut' }}
@@ -118,8 +118,8 @@ export default function HeroSection() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 h-full flex flex-col lg:flex-row lg:items-end lg:justify-between px-5 md:px-8 lg:pl-20 xl:pl-28 pt-24 md:pt-28 pb-8 lg:pb-0 max-w-[1440px] mx-auto">
-        <div className="max-w-[520px] lg:max-w-[580px]">
+      <div className="relative z-10 h-full flex flex-col lg:flex-row lg:items-end lg:justify-between container-desktop pt-24 md:pt-28 pb-8 lg:pb-0">
+        <div className="max-w-[520px] lg:max-w-[500px] xl:max-w-[580px]">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-headline mb-8 md:mb-12 lg:mb-16">
             <span className="text-white">Egypt is not just a destination.</span><br />
@@ -198,32 +198,32 @@ export default function HeroSection() {
           </motion.div>
         </div>
 
-        {/* Avatar — right side, visually integrated */}
-        <div className="hidden lg:flex items-end justify-center mt-8 lg:mt-0 lg:ml-8 xl:ml-12 shrink-0">
+        {/* Avatar — emerges from bottom-right of hero scene */}
+        <div className="hidden lg:block absolute right-0 bottom-0 z-10 pointer-events-none" style={{ width: 'clamp(300px, 26vw, 440px)', height: 'clamp(420px, 40vw, 640px)' }}>
           <div
-            className="relative cursor-pointer"
-            style={{ width: 'clamp(260px, 22vw, 380px)', height: 'clamp(340px, 32vw, 520px)' }}
+            className="relative w-full h-full pointer-events-auto cursor-pointer"
+            style={{ transform: 'translateY(48px)' }}
             onClick={() => setDnaModalOpen(true)}
           >
             <div
-              className="absolute inset-0 rounded-2xl"
-              style={{ background: 'radial-gradient(ellipse at 50% 80%, rgba(212,162,76,0.15) 0%, transparent 70%)' }}
+              className="absolute inset-0"
+              style={{ background: 'radial-gradient(ellipse at 50% 80%, rgba(var(--gold-rgb), 0.12) 0%, transparent 70%)' }}
             />
-            <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="(max-width: 1024px) 100vw, 380px" className="object-contain object-bottom" priority />
+            <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="440px" className="object-contain object-bottom" priority />
           </div>
         </div>
-        {/* Avatar — mobile: below the search widget */}
-        <div className="lg:hidden flex justify-center mt-8 mb-4">
+        {/* Avatar — mobile: emerges below search widget */}
+        <div className="lg:hidden relative z-10 mt-8 mb-0">
           <div
-            className="relative cursor-pointer"
-            style={{ width: 'clamp(200px, 50vw, 300px)', height: 'clamp(260px, 65vw, 400px)' }}
+            className="relative cursor-pointer mx-auto"
+            style={{ width: 'clamp(200px, 50vw, 300px)', height: 'clamp(280px, 70vw, 420px)' }}
             onClick={() => setDnaModalOpen(true)}
           >
             <div
-              className="absolute inset-0 rounded-2xl"
-              style={{ background: 'radial-gradient(ellipse at 50% 80%, rgba(212,162,76,0.15) 0%, transparent 70%)' }}
+              className="absolute inset-0"
+              style={{ background: 'radial-gradient(ellipse at 50% 80%, rgba(var(--gold-rgb), 0.12) 0%, transparent 70%)' }}
             />
-            <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="(max-width: 1024px) 100vw, 300px" className="object-contain object-bottom" priority />
+            <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="300px" className="object-contain object-bottom" priority />
           </div>
         </div>
       </div>
