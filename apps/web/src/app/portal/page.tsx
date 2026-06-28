@@ -420,7 +420,7 @@ export default function PortalPage() {
                   <input
                     type="text"
                     placeholder="بحث..."
-                    className="w-64 px-4 py-2.5 rounded-xl bg-theme-surface border border-theme-border text-sm text-white placeholder-[#5A6478] focus:outline-none focus:border-theme-gold/50 transition-colors"
+                    className="w-64 px-4 py-2.5 rounded-xl bg-theme-surface border border-theme-border text-sm text-white placeholder-[var(--text-muted)] focus:outline-none focus:border-theme-gold/50 transition-colors"
                   />
                   <svg className="absolute left-3 top-1/2 -translate-y-1/2 text-theme-muted" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <circle cx="11" cy="11" r="8" />
