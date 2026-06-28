@@ -50,7 +50,7 @@ export default function CurrencyConverter() {
             initial={{ opacity: 0, y: -8, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            className="absolute top-full mt-2 right-0 z-50 bg-theme-surface border border-theme-gold/20 rounded-xl p-4 shadow-[0_12px_40px_rgba(0,0,0,0.6)] w-[240px]"
+            className="absolute top-full mt-2 right-0 z-50 bg-theme-surface border border-theme-gold/20 rounded-xl p-4 shadow-elevation-3 w-[240px]"
           >
             <p className="text-[10px] font-bold font-english tracking-[0.15em] text-theme-gold mb-3">CONVERTER</p>
 

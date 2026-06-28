@@ -23,7 +23,7 @@ export default function StoriesSection() {
             </h2>
             <p className="text-white/40 text-sm mt-2">Real stories. Real people. Real Egypt.</p>
           </div>
-          <button className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full gold-btn text-sm shrink-0 shadow-[0_4px_12px_rgba(212,162,76,0.2)]">
+          <button className="hidden md:inline-flex items-center gap-2 px-4 py-2 rounded-full gold-btn text-sm shrink-0 shadow-elevation-gold-1">
             Explore All Stories <ArrowRight size={16} />
           </button>
         </div>
@@ -67,7 +67,7 @@ export default function StoriesSection() {
         </div>
 
         <div className="md:hidden mt-5">
-          <button className="flex items-center gap-2 px-4 py-2 rounded-full gold-btn text-sm shadow-[0_4px_12px_rgba(212,162,76,0.2)]">
+          <button className="flex items-center gap-2 px-4 py-2 rounded-full gold-btn text-sm shadow-elevation-gold-1">
             Explore All Stories <ArrowRight size={16} />
           </button>
         </div>

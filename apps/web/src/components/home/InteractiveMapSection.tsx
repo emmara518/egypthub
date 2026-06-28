@@ -227,7 +227,7 @@ export default function InteractiveMapSection() {
                 exit={{ opacity: 0, y: 20, scale: 0.95 }}
                 className="absolute bottom-4 left-4 right-4 md:left-auto md:right-4 md:bottom-4 md:w-[280px] z-30"
               >
-                <div className="bg-theme-surface/95 backdrop-blur-xl rounded-2xl border border-theme-gold/20 overflow-hidden shadow-[0_16px_48px_rgba(0,0,0,0.6)]">
+                <div className="bg-theme-surface/95 backdrop-blur-xl rounded-xl border border-theme-gold/20 overflow-hidden shadow-elevation-3">
                   {/* Header */}
                   <div className="relative px-4 pt-4 pb-3" style={{ background: `linear-gradient(135deg, ${getTagColor(selected.tag)}15, transparent)` }}>
                     <button onClick={() => setSelectedLocation(null)}
@@ -260,7 +260,7 @@ export default function InteractiveMapSection() {
                       </span>
                     </div>
                     <p className="text-xs text-white/50 mb-3 leading-relaxed">{selected.desc}</p>
-                    <Link href="/destinations/sharm-el-sheikh" className="w-full py-2.5 rounded-xl gold-btn text-xs font-bold font-cairo shadow-[0_4px_12px_rgba(212,162,76,0.2)] block text-center">
+                    <Link href="/destinations/sharm-el-sheikh" className="w-full py-2.5 rounded-xl gold-btn text-xs font-bold font-cairo shadow-elevation-gold-1 block text-center">
                       استكشف {selected.nameAr} ←
                     </Link>
                   </div>

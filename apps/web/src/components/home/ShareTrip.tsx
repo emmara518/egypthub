@@ -38,7 +38,7 @@ export default function ShareTrip() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.9 }}
-              className="bg-theme-surface border border-theme-gold/20 rounded-xl p-5 max-w-[360px] w-full shadow-[0_16px_48px_rgba(0,0,0,0.5)]"
+              className="bg-theme-surface border border-theme-gold/20 rounded-xl p-5 max-w-[360px] w-full shadow-elevation-3"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between mb-4">

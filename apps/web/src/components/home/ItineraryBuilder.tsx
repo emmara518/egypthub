@@ -31,7 +31,7 @@ export default function ItineraryBuilder() {
   return (
     <>
       <button onClick={() => { setOpen(true); if (trip.length === 0) setTrip(Array.from({ length: 3 }, (_, i) => ({ day: i + 1, items: [] }))); }}
-        className="flex items-center gap-2 px-4 py-2 rounded-full gold-btn text-sm font-bold shadow-[0_4px_12px_rgba(212,162,76,0.2)]"
+        className="flex items-center gap-2 px-4 py-2 rounded-full gold-btn text-sm font-bold shadow-elevation-gold-1"
         aria-label="Build itinerary"
       >
         <Calendar size={16} />
@@ -51,7 +51,7 @@ export default function ItineraryBuilder() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-theme-surface border border-theme-gold/20 rounded-2xl max-w-[550px] w-full max-h-[80vh] shadow-[0_20px_60px_rgba(0,0,0,0.5)] flex flex-col"
+              className="bg-theme-surface border border-theme-gold/20 rounded-2xl max-w-[550px] w-full max-h-[80vh] shadow-elevation-4 flex flex-col"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.06] shrink-0">
@@ -117,7 +117,7 @@ export default function ItineraryBuilder() {
 
               <div className="border-t border-white/[0.06] px-5 py-3 flex items-center justify-between shrink-0">
                 <span className="text-[10px] text-white/30 font-english">{trip.reduce((sum, d) => sum + d.items.length, 0)} activities selected</span>
-                <button className="px-4 py-2 rounded-lg gold-btn text-xs font-bold shadow-[0_4px_12px_rgba(212,162,76,0.2)]">Save Itinerary</button>
+                <button className="px-4 py-2 rounded-lg gold-btn text-xs font-bold shadow-elevation-gold-1">Save Itinerary</button>
               </div>
             </motion.div>
           </motion.div>

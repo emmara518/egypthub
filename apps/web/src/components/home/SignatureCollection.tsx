@@ -41,7 +41,7 @@ export default function SignatureCollection() {
                 Egypt Signature Collection
               </h2>
               <p className="text-white/40 text-sm mb-4">Handcrafted luxury experiences crafted for unforgettable moments.</p>
-              <Link href="/collections" className="inline-block px-4 py-2 rounded-full gold-btn text-sm mb-5 shadow-[0_4px_12px_rgba(212,162,76,0.2)]">
+              <Link href="/collections" className="inline-block px-4 py-2 rounded-full gold-btn text-sm mb-5 shadow-elevation-gold-1">
                 View Collection
               </Link>
 
@@ -49,7 +49,7 @@ export default function SignatureCollection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="relative rounded-2xl overflow-hidden aspect-[16/9] group cursor-pointer border border-theme-gold/[0.1] hover:border-theme-gold/30 transition-all duration-500 hover:shadow-[0_0_30px_rgba(212,162,76,0.15)]"
+                className="relative rounded-xl overflow-hidden aspect-[16/9] group cursor-pointer border border-theme-gold/[0.1] hover:border-theme-gold/30 transition-all duration-500 hover:shadow-elevation-gold-glow"
               >
                 <Image src="/assets/home/luxor-temple.jpg?w=900&q=80" alt="Luxury Collection" fill sizes="(max-width: 1024px) 100vw, 55vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/60 to-transparent" />
@@ -70,7 +70,7 @@ export default function SignatureCollection() {
             {/* Right: Mobile App Mockup */}
             <div className="lg:w-[45%] flex items-center justify-center">
               <div className="relative w-full max-w-[300px]">
-                <div className="relative rounded-[2.5rem] border-[3px] border-theme-gold/15 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.5)] shadow-[0_0_30px_-10px_rgba(212,162,76,0.1)] bg-theme-surface">
+                <div className="relative rounded-[2.5rem] border-[3px] border-theme-gold/15 overflow-hidden shadow-elevation-4 shadow-[0_0_30px_-10px_rgba(212,162,76,0.1)] bg-theme-surface">
                   <div className="flex items-center justify-between px-6 pt-3 pb-1">
                     <span className="text-[10px] text-white/60 font-english">9:41</span>
                     <div className="flex items-center gap-1">

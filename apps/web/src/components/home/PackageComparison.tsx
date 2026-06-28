@@ -16,7 +16,7 @@ export default function PackageComparison() {
   return (
     <>
       <button onClick={() => setOpen(true)}
-        className="flex items-center gap-2 px-3 py-2 rounded-full gold-btn text-xs font-bold shadow-[0_4px_12px_rgba(212,162,76,0.2)]"
+        className="flex items-center gap-2 px-3 py-2 rounded-full gold-btn text-xs font-bold shadow-elevation-gold-1"
         aria-label="Compare packages"
       >
         <span>Compare Packages</span>
@@ -35,7 +35,7 @@ export default function PackageComparison() {
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              className="bg-theme-surface border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[750px] w-full shadow-[0_20px_60px_rgba(0,0,0,0.5)]"
+              className="bg-theme-surface border border-theme-gold/20 rounded-2xl overflow-hidden max-w-[750px] w-full shadow-elevation-4"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between px-5 py-4 border-b border-white/[0.06]">
@@ -84,7 +84,7 @@ export default function PackageComparison() {
                       {packages.map(pkg => (
                         <td key={pkg.name} className={`p-3 text-center ${pkg.popular ? 'bg-theme-gold/[0.02]' : ''}`}>
                           <button className={`px-4 py-2 rounded-xl text-xs font-bold font-english transition-all ${
-                            pkg.popular ? 'gold-btn shadow-[0_4px_12px_rgba(212,162,76,0.2)]' : 'border border-theme-gold/25 text-theme-gold hover:bg-theme-gold/[0.06]'
+                            pkg.popular ? 'gold-btn shadow-elevation-gold-1' : 'border border-theme-gold/25 text-theme-gold hover:bg-theme-gold/[0.06]'
                           }`}>
                             Select
                           </button>

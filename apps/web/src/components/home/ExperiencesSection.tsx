@@ -42,7 +42,7 @@ function formatPrice(price: number): string {
 function SkeletonCard() {
   return (
     <div className="shrink-0 w-[240px] md:w-auto animate-pulse">
-      <div className="rounded-2xl overflow-hidden mb-3 border border-white/[0.08] bg-theme-surface">
+      <div className="rounded-xl overflow-hidden mb-3 border border-white/[0.08] bg-theme-surface">
         <div className="relative aspect-[4/5] bg-white/5" />
         <div className="p-4 space-y-2">
           <div className="flex items-center gap-1.5">
@@ -96,7 +96,7 @@ export default function ExperiencesSection() {
               Top Experiences in Egypt
             </h2>
           </div>
-          <Link href="/experiences" className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-sm font-bold font-english shrink-0 shadow-[0_4px_15px_rgba(212,162,76,0.25)] hover:shadow-[0_8px_30px_rgba(212,162,76,0.4)] transition-all">
+          <Link href="/experiences" className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-sm font-bold font-english shrink-0 shadow-elevation-gold-1 hover:shadow-elevation-gold-2 transition-all">
             View All
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>
@@ -113,10 +113,10 @@ export default function ExperiencesSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="shrink-0 w-[240px] md:w-auto group cursor-pointer hover:shadow-[0_0_30px_rgba(212,162,76,0.12)] transition-all duration-500"
+                className="shrink-0 w-[240px] md:w-auto group cursor-pointer hover:shadow-elevation-gold-glow transition-all duration-500"
               >
                 <Link href={`/experiences/${exp.slug}`} className="block">
-                  <div className="relative rounded-2xl overflow-hidden mb-3 border border-white/[0.08] group-hover:border-theme-gold/30 transition-all duration-500 bg-theme-surface">
+                  <div className="relative rounded-xl overflow-hidden mb-3 border border-white/[0.08] group-hover:border-theme-gold/30 transition-all duration-500 bg-theme-surface">
                     <div className="relative aspect-[4/5]">
                       <button onClick={(e) => { e.preventDefault(); setLightbox({ src: exp.images?.[0] || '/assets/placeholder.jpg', title: exp.titleAr }); }} className="absolute inset-0 z-10 w-full h-full" aria-label={`View ${exp.titleAr} image`} />
                       <Image src={exp.images?.[0] || '/assets/placeholder.jpg'} alt={exp.titleAr} fill sizes="(max-width: 768px) 240px, 20vw" className="object-cover group-hover:scale-105 transition-transform duration-700" />
@@ -145,7 +145,7 @@ export default function ExperiencesSection() {
                           <span className="text-sm font-bold font-display text-theme-gold">{formatPrice(exp.priceEgp)}</span>
                           <span className="text-[9px] text-white/30 font-english">/person</span>
                         </div>
-                        <Link href="/booking" className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-[10px] font-bold font-english hover:shadow-[0_4px_12px_rgba(212,162,76,0.3)] transition-all">
+                        <Link href="/booking" className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-[10px] font-bold font-english hover:shadow-elevation-gold-1 transition-all">
                           احجز الآن
                         </Link>
                       </div>
@@ -158,7 +158,7 @@ export default function ExperiencesSection() {
         </div>
 
         <div className="md:hidden mt-5 flex justify-center">
-          <Link href="/experiences" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-sm font-bold font-english shadow-[0_4px_12px_rgba(212,162,76,0.2)]">
+          <Link href="/experiences" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-theme-gold to-theme-gold text-theme-bg text-sm font-bold font-english shadow-elevation-gold-1">
             View All Experiences
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </Link>

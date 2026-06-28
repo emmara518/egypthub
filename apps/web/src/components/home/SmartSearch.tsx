@@ -57,7 +57,7 @@ export default function SmartSearch() {
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
-              className="bg-theme-surface border-b border-theme-gold/10 max-w-[700px] mx-auto mt-[15vh] rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] overflow-hidden"
+              className="bg-theme-surface border-b border-theme-gold/10 max-w-[700px] mx-auto mt-[15vh] rounded-2xl shadow-elevation-4 overflow-hidden"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center gap-3 p-4 border-b border-white/[0.06]">

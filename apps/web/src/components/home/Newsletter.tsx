@@ -38,7 +38,7 @@ export default function Newsletter() {
                 <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required
                   className="bg-transparent text-sm text-white/70 font-english placeholder:text-white/30 w-full outline-none" aria-label="Email for newsletter" />
               </div>
-              <button type="submit" className="gold-btn p-2.5 rounded-xl shrink-0 shadow-[0_4px_12px_rgba(212,162,76,0.2)] hover:shadow-[0_4px_20px_rgba(212,162,76,0.35)] transition-all touch-target" aria-label="Subscribe">
+              <button type="submit" className="gold-btn p-2.5 rounded-xl shrink-0 shadow-elevation-gold-1 hover:shadow-[0_4px_20px_rgba(212,162,76,0.35)] transition-all touch-target" aria-label="Subscribe">
                 <ArrowRight size={16} className="text-theme-bg" />
               </button>
             </form>

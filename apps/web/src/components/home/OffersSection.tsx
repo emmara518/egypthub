@@ -68,7 +68,7 @@ export default function OffersSection() {
                   <span className="text-[clamp(1.5rem,4vw,2rem)] font-bold font-display text-theme-gold">{formatPrice(plan.priceUSD)}</span>
                   <span className="text-[11px] text-white/30 font-english">{plan.period}</span>
                 </div>
-                <Link href="/booking" className="w-full py-2.5 rounded-xl text-sm font-bold font-english mb-5 touch-target gold-btn shadow-[0_4px_12px_rgba(212,162,76,0.2)] ripple block text-center">
+                <Link href="/booking" className="w-full py-2.5 rounded-xl text-sm font-bold font-english mb-5 touch-target gold-btn shadow-elevation-gold-1 ripple block text-center">
                   Get Started <ArrowRight size={14} className="inline ml-1" />
                 </Link>
                 <ul className="space-y-2.5 flex-1">
