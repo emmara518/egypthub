@@ -67,7 +67,7 @@ function SearchContent() {
 
   return (
     <div className="min-h-screen bg-theme-bg">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
+      <div className="container-mobile py-8">
         <Link href="/" className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M15 18l-6-6 6-6"/></svg>
           العودة للرئيسية

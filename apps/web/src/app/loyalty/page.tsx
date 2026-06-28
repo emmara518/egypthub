@@ -62,7 +62,7 @@ export default function LoyaltyPage() {
   if (loading) {
     return (
       <div className="min-h-screen bg-theme-bg pt-28 pb-16">
-        <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
+        <div className="container-mobile">
           <div className="mb-8">
             <div className="h-4 w-20 bg-theme-surface rounded animate-pulse mb-2" />
             <div className="h-9 w-64 bg-theme-surface rounded animate-pulse" />
@@ -115,7 +115,7 @@ export default function LoyaltyPage() {
 
   return (
     <div className="min-h-screen bg-theme-bg pt-28 pb-16">
-      <div className="max-w-[1200px] mx-auto px-4 lg:px-6">
+      <div className="container-mobile">
         <Link href="/"
           className="inline-flex items-center gap-1 text-theme-gold hover:text-theme-gold/80 transition-colors text-sm font-cairo mb-6">
           <HiChevronLeft className="w-4 h-4" />

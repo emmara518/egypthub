@@ -95,7 +95,7 @@ export default function AboutEgyptPage() {
         </div>
       </div>
 
-      <div className="max-w-[1200px] mx-auto px-4 lg:px-6 py-16">
+      <div className="container-mobile py-16">
         {/* Stats */}
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20">

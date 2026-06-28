@@ -66,7 +66,7 @@ export default function StoriesPage() {
             <path d="M0 400 Q 200 250 400 400 T 800 400 T 1200 400 T 1440 400" stroke="var(--gold)" strokeWidth="1" fill="none" opacity="0.5" />
           </svg>
         </div>
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-8 pt-20 pb-16">
+        <div className="relative z-10 w-full container-mobile pt-20 pb-16">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-theme-gold/30 text-theme-gold text-xs font-semibold mb-6">
               <HiBookmark className="w-4 h-4" />

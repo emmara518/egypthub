@@ -132,7 +132,7 @@ export default function ProfilePage() {
 
   return (
     <div className="min-h-screen bg-theme-bg">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-6 py-8">
+      <div className="container-mobile py-8">
         <div className="flex gap-6">
           <motion.aside
             initial={{ opacity: 0, x: 30 }}

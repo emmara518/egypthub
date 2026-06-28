@@ -34,7 +34,7 @@ export default function DestinationsPage() {
           </svg>
         </div>
 
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-6 lg:px-8 pt-32 pb-16">
+        <div className="relative z-10 w-full container-mobile pt-32 pb-16">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-theme-gold/30 text-theme-gold text-xs font-semibold tracking-wider mb-6">
               <HiLocationMarker className="w-4 h-4" />
@@ -109,7 +109,7 @@ export default function DestinationsPage() {
       </section>
 
       <section className="py-24 bg-theme-bg">
-        <div className="max-w-[1440px] mx-auto px-6 lg:px-8">
+        <div className="container-mobile">
           <div className="flex items-end justify-between mb-12">
             <div>
               <p className="text-theme-gold text-xs font-semibold tracking-widest uppercase mb-3 font-poppins">
