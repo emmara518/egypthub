@@ -613,7 +613,7 @@ export default function PortalPage() {
       </div>
 
       {/* ─── Mobile Bottom Nav ─── */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-theme-bg/95 backdrop-blur-lg border-t border-theme-border">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-theme-bg/95 backdrop-blur-lg border-t border-theme-border pb-[env(safe-area-inset-bottom,0px)]">
         <div className="flex items-center justify-around px-2 py-2">
           {menuItems.slice(0, 5).map((item) => {
             const IconComp = iconMap[item.icon];

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import { Playfair_Display, Cairo, Poppins, Amiri } from 'next/font/google';
 import './globals.css';
 import AuthProvider from '@/components/AuthProvider';
@@ -28,7 +29,7 @@ const poppins = Poppins({
 });
 
 const amiri = Amiri({
-  subsets: ['latin', 'latin-ext'],
+  subsets: ['arabic', 'latin', 'latin-ext'],
   weight: ['400', '700'],
   variable: '--font-amiri',
   display: 'swap',
@@ -47,7 +48,6 @@ export const metadata: Metadata = {
     url: 'https://egypthub.co',
     siteName: 'EGYPTHUB',
     images: [{ url: '/assets/og-image.png', width: 1200, height: 630, alt: 'EGYPTHUB - Egypt Travel Marketplace' }],
-    locale: 'en_US',
     type: 'website',
   },
   twitter: {
@@ -62,9 +62,15 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const cookieStore = await cookies();
+  const savedLocale = cookieStore.get('egypthub-lang')?.value;
+  const locale = savedLocale === 'ar' ? 'ar' : 'en';
+  const dir = locale === 'ar' ? 'rtl' : 'ltr';
+  const ogLocale = locale === 'ar' ? 'ar_AR' : 'en_US';
+
   return (
-    <html lang="en" dir="ltr" data-theme="dark" className={`${playfair.variable} ${cairo.variable} ${poppins.variable} ${amiri.variable}`} suppressHydrationWarning>
+    <html lang={locale} dir={dir} data-theme="dark" className={`${playfair.variable} ${cairo.variable} ${poppins.variable} ${amiri.variable}`} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#D4A24C" />

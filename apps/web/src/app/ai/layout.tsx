@@ -20,7 +20,7 @@ export default function AILayout({ children }: { children: React.ReactNode }) {
     <div className="min-h-screen bg-theme-bg">
       {children}
 
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-theme-bg/95 backdrop-blur-xl border-t border-theme-gold/10">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-theme-bg/95 backdrop-blur-xl border-t border-theme-gold/10 pb-[env(safe-area-inset-bottom,0px)]">
         <div className="max-w-[1200px] mx-auto px-2">
           <div className="flex items-center justify-around py-2">
             {NAV_ITEMS.map((item) => {
@@ -40,7 +40,7 @@ export default function AILayout({ children }: { children: React.ReactNode }) {
         </div>
       </nav>
 
-      <div className="h-16" />
+      <div className="h-[72px] min-h-[env(safe-area-inset-bottom,0px)]" />
     </div>
   );
 }
