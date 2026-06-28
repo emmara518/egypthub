@@ -64,15 +64,15 @@ const steps = [
 ];
 
 const travelerTypeColors: Record<string, string> = {
-  adventurer: '#E8C97A',
-  culture: '#D4A24C',
+  adventurer: 'var(--gold-light)',
+  culture: 'var(--gold)',
   beach: '#4FC3F7',
   history: '#A67B5B',
-  foodie: '#FF8A65',
+  foodie: 'var(--coral)',
   luxury: '#E1BEE7',
 };
 
-const dnaHelixColors = ['#D4A24C', '#E8C97A', '#4FC3F7', '#A67B5B', '#FF8A65', '#E1BEE7'];
+const dnaHelixColors = ['var(--gold)', 'var(--gold-light)', '#4FC3F7', '#A67B5B', 'var(--coral)', '#E1BEE7'];
 
 export default function TravelDnaPage() {
   const { travelDna, setTravelDna, resetTravelDna, addXp } = useAppStore();

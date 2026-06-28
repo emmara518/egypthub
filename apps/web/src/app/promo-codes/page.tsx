@@ -19,7 +19,7 @@ const availablePromos = [
     discount: 15,
     expiry: '28 فبراير 2025',
     terms: 'خصم حصري لشرم الشيخ. يشمل الفنادق والأنشطة',
-    color: 'from-[#41BEDC] to-[#0E8F94]',
+    color: 'from-[var(--cyan)] to-[var(--teal)]',
   },
   {
     id: 3,
@@ -27,7 +27,7 @@ const availablePromos = [
     discount: 25,
     expiry: '15 مارس 2025',
     terms: 'عرض موسمي الشتاء. الحد الأدنى EGP 1000',
-    color: 'from-[#8B5CF6] to-[#6D28D9]',
+    color: 'from-[var(--purple)] to-[#6D28D9]',
   },
   {
     id: 4,
@@ -35,7 +35,7 @@ const availablePromos = [
     discount: 10,
     expiry: '30 يونيو 2025',
     terms: 'خصم أول حجز للمستخدمين الجدد فقط',
-    color: 'from-[#10B981] to-[#059669]',
+    color: 'from-[var(--success)] to-[#059669]',
   },
   {
     id: 5,

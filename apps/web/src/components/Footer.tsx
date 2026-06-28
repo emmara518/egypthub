@@ -45,7 +45,7 @@ export default function Footer() {
   const [email, setEmail] = useState('');
 
   return (
-    <footer className="bg-[#060A14]">
+    <footer className="bg-theme-bg">
       <div className="border-t border-theme-gold/20" />
       <div className="w-full max-w-[1440px] mx-auto px-5 md:px-8 py-10 md:py-14">
 
@@ -56,7 +56,7 @@ export default function Footer() {
               <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center shadow-[0_4px_20px_rgba(212,162,76,0.3)]">
                 <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                   <path d="M12 2L2 22h20L12 2z" fill="white" />
-                  <path d="M12 8L6 22h12L12 8z" fill="#060A14" />
+                  <path d="M12 8L6 22h12L12 8z" fill="var(--bg)" />
                 </svg>
               </div>
               <div>
@@ -197,7 +197,7 @@ export default function Footer() {
                 <span className="text-white text-[8px] font-bold font-english tracking-wider">AMEX</span>
               </div>
               {/* Fawry */}
-              <div className="w-[60px] h-[38px] rounded-lg bg-gray-800 flex items-center justify-center hover:shadow-[0_2px_8px_rgba(212,162,76,0.2)] transition-all" title="Fawry">
+              <div className="w-[60px] h-[38px] rounded-lg bg-theme-surface flex items-center justify-center hover:shadow-[0_2px_8px_rgba(212,162,76,0.2)] transition-all" title="Fawry">
                 <span className="text-[#FF6B00] text-[9px] font-bold font-english">fawry</span>
               </div>
               {/* Vodafone Cash */}

@@ -104,7 +104,7 @@ function Toggle({ enabled, onToggle }: { enabled: boolean; onToggle: () => void 
   return (
     <button
       onClick={onToggle}
-      className={`relative w-11 h-6 rounded-full transition-colors ${enabled ? 'bg-theme-gold' : 'bg-[#1A2035]'}`}
+        className={`relative w-11 h-6 rounded-full transition-colors ${enabled ? 'bg-theme-gold' : 'bg-theme-surface'}`}
     >
       <div
         className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-sm transition-all ${
@@ -278,8 +278,8 @@ export default function ProfilePage() {
                             <span className="text-xs text-white/60">{f.rating}</span>
                           </div>
                         </div>
-                        <button className="absolute top-2 left-2">
-                          <svg width="18" height="18" viewBox="0 0 24 24" fill="#EF4444" stroke="#EF4444" strokeWidth="2">
+                          <button className="absolute top-2 left-2">
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--error)" stroke="var(--error)" strokeWidth="2">
                             <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z" />
                           </svg>
                         </button>
@@ -320,7 +320,7 @@ export default function ProfilePage() {
                           <p className="font-bold text-white text-sm">{r.title}</p>
                           <div className="flex gap-0.5">
                             {Array.from({ length: 5 }).map((_, s) => (
-                              <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill={s < r.stars ? '#D4A24C' : 'none'} stroke={s < r.stars ? '#D4A24C' : '#1A2035'} strokeWidth="2">
+                              <svg key={s} width="14" height="14" viewBox="0 0 24 24" fill={s < r.stars ? 'var(--gold)' : 'none'} stroke={s < r.stars ? 'var(--gold)' : 'var(--surface)'} strokeWidth="2">
                                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                               </svg>
                             ))}

@@ -88,7 +88,7 @@ export default function AboutEgyptPage() {
               من أهرامات الجيزة إلى شواطئ البحر الأحمر، مصر تقدم تجربة سياحية لا تُنسى
             </p>
             <Link href="/experiences"
-              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/30 transition-all">
+              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg font-cairo font-bold hover:shadow-lg transition-all" style={{ boxShadow: '0 0 20px var(--gold-glow)' }}>
               ابدأ رحلتك
             </Link>
           </motion.div>

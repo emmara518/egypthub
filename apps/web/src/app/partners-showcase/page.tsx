@@ -201,7 +201,7 @@ export default function PartnersShowcasePage() {
           <div className="rounded-2xl border border-theme-gold/10 bg-theme-card p-8 max-w-2xl mx-auto">
             <h2 className="text-xl font-bold text-white font-playfair mb-2">هل تريد الشراكة معنا؟</h2>
             <p className="text-sm text-theme-muted font-cairo mb-4">انضم إلى شبكة شركائنا واعرض خدماتك لآلاف المسافرين</p>
-            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
+            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold hover:shadow-lg transition-all" style={{ boxShadow: '0 0 15px var(--gold-glow)' }}>
               تواصل معنا
             </button>
           </div>

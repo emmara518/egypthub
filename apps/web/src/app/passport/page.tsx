@@ -85,7 +85,7 @@ export default function PassportPage() {
                 transition={{ duration: 1.5, ease: 'easeOut' }}
                 className="h-full rounded-full"
                 style={{
-                  background: 'linear-gradient(90deg, #D4A24C, #E8C97A, #D4A24C)',
+                  background: 'linear-gradient(90deg, var(--gold), var(--gold-light), var(--gold))',
                   boxShadow: '0 0 8px rgba(212,162,76,0.4)',
                 }}
               />

@@ -190,7 +190,7 @@ export default function GuidesPage() {
                   <span className="text-lg font-bold text-theme-gold font-english">EGP {guide.price}</span>
                 </div>
 
-                <button className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold hover:shadow-lg hover:shadow-[#D4A24C]/20 transition-all">
+                <button className="w-full py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold hover:shadow-lg transition-all" style={{ boxShadow: '0 0 15px var(--gold-glow)' }}>
                   احجز الآن
                 </button>
               </div>
