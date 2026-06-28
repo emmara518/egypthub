@@ -98,26 +98,37 @@
   --space-20: 80px;
   --space-32: 128px;
 
-  /* === Border Radius === */
+  /* === Border Radius (aligned with tailwind.config.ts) === */
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 20px;
-  --radius-2xl: 24px;
-  --radius-3xl: 32px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
   --radius-full: 9999px;
 
-  /* === Shadows === */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --shadow-gold: 0 4px 14px rgba(212, 162, 76, 0.25);
-  --shadow-gold-lg: 0 8px 32px rgba(212, 162, 76, 0.3);
-  --shadow-gold-glow: 0 0 20px rgba(212, 162, 76, 0.15);
-  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-  --shadow-inner-gold: inset 0 0 0 2px rgba(212, 162, 76, 0.3);
+  /* === Elevation / Shadow Scale === */
+  --elevation-0: none;
+  --elevation-1: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --elevation-4: 0 24px 64px rgba(0, 0, 0, 0.7);
+  --elevation-gold-1: 0 4px 14px rgba(212, 162, 76, 0.25);
+  --elevation-gold-2: 0 8px 32px rgba(212, 162, 76, 0.3);
+  --elevation-gold-glow: 0 0 20px rgba(212, 162, 76, 0.15);
+  --elevation-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  --elevation-inner-gold: inset 0 0 0 2px rgba(212, 162, 76, 0.3);
+
+  /* Legacy shadow aliases (deprecated, use --elevation-* instead) */
+  --shadow-sm: var(--elevation-0);
+  --shadow-md: var(--elevation-1);
+  --shadow-lg: var(--elevation-2);
+  --shadow-xl: var(--elevation-3);
+  --shadow-gold: var(--elevation-gold-1);
+  --shadow-gold-lg: var(--elevation-gold-2);
+  --shadow-gold-glow: var(--elevation-gold-glow);
+  --shadow-inner: var(--elevation-inner);
+  --shadow-inner-gold: var(--elevation-inner-gold);
 }
 
 [data-theme='light'] {
@@ -507,19 +518,20 @@ input, textarea, select {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: var(--radius-md);
 }
 
-/* === Egyptian Card === */
+/* === Egyptian Card (legacy, use card-featured instead) === */
 .egypt-card {
   border-radius: var(--radius-lg);
   background: var(--surface-elevated);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--elevation-1);
   border-bottom: 2px solid var(--gold);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .egypt-card:hover {
   transform: translateY(-8px);
-  box-shadow: var(--shadow-gold-lg);
+  box-shadow: var(--elevation-gold-2);
 }
 
 /* === Hide Scrollbar === */
@@ -1444,8 +1456,86 @@ body::before {
   background: rgba(var(--surface-rgb), 0.7);
   backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid rgba(var(--gold-rgb), 0.2);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.4), 0 0 30px -10px rgba(var(--gold-rgb),0.15), inset 0 1px 0 rgba(var(--gold-rgb),0.08);
-  border-radius: 16px;
+  box-shadow: var(--elevation-3), 0 0 30px -10px rgba(var(--gold-rgb),0.15), inset 0 1px 0 rgba(var(--gold-rgb),0.08);
+  border-radius: var(--radius-lg);
+}
+
+/* =Design System Enforcement Utilities */
+
+/* Container — all pages */
+.container-mobile {
+  width: calc(100% - 24px);
+  max-width: 480px;
+  margin-inline: auto;
+}
+.container-full {
+  width: 100%;
+}
+
+/* Elevation utilities */
+.elevation-0 { box-shadow: var(--elevation-0); }
+.elevation-1 { box-shadow: var(--elevation-1); }
+.elevation-2 { box-shadow: var(--elevation-2); }
+.elevation-3 { box-shadow: var(--elevation-3); }
+.elevation-4 { box-shadow: var(--elevation-4); }
+.elevation-gold-1 { box-shadow: var(--elevation-gold-1); }
+.elevation-gold-2 { box-shadow: var(--elevation-gold-2); }
+.elevation-gold-glow { box-shadow: var(--elevation-gold-glow); }
+
+/* Radius utilities */
+.radius-xs { border-radius: var(--radius-xs); }
+.radius-sm { border-radius: var(--radius-sm); }
+.radius-md { border-radius: var(--radius-md); }
+.radius-lg { border-radius: var(--radius-lg); }
+.radius-xl { border-radius: var(--radius-xl); }
+.radius-2xl { border-radius: var(--radius-2xl); }
+.radius-full { border-radius: var(--radius-full); }
+
+/* Card architecture */
+.card-base {
+  background: var(--surface-elevated);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-1);
+  border: 1px solid var(--border);
+}
+.card-featured {
+  background: var(--surface-elevated);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elevation-2);
+  border: 1px solid var(--gold-border);
+  border-bottom: 2px solid var(--gold);
+}
+.card-glass {
+  background: rgba(var(--surface-rgb), 0.7);
+  backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(var(--gold-rgb), 0.2);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elevation-3), 0 0 30px -10px rgba(var(--gold-rgb),0.15), inset 0 1px 0 rgba(var(--gold-rgb),0.08);
+}
+.card-pressable {
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-pressable:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--elevation-gold-2);
+}
+.card-pressable:active {
+  transform: translateY(-1px);
+}
+
+/* Spacing utilities */
+.gap-section { margin-bottom: 64px; }
+.gap-subsection { margin-bottom: 32px; }
+.gap-card { margin-bottom: 16px; }
+.gap-element { margin-bottom: 8px; }
+
+/* Vertical rhythm for sections (use on every top-level section) */
+.section-block {
+  width: calc(100% - 24px);
+  max-width: 480px;
+  margin-inline: auto;
+  margin-bottom: 64px;
 }
 
 /* =Cubic bezier defaults */

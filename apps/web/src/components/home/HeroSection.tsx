@@ -141,7 +141,7 @@ export default function HeroSection() {
             className="flex items-center gap-3 group mb-8 md:mb-12 lg:mb-16 ripple"
             style={{ transform: `translate(${magnetPos.x}px, ${magnetPos.y}px)` }}
           >
-            <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center shadow-[0_0_20px_rgba(212,162,76,0.25)] group-hover:shadow-[0_0_35px_rgba(212,162,76,0.45)] transition-all duration-300">
+            <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center shadow-elevation-gold-glow group-hover:shadow-elevation-gold-2 transition-all duration-300">
               <Play size={18} className="text-theme-bg" />
             </div>
             <span className="text-sm font-semibold text-theme-gold font-english">Watch Egypt Come Alive</span>
@@ -149,7 +149,7 @@ export default function HeroSection() {
 
           {/* AI CONCIERGE — search-widget-glass */}
           <motion.div id="ai-concierge" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }}>
-            <div className="search-widget-glass p-5 md:p-6 shadow-[0_8px_40px_rgba(0,0,0,0.5)]">
+            <div className="search-widget-glass p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-6 h-6 md:w-7 md:h-7 rounded-full bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center">
                   <Sparkles size={14} className="text-theme-bg" />
@@ -168,7 +168,7 @@ export default function HeroSection() {
                   <button key={chip.label} onClick={() => setActiveChip(i)}
                     className={`shrink-0 snap-start flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-full border transition-all text-[10px] md:text-[11px] font-english touch-target ${
                       activeChip === i
-                        ? 'border-theme-gold/50 bg-theme-gold/15 text-theme-gold shadow-[0_0_12px_rgba(212,162,76,0.15)]'
+                        ? 'border-theme-gold/50 bg-theme-gold/15 text-theme-gold shadow-elevation-gold-glow'
                         : 'border-white/[0.06] bg-white/[0.03] text-white/60 hover:border-theme-gold/15 hover:text-theme-gold/70'
                     }`}>
                     <chip.icon size={12} />
@@ -190,7 +190,7 @@ export default function HeroSection() {
                   <User size={16} />
                   <span className="text-[12px] text-white/50 font-english truncate">2 Travelers</span>
                 </div>
-                <button aria-label="Search destinations" className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center shrink-0 shadow-[0_4px_12px_rgba(212,162,76,0.2)] touch-target ripple">
+                <button aria-label="Search destinations" className="w-8 h-8 md:w-9 md:h-9 rounded-full bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center shrink-0 shadow-elevation-gold-1 touch-target ripple">
                   <ArrowRight size={16} className="text-theme-bg" />
                 </button>
               </div>

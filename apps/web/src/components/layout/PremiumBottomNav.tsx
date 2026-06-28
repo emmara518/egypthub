@@ -93,7 +93,7 @@ function TabContent({ id, Icon, label, labelEn, href, isActive }: TabContentProp
             className="absolute inset-0 rounded-full"
             animate={{
               background: isActive
-                ? 'radial-gradient(circle, rgba(212,162,76,0.18) 0%, transparent 70%)'
+                ? 'radial-gradient(circle, rgba(var(--gold-rgb), 0.18) 0%, transparent 70%)'
                 : 'radial-gradient(circle, transparent 0%, transparent 70%)',
               scale: isActive ? 1.3 : 0.8,
             }}
@@ -102,7 +102,7 @@ function TabContent({ id, Icon, label, labelEn, href, isActive }: TabContentProp
           <Icon
             size={24}
             className="relative z-10 transition-colors duration-300"
-            style={{ color: isActive ? '#D4A24C' : 'rgba(255,255,255,0.35)' }}
+            style={{ color: isActive ? 'var(--gold)' : 'rgba(255,255,255,0.35)' }}
           />
         </motion.div>
 
@@ -206,11 +206,12 @@ export default function PremiumBottomNav() {
           style={{ transformOrigin: 'center', willChange: 'transform' }}
         >
           <div
-            className="absolute inset-0 border-t border-theme-gold/[0.08]"
+            className="absolute inset-0"
             style={{
-              background: 'linear-gradient(180deg, rgba(8,12,24,0.85) 0%, rgba(8,12,24,0.98) 100%)',
+              background: 'linear-gradient(180deg, rgba(var(--surface-rgb), 0.8) 0%, rgba(var(--surface-rgb), 0.95) 100%)',
               backdropFilter: 'blur(24px) saturate(1.4)',
               WebkitBackdropFilter: 'blur(24px) saturate(1.4)',
+              borderTop: '1px solid rgba(var(--gold-rgb), 0.12)',
             }}
           />
 
@@ -219,7 +220,7 @@ export default function PremiumBottomNav() {
             animate={{
               opacity: activeIdx >= 0 ? 1 : 0,
               background: activeIdx >= 0
-                ? 'linear-gradient(90deg, transparent 0%, rgba(212,162,76,0.15) 20%, rgba(212,162,76,0.3) 50%, rgba(212,162,76,0.15) 80%, transparent 100%)'
+                ? 'linear-gradient(90deg, transparent 0%, rgba(var(--gold-rgb), 0.15) 20%, rgba(var(--gold-rgb), 0.3) 50%, rgba(var(--gold-rgb), 0.15) 80%, transparent 100%)'
                 : 'transparent',
             }}
             transition={{ duration: 0.4 }}
@@ -257,13 +258,13 @@ export default function PremiumBottomNav() {
             width: ORB_SIZE,
             height: ORB_SIZE,
             top: 8,
-            background: 'radial-gradient(circle at 35% 30%, rgba(255,220,130,0.95) 0%, rgba(212,162,76,0.5) 45%, rgba(180,130,50,0.15) 70%, transparent 100%)',
+            background: 'radial-gradient(circle at 35% 30%, var(--gold-light) 0%, rgba(var(--gold-rgb), 0.5) 45%, rgba(var(--gold-rgb), 0.15) 70%, transparent 100%)',
             boxShadow: [
-              '0 0 24px rgba(212,162,76,0.35)',
-              '0 0 60px rgba(212,162,76,0.1)',
+              '0 0 24px rgba(var(--gold-rgb), 0.35)',
+              '0 0 60px rgba(var(--gold-rgb), 0.1)',
               'inset 0 2px 6px rgba(255,255,255,0.25)',
             ].join(', '),
-            border: '1px solid rgba(212,162,76,0.15)',
+            border: '1px solid rgba(var(--gold-rgb), 0.15)',
             willChange: 'transform',
             zIndex: 1,
           }}
@@ -293,7 +294,7 @@ export default function PremiumBottomNav() {
                 height: ORB_SIZE * 0.45,
                 top: ORB_SIZE + 2,
                 borderRadius: '50%',
-                background: 'radial-gradient(ellipse at center, rgba(212,162,76,0.1) 0%, transparent 70%)',
+                background: 'radial-gradient(ellipse at center, rgba(var(--gold-rgb), 0.1) 0%, transparent 70%)',
               }}
               initial={{ scaleY: 0.4, opacity: 0.7, x: orbX + ORB_SIZE / 2 - (ORB_SIZE * 1.6) / 2 }}
               animate={{ scaleY: 1.6, opacity: 0, x: orbX + ORB_SIZE / 2 - (ORB_SIZE * 1.6) / 2 }}
