@@ -98,37 +98,36 @@
   --space-20: 80px;
   --space-32: 128px;
 
-  /* === Border Radius (aligned with tailwind.config.ts) === */
+  /* === Border Radius (DESIGN SYSTEM AUDIT SPEC) === */
   --radius-xs: 4px;
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --radius-xl: 24px;
-  --radius-2xl: 32px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-3xl: 32px;
   --radius-full: 9999px;
 
-  /* === Elevation / Shadow Scale === */
-  --elevation-0: none;
-  --elevation-1: 0 4px 12px rgba(0, 0, 0, 0.4);
-  --elevation-2: 0 8px 24px rgba(0, 0, 0, 0.5);
-  --elevation-3: 0 16px 48px rgba(0, 0, 0, 0.6);
-  --elevation-4: 0 24px 64px rgba(0, 0, 0, 0.7);
-  --elevation-gold-1: 0 4px 14px rgba(212, 162, 76, 0.25);
-  --elevation-gold-2: 0 8px 32px rgba(212, 162, 76, 0.3);
-  --elevation-gold-glow: 0 0 20px rgba(212, 162, 76, 0.15);
-  --elevation-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
-  --elevation-inner-gold: inset 0 0 0 2px rgba(212, 162, 76, 0.3);
+  /* === Shadows (DESIGN SYSTEM AUDIT SPEC) === */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.6);
+  --shadow-gold: 0 4px 14px rgba(212, 162, 76, 0.25);
+  --shadow-gold-lg: 0 8px 32px rgba(212, 162, 76, 0.3);
+  --shadow-gold-glow: 0 0 20px rgba(212, 162, 76, 0.15);
+  --shadow-inner: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-inner-gold: inset 0 0 0 2px rgba(212, 162, 76, 0.3);
 
-  /* Legacy shadow aliases (deprecated, use --elevation-* instead) */
-  --shadow-sm: var(--elevation-0);
-  --shadow-md: var(--elevation-1);
-  --shadow-lg: var(--elevation-2);
-  --shadow-xl: var(--elevation-3);
-  --shadow-gold: var(--elevation-gold-1);
-  --shadow-gold-lg: var(--elevation-gold-2);
-  --shadow-gold-glow: var(--elevation-gold-glow);
-  --shadow-inner: var(--elevation-inner);
-  --shadow-inner-gold: var(--elevation-inner-gold);
+  /* === Elevation aliases (wrapper-only, not design tokens) === */
+  --elevation-0: none;
+  --elevation-1: var(--shadow-md);
+  --elevation-2: var(--shadow-lg);
+  --elevation-3: var(--shadow-xl);
+  --elevation-4: 0 24px 64px rgba(0, 0, 0, 0.7);
+  --elevation-gold-1: var(--shadow-gold);
+  --elevation-gold-2: var(--shadow-gold-lg);
+  --elevation-gold-glow: var(--shadow-gold-glow);
 }
 
 [data-theme='light'] {
@@ -1462,38 +1461,30 @@ body::before {
 
 /* =Design System Enforcement Utilities */
 
-/* Container — all pages (mobile-first, full-width up to 480px) */
+/* Container — mobile-first wrapper (spec: calc(100% - 24px), max 480px) */
 .container-mobile {
-  width: 100%;
+  width: calc(100% - 24px);
   max-width: 480px;
-  padding-inline: 16px;
   margin-inline: auto;
 }
 .container-full {
   width: 100%;
 }
 .container-desktop {
-  width: 100%;
-  max-width: 480px;
-  padding-inline: 16px;
+  width: calc(100% - 48px);
+  max-width: 1440px;
   margin-inline: auto;
 }
-@media (min-width: 768px) {
-  .container-desktop {
-    max-width: 1440px;
-    padding-inline: 32px;
-  }
-}
 
-/* Elevation utilities */
-.elevation-0 { box-shadow: var(--elevation-0); }
-.elevation-1 { box-shadow: var(--elevation-1); }
-.elevation-2 { box-shadow: var(--elevation-2); }
-.elevation-3 { box-shadow: var(--elevation-3); }
-.elevation-4 { box-shadow: var(--elevation-4); }
-.elevation-gold-1 { box-shadow: var(--elevation-gold-1); }
-.elevation-gold-2 { box-shadow: var(--elevation-gold-2); }
-.elevation-gold-glow { box-shadow: var(--elevation-gold-glow); }
+/* Elevation wrapper utilities (alias to design tokens) */
+.elevation-0 { box-shadow: none; }
+.elevation-1 { box-shadow: var(--shadow-md); }
+.elevation-2 { box-shadow: var(--shadow-lg); }
+.elevation-3 { box-shadow: var(--shadow-xl); }
+.elevation-4 { box-shadow: 0 24px 64px rgba(0, 0, 0, 0.7); }
+.elevation-gold-1 { box-shadow: var(--shadow-gold); }
+.elevation-gold-2 { box-shadow: var(--shadow-gold-lg); }
+.elevation-gold-glow { box-shadow: var(--shadow-gold-glow); }
 
 /* Radius utilities */
 .radius-xs { border-radius: var(--radius-xs); }
@@ -1543,19 +1534,12 @@ body::before {
 .gap-card { margin-bottom: 16px; }
 .gap-element { margin-bottom: 8px; }
 
-/* Vertical rhythm for sections */
+/* Vertical rhythm — wrapper class only */
 .section-block {
-  width: 100%;
+  width: calc(100% - 24px);
   max-width: 480px;
-  padding-inline: 16px;
   margin-inline: auto;
   margin-bottom: 64px;
-}
-@media (min-width: 768px) {
-  .section-block {
-    max-width: 1440px;
-    padding-inline: 32px;
-  }
 }
 
 /* =Cubic bezier defaults */

@@ -34,7 +34,7 @@ export default function HomePage() {
       <BookingTimeline />
       <div className="section-fade-in"><section id="hero"><HeroSection /></section></div>
       <div className="section-fade-in"><section id="map"><InteractiveMapSection /></section></div>
-      <BrandMotif variant="gold-line" className="container-mobile flex justify-center" />
+      <BrandMotif variant="gold-line" className="container-mobile" />
       <div className="section-fade-in">
         <section id="experiences-stories" className="relative">
           <div className="relative z-10"><ExperiencesSection /></div>
@@ -42,7 +42,7 @@ export default function HomePage() {
         </section>
       </div>
       <div className="section-fade-in"><section id="signature"><SignatureCollection /></section></div>
-      <BrandMotif variant="gold-line" className="container-mobile flex justify-center" />
+      <BrandMotif variant="gold-line" className="container-mobile" />
       <div className="section-fade-in"><section id="offers"><OffersSection /></section></div>
       <div className="section-fade-in"><section id="stats"><StatsAndLocalEyes /></section></div>
       <div className="section-fade-in"><section id="reviews">
@@ -52,7 +52,7 @@ export default function HomePage() {
         <GuestPhotoGallery />
         <GuideProfiles />
       </section></div>
-      <BrandMotif variant="gold-line" className="container-mobile flex justify-center" />
+      <BrandMotif variant="gold-line" className="container-mobile" />
       <div className="container-mobile"><SmartRecommendations /></div>
       <div className="section-fade-in container-mobile"><Newsletter /></div>
       <AbandonedRecovery />

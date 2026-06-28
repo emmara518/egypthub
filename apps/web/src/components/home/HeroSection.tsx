@@ -118,7 +118,7 @@ export default function HeroSection() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 h-full flex flex-col lg:flex-row lg:items-end lg:justify-between container-desktop pt-24 md:pt-28 pb-8 lg:pb-0">
+      <div className="relative z-10 h-full flex flex-col lg:flex-row lg:items-end lg:justify-between px-3 md:px-8 lg:pl-20 xl:pl-28 pt-24 md:pt-28 pb-8 lg:pb-0 max-w-[1440px] mx-auto">
         <div className="max-w-[520px] lg:max-w-[500px] xl:max-w-[580px]">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-headline mb-8 md:mb-12 lg:mb-16">
