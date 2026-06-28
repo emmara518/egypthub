@@ -124,7 +124,7 @@ export default function LeaderboardPage() {
                         : 'bg-theme-card border-x border-t border-theme-border'
                     }`}
                     style={{
-                      boxShadow: i === 0 ? '0 -4px 20px rgba(212,162,76,0.15)' : undefined,
+                      boxShadow: i === 0 ? '0 -4px 20px rgba(var(--gold-rgb),0.15)' : undefined,
                     }}
                   >
                     <p className="text-[10px] font-bold text-theme font-cairo text-center leading-tight">{user.name}</p>

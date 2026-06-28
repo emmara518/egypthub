@@ -60,7 +60,7 @@ export default function HeroSection() {
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-theme-bg/70 via-theme-bg/30 to-theme-bg egypt-pattern" />
       <div className="absolute inset-0 bg-gradient-to-r from-theme-bg/80 via-theme-bg/30 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-[60%] h-[70%] opacity-[0.04] pointer-events-none" style={{ background: 'radial-gradient(ellipse at bottom left, #D4A24C 0%, transparent 70%)' }} />
+      <div className="absolute bottom-0 left-0 w-[60%] h-[70%] opacity-[0.04] pointer-events-none" />
       <div className="lg:hidden absolute bottom-0 left-0 right-0 h-[35vh] z-10 pointer-events-none bg-gradient-to-t from-theme-bg via-theme-bg/60 to-transparent" />
 
       {/* Fog Layer */}
@@ -139,7 +139,7 @@ export default function HeroSection() {
             onMouseLeave={resetMagnet}
             onClick={() => router.push('/stories')}
             className="flex items-center gap-3 group mb-8 md:mb-12 lg:mb-16 ripple"
-            style={{ transform: `translate(${magnetPos.x}px, ${magnetPos.y}px)` }}
+           
           >
             <div className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-gradient-to-br from-theme-gold to-theme-gold flex items-center justify-center shadow-elevation-gold-glow group-hover:shadow-elevation-gold-2 transition-all duration-300">
               <Play size={18} className="text-theme-bg" />
@@ -147,7 +147,7 @@ export default function HeroSection() {
             <span className="text-sm font-semibold text-theme-gold font-english">Watch Egypt Come Alive</span>
           </motion.button>
 
-          {/* AI CONCIERGE — search-widget-glass */}
+          {/* AI CONCIERGE  search-widget-glass */}
           <motion.div id="ai-concierge" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.6 }}>
             <div className="search-widget-glass p-5 md:p-6">
               <div className="flex items-center gap-2 mb-3">
@@ -199,15 +199,15 @@ export default function HeroSection() {
         </div>
 
         {/* Avatar — emerges from bottom-right of hero scene */}
-        <div className="hidden lg:block absolute right-0 bottom-0 z-10 pointer-events-none" style={{ width: 'clamp(300px, 26vw, 440px)', height: 'clamp(420px, 40vw, 640px)' }}>
+        <div className="hidden lg:block absolute right-0 bottom-0 z-10 pointer-events-none">
           <div
             className="relative w-full h-full pointer-events-auto cursor-pointer"
-            style={{ transform: 'translateY(48px)' }}
+           
             onClick={() => setDnaModalOpen(true)}
           >
             <div
               className="absolute inset-0"
-              style={{ background: 'radial-gradient(ellipse at 50% 80%, rgba(var(--gold-rgb), 0.12) 0%, transparent 70%)' }}
+             
             />
             <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="440px" className="object-contain object-bottom" priority />
           </div>
@@ -216,12 +216,12 @@ export default function HeroSection() {
         <div className="lg:hidden relative z-10 mt-8 mb-0">
           <div
             className="relative cursor-pointer mx-auto"
-            style={{ width: 'clamp(200px, 50vw, 300px)', height: 'clamp(280px, 70vw, 420px)' }}
+           
             onClick={() => setDnaModalOpen(true)}
           >
             <div
               className="absolute inset-0"
-              style={{ background: 'radial-gradient(ellipse at 50% 80%, rgba(var(--gold-rgb), 0.12) 0%, transparent 70%)' }}
+             
             />
             <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="300px" className="object-contain object-bottom" priority />
           </div>
