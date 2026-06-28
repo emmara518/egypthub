@@ -467,7 +467,7 @@ export default function PortalPage() {
               >
                 <div className="flex items-center justify-between mb-5">
                   <h2 className="font-bold text-lg">الحجوزات الأخيرة</h2>
-                  <Link href="#" className="text-xs text-theme-gold hover:text-theme-gold transition-colors flex items-center gap-1">
+                  <Link href="/bookings" className="text-xs text-theme-gold hover:text-theme-gold transition-colors flex items-center gap-1">
                     عرض الكل
                     <IconChevronLeft />
                   </Link>
@@ -518,7 +518,7 @@ export default function PortalPage() {
               >
                 <div className="flex items-center justify-between mb-5">
                   <h2 className="font-bold text-lg">الرحلات القادمة</h2>
-                  <Link href="#" className="text-xs text-theme-gold hover:text-theme-gold transition-colors flex items-center gap-1">
+                  <Link href="/bookings" className="text-xs text-theme-gold hover:text-theme-gold transition-colors flex items-center gap-1">
                     عرض الكل
                     <IconChevronLeft />
                   </Link>

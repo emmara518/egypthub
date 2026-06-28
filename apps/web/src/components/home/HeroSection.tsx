@@ -30,9 +30,9 @@ const categoryChips = [
 ];
 
 const socialLinks = [
-  { name: 'instagram' },
-  { name: 'facebook' },
-  { name: 'twitter' },
+  { name: 'instagram', href: 'https://instagram.com/egypthub' },
+  { name: 'facebook', href: 'https://facebook.com/egypthub' },
+  { name: 'twitter', href: 'https://twitter.com/egypthub' },
 ];
 
 export default function HeroSection() {
@@ -110,7 +110,7 @@ export default function HeroSection() {
       {/* SOCIAL ICONS */}
       <div className="hidden xl:flex fixed left-6 top-[360px] z-40 flex-col gap-2.5">
         {socialLinks.map((social) => (
-          <a key={social.name} href="#" aria-label={social.name}
+              <a key={social.name} href={social.href} target="_blank" rel="noopener noreferrer" aria-label={social.name}
             className="w-7 h-7 rounded-full border border-white/10 flex items-center justify-center text-white/30 hover:text-white/60 hover:border-white/20 transition-all backdrop-blur-sm touch-target">
             <SocialBrand name={social.name} size={14} />
           </a>

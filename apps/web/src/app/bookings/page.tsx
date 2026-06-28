@@ -120,7 +120,7 @@ export default function BookingHistoryPage() {
                           <h3 className="font-bold text-white text-lg font-cairo mb-1">{booking.title}</h3>
                           <p className="text-[10px] text-white/30 font-english">#{booking.id}</p>
                         </div>
-                        <Link href="#" className="text-theme-gold text-sm font-cairo hover:underline">
+                        <Link href={`/booking?id=${booking.id}`} className="text-theme-gold text-sm font-cairo hover:underline">
                           عرض التفاصيل
                         </Link>
                       </div>

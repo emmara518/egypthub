@@ -25,18 +25,18 @@ const footerLinks = [
   { title: 'Company', links: [
     { label: 'About EgyptHub', href: '/about-egypt' },
     { label: 'Our Story', href: '/stories' },
-    { label: 'Careers', href: '#' },
-    { label: 'Press & Media', href: '#' },
+    { label: 'Careers', href: '/careers' },
+    { label: 'Press & Media', href: '/stories' },
     { label: 'Partners', href: '/partners' },
     { label: 'Blog', href: '/stories' },
   ]},
   { title: 'Support', links: [
-    { label: 'Help Center', href: '#' },
+    { label: 'Help Center', href: '/zainab' },
     { label: 'Contact Us', href: '/zainab' },
     { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Terms of Service', href: '/terms' },
-    { label: 'Cancellation Policy', href: '#' },
-    { label: 'Accessibility', href: '#' },
+    { label: 'Cancellation Policy', href: '/booking' },
+    { label: 'Accessibility', href: '/about-egypt' },
   ]},
 ];
 
