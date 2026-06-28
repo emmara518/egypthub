@@ -76,8 +76,8 @@ export default function AIConciergePage() {
             <HiChevronLeft className="w-4 h-4" />
             العودة للرئيسية
           </Link>
-          <button className="lg:hidden text-theme p-2" onClick={() => setMobileSidebar(!mobileSidebar)}>
-            {mobileSidebar ? <HiX className="w-5 h-5" /> : <HiMenu className="w-5 h-5" />}
+           <button className="lg:hidden text-theme p-2 touch-target" onClick={() => setMobileSidebar(!mobileSidebar)}>
+             {mobileSidebar ? <HiX className="w-5 h-5" /> : <HiMenu className="w-5 h-5" />}
           </button>
         </div>
 
@@ -90,8 +90,8 @@ export default function AIConciergePage() {
             {mobileSidebar && (
               <div className="flex justify-between items-center mb-4">
                 <span className="text-theme-gold font-bold font-cairo">القائمة</span>
-                <button onClick={() => setMobileSidebar(false)} className="text-theme p-1">
-                  <HiX className="w-5 h-5" />
+                <button onClick={() => setMobileSidebar(false)} className="text-theme p-1 touch-target">
+                   <HiX className="w-5 h-5" />
                 </button>
               </div>
             )}

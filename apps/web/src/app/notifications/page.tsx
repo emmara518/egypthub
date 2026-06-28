@@ -197,7 +197,7 @@ export default function NotificationsPage() {
                               <div className="shrink-0 mt-2">
                                 <button
                                   onClick={(e) => { e.stopPropagation(); markRead(n.id); }}
-                                  className="w-7 h-7 rounded-full bg-theme-gold/10 flex items-center justify-center text-theme-gold hover:bg-theme-gold/20 transition-all"
+                                  className="w-7 h-7 rounded-full bg-theme-gold/10 flex items-center justify-center text-theme-gold hover:bg-theme-gold/20 transition-all touch-target"
                                 >
                                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
                                     <polyline points="20 6 9 17 4 12" />
