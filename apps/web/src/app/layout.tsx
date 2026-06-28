@@ -70,7 +70,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const ogLocale = locale === 'ar' ? 'ar_AR' : 'en_US';
 
   return (
-    <html lang={locale} dir={dir} data-theme="dark" className={`${playfair.variable} ${cairo.variable} ${poppins.variable} ${amiri.variable}`} suppressHydrationWarning>
+    <html lang={locale} dir={dir} data-theme="dark" className={`${playfair.variable} ${cairo.variable} ${poppins.variable} ${amiri.variable} overflow-x-hidden`} suppressHydrationWarning>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#D4A24C" />
@@ -116,7 +116,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           }}
         />
       </head>
-      <body className="min-h-screen flex flex-col noise-overlay">
+      <body className="min-h-screen flex flex-col noise-overlay overflow-x-hidden">
         <AuthProvider>
           <LanguageProvider>
             <ThemeProvider>

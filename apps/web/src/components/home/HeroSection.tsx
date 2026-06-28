@@ -118,7 +118,7 @@ export default function HeroSection() {
       </div>
 
       {/* MAIN CONTENT */}
-      <div className="relative z-10 h-full flex flex-col lg:flex-row lg:items-end lg:justify-between px-3 md:px-8 lg:pl-20 xl:pl-28 pt-24 md:pt-28 pb-8 lg:pb-0 max-w-[1440px] mx-auto">
+      <div className="relative z-10 flex flex-col lg:flex-row lg:items-end lg:justify-between px-3 md:px-8 lg:pl-20 xl:pl-28 pt-24 md:pt-28 pb-8 lg:pb-0 max-w-[1440px] mx-auto">
         <div className="max-w-[520px] lg:max-w-[500px] xl:max-w-[580px]">
           <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }}
             className="hero-headline mb-8 md:mb-12 lg:mb-16">
@@ -163,7 +163,7 @@ export default function HeroSection() {
               <h3 className="text-base md:text-lg font-bold font-display mb-0.5 text-white">What brings you to Egypt?</h3>
               <p className="text-[12px] text-white/40 mb-3">We&apos;ll craft your perfect journey</p>
 
-              <div className="flex gap-1.5 md:gap-2 mb-4 overflow-x-auto scrollbar-hide snap-x -mx-4 px-4 md:mx-0 md:px-0 md:flex-wrap">
+              <div className="flex gap-1.5 md:gap-2 mb-4 overflow-x-auto scrollbar-hide snap-x -mx-3 px-3 md:mx-0 md:px-0 md:flex-wrap">
                 {categoryChips.map((chip, i) => (
                   <button key={chip.label} onClick={() => setActiveChip(i)}
                     className={`shrink-0 snap-start flex items-center gap-1 px-2 md:px-3 py-1.5 rounded-full border transition-all text-[10px] md:text-[11px] font-english touch-target ${
@@ -213,17 +213,12 @@ export default function HeroSection() {
           </div>
         </div>
         {/* Avatar — mobile: emerges below search widget */}
-        <div className="lg:hidden relative z-10 mt-8 mb-0">
+        <div className="lg:hidden relative z-10 mt-8 mb-0 flex justify-center">
           <div
-            className="relative cursor-pointer mx-auto"
-           
+            className="relative w-32 h-32 cursor-pointer"
             onClick={() => setDnaModalOpen(true)}
           >
-            <div
-              className="absolute inset-0"
-             
-            />
-            <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="300px" className="object-contain object-bottom" priority />
+            <Image src="/assets/avatar.png" alt="AI Concierge" fill sizes="128px" className="object-contain object-bottom" priority />
           </div>
         </div>
       </div>
