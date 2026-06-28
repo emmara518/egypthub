@@ -176,13 +176,13 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 safe-area-top ${
         scrolled
           ? 'bg-theme-bg/95 backdrop-blur-lg shadow-gold-border border-b border-theme-gold/20'
           : 'bg-transparent'
       }`}
     >
-      <div className={`max-w-[1440px] mx-auto px-6 lg:px-8 h-20 flex items-center justify-between`}>
+      <div className="max-w-[1440px] mx-auto px-6 lg:px-8 flex items-center justify-between" style={{ height: 'calc(80px + env(safe-area-inset-top, 0px))', paddingTop: 'env(safe-area-inset-top, 0px)' }}>
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5 group shrink-0">
           <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-theme-gold to-theme-gold/70 flex items-center justify-center shadow-gold-glow transition-all duration-300">
@@ -245,12 +245,12 @@ export default function Header() {
         {/* Mobile: Search + Lang + Hamburger */}
         <div className="flex lg:hidden items-center gap-2">
           <button onClick={toggleLang}
-            className="px-2 py-1 rounded-lg border border-theme-gold/30 text-[10px] font-medium text-theme-gold/80 hover:bg-theme-gold/10 transition-all font-cairo"
+            className="touch-target px-3 rounded-lg border border-theme-gold/30 text-[10px] font-medium text-theme-gold/80 hover:bg-theme-gold/10 transition-all font-cairo"
             aria-label={t(locale, 'common.lang_label')}>
             {t(locale, 'common.lang_label')}
           </button>
           <button onClick={() => setMobileOpen(!mobileOpen)}
-            className="p-2 rounded-lg text-white hover:text-theme-gold transition-colors"
+            className="touch-target rounded-lg text-white hover:text-theme-gold transition-colors"
             aria-label={t(locale, 'nav.more')}>
             {mobileOpen ? (
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
@@ -275,7 +275,7 @@ export default function Header() {
               className={`absolute top-0 ${isRtl ? 'left-0' : 'right-0'} bottom-0 w-full max-w-sm bg-theme-surface border-${isRtl ? 'l' : 'r'} border-theme-gold/20 overflow-y-auto shadow-gold-glow`}
             >
               <div className="h-1 bg-gradient-to-r from-transparent via-theme-gold to-transparent" />
-              <div className="p-6">
+              <div className="p-6" style={{ paddingTop: 'calc(1.5rem + env(safe-area-inset-top, 0px))', paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}>
                 {/* Mobile Header */}
                 <div className={`flex items-center justify-between mb-6 ${isRtl ? '' : 'flex-row-reverse'}`}>
                   <div className={`flex items-center gap-3 ${isRtl ? '' : 'flex-row-reverse'}`}>

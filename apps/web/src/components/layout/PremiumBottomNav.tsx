@@ -194,8 +194,8 @@ export default function PremiumBottomNav() {
   return (
     <nav
       ref={containerRef}
-      className="lg:hidden fixed bottom-0 left-0 right-0 z-50 safe-area-bottom"
-      style={{ height: TAB_HEIGHT, minHeight: TAB_HEIGHT }}
+      className="lg:hidden fixed bottom-0 left-0 right-0 z-50"
+      style={{ height: `calc(${TAB_HEIGHT}px + env(safe-area-inset-bottom, 0px))`, minHeight: `calc(${TAB_HEIGHT}px + env(safe-area-inset-bottom, 0px))`, paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}
       aria-label="التنقل الرئيسي"
     >
       <div className="relative h-full">

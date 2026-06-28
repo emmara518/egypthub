@@ -128,7 +128,7 @@ export default function ActionDrawer() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 2, type: 'spring' }}
         onClick={() => setOpen(true)}
-        className="fixed bottom-[144px] md:bottom-[84px] right-[24px] z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-all touch-target"
+        className="fixed bottom-[calc(144px+env(safe-area-inset-bottom,0px))] md:bottom-[calc(84px+env(safe-area-inset-bottom,0px))] right-[24px] z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-all touch-target"
         style={{
           background: 'linear-gradient(135deg, var(--gold), var(--gold-mid))',
           boxShadow: '0 4px 20px rgba(212,162,76,0.4), 0 0 40px rgba(212,162,76,0.15)',

@@ -24,7 +24,7 @@ export default function WhatsAppChat() {
           href={`https://wa.me/${PHONE}?text=${encodeURIComponent(MSG)}`}
           target="_blank"
           rel="noopener noreferrer"
-          className="fixed bottom-[80px] md:bottom-[24px] right-[24px] z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-all touch-target"
+          className="fixed bottom-[calc(80px+env(safe-area-inset-bottom,0px))] md:bottom-[calc(24px+env(safe-area-inset-bottom,0px))] right-[24px] z-50 w-12 h-12 rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-110 active:scale-95 transition-all touch-target"
           style={{
             background: 'linear-gradient(135deg, #25D366, #128C7E)',
             boxShadow: '0 4px 20px rgba(37,211,102,0.35)',
