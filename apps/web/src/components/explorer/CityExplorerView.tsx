@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PremiumCard from './PremiumCard';
 import type { ExplorerGraph, ExplorerNode, CityStats } from '@/lib/explorer/types';
+import ComingSoonBadge from '@/components/ComingSoonBadge';
 
 interface CityExplorerViewProps {
   citySlug: string;
@@ -18,14 +19,25 @@ interface CityHero {
   nameEn: string;
   description: string;
   image: string;
+  isSharm?: boolean;
 }
 
 const CITY_HERO: Record<string, CityHero> = {
-  'sharm-el-sheikh': { name: 'شرم الشيخ', nameEn: 'Sharm El Sheikh', description: 'غوص عالمي وحياة ليلية', image: '/images/destinations/sharm.jpg' },
+  cairo: { name: 'القاهرة', nameEn: 'Cairo', description: 'مدينة الألف مئذنة', image: '/images/destinations/cairo.jpg', isSharm: false },
+  alexandria: { name: 'الإسكندرية', nameEn: 'Alexandria', description: 'عروس البحر الأبيض المتوسط', image: '/images/destinations/alexandria.jpg', isSharm: false },
+  luxor: { name: 'الأقصر', nameEn: 'Luxor', description: 'معابد فرعونية ووادي الملوك', image: '/images/destinations/luxor.jpg', isSharm: false },
+  aswan: { name: 'أسوان', nameEn: 'Aswan', description: 'سحر النيل وروحانياته', image: '/images/destinations/aswan.jpg', isSharm: false },
+  'sharm-el-sheikh': { name: 'شرم الشيخ', nameEn: 'Sharm El Sheikh', description: 'غوص عالمي وحياة ليلية', image: '/images/destinations/sharm.jpg', isSharm: true },
+  hurghada: { name: 'الغردقة', nameEn: 'Hurghada', description: 'شواطئ ذهبية ورياضات مائية', image: '/images/destinations/hurghada.jpg', isSharm: false },
+  dahab: { name: 'دهب', nameEn: 'Dahab', description: 'مغامرات البدو والغوص', image: '/images/destinations/dahab.jpg', isSharm: false },
+  siwa: { name: 'سيوة', nameEn: 'Siwa', description: 'واحة الأحلام', image: '/images/destinations/siwa.jpg', isSharm: false },
 };
 
 const RELATED: Record<string, string[]> = {
-  'sharm-el-sheikh': [],
+  cairo: ['alexandria', 'luxor'], alexandria: ['cairo', 'siwa'],
+  luxor: ['aswan', 'cairo'], aswan: ['luxor', 'cairo'],
+  'sharm-el-sheikh': ['dahab', 'hurghada'], hurghada: ['sharm-el-sheikh', 'luxor'],
+  dahab: ['sharm-el-sheikh'], siwa: ['alexandria'],
 };
 
 type TabId = 'experiences' | 'stories' | 'food' | 'ambassadors';
@@ -93,7 +105,7 @@ export default function CityExplorerView({
         <div className="h-72 md:h-96 relative overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center"
-           
+            style={{ backgroundImage: `url(${hero.image})` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-theme-bg/50 to-theme-bg" />
 
@@ -180,13 +192,13 @@ export default function CityExplorerView({
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-emerald-500/20 to-emerald-500/5 mx-auto mb-3 overflow-hidden ring-2 ring-transparent group-hover:ring-emerald-500/30 transition-all">
                         <div
                           className="w-full h-full bg-cover bg-center"
-                         
+                          style={{ backgroundImage: `url(${n.image || '/images/avatars/default.jpg'})` }}
                         />
                       </div>
                       <h4 className="text-sm font-bold text-theme font-cairo">{n.label}</h4>
                       <p className="text-[10px] text-theme-secondary font-cairo mt-1">{n.subtitle}</p>
                       <div className="flex items-center justify-center gap-1 mt-2">
-                        <span className="text-theme-gold text-xs">★</span>
+                        <span className="text-yellow-400 text-xs">★</span>
                         <span className="text-[10px] text-theme font-english">{n.data?.rating || '—'}</span>
                       </div>
                     </motion.div>
@@ -216,7 +228,7 @@ export default function CityExplorerView({
           {relatedSlugs.length > 0 && (
             <div className="mt-12 mb-8">
               <h3 className="text-sm font-bold text-theme font-playfair mb-4">مدن ذات صلة</h3>
-              <div className="flex gap-3 overflow-x-auto pb-2">
+              <div className="flex gap-3 overflow-x-auto pb-2" style={{ scrollbarWidth: 'thin' }}>
                 {relatedSlugs.map(slug => {
                   const related = CITY_HERO[slug];
                   if (!related) return null;
@@ -229,12 +241,13 @@ export default function CityExplorerView({
                       <div className="h-24 bg-theme-surface overflow-hidden">
                         <div
                           className="w-full h-full bg-cover bg-center group-hover:scale-110 transition-transform duration-700"
-                         
+                          style={{ backgroundImage: `url(${related.image})` }}
                         />
                       </div>
                       <div className="p-3">
                         <p className="text-xs font-bold text-theme font-cairo">{related.name}</p>
                         <p className="text-[10px] text-theme-secondary font-cairo mt-0.5 line-clamp-1">{related.description}</p>
+                        {!related.isSharm && <ComingSoonBadge size="sm" />}
                       </div>
                     </div>
                   );
@@ -246,7 +259,7 @@ export default function CityExplorerView({
           <div className="flex flex-col sm:flex-row gap-3 pb-16">
             <button
               onClick={() => onPlanTrip(citySlug)}
-              className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-dark-900 font-bold text-sm font-cairo hover:opacity-90 transition-all active:scale-[0.98] shadow-lg shadow-theme-gold/15"
+              className="flex-1 px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-amber-500 text-dark-900 font-bold text-sm font-cairo hover:opacity-90 transition-all active:scale-[0.98] shadow-lg shadow-theme-gold/15"
             >
               اقتراح رحلة إلى {hero.name}
             </button>

@@ -33,7 +33,7 @@ const partners = [
   {
     id: 1,
     name: 'فندق ماريوت شرم الشيخ',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=200&h=120&fit=crop',
     category: 'hotel',
     rating: 4.8,
     location: 'شرم الشيخ',
@@ -42,7 +42,7 @@ const partners = [
   {
     id: 2,
     name: 'مطعم أبيدوس',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=200&h=120&fit=crop',
     category: 'restaurant',
     rating: 4.6,
     location: 'القاهرة',
@@ -51,7 +51,7 @@ const partners = [
   {
     id: 3,
     name: 'سنوركلينج ريد سي',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=200&h=120&fit=crop',
     category: 'activity',
     rating: 4.9,
     location: 'الغردقة',
@@ -60,7 +60,7 @@ const partners = [
   {
     id: 4,
     name: 'هيلتون ريزورت النخلة',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?w=200&h=120&fit=crop',
     category: 'hotel',
     rating: 4.7,
     location: 'الغردقة',
@@ -69,7 +69,7 @@ const partners = [
   {
     id: 5,
     name: 'كافيه الأزهر',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=200&h=120&fit=crop',
     category: 'restaurant',
     rating: 4.5,
     location: 'القاهرة',
@@ -78,7 +78,7 @@ const partners = [
   {
     id: 6,
     name: ' Safari الصحراء البيضاء',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=200&h=120&fit=crop',
     category: 'activity',
     rating: 4.8,
     location: 'الوادي الجديد',
@@ -87,7 +87,7 @@ const partners = [
   {
     id: 7,
     name: ' Kempinski Nile Hotel',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=200&h=120&fit=crop',
     category: 'hotel',
     rating: 4.9,
     location: 'القاهرة',
@@ -96,7 +96,7 @@ const partners = [
   {
     id: 8,
     name: 'مطعم فول مدمس',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=200&h=120&fit=crop',
     category: 'restaurant',
     rating: 4.4,
     location: 'الإسكندرية',
@@ -105,7 +105,7 @@ const partners = [
   {
     id: 9,
     name: 'uito رحلات نيلية',
-    logo: '/images/placeholders/placeholder.svg',
+    logo: 'https://images.unsplash.com/photo-1568322503122-d21b1d9c8e04?w=200&h=120&fit=crop',
     category: 'activity',
     rating: 4.7,
     location: 'الأقصر',
@@ -160,11 +160,9 @@ export default function PartnersShowcasePage() {
               className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden hover:border-theme-gold/25 transition-all group">
               <div className="relative h-40 overflow-hidden">
                 <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                  />
+                  style={{ backgroundImage: `url(${partner.logo})` }} />
                 <div className="absolute inset-0 bg-gradient-to-t from-theme-card to-transparent" />
                 <span className={`absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-bold font-cairo backdrop-blur-sm ${
-                  partner.category === 'hotel' ? 'bg-theme-gold/15 text-theme-gold border border-theme-gold/25' :
-                  partner.category === 'restaurant' ? 'bg-theme-gold/15 text-theme-gold border border-theme-gold/25' :
                   'bg-theme-gold/15 text-theme-gold border border-theme-gold/25'
                 }`}>
                   {categories.find(c => c.id === partner.category)?.label}
@@ -201,7 +199,7 @@ export default function PartnersShowcasePage() {
           <div className="rounded-2xl border border-theme-gold/10 bg-theme-card p-8 max-w-2xl mx-auto">
             <h2 className="text-xl font-bold text-white font-playfair mb-2">هل تريد الشراكة معنا؟</h2>
             <p className="text-sm text-theme-muted font-cairo mb-4">انضم إلى شبكة شركائنا واعرض خدماتك لآلاف المسافرين</p>
-            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold hover:shadow-lg transition-all">
+            <button className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold hover:shadow-lg transition-all" style={{ boxShadow: '0 0 15px var(--gold-glow)' }}>
               تواصل معنا
             </button>
           </div>

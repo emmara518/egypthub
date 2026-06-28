@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const statusConfig: Record<string, { label: string; color: string; bg: string }> = {
   confirmed: { label: 'مؤكد', color: 'text-emerald-400', bg: 'bg-emerald-400/10 border-emerald-400/20' },
-  pending: { label: 'قيد الانتظار', color: 'text-theme-gold', bg: 'bg-theme-gold/10 border-theme-gold/20' },
+  pending: { label: 'قيد الانتظار', color: 'text-amber-400', bg: 'bg-amber-400/10 border-amber-400/20' },
   completed: { label: 'مكتمل', color: 'text-blue-400', bg: 'bg-blue-400/10 border-blue-400/20' },
   cancelled: { label: 'ملغي', color: 'text-red-400', bg: 'bg-red-400/10 border-red-400/20' },
 };
@@ -15,7 +15,7 @@ const mockBookings = [
   {
     id: 'EH-4821',
     name: 'غوص البحر الأحمر',
-    image: '/images/placeholders/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&h=300&fit=crop',
     date: '15 فبراير 2025',
     time: '09:00 صباحاً',
     status: 'confirmed',
@@ -26,7 +26,7 @@ const mockBookings = [
   {
     id: 'EH-4756',
     name: 'جولة الأهرامات الخاصة',
-    image: '/images/placeholders/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=400&h=300&fit=crop',
     date: '22 فبراير 2025',
     time: '08:00 صباحاً',
     status: 'pending',
@@ -37,7 +37,7 @@ const mockBookings = [
   {
     id: 'EH-4690',
     name: 'رحلة نيلية في الأقصر',
-    image: '/images/placeholders/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1568322503122-d21b1d9c8e04?w=400&h=300&fit=crop',
     date: '10 يناير 2025',
     time: '16:00 عصراً',
     status: 'completed',
@@ -48,7 +48,7 @@ const mockBookings = [
   {
     id: 'EH-4612',
     name: ' safari في وادي الريان',
-    image: '/images/placeholders/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=400&h=300&fit=crop',
     date: '5 يناير 2025',
     time: '07:00 صباحاً',
     status: 'cancelled',
@@ -59,7 +59,7 @@ const mockBookings = [
   {
     id: 'EH-4588',
     name: 'تجربة طعام مصري تقليدي',
-    image: '/images/placeholders/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=400&h=300&fit=crop',
     date: '28 ديسمبر 2024',
     time: '19:00 مساءً',
     status: 'completed',
@@ -142,7 +142,7 @@ export default function BookingHistoryPage() {
                     className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden hover:border-theme-gold/20 transition-all">
                     <div className="flex flex-col sm:flex-row">
                       <div className="relative w-full sm:w-48 h-40 sm:h-auto shrink-0">
-                        <div className="absolute inset-0 bg-cover bg-center" />
+                        <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${booking.image})` }} />
                         <div className="absolute inset-0 bg-gradient-to-l from-transparent to-[#141B2D]/60 hidden sm:block" />
                         <div className="absolute inset-0 bg-gradient-to-t from-theme-card to-transparent sm:hidden" />
                       </div>

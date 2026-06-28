@@ -24,10 +24,21 @@ interface City {
 }
 
 const CITIES: City[] = [
-  { name: 'Sharm El Sheikh', nameAr: 'شرم الشيخ', slug: 'sharm-el-sheikh', lat: 27.92, lng: 34.33, count: 4 },
+  { name: 'Cairo', nameAr: 'القاهرة', slug: 'cairo', lat: 30.04, lng: 31.24 },
+  { name: 'Alexandria', nameAr: 'الإسكندرية', slug: 'alexandria', lat: 31.20, lng: 29.92 },
+  { name: 'Luxor', nameAr: 'الأقصر', slug: 'luxor', lat: 25.69, lng: 32.64 },
+  { name: 'Aswan', nameAr: 'أسوان', slug: 'aswan', lat: 24.09, lng: 32.90 },
+  { name: 'Sharm', nameAr: 'شرم الشيخ', slug: 'sharm-el-sheikh', lat: 27.92, lng: 34.33 },
+  { name: 'Hurghada', nameAr: 'الغردقة', slug: 'hurghada', lat: 27.26, lng: 33.81 },
+  { name: 'Dahab', nameAr: 'دهب', slug: 'dahab', lat: 28.50, lng: 34.52 },
+  { name: 'Siwa', nameAr: 'سيوة', slug: 'siwa', lat: 29.20, lng: 25.51 },
 ];
 
-const ROUTES: [string, string][] = [];
+const ROUTES: [string, string][] = [
+  ['cairo', 'alexandria'], ['cairo', 'luxor'], ['luxor', 'aswan'],
+  ['sharm-el-sheikh', 'dahab'], ['sharm-el-sheikh', 'hurghada'],
+  ['hurghada', 'luxor'], ['alexandria', 'siwa'], ['cairo', 'siwa'],
+];
 
 const SVG_W = 840;
 const SVG_H = 720;
@@ -132,7 +143,7 @@ export default function ExplorerMap({
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
       onMouseLeave={handleMouseUp}
-     
+      style={{ cursor: isPanning ? 'grabbing' : 'grab', minHeight: 500, height: '100%' }}
     >
       <svg
         viewBox={`0 0 ${SVG_W} ${SVG_H}`}
@@ -160,7 +171,7 @@ export default function ExplorerMap({
 
         <polygon points={shapePoints} fill="rgba(212,162,76,0.03)" stroke="rgba(212,162,76,0.2)" strokeWidth="1.5" />
 
-        {CITIES.length > 1 && ROUTES.map(([from, to]) => {
+        {ROUTES.map(([from, to]) => {
           const f = CITIES.find(c => c.slug === from);
           const t = CITIES.find(c => c.slug === to);
           if (!f || !t) return null;
@@ -184,7 +195,9 @@ export default function ExplorerMap({
                 strokeWidth="0.5"
                 strokeDasharray="2 4"
                 className="animate-dash"
-              />
+              >
+                <animate attributeName="stroke-dashoffset" from="0" to="-20" dur="3s" repeatCount="indefinite" />
+              </path>
             </g>
           );
         })}
@@ -210,7 +223,7 @@ export default function ExplorerMap({
               onClick={() => markerCity && onCitySelect?.(city.slug)}
               onMouseEnter={() => setHoveredId(`city-${city.slug}`)}
               onMouseLeave={() => setHoveredId(null)}
-             
+              style={{ cursor: 'pointer' }}
             >
               {(isSelected || isHovered) && (
                 <circle cx={x} cy={y} r={RADIUS.city + 12} fill="url(#pulse)">
@@ -268,7 +281,7 @@ export default function ExplorerMap({
               onClick={() => onNodeSelect(node.id)}
               onMouseEnter={() => setHoveredId(node.id)}
               onMouseLeave={() => setHoveredId(null)}
-             
+              style={{ cursor: 'pointer' }}
             >
               {isSelected && (
                 <circle cx={x} cy={y} r={RADIUS[node.type] + 8} fill="none" stroke={color} strokeWidth="1" opacity={0.3}>
@@ -304,7 +317,7 @@ export default function ExplorerMap({
             className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-theme-card/90 backdrop-blur-xl border border-theme-gold/20 rounded-xl px-4 py-2.5 shadow-2xl shadow-black/20 flex items-center gap-3"
           >
             <span className={`px-2 py-0.5 rounded-full text-[10px] font-cairo font-semibold ${
-              hoveredNode.type === 'city' ? 'bg-theme-gold/15 text-theme-gold' :
+              hoveredNode.type === 'city' ? 'bg-amber-500/15 text-amber-400' :
               hoveredNode.type === 'experience' ? 'bg-blue-500/15 text-blue-400' :
               hoveredNode.type === 'story' ? 'bg-purple-500/15 text-purple-400' :
               hoveredNode.type === 'food' ? 'bg-orange-500/15 text-orange-400' :

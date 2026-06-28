@@ -2,12 +2,13 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import ComingSoonBadge from '@/components/ComingSoonBadge';
 
 const stats = [
-  { val: '4,000+', label: 'سنة تاريخ' },
-  { val: '80+', label: 'معلم سياحي' },
-  { val: '2M+', label: 'زائر سنوياً' },
-  { val: '4', label: 'منتجعات كبرى' },
+  { val: '7,000+', label: 'سنة تاريخ' },
+  { val: '150+', label: 'معلم سياحي' },
+  { val: '10M+', label: 'زائر سنوياً' },
+  { val: '6', label: 'مناطق سياحية' },
 ];
 
 const sections = [
@@ -19,9 +20,9 @@ const sections = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
     ),
-    desc: 'تتميز شرم الشيخ بتاريخ غني يمتد لآلاف السنين، حيث كانت جزءاً من طرق التجارة القديمة بين مصر وشبه الجزيرة العربية. تحيط بها المواقع التاريخية في سيناء والمنتجعات الفاخرة على ساحل البحر الأحمر.',
-    highlights: ['محمية رأس محمد', 'دير سانت كاترين', 'وادي الملوك', 'قلعة صلاح الدين'],
-    image: '/images/placeholders/placeholder.svg',
+    desc: 'يمتد تاريخ مصر لأكثر من 7000 عام، مما يجعلها واحدة من أقدم الحضارات في العالم. من الأهرامات العظيمة في الجيزة إلى معابد الأقصر والكرنك، تضم مصر بعضاً من أروع المعالم الأثرية القديمة.',
+    highlights: ['الأهرامات', 'معبد الكرنك', 'وادي الملوك', 'متحف القاهرة'],
+    image: 'https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=600&h=400&fit=crop',
   },
   {
     id: 'culture',
@@ -33,7 +34,7 @@ const sections = [
     ),
     desc: 'تتميز مصر بتراث ثقافي غني يجمع بين العادات والتقاليد القديمة والحياة العصرية. من الموسيقى والرقص إلى الحرف اليدوية والأسواق التقليدية، تقدم مصر تجربة ثقافية فريدة.',
     highlights: ['الموسيقى الشرقية', 'الحرف اليدوية', 'الأسواق التقليدية', 'الأدب العربي'],
-    image: '/images/placeholders/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1568322503122-d21b1d9c8e04?w=600&h=400&fit=crop',
   },
   {
     id: 'nature',
@@ -43,9 +44,9 @@ const sections = [
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
       </svg>
     ),
-    desc: 'تتميز شرم الشيخ بطبيعة فريدة تجمع بين البحر الأحمر الفيروزي والصحراء الذهبية. الغوص في الشعاب المرجانية ورحلات السفاري في الصحراء تجعلها وجهة مثالية لمحبي الطبيعة والمغامرات.',
-    highlights: ['البحر الأحمر', 'شعاب مرجانية', 'الصحراء الذهبية', 'خليج نعمة'],
-    image: '/images/placeholders/placeholder.svg',
+    desc: 'تتنوع الطبيعة في مصر بين الصحراء الذهبية والبحر الأحمر الساحر والنهر الأخضر.',
+    highlights: ['البحر الأحمر', 'واحة سيوة', 'الصحراء البيضاء', 'نهر النيل'],
+    image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&h=400&fit=crop',
   },
   {
     id: 'food',
@@ -57,15 +58,15 @@ const sections = [
     ),
     desc: 'المطبخ المصري غني ومتنوع، يعكس تاريخه الثقافي الطويل. من الكشري والفول المدمس إلى الملوخية والحمام المحشي، تقدم المطاعم المصرية تجربة لا تُنسى.',
     highlights: ['الفول المدمس', 'الكشري', 'الملوخية', 'الحمام المحشي'],
-    image: '/images/placeholders/placeholder.svg',
+    image: 'https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=600&h=400&fit=crop',
   },
 ];
 
 const relatedExperiences = [
-  { name: 'غوص في رأس محمد', slug: 'ras-mohamed-diving', image: '/images/placeholders/placeholder.svg', price: 'EGP 1,200' },
-  { name: 'رحلة سفاري', slug: 'sharm-safari', image: '/images/placeholders/placeholder.svg', price: 'EGP 800' },
-  { name: 'رحلة بحرية', slug: 'sharm-boat-trip', image: '/images/placeholders/placeholder.svg', price: 'EGP 1,500' },
-  { name: 'زيارة دير سانت كاترين', slug: 'st-catherine-tour', image: '/images/placeholders/placeholder.svg', price: 'EGP 1,100' },
+  { name: 'جولة الأهرامات', slug: 'pyramids-tour', image: 'https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=300&h=200&fit=crop', price: 'EGP 1,200' },
+  { name: 'غوص البحر الأحمر', slug: 'red-sea-diving', image: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=300&h=200&fit=crop', price: 'EGP 1,800' },
+  { name: 'رحلة نيلية', slug: 'nile-cruise', image: 'https://images.unsplash.com/photo-1568322503122-d21b1d9c8e04?w=300&h=200&fit=crop', price: 'EGP 2,500' },
+  { name: ' Safari الصحراء', slug: 'desert-safari', image: 'https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?w=300&h=200&fit=crop', price: 'EGP 950' },
 ];
 
 export default function AboutEgyptPage() {
@@ -74,21 +75,22 @@ export default function AboutEgyptPage() {
       {/* Hero Section */}
       <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
         <div className="absolute inset-0 bg-cover bg-center"
-          />
+          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1539768942893-daf53e736b68?w=1600&h=900&fit=crop)' }} />
         <div className="absolute inset-0 bg-gradient-to-t from-theme-bg via-theme-bg/50 to-transparent" />
         <div className="absolute inset-0 bg-theme-bg/30" />
         <div className="relative h-full flex items-center justify-center text-center px-4">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
-            <span className="text-theme-gold text-sm font-cairo font-bold tracking-wider mb-4 block">شرم الشيخ — جوهرة البحر الأحمر</span>
+            <span className="text-theme-gold text-sm font-cairo font-bold tracking-wider mb-2 block">مصر — أم الدنيا</span>
+            <span className="px-2.5 py-0.5 rounded-full bg-theme-gold/15 text-theme-gold text-[10px] font-cairo border border-theme-gold/30 inline-block mb-3">شرم الشيخ — متاح الآن</span>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white font-playfair mb-4 leading-tight">
               اكتشف سحر<br />
-              <span className="text-theme-gold">شرم الشيخ</span>
+              <span className="text-theme-gold">أقدم حضارة في العالم</span>
             </h1>
             <p className="text-lg text-white/70 font-cairo max-w-2xl mx-auto mb-8">
-              من الغوص في الشعاب المرجانية الخلابة إلى رحلات السفاري في الصحراء الذهبية، شرم الشيخ تقدم تجربة سياحية لا تُنسى
+              من أهرامات الجيزة إلى شواطئ البحر الأحمر، مصر تقدم تجربة سياحية لا تُنسى
             </p>
             <Link href="/experiences"
-              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg font-cairo font-bold hover:shadow-lg transition-all">
+              className="inline-flex px-8 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg font-cairo font-bold hover:shadow-lg transition-all" style={{ boxShadow: '0 0 20px var(--gold-glow)' }}>
               ابدأ رحلتك
             </Link>
           </motion.div>
@@ -116,7 +118,7 @@ export default function AboutEgyptPage() {
               <div className="flex-1">
                 <div className="relative rounded-2xl overflow-hidden h-72 lg:h-96">
                   <div className="absolute inset-0 bg-cover bg-center hover:scale-105 transition-transform duration-700"
-                    />
+                    style={{ backgroundImage: `url(${section.image})` }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-theme-bg/60 to-transparent" />
                 </div>
               </div>
@@ -150,7 +152,7 @@ export default function AboutEgyptPage() {
                 className="rounded-2xl border border-theme-gold/10 bg-theme-card overflow-hidden group cursor-pointer hover:-translate-y-1 transition-all">
                 <div className="relative h-40 overflow-hidden">
                   <div className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-105"
-                    />
+                    style={{ backgroundImage: `url(${exp.image})` }} />
                   <div className="absolute inset-0 bg-gradient-to-t from-theme-card to-transparent" />
                 </div>
                 <div className="p-4">
@@ -165,8 +167,8 @@ export default function AboutEgyptPage() {
         {/* CTA */}
         <div className="mt-16 text-center">
           <div className="rounded-2xl border border-theme-gold/20 bg-gradient-to-l from-theme-gold/5 to-theme-gold/5 p-8">
-            <h2 className="text-xl font-bold text-white font-playfair mb-2">جاهز لاكتشاف شرم الشيخ؟</h2>
-            <p className="text-sm text-theme-muted font-cairo mb-6">ابدأ رحلتك مع EgyptHub واكتشف جمال شرم الشيخ</p>
+            <h2 className="text-xl font-bold text-white font-playfair mb-2">جاهز لاكتشاف مصر؟</h2>
+            <p className="text-sm text-theme-muted font-cairo mb-6">ابدأ رحلتك مع EgyptHub واكتشف أجمل الوجهات</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
               <Link href="/experiences"
                 className="px-6 py-3 rounded-xl bg-gradient-to-l from-theme-gold to-theme-gold text-theme-bg text-sm font-cairo font-bold">
